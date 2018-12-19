@@ -1,7 +1,23 @@
-ProjectTitle: Project-name
+ProjectTitle: Hermle
 
 PageList:
 - file: homepage.html
-  ready: 100
-- file: page.html
+  ready: 20
+- file: catalog.html
+  ready: 0
+- file: item.html
+  ready: 0
+- file: item-excusive.html
+  ready: 0
+- file: about.html
+  ready: 0
+- file: cart.html
+  ready: 0
+- file: contacts.html
+  ready: 0
+- file: article.html
+  ready: 0
+- file: showroom.html
+  ready: 0
+- file: ui.html
   ready: 0
