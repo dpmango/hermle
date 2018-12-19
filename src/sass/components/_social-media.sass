@@ -1,0 +1,30 @@
+.social-media
+  display: flex
+  align-items: center
+  a
+    display: flex
+    justify-content: center
+    min-width: 18px
+    font-size: 0
+    color: $colorGray
+    transition: color .25s $ease
+    margin-right: 12px
+    &:last-child
+      margin-right: 0
+  &__instagram
+    .ico
+      font-size: 18px
+    &:hover
+      color: $instagram
+
+  &__facebook
+    .ico
+      font-size: 18px
+    &:hover
+      color: $facebook
+
+  &__youtube
+    .ico
+      font-size: 14px
+    &:hover
+      color: $youtube

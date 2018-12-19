@@ -1,26 +1,112 @@
 // HEADER :: START
 header.header
   .container
-    .header__wrapper
+    // top
+    .header__top
+      ul.header__top-menu
+        li
+          a(href="#") Доставка
+        li
+          a(href="#") Оплата
+        li
+          a(href="#") Сервис
+        li
+          a(href="#") Гарантии
+        li
+          a(href="#") Новости
+        li
+          a(href="#") Контакты
+        li
+          a(href="#") Отслеживание заказа
+        li
+          a(href="#") Документы
+      
+      .header__socials.social-media
+        a(href="#").social-media__instagram
+          +svgMono("social-instagram")
+        a(href="#").social-media__facebook
+          +svgMono("social-facebook")
+        a(href="#").social-media__youtube
+          +svgMono("social-youtube")
+    
+    // center
+    .header__center
       a(href="homepage.html").header__logo
-        +svgMono('email')
-      ul.header__menu
-        li
-          a(href="homepage.html") Homepage
-        li
-          a(href="page.html") Shop
-        li
-          a(href="page.html") Lorem
+        i.icon.icon-logo
+      
+      .header__showroom
+        .header__showroom.showroom-header
+          .showroom-header__name Шоурум <br/> в Москве
+          .showroom-header__icon
+            +svgColor("clock")
+          .showroom-header__content
+            .showroom-header__address ул. Шаболовка д.23 к.5
+            .showroom-header__directions 1-й этаж красная вывеска <br/> "Hermle Часы из Германии"
       
       .header__cta
-        .header__cart
-          +svgMono('email')
+        a(href="#callback" js-popup).btn.btn-primary
+          span Перезвоните
       
+      .header__contacts.contacts-header
+        .contacts-header__messengers
+          .contacts-header__whatsapp
+            a(href="#" target="_blank") whatsapp
+          .contacts-header__viber
+            a(href="#" target="_blank") viber
+          .contacts-header__telegram
+            a(href="#" target="_blank") telegram
+        .contacts-header__phones
+          a(href="tel:88003020958").header-phone
+            .header-phone__icon
+              +svgMono('phone')
+            .header-phone__content
+              .header-phone__tel 8 800 302-09-58
+              .header-phone__description Бесплатно по РФ
+          a(href="tel:+74954091058").header-phone
+            .header-phone__icon
+              +svgMono('phone')
+            .header-phone__content
+              .header-phone__tel +7 495 409-10-58
+              .header-phone__description Телефон в Москве
+        
+      .header__cart
+        .header__cart-counter
+          span 2
+        +svgMono('cart')
+
       .header__hamburger
         .hamburger.hamburger--squeeze(js-hamburger)
           .hamburger-box
             .hamburger-inner
     
+    // bottom
+    .header__bottom
+      .header__search.header-search
+        .header-search__icon
+          +svgMono("search")
+      .header__menu
+        // menu group
+        .header-menu
+          .header-menu__name Часы <br/> по форме:
+          ul.header-menu__list
+            li
+              a(href="#") Напольные
+            li
+              a(href="#") Настенные
+            li
+              a(href="#") Настольные
+        // menu group
+        .header-menu
+          .header-menu__name Часы <br/> по стилю:
+          ul.header-menu__list
+            li
+              a(href="#") Классика
+            li
+              a(href="#") Модерн
+            li
+              a(href="#") Эксклюзив
+  
+        
 // MOBILE NAVI
 .mobile-navi
   .mobile-navi__wrapper

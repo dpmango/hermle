@@ -192,6 +192,11 @@ $(document).ready(function(){
 
       return false;
     })
+    // grid toggler
+    .on('click', '[js-show-grid]', function(){
+       $(this).toggleClass('is-active')
+       $('.demo-grid').fadeToggle()
+     })
 
   // just store global variable with scroll distance
   function getWindowScroll(){
