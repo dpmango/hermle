@@ -6,5 +6,93 @@ extends shared/_layout
 block content
   
   // HOMEPAGE
-  div(style="height: 300vh")
-  
+  .hero-promo
+    .container
+      .hero-promo__wrapper
+        // main slider
+        .hero-promo__slider.swiper-container(js-swiper-hero-promo)
+          .swiper-wrapper
+            // slide
+            .hero-slide.swiper-slide
+              .hero-slide__content
+                .hero-slide__category Напольные часы
+                .hero-slide__title <span>Акция</span> на часы Hermle 01210
+                .hero-slide__actions
+                  .hero-slide__price.price
+                    .price__newprice 845 100 <span class="r-mark">₽</span>
+                    .price__oldprice 1 220 000 ₽
+                  .hero-slide__melody
+                    .play-btn
+                      .play-btn__icon
+                        +svgMono('play-button')
+                      span.play-btn__name Послушать <br/> мелодии
+                .hero-slide__cta
+                  a(href="#").btn.btn-primary
+                    span Подробнее об акции
+                    .btn-arrow
+                      +svgMono("btn-arrow")
+              .hero-slide__image.hero-image
+                .hero-image__main
+                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+                .hero-image__ghost
+                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+            // slide
+            .hero-slide.swiper-slide
+              .hero-slide__content
+                .hero-slide__category Напольные часы
+                .hero-slide__title <span>Акция</span> на часы Hermle 01210
+                .hero-slide__actions
+                  .hero-slide__price.price
+                    .price__newprice 845 100 <span class="r-mark">₽</span>
+                    .price__oldprice 1 220 000 ₽
+                  .hero-slide__melody
+                    .play-btn
+                      .play-btn__icon
+                        +svgMono('play-button')
+                      span.play-btn__name Послушать <br/> мелодии
+                .hero-slide__cta
+                  a(href="#").btn.btn-primary
+                    span Подробнее об акции
+                    .btn-arrow
+                      +svgMono("btn-arrow")
+              .hero-slide__image.hero-image
+                .hero-image__main
+                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+                .hero-image__ghost
+                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+          
+          // pagination
+          .swiper-pagination
+            
+            
+        // promo right  
+        .hero-promo__right
+          .hero-promo__chooser.swiper-container(js-swiper-hero-chooser)
+            .swiper-wrapper
+              // slide
+              .chooser-slide.swiper-slide
+                .chooser-slide__content
+                  .chooser-slide__title Настольные часы Hermle 22716
+                  .chooser-slide__actions
+                    .chooser-slide__price.price.price--smaller
+                      .price__newprice 29 800 <span class="r-mark">₽</span>
+                      .price__oldprice 48 000 ₽
+                .chooser-slide__image.hero-image.hero-image--smaller
+                  .hero-image__main
+                    img(src="img/chooser-slide.png" srcset="img/chooser-slide@2x.png 2x")
+                  .hero-image__ghost
+                    img(src="img/chooser-slide.png" srcset="img/chooser-slide@2x.png 2x")
+              .hero-promo__chooser-refresh(js-refresh-slider)
+                +svgMono("refresh")
+          
+          // about block
+          .hero-promo__about
+            .promo-about
+              .promo-about__content
+                .promo-about__title Наша компания - официальный партнёр фабрики в России
+                .promo-about__cta
+                  a(href="#").btn.btn-outline.btn-outline--small
+                    span Подробнее
+
+              .promo-about__image
+                img(src="img/certificate.jpg" srcset="img/certificate@2x.jpg 2x")

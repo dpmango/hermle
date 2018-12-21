@@ -1,0 +1,58 @@
+.price
+  &__newprice
+    color: $colorRed
+    font-size: 28px
+    font-weight: 700
+
+  &__oldprice
+    display: inline-block
+    position: relative
+    color: rgba($fontColor, .4)
+    font-size: 20px
+    line-height: 1
+    &::after
+      display: block
+      content: ''
+      position: absolute
+      top: 50%
+      // transform: translateY(-50%)
+      left: 0
+      right: 0
+      height: 1px
+      background: currentColor
+
+  &--smaller
+    .price
+      &__newprice
+        font-size: 24px
+      &__oldprice
+        font-size: 16px
+
+/* hero image
+.hero-image
+  position: relative
+  z-index: 1
+  flex: 0 0 auto
+  overflow: hidden
+  font-size: 0
+  text-align: center
+  img
+    max-width: 100%
+  &__main
+    padding-left: 35px
+    img
+      position: relative
+      z-index: 2
+  &__ghost
+    img
+      position: absolute
+      left: 0px
+      top: 10px
+      bottom: 0
+      filter: brightness(0) invert(1)
+  &--smaller
+    .hero-image
+      &__main
+        padding-left: 20px
+        padding-bottom: 10px
+      &__ghost

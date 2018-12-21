@@ -72,6 +72,7 @@ $(document).ready(function(){
 
   // The transition has just finished and the old Container has been removed from the DOM.
   function pageCompleated(fromPjax){
+    setPageOffset();
     if ( fromPjax ){
       window.onLoadTrigger()
     }
@@ -241,7 +242,6 @@ $(document).ready(function(){
         // emulate position absolute by giving negative transform on initial scroll
         var normalized = Math.floor(normalize(scroll.y, header.bottomPoint, 0, 0, 100))
         var reverseNormalized = (100 - normalized) * -1
-        reverseNormalized = reverseNormalized * 1.2 // a bit faster transition
 
         header.container.css({
           "transform": 'translate3d(0,'+ reverseNormalized +'%,0)',
@@ -324,6 +324,17 @@ $(document).ready(function(){
   * PAGE SPECIFIC *
   ***************/
 
+  // set .page__content offset because of fixed header
+  function setPageOffset(){
+    var $header = $('.header');
+    var headerHeight = $header.height()
+    var $page = $('.page__content');
+
+    $page.css({
+      'padding-top': headerHeight
+    })
+  }
+
   _document
     .on('click', '[js-inner-page-btn]', function(){
 
@@ -340,35 +351,48 @@ $(document).ready(function(){
   //////////
   function initSliders(){
 
-    // EXAMPLE SWIPER
-    new Swiper('[js-slider]', {
+    // HOMEPAGE SLIDERS
+    new Swiper('[js-swiper-hero-promo]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "example-slide",
       direction: 'horizontal',
-      loop: false,
-      watchOverflow: true,
+      loop: true,
+      watchOverflow: false,
       setWrapperSize: false,
       spaceBetween: 0,
-      slidesPerView: 'auto',
+      slidesPerView: 1,
       // loop: true,
       normalizeSlideIndex: true,
       // centeredSlides: true,
-      freeMode: true,
+      freeMode: false,
       // effect: 'fade',
       autoplay: {
         delay: 5000,
       },
-      navigation: {
-        nextEl: '.example-next',
-        prevEl: '.example-prev',
-      },
-      breakpoints: {
-        // when window width is <= 992px
-        992: {
-          autoHeight: true
-        }
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
       }
     })
+
+    new Swiper('[js-swiper-hero-chooser]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "example-slide",
+      direction: 'horizontal',
+      watchOverflow: false,
+      setWrapperSize: false,
+      slidesPerView: 1,
+      normalizeSlideIndex: true,
+      freeMode: true,
+      effect: 'fade',
+    })
+
+    _document
+      .on('click', '[js-refresh-slider]', function(){
+        // TODO - add slide and fade him out
+        // TODO - preload
+        
+      })
 
   }
 

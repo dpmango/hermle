@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="12px" viewBox="0 0 26 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>btn-arrow</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Главная-1200" transform="translate(-666.000000, -584.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Слайдеры" transform="translate(360.000000, 221.000000)">
+                <g id="1">
+                    <g id="Кнопка" transform="translate(82.000000, 344.000000)">
+                        <path d="M246.829976,24.0571988 L243.162172,20.3331799 L244.475227,19 L249.728128,24.3334101 C250.090624,24.7016918 250.090624,25.2985384 249.728128,25.6665899 L244.475227,31 L243.162172,29.6668201 L246.829976,25.9428012 L224,25.9428012 L224,24.0571988 L246.829976,24.0571988 Z" id="btn-arrow"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
