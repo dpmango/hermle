@@ -1,7 +1,82 @@
 // FOOTER :: START
 footer.footer
   .container
-    .footer__wrapper
+    // top
+    .footer__top
+      .footer__main
+        .footer__logo
+          img(src="img/template/logo.png" srcset="img/template/logo@2x.png 2x")
+            
+        .contacts-header
+          .contacts-header__messengers
+            .contacts-header__whatsapp
+              a(href="#" target="_blank") whatsapp
+            .contacts-header__viber
+              a(href="#" target="_blank") viber
+            .contacts-header__telegram
+              a(href="#" target="_blank") telegram
+          .contacts-header__phones
+            a(href="tel:88003020958").header-phone
+              .header-phone__icon
+                +svgMono('phone')
+              .header-phone__content
+                .header-phone__tel 8 800 302-09-58
+                .header-phone__description Бесплатно по РФ
       
+      // menu
+      .footer__menu
+        // menu group
+        .footer-menu
+          .footer-menu__name Часы по форме:
+          ul.footer-menu__list
+            li
+              a(href="#") Напольные
+            li
+              a(href="#") Настенные
+            li
+              a(href="#") Настольные
+        // menu group
+        .footer-menu
+          .footer-menu__name Часы по стилю:
+          ul.footer-menu__list
+            li
+              a(href="#") Классика
+            li
+              a(href="#") Модерн
+            li
+              a(href="#") Эксклюзив
+              
+      // extra menu
+      .footer__links.footer-links
+        ul.footer-links__menu
+          li
+            a(href="#") Доставка
+          li
+            a(href="#") Оплата
+          li
+            a(href="#") Сервис
+        ul.footer-links__menu
+          li
+            a(href="#") Гарантии
+          li
+            a(href="#") Новости
+          li
+            a(href="#") Контакты
+        ul.footer-links__menu
+          li
+            a(href="#") Отслеживание заказа
+          li
+            a(href="#") Документы
+                    
+                  
+    // bottom
+    .footer__bottom
+      p.footer__copyright © 2017-2018 ООО "Часы Хермле" HERMLE STORE
       
-// FOOTER :: END
+      .footer__socials.social-media
+        a(href="#").social-media__instagram
+          +svgMono("social-instagram")
+        a(href="#").social-media__facebook
+          +svgMono("social-facebook")
+        a(href="#").social-media__youtube
+          +svgMono("social-youtube")

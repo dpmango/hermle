@@ -1,7 +1,85 @@
 // FOOTER
 .footer
-  background: #f5f5f5
-  &__wrapper
+
+  &__top
+    padding: 40px 0
+    margin: 0 -15px
     display: flex
     align-items: center
-    height: 100px
+
+  &__main
+    flex: 0 1 33.333%
+    padding: 0 15px
+
+  &__logo
+    max-width: 130px
+    font-size: 0
+    img
+      max-width: 100%
+
+  &__menu
+    flex: 0 1 33.333%
+    padding: 0 15px
+    display: flex
+
+  &__links
+    flex: 0 1 33.333%
+    padding: 0 15px
+    margin-left: auto
+
+  &__bottom
+    border-top: 1px solid $borderColor
+    padding: 30px 0
+    display: flex
+    align-items: center
+
+  &__copyright
+
+  &__socials
+    margin-left: auto
+
+.footer-menu
+  margin-right: 90px
+  &:last-child
+    margin-right: 0
+  &__name
+    font-size: 14px
+  &__list
+    list-style: none
+    margin: 5px -5px
+    padding: 0
+    li
+      display: block
+      text-transform: uppercase
+      font-size: 14px
+      letter-spacing: em(2.62, 14)
+      font-weight: 700
+    a
+      display: inline-block
+      padding: 5px
+
+.footer-links
+  position: relative
+  display: flex
+  justify-content: space-between
+  padding-left: 55px
+  &::before
+    display: inline-block
+    content: ' '
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 15px
+    width: 1px
+    background: $borderColor
+
+  &__menu
+    list-style: none
+    margin: 0px -5px
+    padding: 0
+    li
+      display: block
+      font-size: 14px
+    a
+      display: inline-block
+      padding: 5px
