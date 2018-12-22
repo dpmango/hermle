@@ -85,9 +85,74 @@ block content
   
   // BENEFITS
   .benefits
+    .container
+      .benefits__wrapper
+        // col
+        .benefits__col
+          .benefit-card
+            .benefit-card__icon
+              +svgMono("brandenburg-gate")
+            .benefit-card__name Сделано и доставлено прямо из Германии
+        // col
+        .benefits__col
+          .benefit-card
+            .benefit-card__icon
+              +svgMono("clock")
+            .benefit-card__name Свой демонстрационный зал и склад в Москве
+        // col
+        .benefits__col
+          .benefit-card
+            .benefit-card__icon
+              +svgMono("stamp")
+            .benefit-card__name Официальная гарантия от производителя
+        // col
+        .benefits__col
+          .benefit-card
+            .benefit-card__icon
+              +svgMono("graph-price")
+            .benefit-card__name Самые низкие цены благодаря прямым поставкам
   
   // CATEGORIES
   .categories
+    .container
+      .categories__wrapper
+        // col
+        .categories__col
+          a.category-card(href="item.html")
+            .category-card__image
+              img(src="img/category_1.png" srcset="img/category_1@2x.png 2x")
+            .category-card__name Напольные
+        // col
+        .categories__col
+          a.category-card(href="item.html")
+            .category-card__image
+              img(src="img/category_2.png" srcset="img/category_2@2x.png 2x")
+            .category-card__name Настенные
+        // col
+        .categories__col
+          a.category-card(href="item.html")
+            .category-card__image
+              img(src="img/category_3.png" srcset="img/category_3@2x.png 2x")
+            .category-card__name Настольные
+        // col
+        .categories__col
+          a.category-card(href="item.html")
+            .category-card__image
+              img(src="img/category_4.png" srcset="img/category_4@2x.png 2x")
+            .category-card__name Классические
+        // col
+        .categories__col
+          a.category-card(href="item.html")
+            .category-card__image
+              img(src="img/category_5.png" srcset="img/category_5@2x.png 2x")
+            .category-card__name Модерновые
+        // col
+        .categories__col
+          a.category-card(href="item.html")
+            .category-card__image
+              img(src="img/category_6.png" srcset="img/category_6@2x.png 2x")
+            .category-card__name Эксклюзивные
+            
   
   // POPULAR
   .popular(style="height: 300vh")

@@ -268,7 +268,6 @@ $(document).ready(function(){
       if ( (scroll.y > header.topHeight) && (scroll.y < header.bottomPoint) ){
         var normalized2 = Math.floor(normalize(scroll.y, header.bottomPoint, header.topHeight, 0, 98))
         var reverseNormalized2 = (100 - normalized2) * -1
-        console.log(normalized2)
 
         header.bottomContainer.css({
           "transform": 'translate3d(0,'+ reverseNormalized2 +'%,0)',
