@@ -42,7 +42,7 @@
   &__center
     display: flex
     align-items: center
-    padding: 20px 30px 20px 0
+    padding: 20px 20px 20px 0
 
   &__logo
     flex: 0 0 auto
@@ -64,13 +64,19 @@
     margin-right: auto
 
   &__cart
+    display: block
+    padding-left: 10px
+    padding-right: 10px
     margin-left: auto
     position: relative
     z-index: 1
     padding-top: 16px
     font-size: 0
+    transition: color .25s $ease
     .ico-mono-cart
       font-size: 32px
+    &:hover
+      color: $colorRed
 
   &__cart-counter
     position: absolute
@@ -152,6 +158,10 @@
     line-height: 1.25
     // TODO
     color: #8F8F8F
+  &--line
+    display: block
+    .showroom-header__name
+      margin-bottom: 10px
 
 // contacts
 .contacts-header
@@ -159,6 +169,7 @@
     display: flex
     align-items: center
     font-size: 12px
+    padding-left: 16px
     a
       display: inline-block
       margin-right: 5px
@@ -197,10 +208,14 @@
     font-size: 22px
     font-weight: 600
     line-height: 1
+    transition: color .25s $ease
 
   &__description
     font-size: 12px
     color: #8F8F8F
+  &:hover
+    .header-phone__tel
+      color: $colorRed
 
 // search
 .header-search

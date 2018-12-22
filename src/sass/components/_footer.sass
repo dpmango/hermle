@@ -3,13 +3,19 @@
 
   &__top
     padding: 40px 0
-    margin: 0 -15px
+    margin: 0 -12px
     display: flex
-    align-items: center
+    align-items: flex-end
 
-  &__main
+  // main col
+  &__col
     flex: 0 1 33.333%
-    padding: 0 15px
+    padding: 0 12px
+    &--main
+    &--menu
+      display: flex
+    &--links
+
 
   &__logo
     max-width: 130px
@@ -17,15 +23,14 @@
     img
       max-width: 100%
 
-  &__menu
-    flex: 0 1 33.333%
-    padding: 0 15px
+  &__contacts
     display: flex
-
-  &__links
-    flex: 0 1 33.333%
-    padding: 0 15px
-    margin-left: auto
+    align-items: flex-end
+    margin-left: -12px
+    margin-right: -12px
+  &__contacts-col
+    flex: 0 1 50%
+    padding: 0 12px
 
   &__bottom
     border-top: 1px solid $borderColor
@@ -38,48 +43,68 @@
   &__socials
     margin-left: auto
 
+/* footer menu
 .footer-menu
-  margin-right: 90px
+  flex: 0 1 50%
+  font-size: 14px
+  padding-right: 12px
   &:last-child
-    margin-right: 0
+    padding-left: 12px
+    padding-right: 0
   &__name
-    font-size: 14px
+    margin-bottom: 8px
+    color: rgba($fontColor, .6)
   &__list
     list-style: none
-    margin: 5px -5px
+    margin: 0 -5px -.4em
     padding: 0
     li
       display: block
       text-transform: uppercase
-      font-size: 14px
+
       letter-spacing: em(2.62, 14)
       font-weight: 700
+      margin-bottom: 3px
+      &:last-child
+        margin-bottom: 0
     a
       display: inline-block
       padding: 5px
+      transition: color .25s $ease
+      &:hover
+        color: $colorRed
 
+/* footer links
 .footer-links
   position: relative
   display: flex
-  justify-content: space-between
-  padding-left: 55px
+  justify-content: space-around
+  padding-left: 30px
+  padding-right: 30px
   &::before
     display: inline-block
     content: ' '
     position: absolute
     top: 0
     bottom: 0
-    left: 15px
+    left: 0px
     width: 1px
     background: $borderColor
 
   &__menu
+    flex: 0 1 33.33%
     list-style: none
-    margin: 0px -5px
+    font-size: 14px
+    margin: 0px -5px -.5em
     padding: 0
     li
       display: block
-      font-size: 14px
+      margin-bottom: 4px
+      &:last-child
+        margin-bottom: 0
     a
       display: inline-block
       padding: 5px
+      transition: color .25s $ease
+      &:hover
+        color: $colorRed

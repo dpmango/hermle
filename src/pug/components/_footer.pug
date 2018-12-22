@@ -3,29 +3,38 @@ footer.footer
   .container
     // top
     .footer__top
-      .footer__main
+      .footer__col
         .footer__logo
           img(src="img/template/logo.png" srcset="img/template/logo@2x.png 2x")
-            
-        .contacts-header
-          .contacts-header__messengers
-            .contacts-header__whatsapp
-              a(href="#" target="_blank") whatsapp
-            .contacts-header__viber
-              a(href="#" target="_blank") viber
-            .contacts-header__telegram
-              a(href="#" target="_blank") telegram
-          .contacts-header__phones
-            a(href="tel:88003020958").header-phone
-              .header-phone__icon
-                +svgMono('phone')
-              .header-phone__content
-                .header-phone__tel 8 800 302-09-58
-                .header-phone__description Бесплатно по РФ
-      
+        
+        .footer__contacts
+          .footer__contacts-col
+            .contacts-header
+              .contacts-header__messengers
+                .contacts-header__whatsapp
+                  a(href="#" target="_blank") whatsapp
+                .contacts-header__viber
+                  a(href="#" target="_blank") viber
+                .contacts-header__telegram
+                  a(href="#" target="_blank") telegram
+              .contacts-header__phones
+                a(href="tel:88003020958").header-phone
+                  .header-phone__icon
+                    +svgMono('phone')
+                  .header-phone__content
+                    .header-phone__tel 8 800 302-09-58
+                    .header-phone__description Бесплатно по РФ
+                    
+          .footer__contacts-col  
+            .showroom-header.showroom-header--line
+              .showroom-header__name Шоурум в Москве
+              .showroom-header__content
+                .showroom-header__address ул. Шаболовка д.23 к.5
+                .showroom-header__directions 1-й этаж красная вывеска <br/> "Hermle Часы из Германии"
+              
+              
       // menu
-      .footer__menu
-        // menu group
+      .footer__col.footer__col--menu
         .footer-menu
           .footer-menu__name Часы по форме:
           ul.footer-menu__list
@@ -35,7 +44,6 @@ footer.footer
               a(href="#") Настенные
             li
               a(href="#") Настольные
-        // menu group
         .footer-menu
           .footer-menu__name Часы по стилю:
           ul.footer-menu__list
@@ -46,28 +54,29 @@ footer.footer
             li
               a(href="#") Эксклюзив
               
-      // extra menu
-      .footer__links.footer-links
-        ul.footer-links__menu
-          li
-            a(href="#") Доставка
-          li
-            a(href="#") Оплата
-          li
-            a(href="#") Сервис
-        ul.footer-links__menu
-          li
-            a(href="#") Гарантии
-          li
-            a(href="#") Новости
-          li
-            a(href="#") Контакты
-        ul.footer-links__menu
-          li
-            a(href="#") Отслеживание заказа
-          li
-            a(href="#") Документы
-                    
+      // links
+      .footer__col
+        .footer-links
+          ul.footer-links__menu
+            li
+              a(href="#") Доставка
+            li
+              a(href="#") Оплата
+            li
+              a(href="#") Сервис
+          ul.footer-links__menu
+            li
+              a(href="#") Гарантии
+            li
+              a(href="#") Новости
+            li
+              a(href="#") Контакты
+          ul.footer-links__menu
+            li
+              a(href="#") Отслеживание заказа
+            li
+              a(href="#") Документы
+                      
                   
     // bottom
     .footer__bottom
