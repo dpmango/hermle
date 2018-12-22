@@ -28,3 +28,25 @@
   &.is-loaded
     &.no-bg-onload
       background-image: none !important
+
+
+.swiper-container-horizontal >
+  .swiper-pagination-bullets
+    width: auto
+    bottom: 30px
+    right: 30px
+    left: auto
+    .swiper-pagination-bullet
+      margin: 0 3px
+
+.swiper-pagination-bullet
+  size: 10px
+  background: white
+  opacity: 1
+  transition: background .25s $ease
+  &:hover
+    background: rgba($colorRed, .5)
+.swiper-pagination-bullet-active
+  background-color: $colorRed
+  &:hover
+    background-color: $colorRed

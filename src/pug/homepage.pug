@@ -5,66 +5,46 @@ bodyClass: homepage
 extends shared/_layout
 block content
   
-  // HOMEPAGE
+  // HERO PROMO
   .hero-promo
     .container
       .hero-promo__wrapper
         // main slider
         .hero-promo__slider.swiper-container(js-swiper-hero-promo)
           .swiper-wrapper
-            // slide
-            .hero-slide.swiper-slide
-              .hero-slide__content
-                .hero-slide__category Напольные часы
-                .hero-slide__title <span>Акция</span> на часы Hermle 01210
-                .hero-slide__actions
-                  .hero-slide__price.price
-                    .price__newprice 845 100 <span class="r-mark">₽</span>
-                    .price__oldprice 1 220 000 ₽
-                  .hero-slide__melody
-                    .play-btn(js-play-audio)
-                      .play-btn__icon
-                        +svgMono('play-button')
-                      span.play-btn__name Послушать <br/> мелодии
-                      .play-btn__media
-                        audio
-                          source(src="audio/80289__hyderpotter__hourlychimebeg.mp3" type="audio/mpeg")
-                        
-                        
-                .hero-slide__cta
-                  a(href="#").btn.btn-primary
-                    span Подробнее об акции
-                    .btn-arrow
-                      +svgMono("btn-arrow")
-              .hero-slide__image.hero-image
-                .hero-image__main
-                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
-                .hero-image__ghost
-                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
-            // slide
-            .hero-slide.swiper-slide
-              .hero-slide__content
-                .hero-slide__category Напольные часы
-                .hero-slide__title <span>Акция</span> на часы Hermle 01210
-                .hero-slide__actions
-                  .hero-slide__price.price
-                    .price__newprice 845 100 <span class="r-mark">₽</span>
-                    .price__oldprice 1 220 000 ₽
-                  .hero-slide__melody
-                    .play-btn
-                      .play-btn__icon
-                        +svgMono('play-button')
-                      span.play-btn__name Послушать <br/> мелодии
-                .hero-slide__cta
-                  a(href="#").btn.btn-primary
-                    span Подробнее об акции
-                    .btn-arrow
-                      +svgMono("btn-arrow")
-              .hero-slide__image.hero-image
-                .hero-image__main
-                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
-                .hero-image__ghost
-                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+            mixin hero_slide
+              // slide
+              .hero-slide.swiper-slide
+                .hero-slide__content
+                  .hero-slide__category Напольные часы
+                  .hero-slide__title <span>Акция</span> на часы Hermle 01210
+                  .hero-slide__actions
+                    .hero-slide__price.price
+                      .price__newprice 845 100 <span class="r-mark">₽</span>
+                      .price__oldprice 1 220 000 ₽
+                    .hero-slide__melody
+                      .play-btn(js-play-audio)
+                        .play-btn__icon
+                          +svgMono('play-button')
+                        span.play-btn__name Послушать <br/> мелодии
+                        .play-btn__media
+                          audio
+                            source(src="audio/80289__hyderpotter__hourlychimebeg.mp3" type="audio/mpeg")
+                  .hero-slide__cta
+                    a(href="#").btn.btn-primary
+                      span Подробнее об акции
+                      .btn-arrow
+                        +svgMono("btn-arrow")
+                .hero-slide__image.hero-image
+                  .hero-image__main
+                    img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+                  .hero-image__ghost
+                    img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+            
+            +hero_slide
+            +hero_slide
+            +hero_slide
+            
           
           // pagination
           .swiper-pagination
@@ -101,3 +81,22 @@ block content
 
               .promo-about__image
                 img(src="img/certificate.jpg" srcset="img/certificate@2x.jpg 2x")
+
+  
+  // BENEFITS
+  .benefits
+  
+  // CATEGORIES
+  .categories
+  
+  // POPULAR
+  .popular(style="height: 300vh")
+
+  // SALE
+  .sale
+
+  // ABOUT
+  .about
+  
+  // QUICK NAV
+  .quick-nav

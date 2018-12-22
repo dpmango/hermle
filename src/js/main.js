@@ -28,7 +28,11 @@ $(document).ready(function(){
 
   var header = {
     container: undefined,
-    bottomPoint: undefined
+    topContainer: undefined,
+    centerContainer: undefined,
+    bottomContainer: undefined,
+    bottomPoint: undefined,
+    topHeight: undefined
   }
 
   var browser = {
@@ -213,13 +217,21 @@ $(document).ready(function(){
 
   // HEADER SCROLL
   function getHeaderParams(){
-    var $header = $('.header')
+    var $header = $('.header');
+    var $headerTop = $header.find(".header__top");
+    var $headerCenter = $header.find(".header__center");
+    var $headerBottom = $header.find(".header__bottom");
     var headerOffsetTop = 0
     var headerHeight = $header.outerHeight() + headerOffsetTop
+    var headerTopHeight = $headerTop.outerHeight()
 
     header = {
       container: $header,
-      bottomPoint: headerHeight
+      topContainer: $headerTop,
+      centerContainer: $headerCenter,
+      bottomContainer: $headerBottom,
+      bottomPoint: headerHeight,
+      topHeight: headerTopHeight
     }
   }
 
@@ -238,8 +250,10 @@ $(document).ready(function(){
         } else {
           header.container.removeClass(visibleClass);
         }
-      } else {
-        // emulate position absolute by giving negative transform on initial scroll
+      }
+
+      // emulate position absolute by giving negative transform on initial scroll
+      if ( scroll.y < header.topHeight ){
         var normalized = Math.floor(normalize(scroll.y, header.bottomPoint, 0, 0, 100))
         var reverseNormalized = (100 - normalized) * -1
 
@@ -249,6 +263,19 @@ $(document).ready(function(){
 
         header.container.removeClass(fixedClass);
       }
+
+      // top part is scrolled, but not all the height of header (is in range)
+      if ( (scroll.y > header.topHeight) && (scroll.y < header.bottomPoint) ){
+        var normalized2 = Math.floor(normalize(scroll.y, header.bottomPoint, header.topHeight, 0, 98))
+        var reverseNormalized2 = (100 - normalized2) * -1
+        console.log(normalized2)
+
+        header.bottomContainer.css({
+          "transform": 'translate3d(0,'+ reverseNormalized2 +'%,0)',
+        })
+      }
+
+
     }
   }
 
@@ -371,7 +398,7 @@ $(document).ready(function(){
     // HOMEPAGE SLIDERS
     new Swiper('[js-swiper-hero-promo]', {
       wrapperClass: "swiper-wrapper",
-      slideClass: "example-slide",
+      slideClass: "swiper-slide",
       direction: 'horizontal',
       loop: true,
       watchOverflow: false,
@@ -389,12 +416,13 @@ $(document).ready(function(){
       pagination: {
         el: '.swiper-pagination',
         type: 'bullets',
+        clickable: true
       }
     })
 
     new Swiper('[js-swiper-hero-chooser]', {
       wrapperClass: "swiper-wrapper",
-      slideClass: "example-slide",
+      slideClass: "swiper-slide",
       direction: 'horizontal',
       watchOverflow: false,
       setWrapperSize: false,

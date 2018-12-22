@@ -5,12 +5,19 @@
   right: 0
   left: 0
   z-index: 9
-  background: white
+  background: transparent
   will-change: transform
   backface-visibility: hidden
   transform-style: preserve-3d
+  pointer-events: none
+
+  &__top, &__center, &__bottom
+    pointer-events: all
+    position: relative
 
   &__top
+    z-index: 1
+    background: white
     display: flex
     align-items: center
     border-bottom: 1px solid $borderColor
@@ -40,6 +47,8 @@
 
   /* center
   &__center
+    z-index: 3
+    background: white
     display: flex
     align-items: center
     padding: 20px 20px 20px 0
@@ -99,6 +108,7 @@
 
   /* bottom
   &__bottom
+    z-index: 2
     background: $colorRed
     border-radius: 4px
     color: white
@@ -115,19 +125,13 @@
     padding-left: 20px
 
   /* modifiers
-  &.is-fixed
-    // should be normalized to -100% scroll at this point
-    position: fixed
-    // visibility: hidden
-    transform: translate3d(0,-100%,0) !important
-    transition: transform .25s $ease
-    .header__wrapper
-      padding-top: 10px
-      padding-bottom: 10px
-
-  &.is-fixed-visible
-    // visibility: visible
-    transform: translate3d(0,0,0) !important
+  // &.is-fixed
+  //   // should be normalized to -100% scroll at this point
+  //   transform: translate3d(0,-100%,0) !important
+  //   transition: transform .25s $ease
+  //
+  // &.is-fixed-visible
+  //   transform: translate3d(0,0,0) !important
 
   &.is-transitioning
     transition: transform .25s $ease
@@ -258,6 +262,7 @@
     line-height: 1
   &__list
     list-style: none
+    white-space: nowrap
     margin: 0
     padding: 0
     li
