@@ -56,3 +56,40 @@
         padding-left: 20px
         padding-bottom: 10px
       &__ghost
+
+
+
+.play-btn
+  position: relative
+  display: flex
+  align-items: center
+  cursor: pointer
+  &__icon
+    transition: color .25s $ease
+    color: $colorRed
+    .ico
+      font-size: 30px
+  &__name
+    font-size: 14px
+    margin-left: 10px
+    transition: color .25s $ease
+  &__media
+    audio
+      position: absolute
+      width: 0.1px
+      height: 0.1px
+      opacity: 0
+  &.is-playing
+    // change to pause
+    .play-btn
+      &__icon
+        color: $colorRedHover
+    &:hover
+      .play-btn
+        &__name
+          color: $colorRedHover
+
+  &:hover
+    .play-btn
+      &__name
+        color: $colorRed

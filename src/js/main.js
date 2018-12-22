@@ -336,8 +336,25 @@ $(document).ready(function(){
   }
 
   _document
-    .on('click', '[js-inner-page-btn]', function(){
+    .on('click', '[js-play-audio]', function(){
+      var $this = $(this)
+      var $audio = $this.find("audio");
+      var audioPlayer = $audio.get(0);
+      var isPlaying = $this.is(".is-playing");
 
+      // play/stop toggle
+      if ( !isPlaying ){
+        $this.addClass("is-playing");
+        audioPlayer.play();
+      } else {
+        $this.removeClass("is-playing");
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+      }
+
+      $audio.bind("ended", function(){
+        $this.removeClass("is-playing");
+      });
     })
 
 
@@ -391,7 +408,7 @@ $(document).ready(function(){
       .on('click', '[js-refresh-slider]', function(){
         // TODO - add slide and fade him out
         // TODO - preload
-        
+
       })
 
   }

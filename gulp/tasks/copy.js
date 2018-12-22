@@ -31,12 +31,19 @@ gulp.task('copy:fonts', function() {
 //     .pipe(gulp.dest(config.dest.json));
 // });
 
+gulp.task('copy:audio', function() {
+  return gulp
+    .src(config.src.audio + '/*.*')
+    .pipe(gulp.dest(config.dest.audio));
+});
+
 gulp.task('copy', [
   'copy:rootfiles',
   'copy:fonts',
   // 'copy:video',
   // 'copy:php',
   // 'copy:json'
+  'copy:audio'
 ]);
 
 gulp.task('copy:watch', function() {
@@ -45,4 +52,5 @@ gulp.task('copy:watch', function() {
   // gulp.watch(config.src.video + '/*.*', ['copy:video']);
   // gulp.watch(config.src.php + '/*.*', ['copy:php']);
   // gulp.watch(config.src.json + '/*.*', ['copy:json']);
+  gulp.watch(config.src.audio + '/*.*', ['copy:audio']);
 });

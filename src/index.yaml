@@ -2,7 +2,7 @@ ProjectTitle: Hermle
 
 PageList:
 - file: homepage.html
-  ready: 20
+  ready: 30
 - file: catalog.html
   ready: 0
 - file: item.html

@@ -22,11 +22,14 @@ block content
                     .price__newprice 845 100 <span class="r-mark">₽</span>
                     .price__oldprice 1 220 000 ₽
                   .hero-slide__melody
-                    .play-btn
+                    .play-btn(js-play-audio)
                       .play-btn__icon
                         +svgMono('play-button')
                       span.play-btn__name Послушать <br/> мелодии
-                      .play-btn__audio
+                      .play-btn__media
+                        audio
+                          source(src="audio/80289__hyderpotter__hourlychimebeg.mp3" type="audio/mpeg")
+                        
                         
                 .hero-slide__cta
                   a(href="#").btn.btn-primary

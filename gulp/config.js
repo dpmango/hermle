@@ -25,7 +25,8 @@ var config = {
     fonts        : 'src/fonts',
     video        : 'src/video',
     php          : 'src/php',
-    json         : 'src/json'
+    json         : 'src/json',
+    audio        : 'src/audio'
   },
   dest: {
     root  : destPath,
@@ -36,7 +37,8 @@ var config = {
     fonts : destPath + '/fonts',
     video : destPath + '/video',
     php   : destPath + '/php',
-    json  : destPath + '/json'
+    json  : destPath + '/json',
+    audio : destPath + '/audio'
   },
 
   setEnv: function(env) {
