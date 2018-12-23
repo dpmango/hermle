@@ -329,18 +329,54 @@
     white-space: nowrap
     margin: 0
     padding: 0
-    li
+    > li
+      position: relative
       display: inline-block
       font-weight: 700
       font-size: 16px
       text-transform: uppercase
       letter-spacing: em(3,16)
-    a
-      display: inline-block
-      padding: 22px 18px
-      transition: background .25s $ease
+      > a
+        display: inline-block
+        padding: 22px 18px
+        transition: background .25s $ease
       &:hover
-        background-color: $colorRedHover
+        > a
+          background-color: $colorRedHover
+        ul
+          opacity: 1
+          transform: translate(0,0)
+          pointer-events: all
+
+    ul
+      position: absolute
+      left: 0
+      top: 62px
+      min-width: 100%
+      list-style: none
+      margin: 0
+      padding: 12px 18px 18px
+      background: $colorRedHover
+      transition: .2s $ease
+      opacity: 0
+      pointer-events: none
+      transform: translate(-5px,0px)
+      li
+        display: block
+        font-size: 16px
+        margin-left: -5px
+        margin-right: -5px
+        letter-spacing: 0
+        font-weight: 400
+        text-transform: none
+      a
+        display: inline-block
+        padding: 5px
+        color: white
+        transition: color .25s $ease
+        &:hover
+          color: rgba(white, .7)
+
 
 +r($lg)
   .header
