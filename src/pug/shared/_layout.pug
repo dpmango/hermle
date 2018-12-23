@@ -1,10 +1,10 @@
 include ../utilities/_mixins
 doctype html
-html(lang="en")
+html(lang="ru")
   head
     include _head
 
-  body(class=bodyClass)
+  body
     include ../components/_demo-grid
     
     // place where pjax bindings happen's
@@ -19,6 +19,9 @@ html(lang="en")
 
         block footer
           include ../components/_footer
-          
+      
+      block modals
+        include ../components/_modals
+            
       block scripts
         include _scripts

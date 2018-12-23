@@ -97,6 +97,7 @@ $(document).ready(function(){
   _window.on('scroll', scrollHeader);
   // debounce/throttle examples
   // _window.on('resize', throttle(revealFooter, 100));
+  _window.on('resize', debounce(getHeaderParams, 100));
   _window.on('resize', debounce(setBreakpoint, 200))
 
 
@@ -497,6 +498,8 @@ $(document).ready(function(){
 
   function initPopups(){
     // Magnific Popup
+    var closeMarkup = '<button title="%title%" class="mfp-close"><svg class="ico ico-mono-close"><use xlink:href="img/sprite-mono.svg#ico-mono-close"></use></svg></button>'
+
     var startWindowScroll = 0;
     $('[js-popup]').magnificPopup({
       type: 'inline',
@@ -508,6 +511,7 @@ $(document).ready(function(){
       midClick: true,
       removalDelay: 300,
       mainClass: 'popup-buble',
+      closeMarkup: closeMarkup,
       callbacks: {
         beforeOpen: function() {
           startWindowScroll = _window.scrollTop();
@@ -525,11 +529,19 @@ $(document).ready(function(){
   		type: 'image',
   		tLoading: 'Загрузка #%curr%...',
   		mainClass: 'popup-buble',
+      closeMarkup: closeMarkup,
   		gallery: {
   			enabled: true,
   			navigateByImgClick: true,
   			preload: [0,1]
   		},
+      zoom: {
+        enabled: true,
+        duration: 300, // also to be changed in CSS
+        opener: function(element) {
+          return element.find('img');
+        }
+      },
   		image: {
   			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
   		}
@@ -562,7 +574,7 @@ $(document).ready(function(){
   // Masked input
   function initMasks(){
     $("[js-dateMask]").mask("99.99.99",{placeholder:"ДД.ММ.ГГ"});
-    $("input[type='tel']").mask("+7 (000) 000-0000", {placeholder: "+7 (___) ___-____"});
+    $("[js-phone-mask]").mask("+7 (000) 000-0000");
   }
 
   // selectric
@@ -686,10 +698,8 @@ $(document).ready(function(){
       digits: true
     }
 
-    /////////////////////
     // REGISTRATION FORM
-    ////////////////////
-    $(".js-registration-form").validate({
+    $("[js-validate-registration]").validate({
       errorPlacement: validateErrorPlacement,
       highlight: validateHighlight,
       unhighlight: validateUnhighlight,
@@ -711,12 +721,12 @@ $(document).ready(function(){
         last_name: "Заполните это поле",
         first_name: "Заполните это поле",
         email: {
-            required: "Заполните это поле",
-            email: "Email содержит неправильный формат"
+          required: "Заполните это поле",
+          email: "Email содержит неправильный формат"
         },
         password: {
-            required: "Заполните это поле",
-            email: "Пароль мимимум 6 символов"
+          required: "Заполните это поле",
+          email: "Пароль мимимум 6 символов"
         },
         // phone: {
         //     required: "Заполните это поле",
@@ -724,6 +734,27 @@ $(document).ready(function(){
         // }
       }
     });
+
+    // callback form
+    $("[js-validate-callback]").validate({
+      errorPlacement: validateErrorPlacement,
+      highlight: validateHighlight,
+      unhighlight: validateUnhighlight,
+      submitHandler: validateSubmitHandler,
+      rules: {
+        name: "required",
+        phone: validatePhone
+      },
+      messages: {
+        name: "Заполните это поле",
+        phone: {
+          required: "Заполните это поле",
+          minlength: "Введите корректный телефон"
+        }
+      }
+    });
+
+
 
     // when multiple forms share functionality
 

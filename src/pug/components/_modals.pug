@@ -1,0 +1,20 @@
+// MODALS
+.popup-dialog.mfp-hide#callback
+  .callback
+    .callback__wrapper
+      .callback__image
+        img(src="img/callback_bg.jpg" srcset="img/callback_bg@2x.jpg 2x")
+      .callback__content
+        .h2-title Заказать звонок
+        
+        form(action="#" js-validate-callback).callback__form
+          .ui-group
+            input.ui-input(type="text" name="name" placeholder="Имя")
+          .ui-group
+            input.ui-input(type="tel" name="phone" placeholder="Телефон" js-phone-mask)
+          .ui-group
+            button(type="submit").btn.btn-primary
+              span Перезвоните мне
+          
+          .callback__legal Нажимая на кнопку, вы принимаете <a href="#" target="_blank">Положение</a> и <a href="#" target="_blank">Согласие</a> на обработку персональных данных
+          
