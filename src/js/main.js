@@ -366,6 +366,19 @@ $(document).ready(function(){
   }
 
 
+  /////////////
+  // HEADER SEARCH
+  /////////////
+  _document
+    .on('click', '[js-header-search-toggle]', function(){
+      var $container = $(this).closest('[js-header-search]')
+      $container.toggleClass('is-active');
+
+      if ( $container.is(".is-active") ){
+        $container.find("input").focus()
+      }
+    })
+
 
   /***************
   * PAGE SPECIFIC *

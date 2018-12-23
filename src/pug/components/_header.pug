@@ -81,9 +81,14 @@ header.header
     
     // bottom
     .header__bottom
-      .header__search.header-search
-        .header-search__icon
+      form(action="#" method="POST").header__search.header-search(js-header-search)
+        .header-search__icon(js-header-search-toggle)
           +svgMono("search")
+        .header-search__input
+          input(type="text" placeholder="Что будем искать?")
+        .header-search__cta
+          button(type="submit").btn.btn-primary.btn-primary--small
+            span Найти
       .header__menu
         // menu group
         .header-menu
