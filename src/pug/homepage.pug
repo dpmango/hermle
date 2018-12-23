@@ -1,6 +1,5 @@
 ---
 title: Главная
-bodyClass: homepage
 ---
 extends shared/_layout
 block content
@@ -56,7 +55,7 @@ block content
             .swiper-wrapper
               mixin chooserSlide(title)
                 // slide
-                .chooser-slide.swiper-slide
+                a(js-link data-href="item.html").chooser-slide.swiper-slide
                   .chooser-slide__content
                     .chooser-slide__title= title
                     .chooser-slide__actions
@@ -124,37 +123,37 @@ block content
       .categories__wrapper
         // col
         .categories__col
-          a.category-card(href="item.html")
+          a.category-card(href="catalog.html")
             .category-card__image
               img(src="img/category_1.png" srcset="img/category_1@2x.png 2x")
             .category-card__name Напольные
         // col
         .categories__col
-          a.category-card(href="item.html")
+          a.category-card(href="catalog.html")
             .category-card__image
               img(src="img/category_2.png" srcset="img/category_2@2x.png 2x")
             .category-card__name Настенные
         // col
         .categories__col
-          a.category-card(href="item.html")
+          a.category-card(href="catalog.html")
             .category-card__image
               img(src="img/category_3.png" srcset="img/category_3@2x.png 2x")
             .category-card__name Настольные
         // col
         .categories__col
-          a.category-card(href="item.html")
+          a.category-card(href="catalog.html")
             .category-card__image
               img(src="img/category_4.png" srcset="img/category_4@2x.png 2x")
             .category-card__name Классические
         // col
         .categories__col
-          a.category-card(href="item.html")
+          a.category-card(href="catalog.html")
             .category-card__image
               img(src="img/category_5.png" srcset="img/category_5@2x.png 2x")
             .category-card__name Модерновые
         // col
         .categories__col
-          a.category-card(href="item.html")
+          a.category-card(href="catalog.html")
             .category-card__image
               img(src="img/category_6.png" srcset="img/category_6@2x.png 2x")
             .category-card__name Эксклюзивные
@@ -171,7 +170,7 @@ block content
             mixin featuredSlide_1
               .featured__slide.swiper-slide
                 // prodcut card
-                .product-card(js-link data-href="#")
+                .product-card(js-link data-href="item.html")
                   .product-card__image
                     img(src="img/featured_1.png" srcset="img/featured_1@2x.png 2x")
                   .product-card__content
@@ -190,7 +189,7 @@ block content
             mixin featuredSlide_2
               .featured__slide.swiper-slide
                 // prodcut card
-                .product-card(js-link data-href="#")
+                .product-card(js-link data-href="item.html")
                   .product-card__image
                     img(src="img/featured_2.png" srcset="img/featured_2@2x.png 2x")
                   .product-card__content
@@ -209,7 +208,7 @@ block content
             mixin featuredSlide_3
               .featured__slide.swiper-slide
                 // prodcut card
-                .product-card(js-link data-href="#")
+                .product-card(js-link data-href="item.html")
                   .product-card__image
                     img(src="img/featured_3.png" srcset="img/featured_3@2x.png 2x")
                   .product-card__content
@@ -228,7 +227,7 @@ block content
             mixin featuredSlide_4
               .featured__slide.swiper-slide
                 // prodcut card
-                .product-card(js-link data-href="#")
+                .product-card(js-link data-href="item.html")
                   .product-card__image
                     img(src="img/featured_4.png" srcset="img/featured_4@2x.png 2x")
                   .product-card__content
@@ -266,7 +265,7 @@ block content
       .sale__grid
         .sale__col
           // prodcut card
-          .product-card(js-link data-href="#")
+          .product-card(js-link data-href="item.html")
             .product-card__image
               img(src="img/sale_1.png" srcset="img/sale_1@2x.png 2x")
               .product-card__tag
@@ -285,7 +284,7 @@ block content
                     span Купить
         .sale__col
           // prodcut card
-          .product-card(js-link data-href="#")
+          .product-card(js-link data-href="item.html")
             .product-card__image
               img(src="img/sale_2.png" srcset="img/sale_2@2x.png 2x")
               .product-card__tag
@@ -304,7 +303,7 @@ block content
                     span Купить
         .sale__col
           // prodcut card
-          .product-card(js-link data-href="#")
+          .product-card(js-link data-href="item.html")
             .product-card__image
               img(src="img/sale_3.png" srcset="img/sale_3@2x.png 2x")
               .product-card__tag
@@ -323,7 +322,7 @@ block content
                     span Купить      
         .sale__col
           // prodcut card
-          .product-card(js-link data-href="#")
+          .product-card(js-link data-href="item.html")
             .product-card__image
               img(src="img/sale_4.png" srcset="img/sale_4@2x.png 2x")
               .product-card__tag
@@ -342,7 +341,7 @@ block content
                     span Купить
         .sale__col
           // prodcut card
-          .product-card(js-link data-href="#")
+          .product-card(js-link data-href="item.html")
             .product-card__image
               img(src="img/sale_5.png" srcset="img/sale_5@2x.png 2x")
               .product-card__tag
@@ -361,7 +360,7 @@ block content
                     span Купить
         .sale__col
           // prodcut card
-          .product-card(js-link data-href="#")
+          .product-card(js-link data-href="item.html")
             .product-card__image
               img(src="img/sale_6.png" srcset="img/sale_6@2x.png 2x")
               .product-card__tag

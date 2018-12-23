@@ -1,0 +1,64 @@
+---
+title: Компоненты
+---
+extends shared/_layout
+block content
+  
+  // TYPOGRAPHY
+  .container(style="margin: 30px auto")
+    h1.h1-title Типографика
+    
+    h1.h1-title Заголовок первого уровня
+    h2.h2-title Заголовок второго уровня
+    h3.h3-title Заголовок третьего уровня
+    
+    p.p-main Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.
+    
+    p.p-main Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).
+
+  // UI
+  .container(style="margin: 30px auto")
+    h1.h1-title Интерфейс
+    
+    div(style="max-width: 300px")
+      .ui-group
+        label Лейбл инпута
+        input.ui-input(type="text" placeholder="плейсхолдер")
+      .ui-group
+        label Лейбл инпута (с ошибкой)
+        input.ui-input.has-error(type="text" placeholder="плейсхолдер")
+  
+  // Buttons
+  .container(style="margin: 30px auto")
+    h1.h1-title Кнопки   
+    div(style="max-width: 300px")     
+      .ui-group
+        a(href="#").btn.btn-primary 
+          span btn-primary
+      .ui-group
+        a(href="#").btn.btn-outline 
+          span btn-outline
+      .ui-group
+        a(href="#").btn.btn-primary.btn-primary--small
+          span btn-outline small
+      .ui-group
+        a(href="#").btn.btn-outline.btn-outline--small
+          span btn-outline small
+      .ui-group
+        a(href="#").btn.btn-primary 
+          span btn-primary
+          .btn-arrow
+            +svgMono("btn-arrow")
+      .ui-group
+        a(href="#").btn.btn-primary 
+          span btn-primary
+          .btn-arrow
+            +svgMono("btn-arrow")
+      .ui-group
+        a(href="#").btn.btn-primary.btn--buy.btn--inline
+          .btn-cart-icon
+            +svgMono("cart")
+          span Купить
+      .ui-group
+        a(href="#").btn.btn-compare
+          +svgMono("compare")

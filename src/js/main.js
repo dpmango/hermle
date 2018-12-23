@@ -504,22 +504,32 @@ $(document).ready(function(){
 
       })
 
-    new Swiper('[js-swiper-featured]', {
-      wrapperClass: "swiper-wrapper",
-      slideClass: "swiper-slide",
-      direction: 'horizontal',
-      loop: false,
-      watchOverflow: true,
-      setWrapperSize: false,
-      spaceBetween: 24,
-      slidesPerView: 4,
-      normalizeSlideIndex: true,
-      freeMode: false,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    })
+    var $featured = $('[js-swiper-featured]');
+
+    if ( $featured.length > 0 ){
+      $featured.each(function(i, slider){
+
+        // variables that does change per slide
+        var slidesPerView = $(slider).data("slides-per-view") || 4
+
+        new Swiper(slider, {
+          wrapperClass: "swiper-wrapper",
+          slideClass: "swiper-slide",
+          direction: 'horizontal',
+          loop: false,
+          watchOverflow: true,
+          setWrapperSize: false,
+          spaceBetween: 24,
+          slidesPerView: slidesPerView,
+          normalizeSlideIndex: true,
+          freeMode: false,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        })
+      })
+    }
 
   }
 

@@ -24,3 +24,11 @@
     transition: opacity .25s $ease
     &:hover
       opacity: 1
+
+  &--no-box
+    .featured
+      &__box
+        &::after
+          display: none
+      &__slide
+        opacity: 1
