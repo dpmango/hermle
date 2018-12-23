@@ -30,6 +30,7 @@
       background-image: none !important
 
 
+/* swiper controls modifier
 .swiper-container-horizontal >
   .swiper-pagination-bullets
     width: auto
@@ -50,3 +51,54 @@
   background-color: $colorRed
   &:hover
     background-color: $colorRed
+
+
+.swiper-button-next, .swiper-button-prev
+  background: transparent
+  color: $colorRed
+  top: 40%
+  // transform: translateY(-50%)
+  size: auto
+  margin-top: 0
+  font-size: 0
+  padding: 20px 10px
+  transition: .25s $ease
+  .ico
+    position: relative
+    z-index: 2
+    font-size: 20px
+    transition: transform .25s $ease
+    backface-visibility: hidden
+    will-change: transform
+    transform-style: preserve-3d
+  &::after
+    display: inline-block
+    content: ' '
+    position: absolute
+    z-index: 1
+    bottom: 0
+    top: 0
+    width: 20px
+    background: white
+    pointer-events: none
+    backface-visibility: hidden
+
+  &.swiper-button-disabled
+    opacity: 1
+    color: #F6F2F2
+
+.swiper-button-next
+  right: -30px
+  &::after
+    right: 10px
+  &:hover
+    .ico
+      transform: translateX(-5px)
+
+.swiper-button-prev
+  left: -30px
+  &::after
+    left: 10px
+  &:hover
+    .ico
+      transform: translateX(5px)

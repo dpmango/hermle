@@ -239,10 +239,31 @@ $(document).ready(function(){
     if ( header.container !== undefined ){
       var fixedClass = 'is-fixed';
       var visibleClass = 'is-fixed-visible';
+      var targetContainerScroll = 26
+      var targetBottomScroll = 98
 
       if ( scroll.blocked ) return
 
+      if ( scroll.y <= 0 ){
+        // set min on fast scroll
+        header.container.css({
+          "transform": 'translate3d(0,-'+ 0 +'%,0)',
+        })
+        header.bottomContainer.css({
+          "transform": 'translate3d(0,-'+ 0 +'%,0)',
+        })
+      }
+
       if ( scroll.y > header.bottomPoint ){
+
+        // set max on fast scroll
+        header.container.css({
+          "transform": 'translate3d(0,-'+ targetContainerScroll +'%,0)',
+        })
+        header.bottomContainer.css({
+          "transform": 'translate3d(0,-'+ targetBottomScroll +'%,0)',
+        })
+
         header.container.addClass(fixedClass);
 
         if ( (scroll.y > header.bottomPoint * 2) && scroll.direction === "up" ){
@@ -437,6 +458,23 @@ $(document).ready(function(){
         // TODO - preload
 
       })
+
+    new Swiper('[js-swiper-featured]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 24,
+      slidesPerView: 4,
+      normalizeSlideIndex: true,
+      freeMode: false,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    })
 
   }
 

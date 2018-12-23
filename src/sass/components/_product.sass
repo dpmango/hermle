@@ -1,0 +1,71 @@
+.product-card
+  flex: 1 0 auto
+  display: flex
+  flex-direction: column
+  &__image
+    flex: 1 1 auto
+    position: relative
+    z-index: 1
+    display: flex
+    flex-direction: column
+    align-items: center
+    text-align: center
+    font-size: 0
+    img
+      margin-top: auto
+      max-width: 100%
+  &__tag
+    position: absolute
+    top: 15px
+    right: 0
+    z-index: 2
+
+  &__content
+    padding-left: 15px
+    padding-right: 15px
+    margin-top: 30px
+  &__name
+    display: block
+    font-size: 18px
+    text-align: center
+    line-height: 1.16
+    // transition: .25s $ease
+    // &:hover
+    //   color: $colorRed
+    &--smaller
+      font-size: 16px
+  &__actions
+    margin-top: 15px
+    position: relative
+    z-index: 1
+    overflow: hidden
+  &__price
+    position: relative
+    z-index: 1
+    text-align: center
+  &__cta
+    position: absolute
+    z-index: 2
+    bottom: 0
+    left: 0
+    right: 0
+    transform: translate3d(0, 100%, 0)
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: transform .25s ease-out
+    will-change: transform
+    // backface-visibility: hidden
+    transform-style: preserve-3d
+    .btn-compare
+      margin-right: 20px
+    .btn-primary
+      margin-right: 60px
+    &--no-compare
+      .btn-primary
+        margin-right: 0
+
+  &:hover
+    .product-card
+      &__cta
+        transform: translate3d(0, 0, 0)

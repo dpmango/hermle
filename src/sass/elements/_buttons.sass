@@ -34,8 +34,6 @@ button
     letter-spacing: em(2.22, 12)
     span
       flex: 0 1 auto
-    .ico
-      margin-left: 16px
     &:hover
       background-color: $colorRedHover
 
@@ -54,8 +52,6 @@ button
     letter-spacing: em(2.22, 12)
     span
       flex: 0 1 auto
-    .ico
-      margin-left: 16px
     &:hover
       background-color: $colorRed
       color: white
@@ -65,16 +61,44 @@ button
       padding: 8px 22px 10px
       font-size: 12px
 
+  &-compare
+    background: svg-load('../icons/svg-mono/btn-compare-bg.svg') no-repeat center
+    background-size: cover
+    font-size: 0
+    color: $colorGray
+    padding: 6px 10px 8px 8px
+    border-radius: 4px
+    .ico
+      position: relative
+      z-index: 2
+      font-size: 22px
+    &:hover
+      // background: $colorRed
+      // color: white
+      color: $colorRed
+
   /* btn modifiers
   &-primary, &-outline
     &--small
       padding: 9px 22px 11px
       font-size: 12px
 
+  &--buy
+    padding: 11px 17px 12px 44px
 
+
+.btn-cart-icon
+  position: absolute
+  top: 50%
+  left: 14px
+  transform: translateY(-50%)
+  font-size: 0
+  .ico
+    font-size: 23px
 
 .btn-arrow
   flex: 0 0 auto
   font-size: 0
+  margin-left: 16px
   .ico
     font-size: 12px

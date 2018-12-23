@@ -1,14 +1,14 @@
 .price
   &__newprice
     color: $colorRed
-    font-size: 28px
+    font-size: 24px
     font-weight: 700
 
   &__oldprice
     display: inline-block
     position: relative
     color: rgba($fontColor, .4)
-    font-size: 20px
+    font-size: 16px
     line-height: 1
     &::after
       display: block
@@ -16,17 +16,17 @@
       position: absolute
       top: 50%
       // transform: translateY(-50%)
-      left: 0
-      right: 0
+      left: -.4em
+      right: -.4em
       height: 1px
       background: currentColor
 
-  &--smaller
+  &--big
     .price
       &__newprice
-        font-size: 24px
+        font-size: 28px
       &__oldprice
-        font-size: 16px
+        font-size: 20px
 
 /* hero image
 .hero-image
@@ -93,3 +93,17 @@
     .play-btn
       &__name
         color: $colorRed
+
+
+/* tags
+.tag
+  size: 55px 27px
+  background: svg-load('../icons/svg-mono/btn-tag-bg.svg') no-repeat center
+  background-size: cover
+  font-size: 18px
+  color: $fontColor
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  padding-left: 3px

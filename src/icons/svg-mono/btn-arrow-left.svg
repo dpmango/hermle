@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="20px" viewBox="0 0 44 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>btn-arrow-left</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Главная-1200" transform="translate(-360.000000, -1553.000000)" fill="#F6F2F2" fill-rule="nonzero">
+            <g id="Популярные-модели" transform="translate(360.000000, 1213.000000)">
+                <g id="Стрелки" transform="translate(0.000000, 340.000000)">
+                    <path d="M5.36465595,8.4286646 L44,8.4286646 L44,11.5713354 L5.36465595,11.5713354 L11.5717085,17.7780335 L9.3496151,20 L0.460090743,11.1109832 C-0.153363581,10.4975639 -0.153363581,9.50281966 0.460090743,8.88901677 L9.3496151,0 L11.5717085,2.22196647 L5.36465595,8.4286646 Z" id="btn-arrow-left"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

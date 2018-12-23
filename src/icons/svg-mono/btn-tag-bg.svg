@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="27px" viewBox="0 0 56 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>btn-tag-bg</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Главная-1200" transform="translate(-484.000000, -2057.000000)" fill="#F8CFA2">
+            <g id="Скидки" transform="translate(360.000000, 1953.000000)">
+                <g id="1" transform="translate(0.000000, 88.000000)">
+                    <g id="Процент" transform="translate(124.000000, 16.000000)">
+                        <path d="M10.2792162,0 L52,0 C54.209139,-4.05812251e-16 56,1.790861 56,4 L56,23 C56,25.209139 54.209139,27 52,27 L10.2792162,27 C8.86637045,27 7.55832227,26.2546688 6.83805011,25.0392096 L1.81263072,16.5588143 C0.69496299,14.67275 0.69496299,12.32725 1.81263072,10.4411857 L6.83805011,1.96079044 C7.55832227,0.745331164 8.86637045,2.0358924e-15 10.2792162,1.77635684e-15 Z" id="btn-tag-bg"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

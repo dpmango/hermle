@@ -1,0 +1,26 @@
+.featured
+  margin: 60px 0 40px
+  &__box
+    position: relative
+    z-index: 1
+    padding: 55px 20px 70px
+    // acts as swiper outer container
+    overflow: hidden
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute 0
+      border: 20px solid #FAF8F4
+      pointer-events: none
+  &__title
+    // .h2-title extend
+
+  &__slider
+    margin-top: 40px
+    overflow: visible
+
+  &__slide
+    opacity: .4
+    transition: opacity .25s $ease
+    &:hover
+      opacity: 1
