@@ -1,0 +1,42 @@
+.banners
+  margin-top: 70px
+  &__wrapper
+    display: flex
+  &__col
+    width: 100%
+    min-width: 1px
+    flex: 0 0 $col4
+    max-width: $col4
+    display: flex
+    flex-direction: column
+
+
+.banner
+  position: relative
+  flex: 1 1 auto
+  display: flex
+  align-items: center
+  &__content
+    flex: 1 1 auto
+    padding-left: 45px
+    padding-right: 30px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
+  &__title
+    font-size: 16px
+  &__cta
+    margin-top: 25px
+  &__image
+    width: 100%
+    padding-right: 50px
+  // cover by image size
+  &--bg-cover
+    .banner
+      &__content
+        position: absolute
+        z-index: 2
+        top: 0
+        left: 0
+        bottom: 0

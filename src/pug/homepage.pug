@@ -78,14 +78,14 @@ block content
           
           // about block
           .hero-promo__about
-            .promo-about
-              .promo-about__content
-                .promo-about__title Наша компания - официальный партнёр фабрики в России
-                .promo-about__cta
+            .banner
+              .banner__content
+                .banner__title Наша компания - официальный партнёр фабрики в России
+                .banner__cta
                   a(href="#").btn.btn-outline.btn-outline--small
                     span Подробнее
 
-              .promo-about__image
+              .banner__image
                 img(src="img/certificate.jpg" srcset="img/certificate@2x.jpg 2x")
 
   
@@ -443,5 +443,39 @@ block content
                   .news-card__title Скидка на популярные напольные <br/> часы с 1 ноября
                           
           
-  // QUICK NAV
-  .quick-nav
+  //BANNERS
+  .banners
+    .container
+      .banners__wrapper
+        .banners__col
+          // banner
+          .banner.banner--bg-cover
+            .banner__content
+              .h2-title Путешествие на фабрику
+              .banner__cta
+                a(href="#").btn.btn-outline.btn-outline--small
+                  span Смотреть
+            .banner__image.scaler(style="padding-bottom: "+(240/400)*100 +"%")
+              img(js-lazy data-src="img/banner_1.png" data-srcset="img/banner_1@2x.png 2x")
+                
+        .banners__col
+          // banner
+          .banner(style="background-color: #FFFDFA")
+            .banner__content
+              .banner__title Наша компания - официальный партнёр фабрики в России
+              .banner__cta
+                a(href="#").btn.btn-outline.btn-outline--small
+                  span Подробнее
+            .banner__image
+              img(src="img/certificate.jpg" srcset="img/certificate@2x.jpg 2x")
+        
+        .banners__col
+          // banner
+          .banner.banner--bg-cover
+            .banner__content
+              .h2-title Посетите <br/>наш шоурум<br/> в Москве
+              .banner__cta
+                a(href="#").btn.btn-outline.btn-outline--small
+                  span На карте
+            .banner__image.scaler(style="padding-bottom: "+(240/400)*100 +"%")
+              img(js-lazy data-src="img/banner_3.png" data-srcset="img/banner_3@2x.png 2x")

@@ -701,14 +701,6 @@ $(document).ready(function(){
       }, 100, {
         'leading': true
       }));
-      // elWatcher.exitViewport(throttle(function() {
-      //   $(el).removeClass(animationClass);
-      //   $(el).css({
-      //     'animation-name': 'none',
-      //     'animation-delay': 0,
-      //     'visibility': 'hidden'
-      //   });
-      // }, 100));
     });
 
   }
