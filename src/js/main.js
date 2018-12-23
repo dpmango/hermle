@@ -175,6 +175,10 @@ $(document).ready(function(){
         Barba.Pjax.goTo(dataHref);
       }
     })
+    .on('click', '.product-card__cta', function(e){
+      // to prevent conflicts with js-link on .product-card
+      e.stopPropagation();
+    })
     // prevent going the same link (if barba is connected)
     .on('click', 'a, [js-link]', function(e){
       var href = $(this).data('href') || $(this).attr('href');
@@ -245,33 +249,10 @@ $(document).ready(function(){
 
       if ( scroll.blocked ) return
 
+      // reset to initial on fast scroll
       if ( scroll.y <= 0 ){
-        // set min on fast scroll
-        header.container.css({
-          "transform": 'translate3d(0,-'+ 0 +'%,0)',
-        })
-        header.bottomContainer.css({
-          "transform": 'translate3d(0,-'+ 0 +'%,0)',
-        })
-      }
-
-      if ( scroll.y > header.bottomPoint ){
-
-        // set max on fast scroll
-        header.container.css({
-          "transform": 'translate3d(0,-'+ targetContainerScroll +'%,0)',
-        })
-        header.bottomContainer.css({
-          "transform": 'translate3d(0,-'+ targetBottomScroll +'%,0)',
-        })
-
-        header.container.addClass(fixedClass);
-
-        if ( (scroll.y > header.bottomPoint * 2) && scroll.direction === "up" ){
-          header.container.addClass(visibleClass);
-        } else {
-          header.container.removeClass(visibleClass);
-        }
+        header.container.css({"transform": 'translate3d(0,0,0)'})
+        header.bottomContainer.css({"transform": 'translate3d(0,0,0)'})
       }
 
       // emulate position absolute by giving negative transform on initial scroll
@@ -283,7 +264,13 @@ $(document).ready(function(){
           "transform": 'translate3d(0,'+ reverseNormalized +'%,0)',
         })
 
-        header.container.removeClass(fixedClass);
+        // header.container.removeClass(fixedClass);
+
+      } else if ( scroll.y >= header.topHeight ){
+        // set max on fast scroll
+        header.container.css({
+          "transform": 'translate3d(0,-'+ targetContainerScroll +'%,0)',
+        })
       }
 
       // top part is scrolled, but not all the height of header (is in range)
@@ -296,6 +283,20 @@ $(document).ready(function(){
         })
       }
 
+      if ( scroll.y > header.bottomPoint ){
+        // set max on fast scroll
+        header.bottomContainer.css({
+          "transform": 'translate3d(0,-'+ targetBottomScroll +'%,0)',
+        })
+
+        // header.container.addClass(fixedClass);
+        //
+        // if ( (scroll.y > header.bottomPoint * 2) && scroll.direction === "up" ){
+        //   header.container.addClass(visibleClass);
+        // } else {
+        //   header.container.removeClass(visibleClass);
+        // }
+      }
 
     }
   }
