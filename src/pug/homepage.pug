@@ -321,7 +321,6 @@ block content
                     .btn-cart-icon
                       +svgMono("cart")
                     span Купить      
-
         .sale__col
           // prodcut card
           .product-card(js-link data-href="#")
@@ -399,13 +398,50 @@ block content
               .h1-title Интернет-магазин
               .about__title-logo
                 img(src="img/template/logo.png" srcset="img/template/logo@2x.png 2x")
-          
+                  
             p.h3-title Дорогие друзья!
             p.p-main Мы&nbsp;рады представить интернет-магазин интерьерных часов немецкого бренда Hermle. Вы&nbsp;найдёте большой ассортимент механических и&nbsp;кварцевых часов любого формата.
             p.p-main Продукция Hermle полностью производится в&nbsp;Германии, независимо от&nbsp;цены, ни&nbsp;один из&nbsp;этапов&nbsp;НЕ проходит на&nbsp;территории стран с&nbsp;дешёвой рабочей силой. И&nbsp;механизмы, и&nbsp;корпусы&nbsp;&mdash; всё это изготавливается в&nbsp;Швабии и&nbsp;Шварцвальде&nbsp;&mdash; регионах юга Германии.
             p.p-main Работая в&nbsp;тесном сотрудничестве с&nbsp;производителем, мы&nbsp;накопили большой опыт в&nbsp;работе с&nbsp;точными механизмами бренда, как в&nbsp;продаже, так и&nbsp;дальнейшем обслуживании.
             blockquote.blockquote Все часы, продаваемые на&nbsp;сайте, сопровождаются официальной <span class="c-red f-600">гарантией сроком до&nbsp;5&nbsp;лет.</span> Гарантия на&nbsp;продукцию действует во&nbsp;всех регионах России
             p.p-main Мы&nbsp;рады видеть вас в&nbsp;нашем шоуруме в&nbsp;Москве, где наши сотрудники помогут с&nbsp;выбором и&nbsp;оформлением покупки.
-    
+  
+  // NEWS
+  .news
+    .container
+      .news__wrapper
+        .news__left
+          .h2-title Новости компании
+          p.p-small Hermle - компания с вековой историей и многолетними традициями дизайна.
+          a(href="#").btn.btn-outline
+            span Перейти в раздел
+        .news__right
+          .news__grid
+            .news__col
+              // news card
+              a(href="#").news-card
+                .news-card__image.scaler(style="padding-bottom: "+(189/282)*100 +"%")
+                  img(js-lazy data-src="img/news_1.png" data-srcset="img/news_1@2x.png 2x")
+                .news-card__content
+                  .news-card__date 10 Апреля 2018
+                  .news-card__title Hermle Store официальный <br/> партнёр фабрики в России
+            .news__col
+              // news card
+              a(href="#").news-card
+                .news-card__image.scaler(style="padding-bottom: "+(189/282)*100 +"%")
+                  img(js-lazy data-src="img/news_2.png" data-srcset="img/news_2@2x.png 2x")
+                .news-card__content
+                  .news-card__date 05 Марта 2018
+                  .news-card__title Весенняя распродажа!
+            .news__col
+              // news card
+              a(href="#").news-card
+                .news-card__image.scaler(style="padding-bottom: "+(189/282)*100 +"%")
+                  img(js-lazy data-src="img/news_3.png" data-srcset="img/news_3@2x.png 2x")
+                .news-card__content
+                  .news-card__date 23 Декабря 2017
+                  .news-card__title Скидка на популярные напольные <br/> часы с 1 ноября
+                          
+          
   // QUICK NAV
   .quick-nav

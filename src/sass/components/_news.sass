@@ -1,0 +1,54 @@
+.news
+  margin: 70px 0
+  &__wrapper
+    display: flex
+    margin-left: -12px
+    margin-right: -12px
+  &__left, &__right, &__col
+    width: 100%
+    min-width: 1px
+    padding-left: 12px
+    padding-right: 12px
+  &__left
+    flex: 0 0 $col3
+    max-width: $col3
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    .h2-title, p
+      max-width: 180px
+    p
+      margin-bottom: 40px
+  &__right
+    flex: 0 0 $col9
+    max-width: $col9
+
+  &__grid
+    display: flex
+    margin-left: -12px
+    margin-right: -12px
+  &__col
+    flex: 0 0 $col4
+    max-width: $col4
+
+.news-card
+  &__image
+    font-size: 0
+  &__content
+
+  &__date
+    margin-top: 16px
+    font-size: 14px
+    color: $fontColorGray
+  &__title
+    font-size: 16px
+    margin-top: 10px
+    line-height: 1.3
+    transition: .25s $ease
+  &:hover
+    .news-card
+      &__image
+        img
+          transform: scale(1.05)
+      &__title
+        color: $colorRed

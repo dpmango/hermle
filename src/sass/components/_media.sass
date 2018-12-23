@@ -25,10 +25,17 @@
     [js-lazy]
       will-change: opacity
       backface-visibility: hidden
-  &.is-loaded
+  &.is-bg-hidden
     &.no-bg-onload
       background-image: none !important
+  &.is-loaded
+    img, picture
+      opacity: 1
 
+img, picture
+  &[js-lazy]
+    opacity: 0
+    transition: opacity .25s $ease, transform .4s $ease
 
 /* swiper controls modifier
 .swiper-container-horizontal >

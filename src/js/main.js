@@ -69,7 +69,6 @@ $(document).ready(function(){
     // revealFooter();
     // initPerfectScrollbar();
     // initCountDown();
-    // initLazyLoad();
     // initTeleport();
     // parseSvg();
   }
@@ -480,7 +479,7 @@ $(document).ready(function(){
         }, 250)
 
         // recommended to preload some images in initial markup
-        
+
         // TODO - ajax load
         heroChooser.appendSlide([
           `<div class="chooser-slide swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 384px; opacity: 1; transform: translate3d(-768px, 0px, 0px); transition-duration: 0ms;">
@@ -582,6 +581,40 @@ $(document).ready(function(){
 
   function closeMfp(){
     $.magnificPopup.close();
+  }
+
+  //////////
+  // LAZY LOAD
+  //////////
+  function initLazyLoad(){
+
+    var $lazy = _document.find('[js-lazy]');
+    if ($lazy.length === 0 ) return
+
+    var fadeTimeout = 250
+
+    $lazy.Lazy({
+      threshold: 400, //Amount of pixels below the viewport, in which all images gets loaded before the user sees them.
+      enableThrottle: true,
+      throttle: 100,
+      scrollDirection: 'vertical',
+      // effect: 'fadeIn',
+      // effectTime: fadeTimeout,
+      // visibleOnly: true,
+      onError: function(element) {
+          console.log('error loading ' + element.data('src'));
+      },
+      beforeLoad: function(element){
+        // element.attr('style', '')
+      },
+      afterLoad: function(element){
+        if ( browser.isIe ){
+          picturefill(); // ie pollyfil
+        }
+        animateLazy(element)
+      }
+    });
+
   }
 
   ////////////
@@ -952,4 +985,17 @@ function normalize(value, fromMin, fromMax, toMin, toMax) {
 // get window width (not to forget about ie, win, scrollbars, etc)
 function getWindowWidth(){
   return window.innerWidth
+}
+
+// animate lazy class toggler
+function animateLazy(element){
+  var fadeTimeout = 250
+  var $scaler = element.closest('.scaler')
+  $scaler.addClass('is-loaded');
+
+  if ( $scaler.is('.no-bg-onload') ){
+    setTimeout(function(){
+      $scaler.addClass('is-bg-hidden');
+    }, fadeTimeout)
+  }
 }
