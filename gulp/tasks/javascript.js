@@ -1,4 +1,5 @@
 var gulp        = require('gulp');
+var babel       = require('gulp-babel');
 var path        = require('path');
 var util        = require('gulp-util');
 var plumber     = require('gulp-plumber');
@@ -38,6 +39,9 @@ gulp.task('javascript:app', function() {
       config.src.js + '/*.js'
      ])
     .pipe(plumber({ errorHandler: config.errorHandler }))
+    .pipe(babel({
+			presets: ['@babel/env']
+		}))
     .pipe(concat('app.js'))
     .pipe(config.production ? uglifyJs() : util.noop())
     .pipe(gulp.dest(config.dest.js));

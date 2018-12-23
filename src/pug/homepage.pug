@@ -54,19 +54,25 @@ block content
         .hero-promo__right
           .hero-promo__chooser.swiper-container(js-swiper-hero-chooser)
             .swiper-wrapper
-              // slide
-              .chooser-slide.swiper-slide
-                .chooser-slide__content
-                  .chooser-slide__title Настольные часы Hermle 22716
-                  .chooser-slide__actions
-                    .chooser-slide__price.price
-                      .price__newprice 29 800 <span class="r-mark">₽</span>
-                      .price__oldprice 48 000 ₽
-                .chooser-slide__image.hero-image.hero-image--smaller
-                  .hero-image__main
-                    img(src="img/chooser-slide.png" srcset="img/chooser-slide@2x.png 2x")
-                  .hero-image__ghost
-                    img(src="img/chooser-slide.png" srcset="img/chooser-slide@2x.png 2x")
+              mixin chooserSlide(title)
+                // slide
+                .chooser-slide.swiper-slide
+                  .chooser-slide__content
+                    .chooser-slide__title= title
+                    .chooser-slide__actions
+                      .chooser-slide__price.price
+                        .price__newprice 29 800 <span class="r-mark">₽</span>
+                        .price__oldprice 48 000 ₽
+                  .chooser-slide__image.hero-image.hero-image--smaller
+                    .hero-image__main
+                      img(src="img/chooser-slide.png" srcset="img/chooser-slide@2x.png 2x")
+                    .hero-image__ghost
+                      img(src="img/chooser-slide.png" srcset="img/chooser-slide@2x.png 2x")
+              
+              +chooserSlide("Настольные часы Hermle 22716")
+              +chooserSlide("Настольные часы Hermle 01093")
+              +chooserSlide("Настольные часы Hermle 70509")
+              
               .hero-promo__chooser-refresh(js-refresh-slider)
                 +svgMono("refresh")
           

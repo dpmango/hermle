@@ -455,22 +455,53 @@ $(document).ready(function(){
       }
     })
 
-    new Swiper('[js-swiper-hero-chooser]', {
+    var heroChooser = new Swiper('[js-swiper-hero-chooser]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
       watchOverflow: false,
       setWrapperSize: false,
       slidesPerView: 1,
+      loop: true,
       normalizeSlideIndex: true,
-      freeMode: true,
+      freeMode: false,
       effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
     })
 
     _document
       .on('click', '[js-refresh-slider]', function(){
-        // TODO - add slide and fade him out
-        // TODO - preload
+        var $btn = $(this);
+        $btn.addClass('is-refreshing');
+        setTimeout(function(){
+          $btn.removeClass("is-refreshing");
+        }, 250)
+
+        // recommended to preload some images in initial markup
+        
+        // TODO - ajax load
+        heroChooser.appendSlide([
+          `<div class="chooser-slide swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 384px; opacity: 1; transform: translate3d(-768px, 0px, 0px); transition-duration: 0ms;">
+            <div class="chooser-slide__content">
+              <div class="chooser-slide__title">Настольные часы Hermle 01093</div>
+              <div class="chooser-slide__actions">
+                <div class="chooser-slide__price price">
+                  <div class="price__newprice">19 800 <span class="r-mark">₽</span></div>
+                  <div class="price__oldprice">28 000 ₽</div>
+                </div>
+              </div>
+            </div>
+            <div class="chooser-slide__image hero-image hero-image--smaller">
+              <div class="hero-image__main"><img src="img/sale_1.png" srcset="img/sale_1@2x.png 2x"></div>
+              <div class="hero-image__ghost"><img src="img/sale_1.png" srcset="img/sale_1@2x.png 2x"></div>
+            </div>
+          </div>`,
+        ]);
+
+        // trigger slide next
+        heroChooser.slideNext()
 
       })
 
