@@ -90,8 +90,8 @@ $(document).ready(function(){
   _window.on('scroll', scrollHeader);
   // debounce/throttle examples
   _window.on('resize', debounce(getHeaderParams, 100));
-  _window.on('resize', debounce(getHeaderParams, 100));
   _window.on('resize', debounce(setPageOffset, 100));
+  _window.on('resize', debounce(menuHider, 25));
   _window.on('resize', debounce(formatTextsResponsive, 50));
   _window.on('resize', debounce(setBreakpoint, 200))
 
@@ -413,13 +413,15 @@ $(document).ready(function(){
       var dataOn = $el.data('on');
       var dataSymbol = $el.data('symbol');
       var $elHtml = $el.html()
+      var symbolIndex = $elHtml.indexOf(dataSymbol)
 
       if ( wWidth <= dataOn ){
-        var symbolIndex = $elHtml.indexOf(dataSymbol)
         if ( symbolIndex === -1) return
         $el.html($elHtml.substring(0,symbolIndex))
       } else {
-        $el.html($elHtml + dataSymbol)
+        if ( symbolIndex === -1){
+          $el.html($elHtml + dataSymbol)
+        }
       }
     })
   }
