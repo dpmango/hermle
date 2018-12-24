@@ -331,25 +331,25 @@ $(document).ready(function(){
       enableScroll(isOnload)
       return
     }
-    if ($('[js-hamburger]').is('.is-active')) {
-      disableScroll();
-    } else {
-      enableScroll();
-    }
+    // if ($('[js-hamburger]').is('.is-active')) {
+    //   disableScroll();
+    // } else {
+    //   enableScroll();
+    // }
   };
 
   _document.on('click', '[js-hamburger]', function(){
-    $(this).toggleClass('is-active');
-    $('.mobile-navi').toggleClass('is-active');
-
-    blockScroll();
+    // $(this).toggleClass('is-active');
+    // $('.mobile-navi').toggleClass('is-active');
+    //
+    // blockScroll();
   });
 
   function closeMobileMenu(isOnload){
-    $('[js-hamburger]').removeClass('is-active');
-    $('.mobile-navi').removeClass('is-active');
-
-    blockScroll(isOnload);
+    // $('[js-hamburger]').removeClass('is-active');
+    // $('.mobile-navi').removeClass('is-active');
+    //
+    // blockScroll(isOnload);
   }
 
 

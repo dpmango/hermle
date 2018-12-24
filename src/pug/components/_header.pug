@@ -26,7 +26,6 @@ header.header
             +svgMono("arrow-down")
           ul.header-more__hidden(js-menu-hider-target)
             
-              
       .header__socials.social-media
         a(href="#").social-media__instagram
           +svgMono("social-instagram")
@@ -37,16 +36,21 @@ header.header
     
     // center
     .header__center
+      .header__hamburger
+        .hamburger.hamburger--squeeze(href="#mobile-navi" js-popup)
+          .hamburger-box
+            .hamburger-inner
+            
       a(href="homepage.html").header__logo
         img(src="img/template/logo.png" srcset="img/template/logo@2x.png 2x")
       
       .header__showroom
-        .header__showroom.showroom-header
+        .showroom-header
           .showroom-header__name Шоурум <br/> в Москве
           .showroom-header__icon
             +svgColor("clock")
           .showroom-header__content
-            .showroom-header__address ул. Шаболовка д.23 к.5
+            .showroom-header__address <span class="sm-only">Москва, <br/></span>ул. Шаболовка д.23 к.5
             .showroom-header__directions 1-й этаж красная вывеска <br/> "Hermle Часы из Германии"
       
       .header__cta
@@ -80,10 +84,6 @@ header.header
           span 2
         +svgMono('cart')
 
-      .header__hamburger
-        .hamburger.hamburger--squeeze(js-hamburger)
-          .hamburger-box
-            .hamburger-inner
     
     // bottom
     .header__bottom
@@ -96,6 +96,8 @@ header.header
           button(type="submit").btn.btn-primary.btn-primary--small
             span Найти
       .header__menu
+        .header-menu.header-menu--mobile
+          .header-menu__name Каталог
         // menu group
         .header-menu
           .header-menu__name(js-clear-last-sybmol data-on="1280" data-symbol=":") Часы <br/> по форме:
@@ -161,16 +163,3 @@ header.header
                 li
                   a(href="#") Эксклюзив 3
   
-        
-// MOBILE NAVI
-.mobile-navi
-  .mobile-navi__wrapper
-    ul.mobile-navi__menu
-      li
-        a(href="homepage.html") Homepage
-      li
-        a(href="page.html") Shop
-      li
-        a(href="page.html") Lorem
-    .mobile-navi__cta
-      a(href="mailto:sergey@khmelevskoy.co") sergey@khmelevskoy.co

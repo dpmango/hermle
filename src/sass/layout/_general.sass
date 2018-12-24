@@ -64,11 +64,16 @@ body, html
   .container
     padding-left: 30px
     padding-right: 30px
-    
+
 +r($sm)
   .container
     padding-left: 20px
     padding-right: 20px
+
+.sm-only
+  display: none
+  +r($sm)
+    display: block
 
 // REMOVE FOR PRODUCTION !
 .dev-bp-debug

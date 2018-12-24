@@ -14,8 +14,8 @@
   .col
     flex: 0 0 100%
     width: 100%
-    max-width: 8.33333%
-    flex-basis: 8.33333%
+    max-width: $col1
+    flex-basis: $col1
     padding: 0 12px
     div
       background-color: rgba(255, 0, 0, 0.05)
@@ -26,7 +26,8 @@
     .row
 
     .col
-      width: 16.666667% !important
+      flex-basis: $col2
+      max-width: $col2 !important
       &:nth-child(n+7)
         display: none
 

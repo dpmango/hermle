@@ -123,8 +123,8 @@
 
   &__hamburger
     display: none
-    padding-left: 20px
-
+    margin-left: -10px
+    
   /* modifiers
   // &.is-fixed
   //   // should be normalized to -100% scroll at this point
@@ -145,7 +145,7 @@
   .header
     &__socials
       margin-right: 0
-      
+
     &__center
       flex-wrap: wrap
       padding-bottom: 30px
@@ -176,11 +176,55 @@
   .header
     &__top-menu
 
++r($md)
+  .header
+    &__center
+      padding-right: 0px
+
+    &__logo
+      flex-basis: 130px
+      margin-right: 60px
+    &__cta
+      flex-basis: 150px
+      margin-right: 24px
+    &__cart
+      margin-right: -10px
+
 +r($sm)
   .header
     &__top
       display: none
+    &__center
+      padding-bottom: 15px
+    &__hamburger
+      display: block
+      order: 1
+      flex: 0 0 45px
+    &__logo
+      order: 2
+      margin-right: auto
+      margin-left: auto
+    &__showroom
+      margin-top: 15px
+      flex-grow: 1
+      // header__contacts offset
+      flex-basis: calc(100% - 165px)
+      order: 4
+    &__cart
+      order: 3
+      margin-left: 0
+    &__cta
+      display: none
+    &__contacts
+      margin-top: 15px
+      order: 5
+      margin-left: auto
+      margin-right: 0
 
+    &__bottom
+
+    &__menu
+      padding-left: 59px
 
 /* smaller components
 @import "header/showroom"
