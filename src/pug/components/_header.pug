@@ -3,7 +3,7 @@ header.header
   .container
     // top
     .header__top
-      ul.header__top-menu
+      ul.header__top-menu(js-menu-hider)
         li
           a(href="#") Доставка
         li
@@ -12,15 +12,21 @@ header.header
           a(href="#") Сервис
         li
           a(href="#") Гарантии
-        li
+        li(data-hide-on="670")
           a(href="#") Новости
-        li
+        li(data-hide-on="767")
           a(href="#") Контакты
-        li
+        li(data-hide-on="950")
           a(href="#") Отслеживание заказа
-        li
+        li(data-hide-on="1080")
           a(href="#") Документы
-      
+        .header-more
+          .header-more__toggler
+            span Еще
+            +svgMono("arrow-down")
+          ul.header-more__hidden(js-menu-hider-target)
+            
+              
       .header__socials.social-media
         a(href="#").social-media__instagram
           +svgMono("social-instagram")
@@ -92,7 +98,7 @@ header.header
       .header__menu
         // menu group
         .header-menu
-          .header-menu__name Часы <br/> по форме:
+          .header-menu__name(js-clear-last-sybmol data-on="1280" data-symbol=":") Часы <br/> по форме:
           ul.header-menu__list
             li
               a(href="#") Напольные
@@ -125,7 +131,7 @@ header.header
                   a(href="#") Настольные с маятником
         // menu group
         .header-menu
-          .header-menu__name Часы <br/> по стилю:
+          .header-menu__name(js-clear-last-sybmol data-on="1280" data-symbol=":") Часы <br/> по стилю:
           ul.header-menu__list
             li
               a(href="#") Классика

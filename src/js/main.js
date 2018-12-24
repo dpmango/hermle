@@ -1,6 +1,6 @@
 // force scroll to top on initial load
 window.onbeforeunload = function(){
-  window.scrollTo(0,0)
+  // window.scrollTo(0,0)
 }
 
 $(window).on("load", function(){
@@ -55,7 +55,9 @@ $(document).ready(function(){
   function pageReady(fromPjax){
     getHeaderParams();
     updateHeaderActiveClass();
-    closeMobileMenu();
+    closeMobileMenu(fromPjax);
+    menuHider();
+    formatTextsResponsive();
 
     initSliders();
     initPopups();
@@ -63,14 +65,6 @@ $(document).ready(function(){
     initSelectric();
     initScrollMonitor();
     initValidations();
-
-    // AVAILABLE in _components folder
-    // copy paste in main.js and initialize here
-    // revealFooter();
-    // initPerfectScrollbar();
-    // initCountDown();
-    // initTeleport();
-    // parseSvg();
   }
 
   // The transition has just finished and the old Container has been removed from the DOM.
@@ -95,8 +89,10 @@ $(document).ready(function(){
   _window.on('scroll', getWindowScroll);
   _window.on('scroll', scrollHeader);
   // debounce/throttle examples
-  // _window.on('resize', throttle(revealFooter, 100));
   _window.on('resize', debounce(getHeaderParams, 100));
+  _window.on('resize', debounce(getHeaderParams, 100));
+  _window.on('resize', debounce(setPageOffset, 100));
+  _window.on('resize', debounce(formatTextsResponsive, 50));
   _window.on('resize', debounce(setBreakpoint, 200))
 
 
@@ -171,6 +167,7 @@ $(document).ready(function(){
       if (dataHref && dataHref !== "#"){
         e.preventDefault();
         e.stopPropagation();
+        Barba.Dispatcher.trigger('linkClicked', $(this));
         Barba.Pjax.goTo(dataHref);
       }
     })
@@ -380,6 +377,52 @@ $(document).ready(function(){
       }
     })
 
+  /////////////
+  // MENU HIDER
+  /////////////
+  function menuHider(){
+    var wWidth = getWindowWidth();
+    if ( wWidth <= 576 ) return
+    var $menu = $('[js-menu-hider]');
+    if ( $menu.length === 0 ) return
+    var $menuTarget = $menu.find('[js-menu-hider-target]')
+    if ( $menuTarget.length === 0 ) return
+
+    var $menuList = $menu.find('li');
+
+    $menuList.each(function(i, li){
+      var $li = $(li);
+      var hideOnData = $li.data('hide-on');
+
+      if ( wWidth <= hideOnData ){
+        $li.appendTo($menuTarget)
+      } else {
+        $li.insertBefore($menu.find('.header-more'))
+      }
+    })
+  }
+
+  // clean symbols on resize(responsive)
+  function formatTextsResponsive(){
+    var wWidth = getWindowWidth();
+    var $elements = $('[js-clear-last-sybmol]');
+    if ( $elements.length === 0 ) return
+
+    $elements.each(function(i, el){
+      var $el = $(el);
+      var dataOn = $el.data('on');
+      var dataSymbol = $el.data('symbol');
+      var $elHtml = $el.html()
+
+      if ( wWidth <= dataOn ){
+        var symbolIndex = $elHtml.indexOf(dataSymbol)
+        if ( symbolIndex === -1) return
+        $el.html($elHtml.substring(0,symbolIndex))
+      } else {
+        $el.html($elHtml + dataSymbol)
+      }
+    })
+  }
 
   /***************
   * PAGE SPECIFIC *
