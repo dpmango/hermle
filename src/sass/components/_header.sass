@@ -54,7 +54,7 @@
   &__logo
     flex: 0 0 auto
     font-size: 0
-    padding-right: 30px
+    margin-right: 30px
     img
       max-width: 100%
 
@@ -71,6 +71,7 @@
     margin-right: auto
 
   &__cart
+    flex: 0 0 auto
     display: block
     padding-left: 10px
     padding-right: 10px
@@ -137,11 +138,42 @@
     transition: transform .25s $ease
     transform: translate3d(0,-100%,0) !important
 
++r($xl)
+  .header
 
-+r(1080)
++r(1200)
   .header
     &__socials
       margin-right: 0
+      
+    &__center
+      flex-wrap: wrap
+      padding-bottom: 30px
+      padding-right: 30px
+    &__logo
+      order: 1
+      margin-right: 60px
+    &__showroom
+      flex-grow: 1
+      flex-basis: calc(100% - 190px - 60px - 45px)
+      order: 2
+    &__cart
+      order: 3
+    &__cta
+      margin-top: 15px
+      order: 4
+      flex: 0 0 160px
+      margin-left: 0
+      // 60 - 16 (logo offset minus phone icon)
+      margin-right: 44px
+      align-self: flex-end
+    &__contacts
+      margin-top: 15px
+      order: 5
+      margin-left: 0
+
++r(1080)
+  .header
     &__top-menu
 
 +r($sm)
@@ -149,313 +181,9 @@
     &__top
       display: none
 
+
 /* smaller components
-.showroom-header
-  display: flex
-  align-items: center
-  &__name
-    font-size: 16px
-    font-weight: 600
-  &__icon
-    flex: 0 0 auto
-    font-size: 0
-    margin-left: 12px
-    margin-right: 16px
-    .ico
-      font-size: 32px
-  &__content
-
-  &__address
-    font-size: 14px
-  &__directions
-    margin-top: 3px
-    font-size: 12px
-    line-height: 1.25
-    // TODO
-    color: #8F8F8F
-  &--line
-    display: block
-    .showroom-header__name
-      margin-bottom: 10px
-
-// contacts
-.contacts-header
-  &__messengers
-    display: flex
-    align-items: center
-    font-size: 12px
-    padding-left: 16px
-    a
-      display: inline-block
-      margin-right: 5px
-      transition: opacity .25s $ease
-      will-change: opacity
-      &:hover
-        opacity: .75
-  &__whatsapp
-    color: #3DBD2A
-  &__viber
-    color: #7D3DAF
-  &__telegram
-    color: #2FA7DB
-
-  &__phones
-    display: flex
-
-// phone
-.header-phone
-  display: flex
-  margin-top: 5px
-  margin-right: 25px
-  &:last-child
-    margin-right: 0
-  &__icon
-    padding-top: 5px
-    flex: 0 0 auto
-    font-size: 0
-    color: $colorRed
-    .ico
-      font-size: 12px
-  &__content
-    margin-left: 8px
-
-  &__tel
-    font-size: 22px
-    font-weight: 600
-    line-height: 1
-    transition: color .25s $ease
-
-  &__description
-    font-size: 12px
-    color: #8F8F8F
-  &:hover
-    .header-phone__tel
-      color: $colorRed
-
-// search
-.header-search
-  position: absolute
-  z-index: 2
-  left: 0
-  top: 0
-  bottom: 0
-  width: 76px
-  overflow: hidden
-  display: flex
-  border-top-left-radius: 4px
-  border-bottom-left-radius: 4px
-  background: transparent
-  transition: background .25s $ease, width .25s ease
-  &__icon
-    flex: 0 0 auto
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    cursor: pointer
-    padding-left: 30px
-    padding-right: 30px
-    .ico
-      font-size: 16px
-
-  &__input
-    position: relative
-    flex: 1 1 auto
-    align-self: center
-    padding-left: 24px
-    padding-right: 24px
-    &::before
-      display: block
-      content: ' '
-      position: absolute
-      top: 50%
-      left: 0
-      transform: translateY(-50%)
-      width: 1px
-      background: #4F1010
-      height: 30px
-
-    input
-      -webkit-appearance: none
-      display: block
-      width: 100%
-      font-size: 16px
-      line-height: normal
-      color: white
-      background: transparent
-      border: 0
-      box-shadow: none
-      font-family: $baseFont
-      &::placeholder
-        color: rgba(white, .5)
-
-  &__cta
-    flex: 0 0 auto
-    margin-right: 20px
-    align-self: center
-    .btn:hover
-      background: white
-      color: $colorRedHover
-
-  &:hover, &.is-active
-    background: $colorRedHover
-
-  &.is-active
-    width: 100%
-    border-top-right-radius: 4px
-    border-bottom-right-radius: 4px
-
-
-// menu
-.header-menu
-  position: relative
-  z-index: 1
-  display: flex
-  align-items: center
-  margin-right: 20px
-  &:last-child
-    // extra space just in case
-    margin-right: 0
-  &::before
-    display: inline-block
-    content: ' '
-    position: absolute
-    top: 50%
-    left: 0
-    transform: translateY(-50%)
-    width: 1px
-    background: #882929
-    height: 30px
-
-  &__name
-    color: rgba(white, .6)
-    font-size: 14px
-    padding-left: 20px
-    padding-right: 10px
-    line-height: 1
-  &__list
-    list-style: none
-    white-space: nowrap
-    margin: 0
-    padding: 0
-    > li
-      position: relative
-      display: inline-block
-      font-weight: 700
-      font-size: 16px
-      text-transform: uppercase
-      letter-spacing: em(3,16)
-      > a
-        display: inline-block
-        padding: 22px 18px
-        transition: background .25s $ease
-      &:hover
-        > a
-          background-color: $colorRedHover
-        ul
-          opacity: 1
-          transform: translate(0,0)
-          pointer-events: all
-
-    ul
-      position: absolute
-      left: 0
-      top: 62px
-      min-width: 100%
-      list-style: none
-      margin: 0
-      padding: 12px 18px 18px
-      background: $colorRedHover
-      transition: .2s $ease
-      opacity: 0
-      pointer-events: none
-      transform: translate(-5px,0px)
-      li
-        display: block
-        font-size: 16px
-        margin-left: -5px
-        margin-right: -5px
-        letter-spacing: 0
-        font-weight: 400
-        text-transform: none
-      a
-        display: inline-block
-        padding: 5px
-        color: white
-        transition: color .25s $ease
-        &:hover
-          color: rgba(white, .7)
-
-+r($xl)
-  .header-menu
-    flex: 1 1 auto
-    display: flex
-    margin-right: 0
-    &__name
-      flex: 1 1 auto
-      text-align: center
-      // name becomes a toggler
-      font-size: 16px
-      color: white
-      font-weight: 700
-      letter-spacing: em(3,16)
-      text-transform: uppercase
-      cursor: pointer
-      padding: 23px 18px
-      transition: background .25s $ease
-      &:hover
-        background-color: $colorRedHover
-      br
-        display: none
-    &__list
-      display: none
-    &:last-child
-      .header-menu__name
-        border-top-right-radius: 4px
-        border-bottom-right-radius: 4px
-
-/* more opened
-.header-more
-  display: none
-  position: relative
-  cursor: pointer
-  &__toggler
-    display: inline-block
-    font-size: 14px
-    padding: 5px
-    color: $colorGray
-    display: flex
-    align-items: center
-    transition: color .25s $ease
-    .ico
-      font-size: 5px
-      margin-left: 6px
-      transform: translateY(.3em)
-
-  &__hidden
-    position: absolute
-    background: white
-    left: -10px
-    // top: 40px
-    list-style: none
-    margin: 0
-    padding: 10px
-    outline: 1px solid $borderColor
-
-    pointer-events: none
-    opacity: 0
-    transform: translate(0,5px)
-    transition: .25s $ease
-
-  &:hover
-    .header-more
-      &__toggler
-        color: $fontColor
-      &__hidden
-        opacity: 1
-        pointer-events: all
-        transform: translate(0,0)
-
-+r(1080)
-  .header-more
-    display: inline-block
+@import "header/showroom"
+@import "header/contacts"
+@import "header/search"
+@import "header/menu"

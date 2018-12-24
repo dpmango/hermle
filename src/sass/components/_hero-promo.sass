@@ -2,19 +2,20 @@
 
   &__wrapper
     display: flex
+    flex-wrap: wrap
+
+  &__slider, &__right
+    width: 100%
+    min-width: 1px
 
   &__slider
     background: #FAF8F4
-    width: 100%
     flex: 0 0 68%
     max-width: 68%
-    min-width: 1px
 
   &__right
-    width: 100%
     flex: 0 0 32%
     max-width: 32%
-    min-width: 1px
     display: flex
     flex-direction: column
 
@@ -48,6 +49,15 @@
     flex-direction: column
 
 
++r($lg)
+  .hero-promo
+    &__slider
+      flex-basis: 100%
+      max-width: 100%
+    &__right
+      flex-basis: 100%
+      max-width: 100%
+      flex-direction: row
 
 .hero-slide
   flex: 0 0 100%

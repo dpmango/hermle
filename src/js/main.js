@@ -27,12 +27,13 @@ $(document).ready(function(){
   }
 
   var header = {
-    container: undefined,
-    topContainer: undefined,
-    centerContainer: undefined,
-    bottomContainer: undefined,
-    bottomPoint: undefined,
-    topHeight: undefined
+    container: undefined, // jQuery object
+    topContainer: undefined, // jQuery object
+    centerContainer: undefined, // jQuery object
+    bottomContainer: undefined, // jQuery object
+    bottomPoint: undefined, // when header ends in px (height)
+    topHeight: undefined, // top container height
+    topHeightPercent: undefined, // when containerTop ends in %
   }
 
   var browser = {
@@ -53,10 +54,10 @@ $(document).ready(function(){
 
   // The new container has been loaded and injected in the wrapper.
   function pageReady(fromPjax){
-    getHeaderParams();
     updateHeaderActiveClass();
     closeMobileMenu(fromPjax);
     menuHider();
+    getHeaderParams();
     formatTextsResponsive();
 
     initSliders();
@@ -89,9 +90,9 @@ $(document).ready(function(){
   _window.on('scroll', getWindowScroll);
   _window.on('scroll', scrollHeader);
   // debounce/throttle examples
+  _window.on('resize', debounce(menuHider, 25));
   _window.on('resize', debounce(getHeaderParams, 100));
   _window.on('resize', debounce(setPageOffset, 100));
-  _window.on('resize', debounce(menuHider, 25));
   _window.on('resize', debounce(formatTextsResponsive, 50));
   _window.on('resize', debounce(setBreakpoint, 200))
 
@@ -225,6 +226,7 @@ $(document).ready(function(){
     var headerOffsetTop = 0
     var headerHeight = $header.outerHeight() + headerOffsetTop
     var headerTopHeight = $headerTop.outerHeight()
+    var topHeightPercent =  Math.floor((headerTopHeight / headerHeight) * 100)
 
     header = {
       container: $header,
@@ -232,7 +234,8 @@ $(document).ready(function(){
       centerContainer: $headerCenter,
       bottomContainer: $headerBottom,
       bottomPoint: headerHeight,
-      topHeight: headerTopHeight
+      topHeight: headerTopHeight,
+      topHeightPercent: topHeightPercent
     }
   }
 
@@ -240,8 +243,7 @@ $(document).ready(function(){
     if ( header.container !== undefined ){
       var fixedClass = 'is-fixed';
       var visibleClass = 'is-fixed-visible';
-      var targetContainerScroll = 26
-      var targetBottomScroll = 98
+      var targetBottomScroll = 98 // how much red menu should be hidden (2% to get red border)
 
       if ( scroll.blocked ) return
 
@@ -265,7 +267,7 @@ $(document).ready(function(){
       } else if ( scroll.y >= header.topHeight ){
         // set max on fast scroll
         header.container.css({
-          "transform": 'translate3d(0,-'+ targetContainerScroll +'%,0)',
+          "transform": 'translate3d(0,-'+ header.topHeightPercent +'%,0)',
         })
       }
 
