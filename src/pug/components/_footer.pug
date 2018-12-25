@@ -3,7 +3,7 @@ footer.footer
   .container
     // top
     .footer__top
-      .footer__col
+      .footer__col.footer__col--main
         .footer__logo
           img(src="img/template/logo.png" srcset="img/template/logo@2x.png 2x")
         
@@ -55,7 +55,7 @@ footer.footer
               a(href="#") Эксклюзив
               
       // links
-      .footer__col
+      .footer__col.footer__col--links(js-footer-col-margin data-target-sibling=".footer__col--menu" data-target-main=".footer__col--main")
         .footer-links
           ul.footer-links__menu
             li

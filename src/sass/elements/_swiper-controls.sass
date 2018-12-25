@@ -1,0 +1,90 @@
+
+/* swiper controls modifier
+.swiper-control-dots
+  .swiper-container-horizontal >
+    .swiper-pagination-bullets
+      width: auto
+      bottom: 30px
+      right: 30px
+      left: auto
+      .swiper-pagination-bullet
+        margin: 0 3px
+
+  .swiper-pagination-bullet
+    size: 10px
+    background: white
+    opacity: 1
+    transition: background .25s $ease
+    &:hover
+      background: rgba($colorRed, .5)
+  .swiper-pagination-bullet-active
+    background-color: $colorRed
+    &:hover
+      background-color: $colorRed
+
+/* arrows modifiers
+.swiper-control-arrows
+  .swiper-button-next, .swiper-button-prev
+    background: transparent
+    color: $colorRed
+    top: 40%
+    // transform: translateY(-50%)
+    size: auto
+    margin-top: 0
+    font-size: 0
+    padding: 20px 10px
+    transition: .25s $ease
+    .ico
+      position: relative
+      z-index: 2
+      font-size: 20px
+      transition: transform .25s $ease
+      backface-visibility: hidden
+      will-change: transform
+      transform-style: preserve-3d
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      z-index: 1
+      bottom: 0
+      top: 0
+      width: 20px
+      background: white
+      pointer-events: none
+      backface-visibility: hidden
+
+    &.swiper-button-disabled
+      opacity: 1
+      color: #F6F2F2
+
+  .swiper-button-next
+    right: -30px
+    &::after
+      right: 10px
+    &:hover
+      .ico
+        transform: translateX(-5px)
+
+  .swiper-button-prev
+    left: -30px
+    &::after
+      left: 10px
+    &:hover
+      .ico
+        transform: translateX(5px)
+
++r($sm)
+  .swiper-control-arrows
+    .swiper-button-next, .swiper-button-prev
+      padding-top: 15px
+      padding-bottom: 15px
+      &::after
+        width: 14px
+      .ico
+        font-size: 15px
+
+    .swiper-button-next
+      right: -24px
+    .swiper-button-prev
+      left: -24px

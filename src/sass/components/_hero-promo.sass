@@ -1,29 +1,23 @@
 .hero-promo
-
   &__wrapper
     display: flex
     flex-wrap: wrap
-
   &__slider, &__right
     width: 100%
     min-width: 1px
-
   &__slider
     background: #FAF8F4
     flex: 0 0 68%
     max-width: 68%
-
   &__right
     flex: 0 0 32%
     max-width: 32%
     display: flex
     flex-direction: column
-
   &__chooser
     width: 100%
     flex: 0 0 50%
     background: #F5F3F0
-
   &__chooser-refresh
     position: absolute
     z-index: 2
@@ -41,7 +35,6 @@
       .ico
         transition: transform .25s $ease
         transform: rotate(180deg)
-
   &__about
     width: 100%
     flex: 0 0 50%
@@ -59,26 +52,35 @@
       max-width: 100%
       flex-direction: row
 
++r($md)
+  .hero-promo
+    &__right
+      flex-wrap: wrap
+    &__chooser
+      margin-left: -0px
+      margin-right: 0
+      flex-basis: 100%
+    &__about
+      flex-basis: 100%
+
+// hero slide
 .hero-slide
   flex: 0 0 100%
   display: flex
   padding-top: 30px
-
   &__content
     flex: 1 1 auto
-    padding-left: 80px
-    padding-right: 30px
+    padding-left: 9.8%
+    padding-right: 3.8%
     display: flex
     flex-direction: column
     justify-content: center
     align-items: flex-start
-
   &__category
     font-size: 14px
     color: rgba($fontColor, .7)
     letter-spacing: em(2.4, 14)
     text-transform: uppercase
-
   &__title
     margin-top: 15px
     font-size: 46px
@@ -97,51 +99,74 @@
       //   right: 0
       //   height: 4px
       //   background: currentColor
-
   &__cta
     padding-top: 50px
-
   &__actions
     margin-top: 25px
     display: flex
     align-items: center
-
   &__price
 
   &__melody
     margin-left: 40px
-
-
   /* image section
   &__image
-    padding-right: 80px
+    padding-right: 9.8%
 
++r($md)
+  .hero-slide
+    padding-bottom: 80px
+    &__content
+      position: relative
+      z-index: 2
+    &__category
+      font-size: 12px
+    &__title
+      font-size: 30px
+      max-width: 250px
+    &__actions
+      flex-direction: column
+      align-items: flex-start
+    &__melody
+      margin-left: 0
+      margin-top: 30px
+    &__image
+      position: absolute
+      right: 0
+      bottom: 0
+      // max-width: 50%
 
++r($sm)
+  .hero-slide
+    &__image
+      padding-right: 20px
+      // max-height: 100%
+      // max-width: 275px
+      max-width: 70%
+
+// chooser slide
 .chooser-slide
   display: flex
   padding-top: 30px
   padding-bottom: 20px
   &__content
     flex: 1 1 auto
-    padding-left: 45px
+    padding-left: 12%
     padding-right: 0px
     margin-right: -20px
     display: flex
     flex-direction: column
     justify-content: center
     align-items: flex-start
-
   &__title
     font-size: 22px
     font-weight: 600
     line-height: 1
-
   &__actions
     margin-top: 40px
     display: flex
     align-items: center
-
   &__image
     align-self: flex-end
-    padding-right: 60px
+    padding-right: 15%
     max-width: 176px

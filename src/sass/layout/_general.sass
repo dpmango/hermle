@@ -47,8 +47,8 @@ body, html
   &__content
     // used for sticky footer (flexbox way)
     flex: 1 0 auto
-    display: flex
-    flex-direction: column
+    // display: flex
+    // flex-direction: column
     // fixed container fix
     padding-top: 210px
 
@@ -74,6 +74,12 @@ body, html
   display: none
   +r($sm)
     display: block
+
+.md-from
+  display: inline-block
+  +r($md)
+    display: none
+
 
 // REMOVE FOR PRODUCTION !
 .dev-bp-debug

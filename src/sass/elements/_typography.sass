@@ -13,6 +13,16 @@
   font-size: 22px
   font-weight: 600
 
++r($sm)
+  .h1-title
+    font-size: 25px
+
+  .h2-title
+    font-size: 22px
+
+  .h3-title
+    font-size: 20px
+
 /* paragprahps
 
 .p-big
@@ -30,6 +40,7 @@
 
 p.p-main, p.p-big, p.p-small
   margin: 1.6em 0
+
 
 .blockquote
   position: relative
@@ -50,6 +61,21 @@ p.p-main, p.p-big, p.p-small
 
 blockquote.blockquote
   margin: 1.8em 0
+
++r($sm)
+  .p-big
+    font-size: 18px
+  .p-main
+    font-size: 14px
+  .p-small
+    font-size: 13px
+
+  .blockquote
+    font-size: 16px
+    padding-left: 22px
+    &::before
+      left: 0
+
 
 .tac
   text-align: center

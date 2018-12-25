@@ -5,11 +5,11 @@ extends shared/_layout
 block content
   
   // HERO PROMO
-  .hero-promo
+  .hero-promo(data-aos="fade")
     .container
       .hero-promo__wrapper
         // main slider
-        .hero-promo__slider.swiper-container(js-swiper-hero-promo)
+        .hero-promo__slider.swiper-container.swiper-control-dots(js-swiper-hero-promo)
           .swiper-wrapper
             mixin hero_slide
               // slide
@@ -31,7 +31,7 @@ block content
                             source(src="audio/80289__hyderpotter__hourlychimebeg.mp3" type="audio/mpeg")
                   .hero-slide__cta
                     a(href="#").btn.btn-primary
-                      span Подробнее об акции
+                      span Подробнее <span class="md-from">об акции</span>
                       .btn-arrow
                         +svgMono("btn-arrow")
                 .hero-slide__image.hero-image
@@ -94,31 +94,31 @@ block content
       .benefits__wrapper
         // col
         .benefits__col
-          .benefit-card
+          .benefit-card(data-aos="fade")
             .benefit-card__icon
               +svgMono("brandenburg-gate")
             .benefit-card__name Сделано и доставлено прямо из Германии
         // col
         .benefits__col
-          .benefit-card
+          .benefit-card(data-aos="fade")
             .benefit-card__icon
               +svgMono("clock")
             .benefit-card__name Свой демонстрационный зал и склад в Москве
         // col
         .benefits__col
-          .benefit-card
+          .benefit-card(data-aos="fade")
             .benefit-card__icon
               +svgMono("stamp")
             .benefit-card__name Официальная гарантия от производителя
         // col
         .benefits__col
-          .benefit-card
+          .benefit-card(data-aos="fade")
             .benefit-card__icon
               +svgMono("graph-price")
             .benefit-card__name Самые низкие цены благодаря прямым поставкам
   
   // CATEGORIES
-  .categories
+  .categories(data-aos="fade")
     .container
       .categories__wrapper
         // col
@@ -160,12 +160,12 @@ block content
             
   
   // FEATURED
-  .featured
+  .featured(data-aos="fade")
     .container
       .featured__box
         .featured__title.h2-title.tac Популярные модели
         
-        .featured__slider.swiper-container(js-swiper-featured)
+        .featured__slider.swiper-container.swiper-control-arrows(js-swiper-featured)
           .swiper-wrapper
             mixin featuredSlide_1
               .featured__slide.swiper-slide
@@ -259,131 +259,132 @@ block content
             +svgMono("btn-arrow")
                        
   // SALE
-  .sale
+  .sale(data-aos="fade")
     .container
       .sale__title.h2-title.tac Скидки на модели
-      .sale__grid
-        .sale__col
-          // prodcut card
-          .product-card(js-link data-href="item.html")
-            .product-card__image
-              img(src="img/sale_1.png" srcset="img/sale_1@2x.png 2x")
-              .product-card__tag
-                .tag.tag--sale 
-                  span -50%
-            .product-card__content
-              .product-card__name.product-card__name--smaller Настенные часы <br/>Hermle 70509
-              .product-card__actions
-                .product-card__price.price
-                  .price__newprice 26 600 <span class="r-mark">₽</span>
-                  .price__oldprice 46 000 ₽
-                .product-card__cta.product-card__cta--no-compare
-                  a(href="#").btn.btn-primary.btn--buy
-                    .btn-cart-icon
-                      +svgMono("cart")
-                    span Купить
-        .sale__col
-          // prodcut card
-          .product-card(js-link data-href="item.html")
-            .product-card__image
-              img(src="img/sale_2.png" srcset="img/sale_2@2x.png 2x")
-              .product-card__tag
-                .tag.tag--sale 
-                  span -70%
-            .product-card__content
-              .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 70310
-              .product-card__actions
-                .product-card__price.price
-                  .price__newprice 32 600 <span class="r-mark">₽</span>
-                  .price__oldprice 49 000 ₽
-                .product-card__cta.product-card__cta--no-compare
-                  a(href="#").btn.btn-primary.btn--buy
-                    .btn-cart-icon
-                      +svgMono("cart")
-                    span Купить
-        .sale__col
-          // prodcut card
-          .product-card(js-link data-href="item.html")
-            .product-card__image
-              img(src="img/sale_3.png" srcset="img/sale_3@2x.png 2x")
-              .product-card__tag
-                .tag.tag--sale 
-                  span -30%
-            .product-card__content
-              .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 01093
-              .product-card__actions
-                .product-card__price.price
-                  .price__newprice 469 400 <span class="r-mark">₽</span>
-                  .price__oldprice 772 000 ₽
-                .product-card__cta.product-card__cta--no-compare
-                  a(href="#").btn.btn-primary.btn--buy
-                    .btn-cart-icon
-                      +svgMono("cart")
-                    span Купить      
-        .sale__col
-          // prodcut card
-          .product-card(js-link data-href="item.html")
-            .product-card__image
-              img(src="img/sale_4.png" srcset="img/sale_4@2x.png 2x")
-              .product-card__tag
-                .tag.tag--sale 
-                  span -40%
-            .product-card__content
-              .product-card__name.product-card__name--smaller Настенные часы <br/>Hermle 70509
-              .product-card__actions
-                .product-card__price.price
-                  .price__newprice 26 600 <span class="r-mark">₽</span>
-                  .price__oldprice 46 000 ₽
-                .product-card__cta.product-card__cta--no-compare
-                  a(href="#").btn.btn-primary.btn--buy
-                    .btn-cart-icon
-                      +svgMono("cart")
-                    span Купить
-        .sale__col
-          // prodcut card
-          .product-card(js-link data-href="item.html")
-            .product-card__image
-              img(src="img/sale_5.png" srcset="img/sale_5@2x.png 2x")
-              .product-card__tag
-                .tag.tag--sale 
-                  span -10%
-            .product-card__content
-              .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 70310
-              .product-card__actions
-                .product-card__price.price
-                  .price__newprice 29 600 <span class="r-mark">₽</span>
-                  .price__oldprice 45 000 ₽
-                .product-card__cta.product-card__cta--no-compare
-                  a(href="#").btn.btn-primary.btn--buy
-                    .btn-cart-icon
-                      +svgMono("cart")
-                    span Купить
-        .sale__col
-          // prodcut card
-          .product-card(js-link data-href="item.html")
-            .product-card__image
-              img(src="img/sale_6.png" srcset="img/sale_6@2x.png 2x")
-              .product-card__tag
-                .tag.tag--sale 
-                  span -35%
-            .product-card__content
-              .product-card__name.product-card__name--smaller Настольные часы <br/> Hermle 23004
-              .product-card__actions
-                .product-card__price.price
-                  .price__newprice 10 900 <span class="r-mark">₽</span>
-                  .price__oldprice 17 000 ₽
-                .product-card__cta.product-card__cta--no-compare
-                  a(href="#").btn.btn-primary.btn--buy
-                    .btn-cart-icon
-                      +svgMono("cart")
-                    span Купить     
+      .sale__grid.swiper-container(js-swiper-sale)
+        .swiper-wrapper
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="item.html")
+              .product-card__image
+                img(src="img/sale_1.png" srcset="img/sale_1@2x.png 2x")
+                .product-card__tag
+                  .tag.tag--sale 
+                    span -50%
+              .product-card__content
+                .product-card__name.product-card__name--smaller Настенные часы <br/>Hermle 70509
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 26 600 <span class="r-mark">₽</span>
+                    .price__oldprice 46 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="item.html")
+              .product-card__image
+                img(src="img/sale_2.png" srcset="img/sale_2@2x.png 2x")
+                .product-card__tag
+                  .tag.tag--sale 
+                    span -70%
+              .product-card__content
+                .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 70310
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 32 600 <span class="r-mark">₽</span>
+                    .price__oldprice 49 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="item.html")
+              .product-card__image
+                img(src="img/sale_3.png" srcset="img/sale_3@2x.png 2x")
+                .product-card__tag
+                  .tag.tag--sale 
+                    span -30%
+              .product-card__content
+                .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 01093
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 469 400 <span class="r-mark">₽</span>
+                    .price__oldprice 772 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить      
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="item.html")
+              .product-card__image
+                img(src="img/sale_4.png" srcset="img/sale_4@2x.png 2x")
+                .product-card__tag
+                  .tag.tag--sale 
+                    span -40%
+              .product-card__content
+                .product-card__name.product-card__name--smaller Настенные часы <br/>Hermle 70509
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 26 600 <span class="r-mark">₽</span>
+                    .price__oldprice 46 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="item.html")
+              .product-card__image
+                img(src="img/sale_5.png" srcset="img/sale_5@2x.png 2x")
+                .product-card__tag
+                  .tag.tag--sale 
+                    span -10%
+              .product-card__content
+                .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 70310
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 29 600 <span class="r-mark">₽</span>
+                    .price__oldprice 45 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="item.html")
+              .product-card__image
+                img(src="img/sale_6.png" srcset="img/sale_6@2x.png 2x")
+                .product-card__tag
+                  .tag.tag--sale 
+                    span -35%
+              .product-card__content
+                .product-card__name.product-card__name--smaller Настольные часы <br/> Hermle 23004
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 10 900 <span class="r-mark">₽</span>
+                    .price__oldprice 17 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить     
                                 
   // ABOUT
   .about
     .container
       .about__wrapper
         .about__left
-          .about__image
+          .about__image.reveal(js-reveal data-type="halflyEnterViewport" data-direction="ltr")
             img(src="img/aboutImage.jpg" srcset="img/aboutImage@2x.jpg 2x")
             .about__cta
               a(href="#").btn.btn-primary
@@ -392,12 +393,13 @@ block content
                   +svgMono("comment")
                 
         .about__right
-          .about__content
+          .about__content(data-aos="fade")
             .about__title
               .h1-title Интернет-магазин
               .about__title-logo
                 img(src="img/template/logo.png" srcset="img/template/logo@2x.png 2x")
-                  
+                img.about__title-logo-shade(src="img/template/logo.png" srcset="img/template/logo@2x.png 2x")
+                      
             p.h3-title Дорогие друзья!
             p.p-main Мы&nbsp;рады представить интернет-магазин интерьерных часов немецкого бренда Hermle. Вы&nbsp;найдёте большой ассортимент механических и&nbsp;кварцевых часов любого формата.
             p.p-main Продукция Hermle полностью производится в&nbsp;Германии, независимо от&nbsp;цены, ни&nbsp;один из&nbsp;этапов&nbsp;НЕ проходит на&nbsp;территории стран с&nbsp;дешёвой рабочей силой. И&nbsp;механизмы, и&nbsp;корпусы&nbsp;&mdash; всё это изготавливается в&nbsp;Швабии и&nbsp;Шварцвальде&nbsp;&mdash; регионах юга Германии.
@@ -406,7 +408,7 @@ block content
             p.p-main Мы&nbsp;рады видеть вас в&nbsp;нашем шоуруме в&nbsp;Москве, где наши сотрудники помогут с&nbsp;выбором и&nbsp;оформлением покупки.
   
   // NEWS
-  .news
+  .news(data-aos="fade")
     .container
       .news__wrapper
         .news__left
@@ -443,7 +445,7 @@ block content
                           
           
   //BANNERS
-  .banners
+  .banners(data-aos="fade")
     .container
       .banners__wrapper
         .banners__col

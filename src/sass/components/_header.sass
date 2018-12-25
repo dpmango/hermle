@@ -124,18 +124,19 @@
   &__hamburger
     display: none
     margin-left: -10px
-    
+
   /* modifiers
-  // &.is-fixed
-  //   // should be normalized to -100% scroll at this point
-  //   transform: translate3d(0,-100%,0) !important
-  //   transition: transform .25s $ease
-  //
-  // &.is-fixed-visible
-  //   transform: translate3d(0,0,0) !important
+  &.is-fixed
+    // should be normalized to -100% scroll at this point
+    transform: translate3d(0,-100%,0) !important
+    transition: transform .3s $ease
+
+  &.is-fixed-visible
+    // to be set with js
+    // transform: translate3d(0,0,0) !important
 
   &.is-transitioning
-    transition: transform .25s $ease
+    transition: transform .3s $ease
     transform: translate3d(0,-100%,0) !important
 
 +r($xl)

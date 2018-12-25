@@ -1,6 +1,6 @@
 // force scroll to top on initial load
 window.onbeforeunload = function(){
-  // window.scrollTo(0,0)
+  window.scrollTo(0,0)
 }
 
 $(window).on("load", function(){
@@ -34,6 +34,7 @@ $(document).ready(function(){
     bottomPoint: undefined, // when header ends in px (height)
     topHeight: undefined, // top container height
     topHeightPercent: undefined, // when containerTop ends in %
+    firstSectionHeight: undefined // when hide/show animation show be started
   }
 
   var browser = {
@@ -50,6 +51,7 @@ $(document).ready(function(){
 
   // some functions should be called once only
   legacySupport();
+  initaos();
   // preloaderDone();
 
   // The new container has been loaded and injected in the wrapper.
@@ -57,21 +59,23 @@ $(document).ready(function(){
     updateHeaderActiveClass();
     closeMobileMenu(fromPjax);
     menuHider();
-    getHeaderParams();
     formatTextsResponsive();
+    setFooterMargin();
 
     initSliders();
     initPopups();
     initMasks();
     initSelectric();
-    initScrollMonitor();
+    initScrollMonitor(fromPjax);
     initValidations();
   }
 
   // The transition has just finished and the old Container has been removed from the DOM.
   function pageCompleated(fromPjax){
+    getHeaderParams();
     setPageOffset();
     if ( fromPjax ){
+      AOS.refreshHard();
       window.onLoadTrigger()
     }
   }
@@ -94,6 +98,7 @@ $(document).ready(function(){
   _window.on('resize', debounce(getHeaderParams, 100));
   _window.on('resize', debounce(setPageOffset, 100));
   _window.on('resize', debounce(formatTextsResponsive, 50));
+  _window.on('resize', debounce(setFooterMargin, 50));
   _window.on('resize', debounce(setBreakpoint, 200))
 
 
@@ -127,6 +132,19 @@ $(document).ready(function(){
     } else {
       return false
     }
+  }
+
+  function initaos() {
+    AOS.init({
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: 120, // offset (in px) from the original trigger point
+      delay: 0, // values from 0 to 3000, with step 50ms
+      duration: 400, // values from 0 to 3000, with step 50ms
+      easing: 'ease-in', // default easing for AOS animations
+      once: true, // whether animation should happen only once - while scrolling down
+      mirror: false, // whether elements should animate out while scrolling past them
+      anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+    });
   }
 
   function legacySupport(){
@@ -228,6 +246,19 @@ $(document).ready(function(){
     var headerTopHeight = $headerTop.outerHeight()
     var topHeightPercent =  Math.floor((headerTopHeight / headerHeight) * 100)
 
+    // get the point when header should start disapearing of scroll direction
+    var wHeight = _window.height()
+    var firstSectionHeight = $('.page__content').children().first().outerHeight() + (headerHeight / 2)
+    if ( firstSectionHeight > wHeight ){
+      firstSectionHeight = wHeight // can't be more than 100vh
+    }
+
+    // clean up prev styles
+    if ( $('#header-styles').length > 0 ) $('#header-styles').remove()
+    var styles = ".header.is-fixed-visible{transform: translate3d(0,-"+topHeightPercent+"%,0) !important}"
+    var headerStylesheet = $("<style type='text/css' id='header-styles'>"+styles+"</style>")
+    headerStylesheet.appendTo("head");
+
     header = {
       container: $header,
       topContainer: $headerTop,
@@ -235,7 +266,8 @@ $(document).ready(function(){
       bottomContainer: $headerBottom,
       bottomPoint: headerHeight,
       topHeight: headerTopHeight,
-      topHeightPercent: topHeightPercent
+      topHeightPercent: topHeightPercent,
+      firstSectionHeight: firstSectionHeight
     }
   }
 
@@ -286,14 +318,24 @@ $(document).ready(function(){
         header.bottomContainer.css({
           "transform": 'translate3d(0,-'+ targetBottomScroll +'%,0)',
         })
+      }
 
-        // header.container.addClass(fixedClass);
-        //
-        // if ( (scroll.y > header.bottomPoint * 2) && scroll.direction === "up" ){
-        //   header.container.addClass(visibleClass);
-        // } else {
-        //   header.container.removeClass(visibleClass);
-        // }
+      if ( scroll.y > header.firstSectionHeight ){
+        // set max on fast scroll
+        header.bottomContainer.css({
+          "transform": 'translate3d(0,-'+ targetBottomScroll +'%,0)',
+        })
+
+        header.container.addClass(fixedClass);
+
+        if ( scroll.direction === "up" ){
+          header.container.addClass(visibleClass);
+        } else {
+          header.container.removeClass(visibleClass);
+        }
+      } else {
+        header.container.removeClass(fixedClass);
+        header.container.removeClass(visibleClass);
       }
 
     }
@@ -426,6 +468,32 @@ $(document).ready(function(){
         }
       }
     })
+  }
+
+
+  // FOOTER
+  function setFooterMargin(){
+    var $col = $('[js-footer-col-margin]');
+    if ( $col.length === 0 ) return
+
+    var wWdidth = getWindowWidth();
+    if ( (wWdidth <= 1200) && (wWdidth >= 600) ){
+      var dataTargetSibling = $col.data('target-sibling');
+      var dataTargetMain = $col.data('target-main');
+      var $targetSibling = $(dataTargetSibling);
+      var $targetMain = $(dataTargetMain);
+      var targetSiblingHeight = $targetSibling.outerHeight();
+      var targetMainHeight = $targetMain.outerHeight();
+
+      var heightDiff = Math.abs(targetMainHeight - targetSiblingHeight)
+
+      $col.css({
+        'margin-top': '-'+heightDiff+'px'
+      })
+    } else {
+      $col.css({'margin-top': 0})
+    }
+
   }
 
   /***************
@@ -574,9 +642,57 @@ $(document).ready(function(){
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
           },
+          breakpoints: {
+            // when window width is <= 320px
+            375: {
+
+            },
+            // when window width is <= 480px
+            576: {
+              slidesPerView: 1,
+              spaceBetween: 0
+            },
+            768: {
+              slidesPerView: 2
+            },
+            992: {
+              slidesPerView: 3
+            }
+          }
         })
       })
     }
+    new Swiper('[js-swiper-sale]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 24,
+      slidesPerView: 6,
+      normalizeSlideIndex: true,
+      freeMode: true,
+      breakpoints: {
+        // when window width is <= 320px
+        375: {
+
+        },
+        // when window width is <= 480px
+        576: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3
+        },
+        992: {
+          slidesPerView: 4
+        },
+        1200: {
+          slidesPerView: 5
+        }
+      }
+    })
 
   }
 
@@ -730,35 +846,99 @@ $(document).ready(function(){
   }
 
   ////////////
-  // SCROLLMONITOR - WOW LIKE
+  // SCROLLMONITOR
   ////////////
-  function initScrollMonitor(){
-    $('.wow').each(function(i, el){
+  function initScrollMonitor(fromPjax){
 
-      var elWatcher = scrollMonitor.create( $(el) );
+    // REVEAL animations
+    var $reveals = $('[js-reveal]');
 
-      var delay;
-      if ( getWindowWidth() <= 767 ){
-        delay = 0
-      } else {
-        delay = $(el).data('animation-delay');
-      }
+    if ( $reveals.length > 0 ){
+      var animatedClass = "is-animated";
+      var pageTransitionTimeout = 500
 
-      var animationClass = $(el).data('animation-class') || "wowFadeUp"
+      $('[js-reveal]').each(function(i, el){
+        var type = $(el).data('type') || "enterViewport"
 
-      var animationName = $(el).data('animation-name') || "wowFade"
+        // onload type
+        if ( type === "onload" ){
+          var interval = setInterval(function(){
+            // if (!preloaderActive){
+              if ( fromPjax ){
+                // wait till transition overlay is fullyanimated
+                setTimeout(function(){
+                  $(el).addClass(animatedClass);
+                  clearInterval(interval)
+                }, pageTransitionTimeout)
+              } else {
+                $(el).addClass(animatedClass);
+                clearInterval(interval)
+              }
+            // }
+          }, 100)
+          return
+        }
 
-      elWatcher.enterViewport(throttle(function() {
-        $(el).addClass(animationClass);
-        $(el).css({
-          'animation-name': animationName,
-          'animation-delay': delay,
-          'visibility': 'visible'
-        });
-      }, 100, {
-        'leading': true
-      }));
-    });
+        // halfy enter
+        if ( type === "halflyEnterViewport"){
+          var scrollListener = throttle(function(){
+            var vScrollBottom = _window.scrollTop() + _window.height();
+            var elTop = $(el).offset().top
+            var triggerPoint = elTop + ( $(el).height() / 2)
+
+            if ( vScrollBottom > triggerPoint ){
+              $(el).addClass(animatedClass);
+              window.removeEventListener('scroll', scrollListener, false); // clear debounce func
+            }
+          }, 100)
+
+          window.addEventListener('scroll', scrollListener, false);
+          return
+        }
+
+        // regular (default) type
+        var elWatcher = scrollMonitor.create( $(el) );
+        elWatcher.enterViewport(throttle(function() {
+          $(el).addClass(animatedClass);
+        }, 100, {
+          'leading': true
+        }));
+
+      });
+
+    }
+
+    // wow (regular animations)
+    // depreciated in favour of AOS
+    var $wows = $('.wow');
+    if ( $wows.length > 0 ){
+      // $('.wow').each(function(i, el){
+      //
+      //   var elWatcher = scrollMonitor.create( $(el) );
+      //
+      //   var delay;
+      //   if ( getWindowWidth() <= 767 ){
+      //     delay = 0
+      //   } else {
+      //     delay = $(el).data('animation-delay');
+      //   }
+      //
+      //   var animationClass = $(el).data('animation-class') || "wowFadeUp"
+      //
+      //   var animationName = $(el).data('animation-name') || "wowFade"
+      //
+      //   elWatcher.enterViewport(throttle(function() {
+      //     $(el).addClass(animationClass);
+      //     $(el).css({
+      //       'animation-name': animationName,
+      //       'animation-delay': delay,
+      //       'visibility': 'visible'
+      //     });
+      //   }, 100, {
+      //     'leading': true
+      //   }));
+      // });
+    }
 
   }
 

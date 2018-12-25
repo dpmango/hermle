@@ -2,6 +2,7 @@
   margin-top: 70px
   &__wrapper
     display: flex
+    flex-wrap: wrap
   &__col
     width: 100%
     min-width: 1px
@@ -10,7 +11,7 @@
     display: flex
     flex-direction: column
 
-
+/* banner
 .banner
   position: relative
   flex: 1 1 auto
@@ -18,8 +19,8 @@
   align-items: center
   &__content
     flex: 1 1 auto
-    padding-left: 45px
-    padding-right: 30px
+    padding-left: 12%
+    padding-right: 7%
     display: flex
     flex-direction: column
     justify-content: center
@@ -30,8 +31,13 @@
     margin-top: 25px
   &__image
     width: 100%
-    padding-right: 50px
+    padding-right: 13%
+    text-align: right
+    font-size: 0
   // cover by image size
+  &:not(.banner--bg-cover)
+    padding-top: 30px
+    padding-bottom: 30px
   &--bg-cover
     .banner
       &__content
@@ -40,3 +46,24 @@
         top: 0
         left: 0
         bottom: 0
+
++r($lg)
+  .banners
+    &__col
+      &:nth-child(1), &:nth-child(2)
+        flex-basis: $col6
+        max-width: $col6
+      &:nth-child(3)
+        flex-basis: $col12
+        max-width: $col12
+
++r($md)
+  .banners
+    &__col
+      &:nth-child(1), &:nth-child(2), &:nth-child(3)
+        flex-basis: $col12
+        max-width: $col12
+
++r($sm)
+  .banners
+    margin-top: 30px

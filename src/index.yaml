@@ -2,11 +2,11 @@ ProjectTitle: Hermle
 
 PageList:
 - file: homepage.html
-  ready: 60
+  ready: 75
 - file: catalog.html
   ready: 5
 - file: item.html
-  ready: 5
+  ready: 10
 - file: item-excusive.html
   ready: 5
 - file: about.html
@@ -20,4 +20,4 @@ PageList:
 - file: showroom.html
   ready: 5
 - file: ui.html
-  ready: 5
+  ready: 10

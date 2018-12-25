@@ -1,19 +1,40 @@
 .categories
-  margin: 40px 0
+  margin: 20px 0 60px
   &__wrapper
     position: relative
     display: flex
+    justify-content: center
     flex-wrap: wrap
     margin-left: -12px
     margin-right: -12px
   &__col
     width: 100%
-    flex: 0 1 16.666667%
-    max-width: 16.666667%
+    flex: 0 1 $col2
+    max-width: $col2
     min-width: 1px
-    padding: 0 12px
+    padding: 20px 12px 0
     display: flex
     flex-direction: column
+
++r($xl)
+  .categories
+    &__col
+      flex-basis: $col3
+      max-width: $col3
+
++r($lg)
+  .categories
+    &__col
+      flex-basis: $col4
+      max-width: $col4
+
++r($sm)
+  .categories
+    margin: 5px 0 35px
+    &__col
+      padding-top: 0
+      flex-basis: $col6
+      max-width: $col6
 
 .category-card
   flex: 1 0 auto
@@ -45,3 +66,14 @@
           transform: translateY(-5px)
       &__name
         color: $colorRed
+
++r($sm)
+  .category-card
+    &__name
+      margin-top: 15px
+      font-size: 14px
+
++r($mobile-s)
+  .category-card
+    &__name
+      font-size: 12px

@@ -2,6 +2,7 @@
   &__wrapper
     position: relative
     display: flex
+    flex-wrap: wrap
     padding: 22px 0
     margin-left: -12px
     margin-right: -12px
@@ -16,27 +17,39 @@
       background: $borderColor
   &__col
     width: 100%
-    flex: 0 1 25%
-    max-width: 25%
+    flex: 0 1 $col3
+    max-width: $col3
     min-width: 1px
     padding: 0 12px
     &:first-child
       .benefit-card::before
         display: none
 
++r($lg)
+  .benefits
+    &__wrapper
+      padding: 11px 0
+    &__col
+      padding: 12px
+      flex-basis: $col6
+      max-width: $col6
+      &:nth-child(odd)
+        .benefit-card::before
+          display: none
+
 .benefit-card
   position: relative
   display: flex
   align-items: center
-  padding-left: 30px
-  padding-right: 30px
+  padding-left: 20px
+  padding-right: 20px
   &::before
     display: inline-block
     content: ' '
     position: absolute
     top: 0
     bottom: 0
-    left: 0
+    left: -12px
     width: 1px
     background: $borderColor
   &__icon
