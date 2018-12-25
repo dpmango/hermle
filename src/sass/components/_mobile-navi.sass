@@ -1,45 +1,71 @@
+#mobile-navi
+  // max-width: 792px
+  margin-left: auto
+  margin-right: auto
+  .mfp-close
+    top: 30px
+    right: 30px
+    &:active
+      top: 30px
+
 .mobile-navi
-  display: none
-  position: fixed 0
-  z-index: 8
-  background: $colorBg
-  // display: flex
-  flex-direction: column
-  pointer-events: none
-  transform: translate3d(0,-100%,0)
-  transition: transform .3s $ease
+  padding: 20px
   &__wrapper
-    flex: 1 1 auto
+    padding: 30px
     display: flex
     flex-direction: column
-    padding: 50px 25px 20px
-  &__menu
-    margin-top: auto
-    padding: 20px 0
-    list-style: none
+    background: #FFFFFF
+    box-shadow: 0 10px 20px 0 rgba(13,13,13,0.06)
+  &__title
     text-align: center
+    font-size: 22px
+    font-weight: 600
+  &__menu
+    display: flex
+    flex-wrap: wrap
+    padding: 0 0 15px
+    margin: 10px -12px 20px
+    border-bottom: 1px solid $borderColor
+  &__list
+    list-style: none
+    width: 100%
+    flex: 0 0 50%
+    margin: 0
+    max-width: 50%
+    min-width: 1px
+    padding: 0 12px
     li
       display: block
-      font-size: 36px
-      margin-bottom: 30px
+      font-size: 16px
+      margin-bottom: 5px
+    a
+      display: inline-block
+      padding: 5px 0
+      transition: color .25s $ease
+      &:hover
+        color: $colorRed
+
+  &__showroom
+    flex-wrap: wrap
+    .showroom-header
+      &__name
+        flex: 1 1 100%
+        margin-bottom: 10px
+        br
+          display: none
+      &__icon
+        margin-left: 0
+
+  &__contacts
+    margin-top: 15px
+    .contacts-header
+      &__phones
+        display: block
+    .header-phone
       &:last-child
-        margin-bottom: 0
-    a
-      transition: .25s $ease
-      &:hover
-        color: $colorGray
+        margin-top: 10px
+
   &__cta
-    text-align: center
-    margin-top: auto
-    a
-      transition: .25s $ease
-      &:hover
-        color: $colorGray
+    margin: 20px 0
 
-  &.is-active
-    pointer-events: all
-    transform: translate3d(0,0,0)
-
-+r($md)
-  .mobile-navi
-    display: flex
+  &__socials

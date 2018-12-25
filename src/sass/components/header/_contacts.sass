@@ -54,10 +54,12 @@
       color: $colorRed
 
 +r(600)
-  .contacts-header
-    &__phones
-      .header-phone:last-child
-        display: none
+  // hide second contact only for header
+  .header
+    .contacts-header
+      &__phones
+        .header-phone:last-child
+          display: none
 
 +r($sm)
   .contacts-header

@@ -56,6 +56,7 @@ $(document).ready(function(){
 
   // The new container has been loaded and injected in the wrapper.
   function pageReady(fromPjax){
+    closeMobileNavi(fromPjax);
     updateHeaderActiveClass();
     closeMobileMenu(fromPjax);
     menuHider();
@@ -94,6 +95,7 @@ $(document).ready(function(){
   _window.on('scroll', getWindowScroll);
   _window.on('scroll', scrollHeader);
   // debounce/throttle examples
+  _window.on('resize', debounce(closeMobileNavi, 100));
   _window.on('resize', debounce(menuHider, 25));
   _window.on('resize', debounce(getHeaderParams, 100));
   _window.on('resize', debounce(setPageOffset, 100));
@@ -394,6 +396,27 @@ $(document).ready(function(){
     // blockScroll(isOnload);
   }
 
+
+  function closeMobileNavi(fromPjax){
+    if ( fromPjax === true ){
+      close();
+      return
+    }
+
+    // resize events
+    if ( getWindowWidth() >= 576 ){
+      close();
+    }
+
+    function close(){
+      if ( !$.magnificPopup.instance.currItem ) return
+
+      var isNaviOpened = $.magnificPopup.instance.currItem.src === "#mobile-navi"
+      if ( isNaviOpened ){
+        $.magnificPopup.close()
+      }
+    }
+  }
 
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container

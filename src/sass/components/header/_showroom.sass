@@ -28,17 +28,20 @@
       margin-bottom: 10px
 
 +r($md)
-  .showroom-header
-    &__name
-      display: none
-    &__icon
-      margin-left: 0
+  // hide icon for header only
+  .header
+    .showroom-header
+      &__name
+        display: none
+      &__icon
+        margin-left: 0
 
 +r($sm)
-  .showroom-header
-    &__icon
-      display: none
-    &__address
-      max-width: 95px
-    &__directions
-      display: none
+  .header
+    .showroom-header
+      &__icon
+        display: none
+      &__address
+        max-width: 95px
+      &__directions
+        display: none
