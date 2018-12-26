@@ -253,11 +253,11 @@ $(document).ready(function(){
     var $headerTop = $header.find(".header__top");
     var $headerCenter = $header.find(".header__center");
     var $headerBottom = $header.find(".header__bottom");
-    var headerOffsetTop = 0
-    var headerHeight = $header.outerHeight() + headerOffsetTop
-    var headerTopHeight = $headerTop.outerHeight()
+    var headerHeight = $header.outerHeight()
+    var headerTopHeight = getWindowWidth() >= 576 ? $headerTop.outerHeight() : 0
     var topHeightPercent =  Math.floor((headerTopHeight / headerHeight) * 100)
 
+    console.log(headerTopHeight, headerHeight, topHeightPercent)
     // get the point when header should start disapearing of scroll direction
     var wHeight = _window.height()
     var firstSectionHeight = $('.page__content').children().first().outerHeight() + (headerHeight / 2)
