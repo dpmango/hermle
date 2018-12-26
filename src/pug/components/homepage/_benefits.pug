@@ -1,0 +1,36 @@
+// BENEFITS
+.h-benefits
+  .container
+    .h-benefits__wrapper.swiper-container.swiper-control-arrows.swiper-control-arrows--container-fit(js-swiper-benefits)
+      .swiper-wrapper
+        // col
+        .h-benefits__col.swiper-slide
+          .benefit-card(data-aos="fade")
+            .benefit-card__icon
+              +svgMono("brandenburg-gate")
+            .benefit-card__name Сделано и доставлено прямо из Германии
+        // col
+        .h-benefits__col.swiper-slide
+          .benefit-card(data-aos="fade")
+            .benefit-card__icon
+              +svgMono("clock")
+            .benefit-card__name Свой демонстрационный зал и склад в Москве
+        // col
+        .h-benefits__col.swiper-slide
+          .benefit-card(data-aos="fade")
+            .benefit-card__icon
+              +svgMono("stamp")
+            .benefit-card__name Официальная гарантия от производителя
+        // col
+        .h-benefits__col.swiper-slide
+          .benefit-card(data-aos="fade")
+            .benefit-card__icon
+              +svgMono("graph-price")
+            .benefit-card__name Самые низкие цены благодаря прямым поставкам
+      
+      // swiper controls
+      .swiper-button-prev
+        +svgMono("btn-arrow-left")
+      .swiper-button-next
+        +svgMono("btn-arrow")
+        

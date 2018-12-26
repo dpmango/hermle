@@ -1,0 +1,82 @@
+// HERO PROMO
+.hero-promo(data-aos="fade")
+  .container
+    .hero-promo__wrapper
+      // main slider
+      .hero-promo__slider.swiper-container.swiper-control-dots(js-swiper-hero-promo)
+        .swiper-wrapper
+          mixin hero_slide
+            // slide
+            .hero-slide.swiper-slide
+              .hero-slide__content
+                .hero-slide__category Напольные часы
+                .hero-slide__title <span>Акция</span> на часы Hermle 01210
+                .hero-slide__actions
+                  .hero-slide__price.price.price--big
+                    .price__newprice 845 100 <span class="r-mark">₽</span>
+                    .price__oldprice 1 220 000 ₽
+                  .hero-slide__melody
+                    .play-btn(js-play-audio)
+                      .play-btn__icon
+                        +svgMono('play-button')
+                      span.play-btn__name Послушать <br/> мелодии
+                      .play-btn__media
+                        audio
+                          source(src="audio/80289__hyderpotter__hourlychimebeg.mp3" type="audio/mpeg")
+                .hero-slide__cta
+                  a(href="#").btn.btn-primary
+                    span Подробнее <span class="md-from">об акции</span>
+                    .btn-arrow
+                      +svgMono("btn-arrow")
+              .hero-slide__image.hero-image
+                .hero-image__main
+                  img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+                  .hero-image__ghost
+                    img(src="img/hero-slide.png" srcset="img/hero-slide@2x.png 2x")
+          
+          +hero_slide
+          +hero_slide
+          +hero_slide
+          
+        
+        // pagination
+        .swiper-pagination
+          
+          
+      // promo right  
+      .hero-promo__right
+        .hero-promo__chooser.swiper-container(js-swiper-hero-chooser)
+          .swiper-wrapper
+            mixin chooserSlide(title)
+              // slide
+              a(js-link data-href="item.html").chooser-slide.swiper-slide
+                .chooser-slide__content
+                  .chooser-slide__title= title
+                  .chooser-slide__actions
+                    .chooser-slide__price.price
+                      .price__newprice 29 800 <span class="r-mark">₽</span>
+                      .price__oldprice 48 000 ₽
+                .chooser-slide__image.hero-image.hero-image--smaller
+                  .hero-image__main
+                    img(src="img/chooser-slide.png" srcset="img/chooser-slide@2x.png 2x")
+                    .hero-image__ghost
+                      img(src="img/chooser-slide.png" srcset="img/chooser-slide@2x.png 2x")
+            
+            +chooserSlide("Настольные часы Hermle 22716")
+            +chooserSlide("Настольные часы Hermle 01093")
+            +chooserSlide("Настольные часы Hermle 70509")
+            
+            .hero-promo__chooser-refresh(js-refresh-slider)
+              +svgMono("refresh")
+        
+        // about block
+        .hero-promo__about
+          .banner
+            .banner__content
+              .banner__title Наша компания&nbsp;&mdash; официальный партнёр фабрики в&nbsp;России
+              .banner__cta
+                a(href="#").btn.btn-outline.btn-outline--small
+                  span Подробнее
+
+            .banner__image
+              img(src="img/certificate.jpg" srcset="img/certificate@2x.jpg 2x")

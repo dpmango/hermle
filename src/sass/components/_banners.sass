@@ -1,4 +1,4 @@
-.banners
+.h-banners
   margin-top: 70px
   &__wrapper
     display: flex
@@ -50,7 +50,7 @@
         bottom: 0
 
 +r($lg)
-  .banners
+  .h-banners
     &__col
       &:nth-child(1), &:nth-child(2)
         flex-basis: $col6
@@ -60,14 +60,14 @@
         max-width: $col12
 
 +r($md)
-  .banners
+  .h-banners
     &__col
       &:nth-child(1), &:nth-child(2), &:nth-child(3)
         flex-basis: $col12
         max-width: $col12
 
 +r($sm)
-  .banners
+  .h-banners
     margin-top: 30px
 
   .banner
