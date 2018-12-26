@@ -9,6 +9,10 @@ $(window).on("load", function(){
   });
 })
 
+var resize = {
+  prevResize: getWindowWidth()
+}
+
 $(document).ready(function(){
 
   //////////
@@ -103,7 +107,8 @@ $(document).ready(function(){
   // scroll/resize listeners
   _window.on('scroll', getWindowScroll);
   _window.on('scroll', scrollHeader);
-  // debounce/throttle examples
+
+  // debounce/throttle
   _window.on('resize', debounce(closeMobileNavi, 100));
   _window.on('resize', debounce(menuHider, 25));
   _window.on('resize', debounce(getHeaderParams, 100));
@@ -112,6 +117,7 @@ $(document).ready(function(){
   _window.on('resize', debounce(initResponsiveSliders, 100));
   _window.on('resize', debounce(setCollapsedMenuWrapper, 50));
   _window.on('resize', debounce(clearCollapsedMenu, 100));
+  _window.on('resize', debounce(function(){resize.prevResize = getWindowWidth()}, 100));
   _window.on('resize', debounce(setBreakpoint, 200));
 
 
@@ -495,6 +501,11 @@ $(document).ready(function(){
   function clearCollapsedMenu(){
     if ( getWindowWidth() >= 1280 ) {
       closeHeaderMenu();
+    } else {
+      console.log(hasCrossedBreakpoint(576))
+      if ( hasCrossedBreakpoint(576) ){
+        closeHeaderMenu();
+      }
     }
   }
 
@@ -721,7 +732,7 @@ $(document).ready(function(){
 
         // variables that does change per slide
         var slidesPerView = $(slider).data("slides-per-view") || 4
-        console.log(slidesPerView)
+
         new Swiper(slider, {
           wrapperClass: "swiper-wrapper",
           slideClass: "swiper-slide",
@@ -1351,4 +1362,15 @@ function animateLazy(element){
       $scaler.addClass('is-bg-hidden');
     }, fadeTimeout)
   }
+}
+
+// check if certain breakpoint was went through
+function hasCrossedBreakpoint(targetBp){
+  var prevResize = resize.prevResize
+  var curWidth = getWindowWidth();
+
+  if ( ((curWidth >= targetBp) && (prevResize <= targetBp)) || ((curWidth <= targetBp) && (prevResize >= targetBp)) ){
+    return true
+  }
+  return false
 }
