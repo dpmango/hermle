@@ -257,7 +257,6 @@ $(document).ready(function(){
     var headerTopHeight = getWindowWidth() >= 576 ? $headerTop.outerHeight() : 0
     var topHeightPercent =  Math.floor((headerTopHeight / headerHeight) * 100)
 
-    console.log(headerTopHeight, headerHeight, topHeightPercent)
     // get the point when header should start disapearing of scroll direction
     var wHeight = _window.height()
     var firstSectionHeight = $('.page__content').children().first().outerHeight() + (headerHeight / 2)
@@ -659,7 +658,7 @@ $(document).ready(function(){
 
         // variables that does change per slide
         var slidesPerView = $(slider).data("slides-per-view") || 4
-
+        console.log(slidesPerView)
         new Swiper(slider, {
           wrapperClass: "swiper-wrapper",
           slideClass: "swiper-slide",
@@ -676,10 +675,6 @@ $(document).ready(function(){
             prevEl: '.swiper-button-prev',
           },
           breakpoints: {
-            // when window width is <= 320px
-            375: {
-
-            },
             // when window width is <= 480px
             576: {
               slidesPerView: 1,
@@ -708,10 +703,6 @@ $(document).ready(function(){
       normalizeSlideIndex: true,
       freeMode: true,
       breakpoints: {
-        // when window width is <= 320px
-        375: {
-
-        },
         // when window width is <= 480px
         576: {
           slidesPerView: 2,
