@@ -1,7 +1,7 @@
 
 /* swiper controls modifier
 .swiper-control-dots
-  .swiper-container-horizontal >
+  &.swiper-container-horizontal >
     .swiper-pagination-bullets
       width: auto
       bottom: 30px
@@ -22,6 +22,12 @@
     &:hover
       background-color: $colorRed
 
++r($lg)
+  .swiper-control-dots
+    &.swiper-container-horizontal >
+      .swiper-pagination-bullets
+        right: auto
+        left: 9.8%
 /* arrows modifiers
 .swiper-control-arrows
   .swiper-button-next, .swiper-button-prev

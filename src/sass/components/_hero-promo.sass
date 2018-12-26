@@ -69,7 +69,7 @@
   display: flex
   padding-top: 30px
   &__content
-    flex: 1 1 auto
+    flex: 0 1 55%
     padding-left: 9.8%
     padding-right: 3.8%
     display: flex
@@ -89,16 +89,16 @@
     span
       position: relative
       color: $colorRed
-      text-transform: uppercase
-      // &::after
-      //   display: block
-      //   content: ''
-      //   position: absolute
-      //   bottom: 4px
-      //   left: 0
-      //   right: 0
-      //   height: 4px
-      //   background: currentColor
+      &::after
+        display: block
+        content: ''
+        position: absolute
+        z-index: -0
+        bottom: 4px
+        left: 0
+        right: .05em
+        height: 4px
+        background: currentColor
   &__cta
     padding-top: 50px
   &__actions
@@ -111,13 +111,28 @@
     margin-left: 40px
   /* image section
   &__image
+    flex: 0 1 45%
     padding-right: 9.8%
+
++r(1200)
+  .hero-slide
+    &__content
+      padding-left: 5%
+      padding-right: 0
+    &__image
+      padding-right: 5%
+
++r($lg)
+  .hero-slide
+    &__content
+      padding-left: 9.8%
 
 +r($md)
   .hero-slide
     padding-bottom: 80px
     &__content
       position: relative
+      flex-basis: 100%
       z-index: 2
     &__category
       font-size: 12px
@@ -134,7 +149,7 @@
       position: absolute
       right: 0
       bottom: 0
-      // max-width: 50%
+      max-width: 285px
 
 +r($sm)
   .hero-slide
@@ -142,7 +157,17 @@
       padding-right: 20px
       // max-height: 100%
       // max-width: 275px
-      max-width: 70%
+      max-width: 50%
+
++r(480)
+  .hero-slide
+    &__image
+      max-width: 60%
++r(414)
+  .hero-slide
+    &__image
+      max-width: 68%
+      padding-right: 10px
 
 // chooser slide
 .chooser-slide
@@ -170,3 +195,17 @@
     align-self: flex-end
     padding-right: 15%
     max-width: 176px
+
++r($md)
+  .chooser-slide
+    &__image
+      max-width: calc(120px + 15%)
++r($sm)
+  .chooser-slide
+    &__title
+      font-size: 20px
+    &__actions
+      margin-top: 20px
+    &__image
+      max-width: 125px
+      padding-right: 30px

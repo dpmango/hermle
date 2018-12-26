@@ -14,7 +14,6 @@ var resize = {
 }
 
 $(document).ready(function(){
-
   //////////
   // Global variables
   //////////
@@ -65,13 +64,13 @@ $(document).ready(function(){
   legacySupport();
   populateMobileMenu();
   initaos();
-  // preloaderDone();
+  preloaderDone();
 
   // The new container has been loaded and injected in the wrapper.
   function pageReady(fromPjax){
     closeMobileNavi(fromPjax);
+    closeHeaderMenu();
     updateHeaderActiveClass();
-    closeMobileMenu(fromPjax);
     menuHider();
     setFooterMargin();
 
@@ -96,7 +95,7 @@ $(document).ready(function(){
 
   // some plugins work best with onload triggers
   window.onLoadTrigger = function onLoad(){
-    preloaderDone();
+    // preloaderDone();
     initLazyLoad();
   }
 
@@ -112,7 +111,7 @@ $(document).ready(function(){
   _window.on('resize', debounce(closeMobileNavi, 100));
   _window.on('resize', debounce(menuHider, 25));
   _window.on('resize', debounce(getHeaderParams, 100));
-  _window.on('resize', debounce(setPageOffset, 100));
+  _window.on('resize', debounce(setPageOffset, 50));
   _window.on('resize', debounce(setFooterMargin, 50));
   _window.on('resize', debounce(initResponsiveSliders, 100));
   _window.on('resize', debounce(setCollapsedMenuWrapper, 50));
@@ -383,33 +382,6 @@ $(document).ready(function(){
     }
   }
 
-  function blockScroll(isOnload) {
-    if ( isOnload ){
-      enableScroll(isOnload)
-      return
-    }
-    // if ($('[js-hamburger]').is('.is-active')) {
-    //   disableScroll();
-    // } else {
-    //   enableScroll();
-    // }
-  };
-
-  _document.on('click', '[js-hamburger]', function(){
-    // $(this).toggleClass('is-active');
-    // $('.mobile-navi').toggleClass('is-active');
-    //
-    // blockScroll();
-  });
-
-  function closeMobileMenu(isOnload){
-    // $('[js-hamburger]').removeClass('is-active');
-    // $('.mobile-navi').removeClass('is-active');
-    //
-    // blockScroll(isOnload);
-  }
-
-
   function closeMobileNavi(fromPjax){
     if ( fromPjax === true ){
       close();
@@ -434,7 +406,7 @@ $(document).ready(function(){
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container
   function updateHeaderActiveClass(){
-    $('.header__menu li').each(function(i,val){
+    $('.header__top-menu li').each(function(i,val){
       if ( $(val).find('a').attr('href') == window.location.pathname.split('/').pop() ){
         $(val).addClass('is-active');
       } else {
@@ -502,7 +474,6 @@ $(document).ready(function(){
     if ( getWindowWidth() >= 1280 ) {
       closeHeaderMenu();
     } else {
-      console.log(hasCrossedBreakpoint(576))
       if ( hasCrossedBreakpoint(576) ){
         closeHeaderMenu();
       }
@@ -665,9 +636,9 @@ $(document).ready(function(){
       // centeredSlides: true,
       freeMode: false,
       // effect: 'fade',
-      autoplay: {
-        delay: 5000,
-      },
+      // autoplay: {
+      //   delay: 5000,
+      // },
       pagination: {
         el: '.swiper-pagination',
         type: 'bullets',
@@ -1043,38 +1014,6 @@ $(document).ready(function(){
 
     }
 
-    // wow (regular animations)
-    // depreciated in favour of AOS
-    var $wows = $('.wow');
-    if ( $wows.length > 0 ){
-      // $('.wow').each(function(i, el){
-      //
-      //   var elWatcher = scrollMonitor.create( $(el) );
-      //
-      //   var delay;
-      //   if ( getWindowWidth() <= 767 ){
-      //     delay = 0
-      //   } else {
-      //     delay = $(el).data('animation-delay');
-      //   }
-      //
-      //   var animationClass = $(el).data('animation-class') || "wowFadeUp"
-      //
-      //   var animationName = $(el).data('animation-name') || "wowFade"
-      //
-      //   elWatcher.enterViewport(throttle(function() {
-      //     $(el).addClass(animationClass);
-      //     $(el).css({
-      //       'animation-name': animationName,
-      //       'animation-delay': delay,
-      //       'visibility': 'visible'
-      //     });
-      //   }, 100, {
-      //     'leading': true
-      //   }));
-      // });
-    }
-
   }
 
   ////////////////
@@ -1128,41 +1067,41 @@ $(document).ready(function(){
     }
 
     // REGISTRATION FORM
-    $("[js-validate-registration]").validate({
-      errorPlacement: validateErrorPlacement,
-      highlight: validateHighlight,
-      unhighlight: validateUnhighlight,
-      submitHandler: validateSubmitHandler,
-      rules: {
-        last_name: "required",
-        first_name: "required",
-        email: {
-          required: true,
-          email: true
-        },
-        password: {
-          required: true,
-          minlength: 6,
-        }
-        // phone: validatePhone
-      },
-      messages: {
-        last_name: "Заполните это поле",
-        first_name: "Заполните это поле",
-        email: {
-          required: "Заполните это поле",
-          email: "Email содержит неправильный формат"
-        },
-        password: {
-          required: "Заполните это поле",
-          email: "Пароль мимимум 6 символов"
-        },
-        // phone: {
-        //     required: "Заполните это поле",
-        //     minlength: "Введите корректный телефон"
-        // }
-      }
-    });
+    // $("[js-validate-registration]").validate({
+    //   errorPlacement: validateErrorPlacement,
+    //   highlight: validateHighlight,
+    //   unhighlight: validateUnhighlight,
+    //   submitHandler: validateSubmitHandler,
+    //   rules: {
+    //     last_name: "required",
+    //     first_name: "required",
+    //     email: {
+    //       required: true,
+    //       email: true
+    //     },
+    //     password: {
+    //       required: true,
+    //       minlength: 6,
+    //     }
+    //     // phone: validatePhone
+    //   },
+    //   messages: {
+    //     last_name: "Заполните это поле",
+    //     first_name: "Заполните это поле",
+    //     email: {
+    //       required: "Заполните это поле",
+    //       email: "Email содержит неправильный формат"
+    //     },
+    //     password: {
+    //       required: "Заполните это поле",
+    //       email: "Пароль мимимум 6 символов"
+    //     },
+    //     // phone: {
+    //     //     required: "Заполните это поле",
+    //     //     minlength: "Введите корректный телефон"
+    //     // }
+    //   }
+    // });
 
     // callback form
     $("[js-validate-callback]").validate({
@@ -1182,34 +1121,6 @@ $(document).ready(function(){
         }
       }
     });
-
-
-
-    // when multiple forms share functionality
-
-    // var subscriptionValidationObject = {
-    //   errorPlacement: validateErrorPlacement,
-    //   highlight: validateHighlight,
-    //   unhighlight: validateUnhighlight,
-    //   submitHandler: validateSubmitHandler,
-    //   rules: {
-    //     email: {
-    //       required: true,
-    //       email: true
-    //     }
-    //   },
-    //   messages: {
-    //     email: {
-    //       required: "Fill this field",
-    //       email: "Email is invalid"
-    //     }
-    //   }
-    // }
-
-    // call/init
-    // $("[js-subscription-validation]").validate(subscriptionValidationObject);
-    // $("[js-subscription-validation-footer]").validate(subscriptionValidationObject);
-    // $("[js-subscription-validation-menu]").validate(subscriptionValidationObject);
   }
 
   //////////
