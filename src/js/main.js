@@ -111,7 +111,8 @@ $(document).ready(function(){
   _window.on('resize', debounce(setFooterMargin, 50));
   _window.on('resize', debounce(initResponsiveSliders, 100));
   _window.on('resize', debounce(setCollapsedMenuWrapper, 50));
-  _window.on('resize', debounce(setBreakpoint, 200))
+  _window.on('resize', debounce(clearCollapsedMenu, 100));
+  _window.on('resize', debounce(setBreakpoint, 200));
 
 
 
@@ -471,7 +472,9 @@ $(document).ready(function(){
 
   // menu common functions
   function closeHeaderMenu(){
-    $('[js-header-menu]').removeClass('is-active')
+    $('[js-header-menu]').removeClass('is-active');
+    $('.header-menu__name').removeClass('is-active');
+    $('.header__bottom').removeClass('is-menu-active');
     $('.page__content').removeClass('is-muted');
     enableScroll();
   }
@@ -489,13 +492,20 @@ $(document).ready(function(){
 
   }
 
+  function clearCollapsedMenu(){
+    if ( getWindowWidth() >= 1280 ) {
+      closeHeaderMenu();
+    }
+  }
+
   _document
     // show/hide the context
     .on('click', '[js-header-menu]', function(){
       if ( getWindowWidth() >= 1280 ) return
       var $container = $(this);
-      $container.toggleClass('is-active');
-      $('.page__content').toggleClass('is-muted');
+      $container.addClass('is-active');
+      $('.page__content').addClass('is-muted');
+      $('.header__bottom').addClass('is-menu-active');
       disableScroll();
       setCollapsedMenuWrapper();
     })
@@ -511,10 +521,14 @@ $(document).ready(function(){
       e.stopPropagation()
     })
     // link (category) click handler
-    .on('click', '[js-collapsed-menu] a', function(e){
+    .on('click', '[js-collapsed-menu] a, .header-menu__name', function(e){
+      if ( $(this).closest('.header-menu__name').length > 0 ){
+        $('.header-menu__name').removeClass('is-active')
+        $(this).closest('.header-menu__name').addClass('is-active');
+      }
+
       var $container = $('[js-collapsed-menu]');
       var $link = $(this);
-      var $li = $link.closest('li');
       var dataSubmenu = $link.data('target-submenu')
       var $targetSubmenu = $('[data-submenu="'+dataSubmenu+'"]')
 

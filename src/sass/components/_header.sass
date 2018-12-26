@@ -112,6 +112,10 @@
     border-radius: 4px
     color: white
     display: flex
+    transition: border .25s $ease
+    &.is-menu-active
+      border-bottom-left-radius: 0
+      border-bottom-right-radius: 0
   &__search
     flex: 0 0 auto
 
