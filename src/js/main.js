@@ -73,6 +73,7 @@ $(document).ready(function(){
     updateHeaderActiveClass();
     menuHider();
     setFooterMargin();
+    setBannerPaddings();
 
     initSliders();
     initResponsiveSliders();
@@ -87,6 +88,7 @@ $(document).ready(function(){
   function pageCompleated(fromPjax){
     getHeaderParams();
     setPageOffset();
+    ieFixImages(fromPjax);
     if ( fromPjax ){
       AOS.refreshHard();
       window.onLoadTrigger()
@@ -113,6 +115,7 @@ $(document).ready(function(){
   _window.on('resize', debounce(getHeaderParams, 100));
   _window.on('resize', debounce(setPageOffset, 50));
   _window.on('resize', debounce(setFooterMargin, 50));
+  _window.on('resize', debounce(setBannerPaddings, 50));
   _window.on('resize', debounce(initResponsiveSliders, 100));
   _window.on('resize', debounce(setCollapsedMenuWrapper, 50));
   _window.on('resize', debounce(clearCollapsedMenu, 100));
@@ -573,6 +576,7 @@ $(document).ready(function(){
 
   }
 
+
   /***************
   * PAGE SPECIFIC *
   ***************/
@@ -611,6 +615,46 @@ $(document).ready(function(){
     })
 
 
+  // align buttons
+  function setBannerPaddings(){
+    var $row = $('[js-align-banner-buttons]');
+    if ( $row.length === 0 ) return
+    var $cols = $('.h-banners__col');
+    if ( $cols.length === 0 ) return
+
+    var wWdidth = getWindowWidth();
+    if ( (wWdidth >= 992) ){
+      // get the distance of regular col button (padding-bottom)
+      $cols.each(function(i,col){
+        var $col = $(col);
+        var colDateType = $col.data('banner-type')
+        if ( colDateType === "regular" ){
+          var $cta = $col.find('.banner__cta')
+          var $banner = $col.find('.banner');
+          setSiblings($banner.outerHeight() - ($cta.position().top + $cta.outerHeight()) )
+        }
+      });
+    } else {
+      /// clear
+      $cols.find('.banner').attr('style', false)
+    }
+
+    function setSiblings(height){
+      $cols.each(function(i,col){
+        var $col = $(col);
+        var colDateType = $col.data('banner-type')
+        if ( colDateType === "cover" ){
+          var $banner = $col.find('.banner');
+          $banner.css({
+            'padding-top': height,
+            'padding-bottom': height
+          })
+        }
+      });
+    }
+  }
+
+
   /**********
   * PLUGINS *
   **********/
@@ -636,9 +680,9 @@ $(document).ready(function(){
       // centeredSlides: true,
       freeMode: false,
       // effect: 'fade',
-      // autoplay: {
-      //   delay: 5000,
-      // },
+      autoplay: {
+        delay: 5000,
+      },
       pagination: {
         el: '.swiper-pagination',
         type: 'bullets',
@@ -888,13 +932,48 @@ $(document).ready(function(){
       },
       afterLoad: function(element){
         if ( browser.isIe ){
-          picturefill(); // ie pollyfil
+          // ie pollyfils
+          window.fitie.init()
+          picturefill();
         }
         animateLazy(element)
       }
     });
 
   }
+
+  ////////////////////////////////
+  // fix ie images with object fit
+  ////////////////////////////////
+
+  function ieFixImages(fromPjax){
+    if ( !msieversion() ) return
+    if ( fromPjax ) window.fitie.init()
+
+    // // if ( !msieversion() ) return
+    // var $images = $('img')
+    // if ( $images.length === 0 ) return
+    //
+    // $images.each(function(i, img){
+    //   var $img = $(img);
+    //   var $parent = $img.parent();
+    //   var bg = $img.attr('src');
+    //
+    //   console.log(img, $(img).css('object-fit'))
+    //   // find smaller picture
+    //   // if ( ($img.closest('picture').length > 0) && (getWindowWidth() <= 768) ){
+    //   //   var $picture = $img.closest('picture')
+    //   //   var pictureMedia = $picture.find('source').last().attr('srcset').split(" ")[0]
+    //   //   bg = pictureMedia
+    //   // }
+    //   // $parent.css({
+    //   //   'background-image': 'url(' + bg + ')'
+    //   // })
+    //   //
+    //   // $img.css({'visibility': 'hidden'})
+    // })
+  }
+
 
   ////////////
   // UI
@@ -1267,6 +1346,10 @@ function animateLazy(element){
   var fadeTimeout = 250
   var $scaler = element.closest('.scaler')
   $scaler.addClass('is-loaded');
+
+  if ( $scaler.length === 0 ){
+    $(element).addClass('is-loaded')
+  }
 
   if ( $scaler.is('.no-bg-onload') ){
     setTimeout(function(){
