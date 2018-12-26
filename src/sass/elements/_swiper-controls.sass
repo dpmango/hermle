@@ -74,6 +74,17 @@
       .ico
         transform: translateX(5px)
 
+.swiper-control-arrows--container-fit
+  .swiper-button-next, .swiper-button-prev
+    top: 50%
+    transform: translateY(-50%)
+    &::after
+      display: none
+  .swiper-button-next
+    right: 20px
+  .swiper-button-prev
+    left: 20px
+
 +r($sm)
   .swiper-control-arrows
     .swiper-button-next, .swiper-button-prev
@@ -88,3 +99,9 @@
       right: -24px
     .swiper-button-prev
       left: -24px
+
+  .swiper-control-arrows--container-fit
+    .swiper-button-next
+      right: 10px
+    .swiper-button-prev
+      left: 10px

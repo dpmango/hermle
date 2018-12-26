@@ -43,7 +43,15 @@ $(document).ready(function(){
     isMobile: isMobile()
   }
 
-  var sliders = [] // collection of all sliders
+  var sliders = {
+    heroPromo: undefined,
+    heroChooser: undefined,
+    sale: undefined,
+    benefits: {
+      instance: undefined,
+      disableOn: 768
+    }
+  } // collection of all sliders
 
   ////////////
   // LIST OF FUNCTIONS
@@ -64,6 +72,7 @@ $(document).ready(function(){
     setFooterMargin();
 
     initSliders();
+    initResponsiveSliders();
     initPopups();
     initMasks();
     initSelectric();
@@ -101,6 +110,7 @@ $(document).ready(function(){
   _window.on('resize', debounce(setPageOffset, 100));
   _window.on('resize', debounce(formatTextsResponsive, 50));
   _window.on('resize', debounce(setFooterMargin, 50));
+  _window.on('resize', debounce(initResponsiveSliders, 100));
   _window.on('resize', debounce(setBreakpoint, 200))
 
 
@@ -568,7 +578,7 @@ $(document).ready(function(){
   function initSliders(){
 
     // HOMEPAGE SLIDERS
-    new Swiper('[js-swiper-hero-promo]', {
+    sliders.heroPromo = new Swiper('[js-swiper-hero-promo]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
@@ -592,7 +602,7 @@ $(document).ready(function(){
       }
     })
 
-    var heroChooser = new Swiper('[js-swiper-hero-chooser]', {
+    sliders.heroChooser = new Swiper('[js-swiper-hero-chooser]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
@@ -619,7 +629,7 @@ $(document).ready(function(){
         // recommended to preload some images in initial markup
 
         // TODO - ajax load
-        heroChooser.appendSlide([
+        sliders.heroChooser.appendSlide([
           `<div class="chooser-slide swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 384px; opacity: 1; transform: translate3d(-768px, 0px, 0px); transition-duration: 0ms;">
             <div class="chooser-slide__content">
               <div class="chooser-slide__title">Настольные часы Hermle 01093</div>
@@ -638,7 +648,7 @@ $(document).ready(function(){
         ]);
 
         // trigger slide next
-        heroChooser.slideNext()
+        sliders.heroChooser.slideNext()
 
       })
 
@@ -685,7 +695,8 @@ $(document).ready(function(){
         })
       })
     }
-    new Swiper('[js-swiper-sale]', {
+
+    sliders.sale = new Swiper('[js-swiper-sale]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
@@ -717,6 +728,42 @@ $(document).ready(function(){
       }
     })
 
+  }
+
+  function initResponsiveSliders(){
+    // RESPONSIVE ON/OFF sliders
+    var benefitsSwiperSelector = '[js-swiper-benefits]'
+
+    if ( $(benefitsSwiperSelector).length > 0 ){
+      if ( getWindowWidth() >= sliders.benefits.disableOn ) {
+        if ( sliders.benefits.instance !== undefined ) {
+          sliders.benefits.instance.destroy( true, true );
+          sliders.benefits.instance = undefined
+        }
+        // return
+      } else {
+        if ( sliders.benefits.instance === undefined ) {
+
+          // BENEFITS SWIPER
+          sliders.benefits.instance = new Swiper('[js-swiper-benefits]', {
+            wrapperClass: "swiper-wrapper",
+            slideClass: "swiper-slide",
+            direction: 'horizontal',
+            loop: false,
+            watchOverflow: true,
+            setWrapperSize: false,
+            spaceBetween: 0,
+            slidesPerView: 1,
+            normalizeSlideIndex: true,
+            freeMode: false,
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+          })
+        }
+      }
+    }
   }
 
   //////////
