@@ -8,7 +8,8 @@
   margin-right: 20px
   &--mobile
     display: none
-  &:last-child
+  // not last because it collapsed double there
+  &:nth-child(2)
     // extra space just in case
     margin-right: 0
   &::before
@@ -107,10 +108,22 @@
         display: none
     &__list
       display: none
-    &:last-child
+    &:nth-child(2)
       .header-menu__name
         border-top-right-radius: 4px
         border-bottom-right-radius: 4px
+
+  .header__menu.is-active
+    .header-menu--mobile
+      .header-menu__name
+        background-color: $colorRedHover
+        border-bottom-right-radius: 0
+
+    .collapsed-menu
+      opacity: 1
+      pointer-events: all
+      visibility: visible
+
 
 +r($sm)
   .header-menu
@@ -120,51 +133,89 @@
       .header-menu__name
         border-top-right-radius: 4px
         border-bottom-right-radius: 4px
+        padding-top: 20px
+        padding-bottom: 20px
 
+/* collapsed menu
+.collapsed-menu
+  position: absolute
+  z-index: 8
+  overflow: hidden
+  display: flex
+  flex-direction: column
+  top: 56px
+  left: 0
+  right: 0
+  background: $colorRedHover
+  box-shadow: 0 10px 20px 0 rgba(13,13,13,0.06)
+  border-bottom-left-radius: 4px
+  border-bottom-right-radius: 4px
+  opacity: 0
+  pointer-events: none
+  visibility: hidden
+  transition: opacity .25s $ease
+  &__wrapper
+    flex: 1 1 auto
+    position: relative
+    z-index: 1
 
-
-/* more opened
-.header-more
-  display: none
-  position: relative
-  cursor: pointer
-  &__toggler
-    display: inline-block
-    font-size: 14px
-    padding: 5px
-    color: $colorGray
-    display: flex
-    align-items: center
-    transition: color .25s $ease
-    .ico
-      font-size: 5px
-      margin-left: 6px
-      transform: translateY(.2em)
-
-  &__hidden
+  &__list
     position: absolute
-    background: white
-    left: -10px
-    // top: 40px
+    top: 0
+    left: 0
+    right: 0
     list-style: none
     margin: 0
-    padding: 10px
-    outline: 1px solid $borderColor
-
-    pointer-events: none
+    padding: 25px
+    transition: opacity .25s $ease, transform .25s $ease
+    will-change: transform, opacity
+    backface-visibility: hidden
+    // transform-style: preserve-3d
     opacity: 0
-    transform: translate(0,5px)
-    transition: .25s $ease
+    transform: translate(10px,0)
+    pointer-events: none
+    li
+      display: block
+      font-size: 16px
+      font-weight: 400
+      text-transform: none
+      letter-spacing: 0
+      margin-bottom: 10px
+      &:last-child
+        margin-bottom: 0
+    a
+      display: inline-block
+      padding: 5px
+      transition: color .25s $ease
+      &:hover
+        color: #F2C8CC
 
-  &:hover
-    .header-more
-      &__toggler
-        color: $fontColor
-      &__hidden
-        opacity: 1
-        pointer-events: all
-        transform: translate(0,0)
+    &.is-active
+      opacity: 1
+      transform: translate(0,0)
+      pointer-events: all
 
-+r(1200)
-  .header-more
-    display: inline-block
+    /* lvl modifiers
+    &--first
+      li
+        text-transform: uppercase
+        font-size: 16px
+        font-weight: 700
+        letter-spacing: em(3,16)
+    &--second
+    &--third
+      li
+
+
+  &__backlink
+    display: flex
+    align-items: center
+    font-size: 16px
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: em(3,16)
+    .ico
+      font-size: 10px
+      margin-right: 15px
+    span
+      display: inline-block

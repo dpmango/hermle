@@ -59,6 +59,7 @@ $(document).ready(function(){
 
   // some functions should be called once only
   legacySupport();
+  populateMobileMenu();
   initaos();
   // preloaderDone();
 
@@ -68,7 +69,6 @@ $(document).ready(function(){
     updateHeaderActiveClass();
     closeMobileMenu(fromPjax);
     menuHider();
-    formatTextsResponsive();
     setFooterMargin();
 
     initSliders();
@@ -108,9 +108,9 @@ $(document).ready(function(){
   _window.on('resize', debounce(menuHider, 25));
   _window.on('resize', debounce(getHeaderParams, 100));
   _window.on('resize', debounce(setPageOffset, 100));
-  _window.on('resize', debounce(formatTextsResponsive, 50));
   _window.on('resize', debounce(setFooterMargin, 50));
   _window.on('resize', debounce(initResponsiveSliders, 100));
+  _window.on('resize', debounce(setCollapsedMenuWrapper, 50));
   _window.on('resize', debounce(setBreakpoint, 200))
 
 
@@ -304,9 +304,6 @@ $(document).ready(function(){
         header.container.css({
           "transform": 'translate3d(0,'+ reverseNormalized +'%,0)',
         })
-
-        // header.container.removeClass(fixedClass);
-
       } else if ( scroll.y >= header.topHeight ){
         // set max on fast scroll
         header.container.css({
@@ -358,10 +355,10 @@ $(document).ready(function(){
   // disable / enable scroll by setting negative margin to page-content eq. to prev. scroll
   // this methods helps to prevent page-jumping on setting body height to 100%
   function disableScroll() {
-    scroll.lastForBodyLock = _window.scrollTop();
+    scroll.lastForBodyLock = _window.scrollTop() - header.bottomPoint;
     scroll.blocked = true
     $('.page__content').css({
-      'margin-top': '-' + scroll.lastForBodyLock + 'px'
+      'margin-top': scroll.lastForBodyLock * -1 + 'px'
     });
     $('body').addClass('body-lock');
   }
@@ -370,12 +367,12 @@ $(document).ready(function(){
     scroll.blocked = false
     scroll.direction = "up" // keeps header
     $('.page__content').css({
-      'margin-top': '-' + 0 + 'px'
+      'margin-top': (0 - header.bottomPoint) * -1 + 'px'
     });
     $('body').removeClass('body-lock');
     if ( !isOnload ){
       _window.scrollTop(scroll.lastForBodyLock)
-      scroll.lastForBodyLock = 0;
+      scroll.lastForBodyLock = 0 - header.bottomPoint;
     }
   }
 
@@ -452,6 +449,82 @@ $(document).ready(function(){
         $container.find("input").focus()
       }
     })
+    // close on outside click
+    .on('click', function(e){
+      var searchSelector = '[js-header-search]'
+      if ( $(searchSelector).is('.is-active') ){
+        if ( $(e.target).closest(searchSelector).length === 0 ) {
+          $(searchSelector).removeClass('is-active')
+        }
+      }
+    })
+
+  /////////////
+  // HEADER MENU
+  /////////////
+
+  // TODO - populate from .header-menu's ???
+  function populateMobileMenu(){
+    var $container = $('[js-populate-menu]')
+    if ( $container.length === 0 ) return
+  }
+
+  // menu common functions
+  function closeHeaderMenu(){
+    $('[js-header-menu]').removeClass('is-active')
+    $('.page__content').removeClass('is-muted');
+    enableScroll();
+  }
+
+  // set height because all menus are positioned absolute
+  function setCollapsedMenuWrapper(){
+    if ( getWindowWidth() >= 1280 ) return
+
+    var $container = $('[js-collapsed-menu]');
+    var $activeMenu = $container.find('ul.is-active');
+    var targetHeight = $activeMenu.outerHeight();
+    $container.css({
+      'height': targetHeight
+    })
+
+  }
+
+  _document
+    // show/hide the context
+    .on('click', '[js-header-menu]', function(){
+      if ( getWindowWidth() >= 1280 ) return
+      var $container = $(this);
+      $container.toggleClass('is-active');
+      $('.page__content').toggleClass('is-muted');
+      disableScroll();
+      setCollapsedMenuWrapper();
+    })
+    // close on outside click
+    .on('click', function(e){
+      if ( getWindowWidth() >= 1280 ) return
+      if ( $(e.target).closest('[js-header-menu]').length === 0 ) {
+        closeHeaderMenu();
+      }
+    })
+    // prevent trigger for '[js-header-menu]' open/close toggler
+    .on('click', '[js-collapsed-menu]', function(e){
+      e.stopPropagation()
+    })
+    // link (category) click handler
+    .on('click', '[js-collapsed-menu] a', function(e){
+      var $container = $('[js-collapsed-menu]');
+      var $link = $(this);
+      var $li = $link.closest('li');
+      var dataSubmenu = $link.data('target-submenu')
+      var $targetSubmenu = $('[data-submenu="'+dataSubmenu+'"]')
+
+      if ( $targetSubmenu.length === 0 ) return
+      $targetSubmenu.siblings().removeClass('is-active');
+      $targetSubmenu.addClass('is-active');
+
+      setCollapsedMenuWrapper();
+    })
+
 
   /////////////
   // MENU HIDER
@@ -474,30 +547,6 @@ $(document).ready(function(){
         $li.appendTo($menuTarget)
       } else {
         $li.insertBefore($menu.find('.header-more'))
-      }
-    })
-  }
-
-  // clean symbols on resize(responsive)
-  function formatTextsResponsive(){
-    var wWidth = getWindowWidth();
-    var $elements = $('[js-clear-last-sybmol]');
-    if ( $elements.length === 0 ) return
-
-    $elements.each(function(i, el){
-      var $el = $(el);
-      var dataOn = $el.data('on');
-      var dataSymbol = $el.data('symbol');
-      var $elHtml = $el.html()
-      var symbolIndex = $elHtml.indexOf(dataSymbol)
-
-      if ( wWidth <= dataOn ){
-        if ( symbolIndex === -1) return
-        $el.html($elHtml.substring(0,symbolIndex))
-      } else {
-        if ( symbolIndex === -1){
-          $el.html($elHtml + dataSymbol)
-        }
       }
     })
   }
@@ -539,7 +588,7 @@ $(document).ready(function(){
     var $page = $('.page__content');
 
     $page.css({
-      'padding-top': headerHeight
+      'margin-top': headerHeight
     })
   }
 
