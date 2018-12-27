@@ -1,0 +1,112 @@
+.h-benefits
+  &__wrapper
+    position: relative
+    display: flex
+    flex-wrap: wrap
+    padding: 22px 0
+    margin-left: -12px
+    margin-right: -12px
+    .swiper-wrapper
+      flex-wrap: wrap
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      bottom: 0
+      left: 12px
+      right: 12px
+      height: 1px
+      background: $borderColor
+  &__col
+    width: 100%
+    flex: 0 1 $col3
+    max-width: $col3
+    min-width: 1px
+    padding: 0 12px
+    &:first-child
+      .benefit-card::before
+        display: none
+
+  .swiper-control-arrows
+    .swiper-button-next, .swiper-button-prev
+      display: none
+
+
++r($lg)
+  .h-benefits
+    &__wrapper
+      padding: 11px 0
+    &__col
+      padding: 12px
+      flex-basis: $col6
+      max-width: $col6
+      &:nth-child(odd)
+        .benefit-card::before
+          display: none
+
++r($md)
+  .h-benefits
+    // swiper enabled
+    &__wrapper
+      margin-left: -30px
+      margin-right: -30px
+      &::after
+        left: 30px
+        right: 30px
+    .swiper-wrapper
+      flex-wrap: nowrap
+    &__col
+      flex: 0 0 $col12
+      max-width: $col12
+      padding-left: 0
+      padding-right: 0
+
+    .swiper-control-arrows
+      .swiper-button-next, .swiper-button-prev
+        display: block
+
++r($sm)
+  .h-benefits
+    &__wrapper
+      margin-left: -20px
+      margin-right: -20px
+      &::after
+        right: 20px
+        left: 20px
+
+.benefit-card
+  position: relative
+  display: flex
+  align-items: center
+  padding-left: 20px
+  padding-right: 20px
+  &::before
+    display: inline-block
+    content: ' '
+    position: absolute
+    top: 0
+    bottom: 0
+    left: -12px
+    width: 1px
+    background: $borderColor
+  &__icon
+    font-size: 0
+    color: $colorGray
+    .ico
+      font-size: 40px
+  &__name
+    color: $fontColorGray
+    font-size: 14px
+    margin-left: 1em
+
++r($md)
+  .benefit-card
+    padding-left: 85px
+    padding-right: 85px
+    &::before
+      display: none
+
++r($sm)
+  .benefit-card
+    padding-left: 60px
+    padding-right: 60px

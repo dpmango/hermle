@@ -1,0 +1,46 @@
+
+/* more opened
+.header-more
+  display: none
+  position: relative
+  cursor: pointer
+  &__toggler
+    display: inline-block
+    font-size: 14px
+    padding: 5px
+    color: $colorGray
+    display: flex
+    align-items: center
+    transition: color .25s $ease
+    .ico
+      font-size: 5px
+      margin-left: 6px
+      transform: translateY(.2em)
+
+  &__hidden
+    position: absolute
+    background: white
+    left: -10px
+    // top: 40px
+    list-style: none
+    margin: 0
+    padding: 10px
+    outline: 1px solid $borderColor
+
+    pointer-events: none
+    opacity: 0
+    transform: translate(0,5px)
+    transition: .25s $ease
+
+  &:hover
+    .header-more
+      &__toggler
+        color: $fontColor
+      &__hidden
+        opacity: 1
+        pointer-events: all
+        transform: translate(0,0)
+
++r(1200)
+  .header-more
+    display: inline-block

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="9px" height="12px" viewBox="0 0 9 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>play-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Мелодии/Плей" transform="translate(-12.000000, -9.000000)" fill="#AA2935" fill-rule="nonzero">
+            <g id="play-button">
+                <path d="M20.7348853,14.4954285 L12.9404137,9.10208285 C12.6980985,8.92113727 12.0519247,8.92113727 12,9.60406091 L12,20.3907521 C12.0576941,21.0736757 12.7154067,21.0853496 12.9404137,20.8927302 L20.7348853,15.4993846 C20.9368146,15.3768085 21.2137462,14.8748305 20.7348853,14.4954285 Z M13.2058065,19.2408721 L13.2058065,10.7539409 L19.3271495,14.9974065 L13.2058065,19.2408721 Z" id="play-icon"></path>
+            </g>
+        </g>
+    </g>
+</svg>

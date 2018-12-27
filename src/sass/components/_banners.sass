@@ -1,7 +1,8 @@
-.banners
+.h-banners
   margin-top: 70px
   &__wrapper
     display: flex
+    flex-wrap: wrap
   &__col
     width: 100%
     min-width: 1px
@@ -10,33 +11,132 @@
     display: flex
     flex-direction: column
 
-
+/* banner
 .banner
   position: relative
+  overflow: hidden
   flex: 1 1 auto
   display: flex
   align-items: center
+  padding: 30px 0
   &__content
     flex: 1 1 auto
-    padding-left: 45px
-    padding-right: 30px
+    padding-left: 12%
+    padding-right: 7%
     display: flex
     flex-direction: column
     justify-content: center
     align-items: flex-start
   &__title
     font-size: 16px
+
+  &__title-limit
+    max-width: 140px
   &__cta
-    margin-top: 25px
+    padding-top: 25px
   &__image
     width: 100%
-    padding-right: 50px
+    padding-right: 13%
+    text-align: right
+    font-size: 0
+    img
+      max-width: 100%
   // cover by image size
+  // &:not(.banner--bg-cover)
+  //   padding-top: 30px
+  //   padding-bottom: 30px
   &--bg-cover
+    align-items: stretch
     .banner
       &__content
-        position: absolute
+        position: relative
         z-index: 2
+        justify-content: flex-start
+      &__cta
+        margin-top: auto
+        padding-top: 0
+      &__image
+        position: absolute
+        z-index: 1
         top: 0
         left: 0
         bottom: 0
+        padding-right: 0
+        display: flex
+        flex-direction: column
+        img, picture
+          object-fit: cover
+          height: 100%
+          width: 100%
+
+// when banners are grouped - buttons should be aligned
+.h-banners
+  .banner
+    &__content
+
+
++r($lg)
+  .h-banners
+    &__col
+      &:nth-child(1), &:nth-child(2)
+        flex-basis: $col6
+        max-width: $col6
+      &:nth-child(3)
+        flex-basis: $col12
+        max-width: $col12
+
+    .banner
+      &--line-lg
+        min-height: 170px
+        .banner
+          &__content
+            flex-direction: row
+            align-items: center
+            padding-left: 6%
+            .h3-title
+              max-width: 200px
+              br
+                display: none
+          &__image
+
+          &__cta
+            margin-top: 0
+            margin-left: 15%
+
++r($md)
+  .h-banners
+    &__col
+      &:nth-child(1), &:nth-child(2), &:nth-child(3)
+        flex-basis: $col12
+        max-width: $col12
+
+    // reset line-bg back to original
+    .banner
+      &--line-lg
+        min-height: 175px
+        .banner
+          &__content
+            flex-direction: column
+            align-items: flex-start
+            padding-left: 12%
+            .h3-title
+              max-width: auto
+              br
+                display: block
+          &__image
+
+          &__cta
+            margin-top: auto
+            margin-left: 0
+
++r($sm)
+  .h-banners
+    margin-top: 30px
+
+  .banner
+    &__title
+      font-size: 14px
+    &__cta
+      padding-top: 15px
+    &__image
+      padding-right: 25px

@@ -1,0 +1,115 @@
+.h-about
+  margin: 70px 0
+  &__wrapper
+    display: flex
+    flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
+  &__left, &__right
+    width: 100%
+    min-width: 1px
+    padding-left: 12px
+    padding-right: 12px
+    display: flex
+    flex-direction: column
+  &__left
+    flex: 0 0 $col4
+    max-width: $col4
+  &__right
+    flex: 0 0 $col8
+    max-width: $col8
+  &__image
+    background: #FAF8F4
+    flex: 1 1 auto
+    position: relative
+    overflow: hidden
+    z-index: 1
+    font-size: 0
+    img
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+  &__cta
+    position: absolute
+    left: 50%
+    width: 100%
+    max-width: 240px
+    bottom: 20px
+    transform: translateX(-50%)
+
+  &__content
+    background: #FAF8F4
+    margin-left: -24px
+    margin-top: auto
+    margin-bottom: auto
+    padding: 60px 8.5% 45px
+  &__title
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    margin-bottom: 25px
+    .h1-title
+      position: relative
+      z-index: 2
+  &__title-logo
+    position: relative
+    font-size: 0
+    max-width: 140px
+    margin-left: 10px
+    img
+      max-width: 100%
+      &:first-child
+        position: relative
+        z-index: 2
+
+    &-shade
+      position: absolute
+      z-index: 1
+      top: 0
+      left: 0
+      transform: translateX(-20px)
+      filter: brightness(0) invert(1)
+
++r($lg)
+  .h-about
+    &__wrapper
+
+    &__left
+      order: 2
+      flex-basis: $col12
+      max-width: $col12
+    &__right
+      order: 1
+      flex-basis: $col12
+      max-width: $col12
+    &__image
+      // margin-left: auto
+      // margin-right: auto
+      padding: 10px 8.5% 60px
+      img
+        display: none
+
+    &__cta
+      position: static
+      transform: none
+
+    &__content
+      margin-left: 0
+      padding: 60px 8.5% 0px
+
++r($sm)
+  .h-about
+    margin: 30px 0
+    &__title
+      flex-direction: column
+      justify-content: center
+    &__title-logo
+      margin-left: 0
+      margin-top: 12px
+    &__content
+      padding-top: 30px
+    &__image
+      padding-bottom: 35px

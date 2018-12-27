@@ -1,0 +1,68 @@
+
+// contacts
+.contacts-header
+  &__messengers
+    display: flex
+    align-items: center
+    font-size: 12px
+    padding-left: 16px
+    a
+      display: inline-block
+      margin-right: 5px
+      transition: opacity .25s $ease
+      will-change: opacity
+      &:hover
+        opacity: .75
+  &__whatsapp
+    color: #3DBD2A
+  &__viber
+    color: #7D3DAF
+  &__telegram
+    color: #2FA7DB
+
+  &__phones
+    display: flex
+
+// phone
+.header-phone
+  display: flex
+  margin-top: 5px
+  margin-right: 25px
+  &:last-child
+    margin-right: 0
+  &__icon
+    padding-top: 5px
+    flex: 0 0 auto
+    font-size: 0
+    color: $colorRed
+    .ico
+      font-size: 12px
+  &__content
+    margin-left: 8px
+
+  &__tel
+    font-size: 22px
+    font-weight: 600
+    line-height: 1
+    transition: color .25s $ease
+
+  &__description
+    font-size: 12px
+    color: #8F8F8F
+  &:hover
+    .header-phone__tel
+      color: $colorRed
+
++r(600)
+  // hide second contact only for header
+  .header
+    .contacts-header
+      &__phones
+        .header-phone:last-child
+          display: none
+
++r($sm)
+  .contacts-header
+
+  .header-phone
+    margin-right: 0

@@ -1,0 +1,174 @@
+// FOOTER
+.footer
+  &__top
+    padding: 40px 0
+    margin: 0 -12px
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-end
+
+  // main col
+  &__col
+    flex: 0 1 $col4
+    padding: 0 12px
+    &--main
+    &--menu
+      display: flex
+    &--links
+
+  &__logo
+    max-width: 130px
+    font-size: 0
+    img
+      max-width: 100%
+
+  &__contacts
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-end
+    margin-left: -12px
+    margin-right: -12px
+  &__contacts-col
+    width: 100%
+    min-width: 1px
+    flex: 0 0 $col6
+    max-width: $col6
+    padding: 0 12px
+
+  &__bottom
+    border-top: 1px solid $borderColor
+    padding: 30px 0
+    display: flex
+    align-items: center
+
+  &__copyright
+    margin: 0
+
+  &__socials
+    margin-left: auto
+
++r(1200)
+  .footer
+    &__top
+      align-items: flex-start
+    &__col
+      &--menu, &--links
+        flex-basis: $col8
+        max-width: $col8
+      &--menu
+        padding-top: .5em
+      &--links
+        margin-left: $col4
+    &__contacts-col
+      flex-basis: $col12
+      max-width: $col12
+    .contacts-header
+      margin-top: 20px
+    .showroom-header
+      margin-top: 20px
+
++r(600)
+  .footer
+    &__col
+      &--main
+        display: none
+      &--menu, &--links
+        flex-basis: $col12
+        max-width: $col12
+      &--links
+        margin-left: 0
+    &__bottom
+      display: none
+
+/* footer menu
+.footer-menu
+  flex: 0 1 50%
+  font-size: 14px
+  padding-right: 12px
+  &:last-child
+    padding-left: 12px
+    padding-right: 0
+  &__name
+    margin-bottom: 8px
+    color: rgba($fontColor, .6)
+  &__list
+    list-style: none
+    margin: 0 -5px -.4em
+    padding: 0
+    li
+      display: block
+      text-transform: uppercase
+
+      letter-spacing: em(2.62, 14)
+      font-weight: 700
+      margin-bottom: 3px
+      &:last-child
+        margin-bottom: 0
+    a
+      display: inline-block
+      padding: 5px
+      transition: color .25s $ease
+      &:hover
+        color: $colorRed
+
+/* footer links
+.footer-links
+  position: relative
+  display: flex
+  justify-content: space-around
+  padding-left: 30px
+  padding-right: 30px
+  margin-left: -12px
+  margin-right: -12px
+  &::before
+    display: inline-block
+    content: ' '
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 12px
+    width: 1px
+    background: $borderColor
+
+  &__menu
+    flex: 0 1 33.33%
+    list-style: none
+    font-size: 14px
+    margin: 0px 0px -.5em
+    padding: 0 12px
+    li
+      display: block
+      margin-bottom: 4px
+      margin-left: -5px
+      margin-right: -5px
+      &:last-child
+        margin-bottom: 0
+    a
+      display: inline-block
+      padding: 5px
+      transition: color .25s $ease
+      &:hover
+        color: $colorRed
+
++r(1200)
+  .footer-links
+    padding-left: 0
+    padding-right: 0
+    padding-top: 20px
+    margin-top: 20px
+    padding-right: 26%
+    &::before
+      bottom: auto
+      right: 12px
+      width: auto
+      height: 1px
+
++r($md)
+  .footer-links
+    padding-right: 20%
+
++r(600)
+  .footer-links
+    padding-right: 0
+    &__menu
+      font-size: 12px

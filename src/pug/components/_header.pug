@@ -15,7 +15,7 @@ header.header
         li(data-hide-on="670")
           a(href="#") Новости
         li(data-hide-on="767")
-          a(href="#") Контакты
+          a(href="contacts.html") Контакты
         li(data-hide-on="992")
           a(href="#") Отслеживание заказа
         li(data-hide-on="1200")
@@ -27,11 +27,11 @@ header.header
           ul.header-more__hidden(js-menu-hider-target)
             
       .header__socials.social-media
-        a(href="#").social-media__instagram
+        a(href="#" target="_blank").social-media__instagram
           +svgMono("social-instagram")
-        a(href="#").social-media__facebook
+        a(href="#" target="_blank").social-media__facebook
           +svgMono("social-facebook")
-        a(href="#").social-media__youtube
+        a(href="#" target="_blank").social-media__youtube
           +svgMono("social-youtube")
     
     // center
@@ -84,7 +84,6 @@ header.header
           span 2
         +svgMono('cart')
 
-    
     // bottom
     .header__bottom
       form(action="#" method="POST").header__search.header-search(js-header-search)
@@ -95,71 +94,73 @@ header.header
         .header-search__cta
           button(type="submit").btn.btn-primary.btn-primary--small
             span Найти
-      .header__menu
+      .header__menu(js-header-menu)
         .header-menu.header-menu--mobile
           .header-menu__name Каталог
         // menu group
         .header-menu
-          .header-menu__name(js-clear-last-sybmol data-on="1280" data-symbol=":") Часы <br/> по форме:
+          .header-menu__name(data-target-submenu="1") Часы <br/> по форме<span class="xl-from">:</span>
           ul.header-menu__list
             li
-              a(href="#") Напольные
+              a(href="catalog.html") Напольные
               ul
                 li
-                  a(href="#") Напольные с боем
+                  a(href="catalog.html") Напольные с боем
                 li
-                  a(href="#") Напольные с боем и мелодией
+                  a(href="catalog.html") Напольные с боем и мелодией
                 li
-                  a(href="#") Напольные с инкрустацией
+                  a(href="catalog.html") Напольные с инкрустацией
                 li
-                  a(href="#") Напольные с маятником
+                  a(href="catalog.html") Напольные с маятником
             li
-              a(href="#") Настенные
+              a(href="catalog.html") Настенные
               ul
                 li
-                  a(href="#") Настенные с боем
+                  a(href="catalog.html") Настенные с боем
                 li
-                  a(href="#") Настенные с боем и мелодией
+                  a(href="catalog.html") Настенные с боем и мелодией
                 li
-                  a(href="#") Настенные с маятником
+                  a(href="catalog.html") Настенные с маятником
             li
-              a(href="#") Настольные
+              a(href="catalog.html") Настольные
               ul
                 li
-                  a(href="#") Настольные с боем и мелодией
+                  a(href="catalog.html") Настольные с боем и мелодией
                 li
-                  a(href="#") Настольные с инкрустацией
+                  a(href="catalog.html") Настольные с инкрустацией
                 li
-                  a(href="#") Настольные с маятником
+                  a(href="catalog.html") Настольные с маятником
         // menu group
         .header-menu
-          .header-menu__name(js-clear-last-sybmol data-on="1280" data-symbol=":") Часы <br/> по стилю:
+          .header-menu__name(data-target-submenu="2") Часы <br/> по стилю<span class="xl-from">:</span>
           ul.header-menu__list
             li
-              a(href="#") Классика
+              a(href="catalog.html") Классика
               ul
                 li
-                  a(href="#") Классика 1
+                  a(href="catalog.html") Классика 1
                 li
-                  a(href="#") Классика 2
+                  a(href="catalog.html") Классика 2
                 li
-                  a(href="#") Классика 3
+                  a(href="catalog.html") Классика 3
             li
-              a(href="#") Модерн
+              a(href="catalog.html") Модерн
               ul
                 li
-                  a(href="#") Модерн 1
+                  a(href="catalog.html") Модерн 1
                 li
-                  a(href="#") Модерн 2
+                  a(href="catalog.html") Модерн 2
                 li
-                  a(href="#") Модерн 3
+                  a(href="catalog.html") Модерн 3
             li
-              a(href="#") Эксклюзив
+              a(href="catalog.html") Эксклюзив
               ul
                 li
-                  a(href="#") Эксклюзив 1
+                  a(href="catalog.html") Эксклюзив 1
                 li
-                  a(href="#") Эксклюзив 2
+                  a(href="catalog.html") Эксклюзив 2
                 li
-                  a(href="#") Эксклюзив 3
-  
+                  a(href="catalog.html") Эксклюзив 3
+                  
+
+        include header/_collapsed-menu

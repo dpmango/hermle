@@ -39,7 +39,12 @@ meta(name='twitter:url', content='https://projectname.surge.sh')
 
 // remove for production
 meta(name="robots" content="noindex")
-    
+
+// preloader styles
+style.
+  #barba-wrapper{opacity: 0; -webkit-transition: opacity .35s ease-in-out; -o-transition: opacity .35s ease-in-out; transition: opacity .35s ease-in-out}
+  #barba-wrapper.is-preloaded{opacity: 1}
+  
 link(rel="stylesheet" media="all" href="css/app.css")
   
 <!--[if lt IE 9]>

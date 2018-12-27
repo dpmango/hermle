@@ -1,0 +1,80 @@
+.categories
+  margin: 20px 0 60px
+  &__wrapper
+    position: relative
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
+  &__col
+    width: 100%
+    flex: 0 1 $col2
+    max-width: $col2
+    min-width: 1px
+    padding: 20px 12px 0
+    display: flex
+    flex-direction: column
+
++r(1200)
+  .categories
+    &__col
+      flex-basis: $col3
+      max-width: $col3
+
++r($lg)
+  .categories
+    &__col
+      flex-basis: $col4
+      max-width: $col4
+
++r($sm)
+  .categories
+    margin: 5px 0 35px
+    &__col
+      padding-top: 0
+      flex-basis: $col6
+      max-width: $col6
+
+.category-card
+  flex: 1 0 auto
+  display: flex
+  flex-direction: column
+  &__image
+    position: relative
+    z-index: 1
+    padding-top: 20px
+    overflow: hidden
+    margin-top: auto
+    font-size: 0
+    text-align: center
+    img
+      max-width: 100%
+      transition: transform .4s $ease
+  &__name
+    margin-top: 25px
+    text-transform: uppercase
+    text-align: center
+    font-size: 16px
+    font-weight: 700
+    letter-spacing: em(3, 16)
+    transition: .25s $ease
+  &:hover
+    .category-card
+      &__image
+        img
+          transform: translateY(-5px)
+      &__name
+        color: $colorRed
+
++r($sm)
+  .category-card
+    &__name
+      margin-top: 15px
+      font-size: 14px
+
+
++r($mobile-s)
+  .category-card
+    &__name
+      font-size: 12px

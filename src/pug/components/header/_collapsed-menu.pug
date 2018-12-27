@@ -1,0 +1,109 @@
+// COLLAPSED MENU
+.collapsed-menu(js-populate-menu js-collapsed-menu)
+  .collapsed-menu__wrapper
+    // first lvl
+    ul.collapsed-menu__list.collapsed-menu__list--first(data-submenu="0").is-active
+      li
+        a(href="#" data-target-submenu="1") Часы по форме
+      li
+        a(href="#" data-target-submenu="2") Часы по стилю
+    
+    // second lvl
+    ul.collapsed-menu__list.collapsed-menu__list--second(data-submenu="1")
+      li
+        a.collapsed-menu__backlink(href="#" data-target-submenu="0")
+          +svgMono("arrow-left")
+          span Часы по форме
+      li
+        a(href="#" data-target-submenu="3") Напольные
+      li
+        a(href="#" data-target-submenu="4") Настенные
+      li
+        a(href="#" data-target-submenu="5") Настольные
+    ul.collapsed-menu__list.collapsed-menu__list--second(data-submenu="2")
+      li
+        a.collapsed-menu__backlink(href="#" data-target-submenu="0")
+          +svgMono("arrow-left")
+          span Часы по стилю
+      li
+        a(href="#" data-target-submenu="6") Классика
+      li
+        a(href="#" data-target-submenu="7") Модерн
+      li
+        a(href="#" data-target-submenu="8") Эксклюзив
+    
+    // third lvl
+    ul.collapsed-menu__list.collapsed-menu__list--third(data-submenu="3")
+      li
+        a.collapsed-menu__backlink(href="#" data-target-submenu="1")
+          +svgMono("arrow-left")
+          span Напольные
+      li
+        a(href="catalog.html") Напольные с боем
+      li
+        a(href="catalog.html") Напольные с боем и мелодией
+      li
+        a(href="catalog.html") Напольные с инкрустацией
+      li
+        a(href="catalog.html") Напольные с маятником
+    // next
+    ul.collapsed-menu__list.collapsed-menu__list--third(data-submenu="4")
+      li
+        a.collapsed-menu__backlink(href="#" data-target-submenu="1")
+          +svgMono("arrow-left")
+          span Настенные
+      li
+        a(href="catalog.html") Настенные с боем
+      li
+        a(href="catalog.html") Настенные с боем и мелодией
+      li
+        a(href="catalog.html") Настенные с маятником
+    // next
+    ul.collapsed-menu__list.collapsed-menu__list--third(data-submenu="5")
+      li
+        a.collapsed-menu__backlink(href="#" data-target-submenu="1")
+          +svgMono("arrow-left")
+          span Настольные
+      li
+        a(href="catalog.html") Настольные с боем и мелодией
+      li
+        a(href="catalog.html") Настольные с инкрустацией
+      li
+        a(href="catalog.html") Настольные с маятником
+        
+    // next
+    ul.collapsed-menu__list.collapsed-menu__list--third(data-submenu="6")
+      li
+        a.collapsed-menu__backlink(href="#" data-target-submenu="2")
+          +svgMono("arrow-left")
+          span Классика
+      li
+        a(href="catalog.html") Классика 1
+      li
+        a(href="catalog.html") Классика 2
+      li
+        a(href="catalog.html") Классика 3
+    // next
+    ul.collapsed-menu__list.collapsed-menu__list--third(data-submenu="7")
+      li
+        a.collapsed-menu__backlink(href="#" data-target-submenu="2")
+          +svgMono("arrow-left")
+          span Модерн
+      li
+        a(href="catalog.html") Модерн 1
+      li
+        a(href="catalog.html") Модерн 2
+      li
+        a(href="catalog.html") Модерн 3
+    // next
+    ul.collapsed-menu__list.collapsed-menu__list--third(data-submenu="8")
+      li
+        a.collapsed-menu__backlink(href="#" data-target-submenu="2")
+          +svgMono("arrow-left")
+          span Эксклюзив
+      li
+        a(href="catalog.html") Эксклюзив 1
+      li
+        a(href="catalog.html") Эксклюзив 2
+      li
+        a(href="catalog.html") Эксклюзив 3

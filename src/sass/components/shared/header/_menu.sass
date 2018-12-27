@@ -1,0 +1,245 @@
+
+// menu
+.header-menu
+  position: relative
+  z-index: 1
+  display: flex
+  align-items: center
+  margin-right: 20px
+  &--mobile
+    display: none
+  // not last because it collapsed double there
+  &:nth-child(3)
+    // extra space just in case
+    margin-right: 0
+  &::before
+    display: inline-block
+    content: ' '
+    position: absolute
+    top: 50%
+    left: 0
+    transform: translateY(-50%)
+    width: 1px
+    background: #882929
+    height: 30px
+
+  &__name
+    color: rgba(white, .6)
+    font-size: 14px
+    padding-left: 20px
+    padding-right: 10px
+    line-height: 1
+  &__list
+    list-style: none
+    white-space: nowrap
+    margin: 0
+    padding: 0
+    > li
+      position: relative
+      display: inline-block
+      font-weight: 700
+      font-size: 16px
+      text-transform: uppercase
+      letter-spacing: em(3,16)
+      > a
+        display: inline-block
+        padding: 22px 18px
+        transition: background .25s $ease
+      &:hover
+        > a
+          background-color: $colorRedHover
+        ul
+          opacity: 1
+          transform: translate(0,0)
+          pointer-events: all
+
+    ul
+      position: absolute
+      left: 0
+      top: 62px
+      min-width: 100%
+      list-style: none
+      margin: 0
+      padding: 12px 18px 18px
+      background: $colorRedHover
+      transition: .2s $ease
+      opacity: 0
+      pointer-events: none
+      transform: translate(-5px,0px)
+      li
+        display: block
+        font-size: 16px
+        margin-left: -5px
+        margin-right: -5px
+        letter-spacing: 0
+        font-weight: 400
+        text-transform: none
+      a
+        display: inline-block
+        padding: 5px
+        color: white
+        transition: color .25s $ease
+        &:hover
+          color: rgba(white, .7)
+
+
++r($xl)
+  .header-menu
+    flex: 1 1 auto
+    display: flex
+    margin-right: 0
+    &--mobile
+      display: none
+    &__name
+      flex: 1 1 auto
+      text-align: center
+      // name becomes a toggler
+      font-size: 16px
+      color: white
+      font-weight: 700
+      letter-spacing: em(3,16)
+      text-transform: uppercase
+      cursor: pointer
+      padding: 23px 18px
+      transition: background .25s $ease
+      &:hover, &.is-active
+        background-color: $colorRedHover
+      br
+        display: none
+    &__list
+      display: none
+    &:nth-child(3)
+      .header-menu__name
+        border-top-right-radius: 4px
+        border-bottom-right-radius: 4px
+        &.is-active
+          border-bottom-right-radius: 0
+
+  .header__menu.is-active
+    .header-menu--mobile
+      .header-menu__name
+        background-color: $colorRedHover
+        border-bottom-right-radius: 0
+
+    .collapsed-menu
+      opacity: 1
+      pointer-events: all
+      visibility: visible
+
+
++r($sm)
+  .header-menu
+    display: none
+    &--mobile
+      display: flex
+      .header-menu__name
+        border-top-right-radius: 4px
+        border-bottom-right-radius: 4px
+        padding-top: 20px
+        padding-bottom: 20px
+
+/* collapsed menu
+.collapsed-menu
+  position: absolute
+  z-index: 8
+  overflow: hidden
+  display: flex
+  flex-direction: column
+  top: 62px
+  left: 0
+  right: 0
+  background: $colorRedHover
+  box-shadow: 0 10px 20px 0 rgba(13,13,13,0.06)
+  border-bottom-left-radius: 4px
+  border-bottom-right-radius: 4px
+  opacity: 0
+  pointer-events: none
+  visibility: hidden
+  transition: opacity .25s $ease
+  &__wrapper
+    flex: 1 1 auto
+    position: relative
+    z-index: 1
+
+  &__list
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    list-style: none
+    margin: 0
+    padding: 25px
+    transition: opacity .25s $ease, transform .25s $ease
+    will-change: transform, opacity
+    backface-visibility: hidden
+    // transform-style: preserve-3d
+    opacity: 0
+    transform: translate(10px,0)
+    pointer-events: none
+    li
+      display: block
+      font-size: 16px
+      font-weight: 400
+      text-transform: none
+      letter-spacing: 0
+      margin-bottom: 10px
+      &:last-child
+        margin-bottom: 0
+    a
+      display: inline-block
+      padding: 5px
+      transition: color .25s $ease
+      &:hover
+        color: #F2C8CC
+
+    &.is-active
+      opacity: 1
+      transform: translate(0,0)
+      pointer-events: all
+
+    /* lvl modifiers
+    &--first
+      // don't show sm-xl
+      display: none
+      li
+        text-transform: uppercase
+        font-weight: 700
+        letter-spacing: em(3,16)
+    &--second
+      li
+        font-weight: 700
+        letter-spacing: em(3,16)
+        text-transform: uppercase
+
+      li:first-child
+        display: none
+    &--third
+      li
+
+
+  &__backlink
+    display: flex
+    align-items: center
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: em(3,16)
+    .ico
+      font-size: 10px
+      margin-right: 15px
+    span
+      display: inline-block
+
++r($sm)
+  .collapsed-menu
+    top: 56px
+    &__list
+      &--first
+        display: block
+      &--second
+        li
+          font-weight: 400
+          letter-spacing: 0
+          text-transform: none
+
+        li:first-child
+          display: block

@@ -1,6 +1,6 @@
 // force scroll to top on initial load
 window.onbeforeunload = function(){
-  // window.scrollTo(0,0)
+  window.scrollTo(0,0)
 }
 
 $(window).on("load", function(){
@@ -9,8 +9,11 @@ $(window).on("load", function(){
   });
 })
 
-$(document).ready(function(){
+var resize = {
+  prevResize: getWindowWidth()
+}
 
+$(document).ready(function(){
   //////////
   // Global variables
   //////////
@@ -34,6 +37,7 @@ $(document).ready(function(){
     bottomPoint: undefined, // when header ends in px (height)
     topHeight: undefined, // top container height
     topHeightPercent: undefined, // when containerTop ends in %
+    firstSectionHeight: undefined // when hide/show animation show be started
   }
 
   var browser = {
@@ -42,7 +46,15 @@ $(document).ready(function(){
     isMobile: isMobile()
   }
 
-  var sliders = [] // collection of all sliders
+  var sliders = {
+    heroPromo: undefined,
+    heroChooser: undefined,
+    sale: undefined,
+    benefits: {
+      instance: undefined,
+      disableOn: 768
+    }
+  } // collection of all sliders
 
   ////////////
   // LIST OF FUNCTIONS
@@ -50,35 +62,42 @@ $(document).ready(function(){
 
   // some functions should be called once only
   legacySupport();
-  // preloaderDone();
+  populateMobileMenu();
+  initaos();
+  preloaderDone();
 
   // The new container has been loaded and injected in the wrapper.
   function pageReady(fromPjax){
+    closeMobileNavi(fromPjax);
+    closeHeaderMenu();
     updateHeaderActiveClass();
-    closeMobileMenu(fromPjax);
     menuHider();
-    getHeaderParams();
-    formatTextsResponsive();
+    setFooterMargin();
+    setBannerPaddings();
 
     initSliders();
+    initResponsiveSliders();
     initPopups();
     initMasks();
     initSelectric();
-    initScrollMonitor();
+    initScrollMonitor(fromPjax);
     initValidations();
   }
 
   // The transition has just finished and the old Container has been removed from the DOM.
   function pageCompleated(fromPjax){
+    getHeaderParams();
     setPageOffset();
+    ieFixImages(fromPjax);
     if ( fromPjax ){
+      AOS.refreshHard();
       window.onLoadTrigger()
     }
   }
 
   // some plugins work best with onload triggers
   window.onLoadTrigger = function onLoad(){
-    preloaderDone();
+    // preloaderDone();
     initLazyLoad();
   }
 
@@ -89,12 +108,19 @@ $(document).ready(function(){
   // scroll/resize listeners
   _window.on('scroll', getWindowScroll);
   _window.on('scroll', scrollHeader);
-  // debounce/throttle examples
+
+  // debounce/throttle
+  _window.on('resize', debounce(closeMobileNavi, 100));
   _window.on('resize', debounce(menuHider, 25));
   _window.on('resize', debounce(getHeaderParams, 100));
-  _window.on('resize', debounce(setPageOffset, 100));
-  _window.on('resize', debounce(formatTextsResponsive, 50));
-  _window.on('resize', debounce(setBreakpoint, 200))
+  _window.on('resize', debounce(setPageOffset, 50));
+  _window.on('resize', debounce(setFooterMargin, 50));
+  _window.on('resize', debounce(setBannerPaddings, 50));
+  _window.on('resize', debounce(initResponsiveSliders, 100));
+  _window.on('resize', debounce(setCollapsedMenuWrapper, 50));
+  _window.on('resize', debounce(clearCollapsedMenu, 100));
+  _window.on('resize', debounce(function(){resize.prevResize = getWindowWidth()}, 100));
+  _window.on('resize', debounce(setBreakpoint, 200));
 
 
 
@@ -127,6 +153,19 @@ $(document).ready(function(){
     } else {
       return false
     }
+  }
+
+  function initaos() {
+    AOS.init({
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: 120, // offset (in px) from the original trigger point
+      delay: 0, // values from 0 to 3000, with step 50ms
+      duration: 400, // values from 0 to 3000, with step 50ms
+      easing: 'ease-in', // default easing for AOS animations
+      once: true, // whether animation should happen only once - while scrolling down
+      mirror: false, // whether elements should animate out while scrolling past them
+      anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+    });
   }
 
   function legacySupport(){
@@ -223,10 +262,22 @@ $(document).ready(function(){
     var $headerTop = $header.find(".header__top");
     var $headerCenter = $header.find(".header__center");
     var $headerBottom = $header.find(".header__bottom");
-    var headerOffsetTop = 0
-    var headerHeight = $header.outerHeight() + headerOffsetTop
-    var headerTopHeight = $headerTop.outerHeight()
+    var headerHeight = $header.outerHeight()
+    var headerTopHeight = getWindowWidth() >= 576 ? $headerTop.outerHeight() : 0
     var topHeightPercent =  Math.floor((headerTopHeight / headerHeight) * 100)
+
+    // get the point when header should start disapearing of scroll direction
+    var wHeight = _window.height()
+    var firstSectionHeight = $('.page__content').children().first().outerHeight() + (headerHeight / 2)
+    if ( firstSectionHeight > wHeight ){
+      firstSectionHeight = wHeight // can't be more than 100vh
+    }
+
+    // clean up prev styles
+    if ( $('#header-styles').length > 0 ) $('#header-styles').remove()
+    var styles = ".header.is-fixed-visible{transform: translate3d(0,-"+topHeightPercent+"%,0) !important}"
+    var headerStylesheet = $("<style type='text/css' id='header-styles'>"+styles+"</style>")
+    headerStylesheet.appendTo("head");
 
     header = {
       container: $header,
@@ -235,7 +286,8 @@ $(document).ready(function(){
       bottomContainer: $headerBottom,
       bottomPoint: headerHeight,
       topHeight: headerTopHeight,
-      topHeightPercent: topHeightPercent
+      topHeightPercent: topHeightPercent,
+      firstSectionHeight: firstSectionHeight
     }
   }
 
@@ -261,9 +313,6 @@ $(document).ready(function(){
         header.container.css({
           "transform": 'translate3d(0,'+ reverseNormalized +'%,0)',
         })
-
-        // header.container.removeClass(fixedClass);
-
       } else if ( scroll.y >= header.topHeight ){
         // set max on fast scroll
         header.container.css({
@@ -286,14 +335,24 @@ $(document).ready(function(){
         header.bottomContainer.css({
           "transform": 'translate3d(0,-'+ targetBottomScroll +'%,0)',
         })
+      }
 
-        // header.container.addClass(fixedClass);
-        //
-        // if ( (scroll.y > header.bottomPoint * 2) && scroll.direction === "up" ){
-        //   header.container.addClass(visibleClass);
-        // } else {
-        //   header.container.removeClass(visibleClass);
-        // }
+      if ( scroll.y > header.firstSectionHeight ){
+        // set max on fast scroll
+        header.bottomContainer.css({
+          "transform": 'translate3d(0,-'+ targetBottomScroll +'%,0)',
+        })
+
+        header.container.addClass(fixedClass);
+
+        if ( scroll.direction === "up" ){
+          header.container.addClass(visibleClass);
+        } else {
+          header.container.removeClass(visibleClass);
+        }
+      } else {
+        header.container.removeClass(fixedClass);
+        header.container.removeClass(visibleClass);
       }
 
     }
@@ -305,10 +364,10 @@ $(document).ready(function(){
   // disable / enable scroll by setting negative margin to page-content eq. to prev. scroll
   // this methods helps to prevent page-jumping on setting body height to 100%
   function disableScroll() {
-    scroll.lastForBodyLock = _window.scrollTop();
+    scroll.lastForBodyLock = _window.scrollTop() - header.bottomPoint;
     scroll.blocked = true
     $('.page__content').css({
-      'margin-top': '-' + scroll.lastForBodyLock + 'px'
+      'margin-top': scroll.lastForBodyLock * -1 + 'px'
     });
     $('body').addClass('body-lock');
   }
@@ -317,46 +376,40 @@ $(document).ready(function(){
     scroll.blocked = false
     scroll.direction = "up" // keeps header
     $('.page__content').css({
-      'margin-top': '-' + 0 + 'px'
+      'margin-top': (0 - header.bottomPoint) * -1 + 'px'
     });
     $('body').removeClass('body-lock');
     if ( !isOnload ){
       _window.scrollTop(scroll.lastForBodyLock)
-      scroll.lastForBodyLock = 0;
+      scroll.lastForBodyLock = 0 - header.bottomPoint;
     }
   }
 
-  function blockScroll(isOnload) {
-    if ( isOnload ){
-      enableScroll(isOnload)
+  function closeMobileNavi(fromPjax){
+    if ( fromPjax === true ){
+      close();
       return
     }
-    // if ($('[js-hamburger]').is('.is-active')) {
-    //   disableScroll();
-    // } else {
-    //   enableScroll();
-    // }
-  };
 
-  _document.on('click', '[js-hamburger]', function(){
-    // $(this).toggleClass('is-active');
-    // $('.mobile-navi').toggleClass('is-active');
-    //
-    // blockScroll();
-  });
+    // resize events
+    if ( getWindowWidth() >= 576 ){
+      close();
+    }
 
-  function closeMobileMenu(isOnload){
-    // $('[js-hamburger]').removeClass('is-active');
-    // $('.mobile-navi').removeClass('is-active');
-    //
-    // blockScroll(isOnload);
+    function close(){
+      if ( !$.magnificPopup.instance.currItem ) return
+
+      var isNaviOpened = $.magnificPopup.instance.currItem.src === "#mobile-navi"
+      if ( isNaviOpened ){
+        $.magnificPopup.close()
+      }
+    }
   }
-
 
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering when header is inside barba-container
   function updateHeaderActiveClass(){
-    $('.header__menu li').each(function(i,val){
+    $('.header__top-menu li').each(function(i,val){
       if ( $(val).find('a').attr('href') == window.location.pathname.split('/').pop() ){
         $(val).addClass('is-active');
       } else {
@@ -378,6 +431,99 @@ $(document).ready(function(){
         $container.find("input").focus()
       }
     })
+    // close on outside click
+    .on('click', function(e){
+      var searchSelector = '[js-header-search]'
+      if ( $(searchSelector).is('.is-active') ){
+        if ( $(e.target).closest(searchSelector).length === 0 ) {
+          $(searchSelector).removeClass('is-active')
+        }
+      }
+    })
+
+  /////////////
+  // HEADER MENU
+  /////////////
+
+  // TODO - populate from .header-menu's ???
+  function populateMobileMenu(){
+    var $container = $('[js-populate-menu]')
+    if ( $container.length === 0 ) return
+  }
+
+  // menu common functions
+  function closeHeaderMenu(){
+    $('[js-header-menu]').removeClass('is-active');
+    $('.header-menu__name').removeClass('is-active');
+    $('.header__bottom').removeClass('is-menu-active');
+    $('.page__content').removeClass('is-muted');
+    enableScroll();
+  }
+
+  // set height because all menus are positioned absolute
+  function setCollapsedMenuWrapper(){
+    if ( getWindowWidth() >= 1280 ) return
+
+    var $container = $('[js-collapsed-menu]');
+    var $activeMenu = $container.find('ul.is-active');
+    var targetHeight = $activeMenu.outerHeight();
+    $container.css({
+      'height': targetHeight
+    })
+
+  }
+
+  function clearCollapsedMenu(){
+    if ( getWindowWidth() >= 1280 ) {
+      closeHeaderMenu();
+    } else {
+      if ( hasCrossedBreakpoint(576) ){
+        closeHeaderMenu();
+      }
+    }
+  }
+
+  _document
+    // show/hide the context
+    .on('click', '[js-header-menu]', function(){
+      if ( getWindowWidth() >= 1280 ) return
+      var $container = $(this);
+      $container.addClass('is-active');
+      $('.page__content').addClass('is-muted');
+      $('.header__bottom').addClass('is-menu-active');
+      disableScroll();
+      setCollapsedMenuWrapper();
+    })
+    // close on outside click
+    .on('click', function(e){
+      if ( getWindowWidth() >= 1280 ) return
+      if ( $(e.target).closest('[js-header-menu]').length === 0 ) {
+        closeHeaderMenu();
+      }
+    })
+    // prevent trigger for '[js-header-menu]' open/close toggler
+    .on('click', '[js-collapsed-menu]', function(e){
+      e.stopPropagation()
+    })
+    // link (category) click handler
+    .on('click', '[js-collapsed-menu] a, .header-menu__name', function(e){
+      if ( $(this).closest('.header-menu__name').length > 0 ){
+        $('.header-menu__name').removeClass('is-active')
+        $(this).closest('.header-menu__name').addClass('is-active');
+      }
+
+      var $container = $('[js-collapsed-menu]');
+      var $link = $(this);
+      var dataSubmenu = $link.data('target-submenu')
+      var $targetSubmenu = $('[data-submenu="'+dataSubmenu+'"]')
+
+      if ( $targetSubmenu.length === 0 ) return
+      $targetSubmenu.siblings().removeClass('is-active');
+      $targetSubmenu.addClass('is-active');
+
+      setCollapsedMenuWrapper();
+    })
+
 
   /////////////
   // MENU HIDER
@@ -404,29 +550,32 @@ $(document).ready(function(){
     })
   }
 
-  // clean symbols on resize(responsive)
-  function formatTextsResponsive(){
-    var wWidth = getWindowWidth();
-    var $elements = $('[js-clear-last-sybmol]');
-    if ( $elements.length === 0 ) return
 
-    $elements.each(function(i, el){
-      var $el = $(el);
-      var dataOn = $el.data('on');
-      var dataSymbol = $el.data('symbol');
-      var $elHtml = $el.html()
-      var symbolIndex = $elHtml.indexOf(dataSymbol)
+  // FOOTER
+  function setFooterMargin(){
+    var $col = $('[js-footer-col-margin]');
+    if ( $col.length === 0 ) return
 
-      if ( wWidth <= dataOn ){
-        if ( symbolIndex === -1) return
-        $el.html($elHtml.substring(0,symbolIndex))
-      } else {
-        if ( symbolIndex === -1){
-          $el.html($elHtml + dataSymbol)
-        }
-      }
-    })
+    var wWdidth = getWindowWidth();
+    if ( (wWdidth <= 1200) && (wWdidth >= 600) ){
+      var dataTargetSibling = $col.data('target-sibling');
+      var dataTargetMain = $col.data('target-main');
+      var $targetSibling = $(dataTargetSibling);
+      var $targetMain = $(dataTargetMain);
+      var targetSiblingHeight = $targetSibling.outerHeight();
+      var targetMainHeight = $targetMain.outerHeight();
+
+      var heightDiff = Math.abs(targetMainHeight - targetSiblingHeight)
+
+      $col.css({
+        'margin-top': '-'+heightDiff+'px'
+      })
+    } else {
+      $col.css({'margin-top': 0})
+    }
+
   }
+
 
   /***************
   * PAGE SPECIFIC *
@@ -439,7 +588,7 @@ $(document).ready(function(){
     var $page = $('.page__content');
 
     $page.css({
-      'padding-top': headerHeight
+      'margin-top': headerHeight
     })
   }
 
@@ -466,6 +615,46 @@ $(document).ready(function(){
     })
 
 
+  // align buttons
+  function setBannerPaddings(){
+    var $row = $('[js-align-banner-buttons]');
+    if ( $row.length === 0 ) return
+    var $cols = $('.h-banners__col');
+    if ( $cols.length === 0 ) return
+
+    var wWdidth = getWindowWidth();
+    if ( (wWdidth >= 992) ){
+      // get the distance of regular col button (padding-bottom)
+      $cols.each(function(i,col){
+        var $col = $(col);
+        var colDateType = $col.data('banner-type')
+        if ( colDateType === "regular" ){
+          var $cta = $col.find('.banner__cta')
+          var $banner = $col.find('.banner');
+          setSiblings($banner.outerHeight() - ($cta.position().top + $cta.outerHeight()) )
+        }
+      });
+    } else {
+      /// clear
+      $cols.find('.banner').attr('style', false)
+    }
+
+    function setSiblings(height){
+      $cols.each(function(i,col){
+        var $col = $(col);
+        var colDateType = $col.data('banner-type')
+        if ( colDateType === "cover" ){
+          var $banner = $col.find('.banner');
+          $banner.css({
+            'padding-top': height,
+            'padding-bottom': height
+          })
+        }
+      });
+    }
+  }
+
+
   /**********
   * PLUGINS *
   **********/
@@ -477,7 +666,7 @@ $(document).ready(function(){
   function initSliders(){
 
     // HOMEPAGE SLIDERS
-    new Swiper('[js-swiper-hero-promo]', {
+    sliders.heroPromo = new Swiper('[js-swiper-hero-promo]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
@@ -501,7 +690,7 @@ $(document).ready(function(){
       }
     })
 
-    var heroChooser = new Swiper('[js-swiper-hero-chooser]', {
+    sliders.heroChooser = new Swiper('[js-swiper-hero-chooser]', {
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
@@ -528,7 +717,7 @@ $(document).ready(function(){
         // recommended to preload some images in initial markup
 
         // TODO - ajax load
-        heroChooser.appendSlide([
+        sliders.heroChooser.appendSlide([
           `<div class="chooser-slide swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 384px; opacity: 1; transform: translate3d(-768px, 0px, 0px); transition-duration: 0ms;">
             <div class="chooser-slide__content">
               <div class="chooser-slide__title">Настольные часы Hermle 01093</div>
@@ -547,7 +736,7 @@ $(document).ready(function(){
         ]);
 
         // trigger slide next
-        heroChooser.slideNext()
+        sliders.heroChooser.slideNext()
 
       })
 
@@ -574,10 +763,87 @@ $(document).ready(function(){
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
           },
+          breakpoints: {
+            // when window width is <= 480px
+            576: {
+              slidesPerView: 1,
+              spaceBetween: 0
+            },
+            768: {
+              slidesPerView: 2
+            },
+            992: {
+              slidesPerView: 3
+            }
+          }
         })
       })
     }
 
+    sliders.sale = new Swiper('[js-swiper-sale]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 24,
+      slidesPerView: 6,
+      normalizeSlideIndex: true,
+      freeMode: true,
+      breakpoints: {
+        // when window width is <= 480px
+        576: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3
+        },
+        992: {
+          slidesPerView: 4
+        },
+        1200: {
+          slidesPerView: 5
+        }
+      }
+    })
+
+  }
+
+  function initResponsiveSliders(){
+    // RESPONSIVE ON/OFF sliders
+    var benefitsSwiperSelector = '[js-swiper-benefits]'
+
+    if ( $(benefitsSwiperSelector).length > 0 ){
+      if ( getWindowWidth() >= sliders.benefits.disableOn ) {
+        if ( sliders.benefits.instance !== undefined ) {
+          sliders.benefits.instance.destroy( true, true );
+          sliders.benefits.instance = undefined
+        }
+        // return
+      } else {
+        if ( sliders.benefits.instance === undefined ) {
+
+          // BENEFITS SWIPER
+          sliders.benefits.instance = new Swiper('[js-swiper-benefits]', {
+            wrapperClass: "swiper-wrapper",
+            slideClass: "swiper-slide",
+            direction: 'horizontal',
+            loop: false,
+            watchOverflow: true,
+            setWrapperSize: false,
+            spaceBetween: 0,
+            slidesPerView: 1,
+            normalizeSlideIndex: true,
+            freeMode: false,
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+          })
+        }
+      }
+    }
   }
 
   //////////
@@ -666,13 +932,48 @@ $(document).ready(function(){
       },
       afterLoad: function(element){
         if ( browser.isIe ){
-          picturefill(); // ie pollyfil
+          // ie pollyfils
+          window.fitie.init()
+          picturefill();
         }
         animateLazy(element)
       }
     });
 
   }
+
+  ////////////////////////////////
+  // fix ie images with object fit
+  ////////////////////////////////
+
+  function ieFixImages(fromPjax){
+    if ( !msieversion() ) return
+    if ( fromPjax ) window.fitie.init()
+
+    // // if ( !msieversion() ) return
+    // var $images = $('img')
+    // if ( $images.length === 0 ) return
+    //
+    // $images.each(function(i, img){
+    //   var $img = $(img);
+    //   var $parent = $img.parent();
+    //   var bg = $img.attr('src');
+    //
+    //   console.log(img, $(img).css('object-fit'))
+    //   // find smaller picture
+    //   // if ( ($img.closest('picture').length > 0) && (getWindowWidth() <= 768) ){
+    //   //   var $picture = $img.closest('picture')
+    //   //   var pictureMedia = $picture.find('source').last().attr('srcset').split(" ")[0]
+    //   //   bg = pictureMedia
+    //   // }
+    //   // $parent.css({
+    //   //   'background-image': 'url(' + bg + ')'
+    //   // })
+    //   //
+    //   // $img.css({'visibility': 'hidden'})
+    // })
+  }
+
 
   ////////////
   // UI
@@ -730,35 +1031,67 @@ $(document).ready(function(){
   }
 
   ////////////
-  // SCROLLMONITOR - WOW LIKE
+  // SCROLLMONITOR
   ////////////
-  function initScrollMonitor(){
-    $('.wow').each(function(i, el){
+  function initScrollMonitor(fromPjax){
 
-      var elWatcher = scrollMonitor.create( $(el) );
+    // REVEAL animations
+    var $reveals = $('[js-reveal]');
 
-      var delay;
-      if ( getWindowWidth() <= 767 ){
-        delay = 0
-      } else {
-        delay = $(el).data('animation-delay');
-      }
+    if ( $reveals.length > 0 ){
+      var animatedClass = "is-animated";
+      var pageTransitionTimeout = 500
 
-      var animationClass = $(el).data('animation-class') || "wowFadeUp"
+      $('[js-reveal]').each(function(i, el){
+        var type = $(el).data('type') || "enterViewport"
 
-      var animationName = $(el).data('animation-name') || "wowFade"
+        // onload type
+        if ( type === "onload" ){
+          var interval = setInterval(function(){
+            // if (!preloaderActive){
+              if ( fromPjax ){
+                // wait till transition overlay is fullyanimated
+                setTimeout(function(){
+                  $(el).addClass(animatedClass);
+                  clearInterval(interval)
+                }, pageTransitionTimeout)
+              } else {
+                $(el).addClass(animatedClass);
+                clearInterval(interval)
+              }
+            // }
+          }, 100)
+          return
+        }
 
-      elWatcher.enterViewport(throttle(function() {
-        $(el).addClass(animationClass);
-        $(el).css({
-          'animation-name': animationName,
-          'animation-delay': delay,
-          'visibility': 'visible'
-        });
-      }, 100, {
-        'leading': true
-      }));
-    });
+        // halfy enter
+        if ( type === "halflyEnterViewport"){
+          var scrollListener = throttle(function(){
+            var vScrollBottom = _window.scrollTop() + _window.height();
+            var elTop = $(el).offset().top
+            var triggerPoint = elTop + ( $(el).height() / 2)
+
+            if ( vScrollBottom > triggerPoint ){
+              $(el).addClass(animatedClass);
+              window.removeEventListener('scroll', scrollListener, false); // clear debounce func
+            }
+          }, 100)
+
+          window.addEventListener('scroll', scrollListener, false);
+          return
+        }
+
+        // regular (default) type
+        var elWatcher = scrollMonitor.create( $(el) );
+        elWatcher.enterViewport(throttle(function() {
+          $(el).addClass(animatedClass);
+        }, 100, {
+          'leading': true
+        }));
+
+      });
+
+    }
 
   }
 
@@ -813,41 +1146,41 @@ $(document).ready(function(){
     }
 
     // REGISTRATION FORM
-    $("[js-validate-registration]").validate({
-      errorPlacement: validateErrorPlacement,
-      highlight: validateHighlight,
-      unhighlight: validateUnhighlight,
-      submitHandler: validateSubmitHandler,
-      rules: {
-        last_name: "required",
-        first_name: "required",
-        email: {
-          required: true,
-          email: true
-        },
-        password: {
-          required: true,
-          minlength: 6,
-        }
-        // phone: validatePhone
-      },
-      messages: {
-        last_name: "Заполните это поле",
-        first_name: "Заполните это поле",
-        email: {
-          required: "Заполните это поле",
-          email: "Email содержит неправильный формат"
-        },
-        password: {
-          required: "Заполните это поле",
-          email: "Пароль мимимум 6 символов"
-        },
-        // phone: {
-        //     required: "Заполните это поле",
-        //     minlength: "Введите корректный телефон"
-        // }
-      }
-    });
+    // $("[js-validate-registration]").validate({
+    //   errorPlacement: validateErrorPlacement,
+    //   highlight: validateHighlight,
+    //   unhighlight: validateUnhighlight,
+    //   submitHandler: validateSubmitHandler,
+    //   rules: {
+    //     last_name: "required",
+    //     first_name: "required",
+    //     email: {
+    //       required: true,
+    //       email: true
+    //     },
+    //     password: {
+    //       required: true,
+    //       minlength: 6,
+    //     }
+    //     // phone: validatePhone
+    //   },
+    //   messages: {
+    //     last_name: "Заполните это поле",
+    //     first_name: "Заполните это поле",
+    //     email: {
+    //       required: "Заполните это поле",
+    //       email: "Email содержит неправильный формат"
+    //     },
+    //     password: {
+    //       required: "Заполните это поле",
+    //       email: "Пароль мимимум 6 символов"
+    //     },
+    //     // phone: {
+    //     //     required: "Заполните это поле",
+    //     //     minlength: "Введите корректный телефон"
+    //     // }
+    //   }
+    // });
 
     // callback form
     $("[js-validate-callback]").validate({
@@ -867,34 +1200,6 @@ $(document).ready(function(){
         }
       }
     });
-
-
-
-    // when multiple forms share functionality
-
-    // var subscriptionValidationObject = {
-    //   errorPlacement: validateErrorPlacement,
-    //   highlight: validateHighlight,
-    //   unhighlight: validateUnhighlight,
-    //   submitHandler: validateSubmitHandler,
-    //   rules: {
-    //     email: {
-    //       required: true,
-    //       email: true
-    //     }
-    //   },
-    //   messages: {
-    //     email: {
-    //       required: "Fill this field",
-    //       email: "Email is invalid"
-    //     }
-    //   }
-    // }
-
-    // call/init
-    // $("[js-subscription-validation]").validate(subscriptionValidationObject);
-    // $("[js-subscription-validation-footer]").validate(subscriptionValidationObject);
-    // $("[js-subscription-validation-menu]").validate(subscriptionValidationObject);
   }
 
   //////////
@@ -1042,9 +1347,24 @@ function animateLazy(element){
   var $scaler = element.closest('.scaler')
   $scaler.addClass('is-loaded');
 
+  if ( $scaler.length === 0 ){
+    $(element).addClass('is-loaded')
+  }
+
   if ( $scaler.is('.no-bg-onload') ){
     setTimeout(function(){
       $scaler.addClass('is-bg-hidden');
     }, fadeTimeout)
   }
+}
+
+// check if certain breakpoint was went through
+function hasCrossedBreakpoint(targetBp){
+  var prevResize = resize.prevResize
+  var curWidth = getWindowWidth();
+
+  if ( ((curWidth >= targetBp) && (prevResize <= targetBp)) || ((curWidth <= targetBp) && (prevResize >= targetBp)) ){
+    return true
+  }
+  return false
 }
