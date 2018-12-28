@@ -71,6 +71,7 @@ $(document).ready(function(){
     closeMobileNavi(fromPjax);
     closeHeaderMenu();
     updateHeaderActiveClass();
+    updateHeaderCart();
     menuHider();
     setFooterMargin();
     setBannerPaddings();
@@ -190,6 +191,30 @@ $(document).ready(function(){
     if ( browser.isMobile ){
       $('body').addClass('is-mobile');
     }
+
+    // css3 filter support
+    function css3FilterFeatureDetect(enableWebkit) {
+      if(enableWebkit === undefined) {
+          enableWebkit = false;
+      }
+      var el = document.createElement('div');
+      el.style.cssText = (enableWebkit?'-webkit-':'') + 'filter: blur(2px)';
+      var test1 = (el.style.length != 0);
+      var test2 = (
+          document.documentMode === undefined //non-IE browsers, including ancient IEs
+          || document.documentMode > 9 //IE compatibility moe
+      );
+      return test1 && test2;
+    }
+
+    if ( !css3FilterFeatureDetect(true) ){
+      $('body').addClass('no-css-filter');
+    }
+    // if(document.body.style.webkitFilter !== undefined){
+    // } else {
+    //   $('body').addClass('no-css-filter');
+    // }
+
   }
 
   // preloader
@@ -416,6 +441,19 @@ $(document).ready(function(){
         $(val).removeClass('is-active')
       }
     });
+  }
+
+  // header cart
+  function updateHeaderCart(){
+    var $cart = $('[js-header-cart]')
+    var $counter = $cart.find('.header__cart-counter span').html()
+    var counterValue = parseInt($counter)
+
+    if ( $counter && counterValue > 0 ){
+      $cart.removeClass('is-empty');
+    } else {
+      $cart.addClass('is-empty')
+    }
   }
 
 
@@ -912,7 +950,10 @@ $(document).ready(function(){
   function initLazyLoad(){
 
     var $lazy = _document.find('[js-lazy]');
-    if ($lazy.length === 0 ) return
+    if ($lazy.length === 0 ) {
+      ieFixPictures();
+      return
+    }
 
     var fadeTimeout = 250
 
@@ -925,20 +966,32 @@ $(document).ready(function(){
       // effectTime: fadeTimeout,
       // visibleOnly: true,
       onError: function(element) {
-          console.log('error loading ' + element.data('src'));
+        console.log('error loading ' + element.data('src'));
+        try{
+          element.attr('src', element.data('src'))
+        } catch(e){
+          console.log('eroor appending src', e)
+        }
+
       },
       beforeLoad: function(element){
         // element.attr('style', '')
       },
       afterLoad: function(element){
-        if ( browser.isIe ){
-          // ie pollyfils
-          window.fitie.init()
-          picturefill();
-        }
         animateLazy(element)
+      },
+      onFinishedAll: function(){
+        ieFixPictures()
       }
     });
+
+    function ieFixPictures(){
+      if ( browser.isIe ){
+        // ie pollyfils
+        picturefill();
+        window.fitie.init()
+      }
+    }
 
   }
 

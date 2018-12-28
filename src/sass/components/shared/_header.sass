@@ -88,6 +88,11 @@
       font-size: 32px
     &:hover
       color: $colorRed
+    &.is-empty
+      color: $fontColorGray
+      .header__cart-counter
+        opacity: 0
+        pointer-events: none
 
   &__cart-counter
     position: absolute
@@ -100,9 +105,11 @@
     color: white
     display: flex
     align-items: center
-    justify-content: center
     text-align: center
     span
+      display: block
+      width: 100%
+      text-align: center
       margin-top: -.1em
       margin-left: 0.05em
       font-size: 14px
@@ -145,6 +152,11 @@
   &.is-transitioning
     transition: transform .3s $ease
     transform: translate3d(0,-100%,0) !important
+
+.is-ie
+  .header__cart-counter
+    span
+      margin-top: .1em
 
 +r($xl)
   .header

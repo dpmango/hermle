@@ -78,8 +78,9 @@ header.header
             .header-phone__content
               .header-phone__tel +7 495 409-10-58
               .header-phone__description Телефон в Москве
-        
-      a(href="cart.html").header__cart
+      
+      // cart - js will add .is-empty when counter is = 0
+      a(href="cart.html").header__cart(js-header-cart)
         .header__cart-counter
           span 2
         +svgMono('cart')

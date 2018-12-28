@@ -92,4 +92,5 @@ this.fitie.init = function () {
 	}
 };
 
-if (/MSIE|Trident/.test(navigator.userAgent)) this.fitie.init();
+// disable auto init - moved to lazy callbacks
+// if (/MSIE|Trident/.test(navigator.userAgent)) this.fitie.init();
