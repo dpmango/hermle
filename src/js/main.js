@@ -623,7 +623,7 @@ $(document).ready(function(){
     if ( $cols.length === 0 ) return
 
     var wWdidth = getWindowWidth();
-    if ( (wWdidth >= 992) ){
+    if ( wWdidth >= 768 ){
       // get the distance of regular col button (padding-bottom)
       $cols.each(function(i,col){
         var $col = $(col);

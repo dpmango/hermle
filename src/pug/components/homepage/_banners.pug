@@ -34,13 +34,14 @@
                 span На карте
           .banner__image
             picture(js-lazy data-src="img/banner_3.png")
-              // 768 and above
               data-src(
               media="(min-width: 992px)" 
               srcset="img/banner_3.png 1x, img/banner_3@2x.png 2x")
-              // less 768px
+              data-src(
+              media="(min-width: 576px)" 
+              srcset="img/banner_3_lg.png 1x, img/banner_3_lg@2x.png 2x")
               data-src(
               media="(min-width: 0px)" 
-              srcset="img/banner_3_lg.png 1x, img/banner_3_lg@2x.png 2x")
+              srcset="img/banner_3.png 1x, img/banner_3@2x.png 2x")
               // fallback
               //- img(src='img/banner_3.png')
