@@ -89,3 +89,16 @@
         // more
         .p-scope__more(js-scroll-to data-scroll-target=".p-info")
           span Смотреть все харастеристики
+        
+        // cta
+        .p-scope__cta
+          a(href="#").btn.btn-primary.btn--buy
+            .btn-cart-icon
+              +svgMono("cart")
+            span Купить часы
+          
+          .p-scope__price.price.price--product
+            .price__newprice 469 400 <span class="r-mark">₽</span>
+            .price__wrapper
+              .price__oldprice 772 000 ₽
+              .price__discount Хочу еще скидку
