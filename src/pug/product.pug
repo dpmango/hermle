@@ -4,20 +4,74 @@ title: Страница товара
 extends shared/_layout
 block content
   
-  // ITEM
-  .item
+  // PRODUCT
+  .product-scope
     .container
+      .product-scope__wrapper
+        // left
+        .product-scope__left
+          .product-gallery
+            // vertical swiper
+            .product-gallery__thumbs.swiper-container(js-swiper-gallery-thumbs)
+              .swiper-wrapper
+                .swiper-slide.product-gallery__thumb.is-selected
+                  img(src='img/productThumb_1.jpg' srcset='img/productThumb_1@2x.jpg 2x')
+                .swiper-slide.product-gallery__thumb
+                  img(src='img/productThumb_2.jpg' srcset='img/productThumb_2@2x.jpg 2x')
+                .swiper-slide.product-gallery__thumb
+                  img(src='img/productThumb_3.jpg' srcset='img/productThumb_3@2x.jpg 2x')
+                .swiper-slide.product-gallery__thumb
+                  img(src='img/productThumb_4.jpg' srcset='img/productThumb_4@2x.jpg 2x')
+                .swiper-slide.product-gallery__video-thumb(js-popup-video data-mfp-src="https://www.youtube.com/watch?v=lNSaAKqFGZo")
+                  +svgMono("play-icon")
+                  span Видео
+                    
+            // main swiper
+            .product-gallery__main.swiper-container(js-swiper-gallery-main)
+              .swiper-wrapper
+                .swiper-slide.product-gallery__picture
+                  img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                  .product-gallery__tag
+                    .tag.tag--sale
+                      span 1
+                .swiper-slide.product-gallery__picture
+                  img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                  .product-gallery__tag
+                    .tag.tag--sale
+                      span 2
+                .swiper-slide.product-gallery__picture
+                  img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                  .product-gallery__tag
+                    .tag.tag--sale
+                      span 3
+                .swiper-slide.product-gallery__picture
+                  img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                  .product-gallery__tag
+                    .tag.tag--sale
+                      span 4
+                            
+        // right
+        .product-scope__right
+          .product-scope__category Напольные часы
+          h1.h1-title.product-scope__name Часы Hermle 01210
+          .product-scope__row
+            .product-scope__article Арт: 5655351
+            .product-scope__availability.is-available
+              +svgMono("checkmark")
+              span В наличии
+            .product-scope__showroom <span>Шоурум в Москве:</span> ул. Шаболовка д.23 к.5
+        
       
-  // item text
-  .item-text
+  // product text
+  .product-text
     .container
-      .item-text__wrapper
-        .item-text__col
+      .product-text__wrapper
+        .product-text__col
           p.p-main Интерьерные часы <b>Hermle 01210-031171</b> имеют 3 мелодии боя: (Westminster, Whittington и St. Michael), которые срабатывают каждые четверть часа. Модель имеет возможность ручного или автоматического отключения мелодии и боя на ночь.
           p.p-main С появлением модели <b>Hermle 01210-031171</b>, понятие классики в интерьерных часах перешло на новый уровень. Это не только статусная и аристократическая эстетика ореха, но и чистота звука, чему способствует бой на органных трубах.
           p.p-main Данные часы украшены ценным и элегантным декором в качестве инкрустации шпоном корневища дерева. В основе дизайна модели лежит оригинальная отделка с резными накладками и чернением. Внутри корпуса, который выполнен с боковыми панелями из минерального стекла, расположился большой лирообразный латунный маятник с узорами.
     
-        .item-text__col
+        .product-text__col
           h3.h3-title Достоинства часов Hermle 01231-030451:
           ul.ul-list
             li Made in Germany – Сделано в Германии;

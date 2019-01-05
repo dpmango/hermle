@@ -65,16 +65,16 @@ html.mfp-helper
   &:hover
     color: $fontColor
 
-// Fade-move animation
-.my-mfp-slide-bottom
-  .zoom-anim-dialog
+// Animation for scaler
+.mfp-scaler
+  .mfp-content
     opacity: 0
     transition: all 0.2s ease-out
     transform: translateY(-20px) perspective(600px) rotateX(10deg)
-  &.mfp-ready .zoom-anim-dialog
+  &.mfp-ready .mfp-content
     opacity: 1
     transform: translateY(0) perspective(600px) rotateX(0)
-  &.mfp-removing .zoom-anim-dialog
+  &.mfp-removing .mfp-content
     opacity: 0
     transform: translateY(-10px) perspective(600px) rotateX(10deg)
   &.mfp-bg
@@ -84,3 +84,36 @@ html.mfp-helper
     opacity: 0.8
   &.mfp-removing.mfp-bg
     opacity: 0
+
+// iframe scaler modifier
+.mfp-iframe-holder
+  padding: 0
+  .mfp-content
+    max-width: 1280px
+    padding: 40px
+    +r($lg)
+      padding: 30px
+    +r($sm)
+      padding: 20px
+  .mfp-close
+    top: 0px
+    right: 30px
+
+.mfp-iframe-scaler iframe
+  left: 40px
+  top: 40px
+  size: calc(100% - 80px)
+  +r($lg)
+    top: 30px
+    left: 30px
+    padding: 30px
+    size: calc(100% - 60px)
+  +r($sm)
+    top: 20px
+    left: 20px
+    padding: 20px
+    size: calc(100% - 40px)
+
+.mfp-scaler
+  &.mfp-bg
+    background: rgba(black, .5)

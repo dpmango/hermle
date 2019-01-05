@@ -1,82 +1,146 @@
-.product-card
-  flex: 1 0 auto
-  display: flex
-  flex-direction: column
-  cursor: pointer
-  &__image
-    flex: 1 1 auto
-    position: relative
-    z-index: 1
+// product scope
+.product-scope
+  margin: 50px 0 35px
+  &__wrapper
     display: flex
-    flex-direction: column
-    align-items: center
-    text-align: center
-    font-size: 0
-    img
-      margin-top: auto
-      max-width: 100%
-      transition: transform .25s $ease
-  &__tag
-    position: absolute
-    top: 15px
-    right: 0
-    z-index: 2
+    margin-left: -12px
+    margin-right: -12px
+  &__left, &__right
+    width: 100%
+    flex: 0 0 50%
+    max-width: 50%
+    min-width: 1px
+    padding: 0 12px
 
-  &__content
-    padding-left: 15px
-    padding-right: 15px
-    margin-top: 30px
+  // &__left
+  //
+  // &__right
+
+  &__category
+    font-size: 14px
+    text-transform: uppercase
+    letter-spacing: em(2.4, 14)
+    color: rgba($fontColor, .6)
   &__name
-    display: block
-    font-size: 18px
-    text-align: center
-    line-height: 1.16
-    transition: color .4s $ease
-    &--smaller
-      font-size: 16px
-  &__actions
-    margin-top: 15px
+    // h1-title extend
+    margin: .2em 0
+  &__row
+    display: flex
+    align-items: center
+  &__article
+    font-size: 14px
+    color: $fontColorGray
+  &__availability
+    font-size: 14px
+    margin-left: 25px
+    .ico
+
+    span
+      display: inline-block
+      margin-left: 7px
+    &.is-available
+      .ico
+        font-size: 12px
+        fill: $colorGreen
+
+  &__showroom
+    font-size: 14px
+    margin-left: 10px
+    // TODO - change to bg
+    padding: 5px
+    border-radius: 4px
+    background: #F6F2F2
+    span
+      font-weight: 700
+
+
+// product gallery
+.product-gallery
+  display: flex
+  &__thumbs
+    flex: 0 0 auto
+
+  &__thumb
+    flex: 0 0 auto
+    height: auto
     position: relative
     z-index: 1
     overflow: hidden
-  &__price
+    font-size: 0
+    min-size: 80px
+    border: 2px solid transparent
+    border-radius: 6px
+    transition: border .25s $ease, opacity .25s $ease
+    opacity: .4
+    cursor: pointer
+    img
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+    &.swiper-slide-thumb-active, &.is-selected
+      border-color: $colorRed
+      opacity: 1
+  &__video-thumb
+    flex: 0 0 auto
+    height: auto
+    border-radius: 4px
+    border: 1px solid $borderColor
+    display: flex
+    flex-direction: column
+    // align-items: center
+    text-align: center
+    padding: 10px
+    cursor: pointer
+    transition: border .25s $ease
+    .ico
+      font-size: 18px
+      fill: $colorRed
+      margin: 8px 0 17px
+      margin-left: auto
+      margin-right: auto
+    span
+      display: block
+      border-top: 1px solid $borderColor
+      padding: 7px 0 2px
+      font-size: 14px
+      transition: border .25s $ease
+    &:hover
+      border-color: $colorRed
+      span
+        border-color: $colorRed
+
+
+  &__main
+    flex: 1 1 auto
+    padding-left: 15px
+    padding-right: 15px
+
+  &__picture
     position: relative
     z-index: 1
+    overflow: hidden
     text-align: center
-  &__cta
+    font-size: 0
+    img
+      max-width: 100%
+  &__tag
     position: absolute
-    z-index: 2
-    bottom: 0
-    left: 0
-    right: 0
-    transform: translate3d(0, 100%, 0)
+    top: 30px
+    right: 40px
+
+
+
+.product-text
+  margin: 40px 0
+  &__wrapper
     display: flex
-    align-items: center
-    justify-content: center
-    transition: transform .25s ease-out
-    will-change: transform
-    // backface-visibility: hidden
-    transform-style: preserve-3d
-    .btn-compare
-      margin-right: 20px
-    .btn-primary
-      margin-right: 60px
-    &--no-compare
-      .btn-primary
-        margin-right: 0
-
-  &:hover
-    .product-card
-      &__image
-        img
-          transform: translateY(-5px)
-      &__cta
-        transform: translate3d(0, 0, 0)
-
-
-+r($sm)
-  .product-card
-    &__name
-      font-size: 16px
-      &--smaller
-        font-size: 14px
+    margin-left: -12px
+    margin-right: -12px
+  &__col
+    width: 100%
+    min-width: 1px
+    padding-left: 12px
+    padding-right: 12px
+    flex: 0 0 $col6
+    max-width: $col6

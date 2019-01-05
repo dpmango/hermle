@@ -846,6 +846,62 @@ $(document).ready(function(){
       }
     })
 
+    ////////////
+    // product page
+    ///////////
+    sliders.productThumbs = new Swiper('[js-swiper-gallery-thumbs]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'vertical',
+      loop: false,
+      watchOverflow: true,
+      setWrapperSize: false,
+      spaceBetween: 20,
+      slidesPerView: 'auto',
+      normalizeSlideIndex: true,
+      freeMode: false
+    });
+
+    sliders.productMain = new Swiper('[js-swiper-gallery-main]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: true,
+      watchOverflow: false,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 1,
+      normalizeSlideIndex: true,
+      freeMode: false,
+      // thumbs: {
+      //   swiper: sliders.productThumbs
+      // }
+    });
+
+    // thumbs swiper manual
+    sliders.productMain.on('slideChange', function(){
+      var index = sliders.productMain.realIndex
+      changeThumbClass(index)
+      sliders.productThumbs.slideTo(index)
+    })
+
+    _document
+      .on('click', '[js-swiper-gallery-thumbs] .swiper-slide', function(){
+        var $thumb = $(this)
+        var index = $thumb.index()
+        if ( $thumb.data('mfp-src') ) return // if modal is clicked - do nothing
+
+        changeThumbClass(index)
+        sliders.productMain.slideToLoop(index)
+      })
+
+    function changeThumbClass(index){
+      var $thumb = $( $('[js-swiper-gallery-thumbs] .swiper-slide')[index] )
+      $thumb.siblings().removeClass('is-selected')
+      $thumb.addClass('is-selected')
+    }
+
+
   }
 
   function initResponsiveSliders(){
@@ -916,6 +972,39 @@ $(document).ready(function(){
       }
     });
 
+    // video modal
+    $('[js-popup-video]').magnificPopup({
+      // disableOn: 700,
+      type: 'iframe',
+      fixedContentPos: true,
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'mfp-scaler',
+      callbacks: {
+        beforeOpen: function() {
+          // startWindowScroll = _window.scrollTop();
+          // $('html').addClass('mfp-helper');
+        }
+      },
+      patterns: {
+        youtube: {
+          index: 'youtube.com/',
+          id: 'v=', // String that splits URL in a two parts, second part should be %id%
+          // Or null - full URL will be returned
+          // Or a function that should return %id%, for example:
+          // id: function(url) { return 'parsed id'; }
+          src: '//www.youtube.com/embed/%id%?autoplay=1&controls=0&showinfo=0' // URL that will be set as a source for iframe.
+        }
+      },
+      closeMarkup: closeMarkup
+    });
+
+
+    // gallery modal
     $('[js-popup-gallery]').magnificPopup({
   		delegate: 'a',
   		type: 'image',
