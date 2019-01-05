@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="36px" viewBox="0 0 12 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>btn-compare-bg</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Товар-1200" transform="translate(-1484.000000, -551.000000)" fill="#F6F2F2" fill-rule="nonzero">
+            <g id="Контент" transform="translate(360.000000, 271.000000)">
+                <g id="Блок-справа" transform="translate(612.000000, 0.000000)">
+                    <g id="Сравнить" transform="translate(512.000000, 280.000000)">
+                        <path d="M12,0 L12,36 L10.2564103,36 C8.91962629,36 7.48436689,35.1006545 7.17948718,34 L1.02564103,21 C-0.191023821,18.9301972 -0.191023821,17.0698028 1.02564103,15 L7.17948718,2 C7.48436689,0.899345494 8.91962629,5.61442303e-15 10.2564103,0 L12,0 Z" id="btn-compare-bg"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

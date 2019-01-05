@@ -1,11 +1,11 @@
 $sprite: (
-	logo: (
+	delivery-rus: (
 		offset-x: 0px,
 		offset-y: 0px,
-		width: 160px,
-		height: 53px,
-		total-width: 160px,
-		total-height: 53px,
+		width: 32px,
+		height: 20px,
+		total-width: 32px,
+		total-height: 20px,
 		image: '../img/sprite.png'
 	),
 );
@@ -64,6 +64,6 @@ $sprite: (
 
 
 
-	.icon-logo {
-		@include sprite(logo)
+	.icon-delivery-rus {
+		@include sprite(delivery-rus)
 	}

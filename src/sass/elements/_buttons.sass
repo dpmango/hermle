@@ -70,12 +70,35 @@ button
       border-color: $borderColor
 
   &-compare
-    background: svg-load('../icons/svg-mono/btn-compare-bg.svg') no-repeat center
+    background: #F6F2F2
     background-size: cover
     font-size: 0
     color: $colorGray
-    padding: 6px 10px 8px 8px
-    border-radius: 4px
+    padding: 6px 2px 8px 8px
+    border-radius: 4px 0 0 4px
+    margin-right: 12px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      right: -12px
+      top: 0
+      bottom: 0
+      width: 12px
+      background: svg-load('../icons/svg-inline/btn-compare-bg.svg') no-repeat right center
+      background-size: cover
+      transform: rotate(180deg)
+    &--arr-left
+      padding-left: 2px
+      padding-right: 10px
+      border-radius: 0 4px 4px 0
+      margin-left: 12px
+      margin-right: 0px
+      &::after
+        background-position: left center
+        left: -12px
+        transform: none
+
     .ico
       position: relative
       z-index: 2

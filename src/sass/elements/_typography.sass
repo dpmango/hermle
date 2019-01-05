@@ -13,6 +13,10 @@
   font-size: 22px
   font-weight: 600
 
+.h4-title
+  font-size: 18px
+  font-weight: 600
+
 +r($sm)
   .h1-title
     font-size: 25px
@@ -37,6 +41,9 @@
   line-height: 1.5
   color: $fontColorGray
   line-height: 1.285
+  &--black
+    line-height: 1.5
+    color: $fontColor
 
 p.p-main, p.p-big, p.p-small
   margin: 1.6em 0
@@ -130,3 +137,53 @@ blockquote.blockquote
       content: ' '
       size: 4px
       background: $colorRed
+
+/* checkmarks
+.ul-checkmarks
+  list-style: none
+  margin: 1em 0
+  padding: 0
+  font-size: 16px
+  line-height: 1.8
+  li
+    position: relative
+    display: block
+    padding-left: 2em
+    margin-bottom: .2em
+    &::before
+      position: absolute
+      left: 0
+      top: 8px
+      display: inline-block
+      content: ' '
+      size: 16px 12px
+      background: svg-load("../icons/svg-mono/checkmark.svg") no-repeat center
+      background-size: contain
+
+
+/* links
+.ui-links-group
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  margin: 1em 0
+
+
+.ui-arr-link
+  display: flex
+  align-items: center
+  padding: 5px 0
+  transition: color .25s $ease
+  backface-visibility: hidden
+  transform-style: preserve-3d
+  .ico
+    font-size: 9px
+    fill: $colorRed
+    margin-left: 10px
+    backface-visibility: hidden
+    transition: transform .25s $ease
+    transform: translate(0,.2em)
+  &:hover
+    color: $colorRed
+    .ico
+      transform: translate3d(5px, .2em, 0)

@@ -1,0 +1,76 @@
+
+// product gallery
+.p-gallery
+  display: flex
+  &__thumbs
+    flex: 0 0 auto
+    padding-bottom: 50px
+
+  &__thumb
+    flex: 0 0 auto
+    height: auto
+    position: relative
+    z-index: 1
+    overflow: hidden
+    font-size: 0
+    min-size: 80px
+    border: 2px solid transparent
+    border-radius: 6px
+    transition: border .25s $ease, opacity .25s $ease
+    opacity: .4
+    cursor: pointer
+    img
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+    &.swiper-slide-thumb-active, &.is-selected
+      border-color: $colorRed
+      opacity: 1
+  &__video-thumb
+    flex: 0 0 auto
+    height: auto
+    border-radius: 4px
+    border: 1px solid $borderColor
+    display: flex
+    flex-direction: column
+    // align-items: center
+    text-align: center
+    padding: 10px
+    cursor: pointer
+    transition: border .25s $ease
+    .ico
+      font-size: 18px
+      fill: $colorRed
+      margin: 8px 0 17px
+      margin-left: auto
+      margin-right: auto
+    span
+      display: block
+      border-top: 1px solid $borderColor
+      padding: 7px 0 2px
+      font-size: 14px
+      transition: border .25s $ease
+    &:hover
+      border-color: $colorRed
+      span
+        border-color: $colorRed
+
+
+  &__main
+    flex: 1 1 auto
+    padding-left: 15px
+    padding-right: 15px
+
+  &__picture
+    position: relative
+    z-index: 1
+    overflow: hidden
+    text-align: center
+    font-size: 0
+    img
+      max-width: 100%
+  &__tag
+    position: absolute
+    top: 30px
+    right: 40px

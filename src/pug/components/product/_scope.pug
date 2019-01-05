@@ -1,5 +1,5 @@
 // PRODUCT SCOPE
-.p-scope
+.p-scope(data-aos="fade")
   .container
     .p-scope__wrapper
       // left
@@ -92,13 +92,28 @@
         
         // cta
         .p-scope__cta
-          a(href="#").btn.btn-primary.btn--buy
-            .btn-cart-icon
-              +svgMono("cart")
-            span Купить часы
+          .p-scope__buy
+            a(href="#").btn.btn-primary.btn--buy
+              .btn-cart-icon
+                +svgMono("cart")
+              span Купить часы
           
           .p-scope__price.price.price--product
             .price__newprice 469 400 <span class="r-mark">₽</span>
             .price__wrapper
               .price__oldprice 772 000 ₽
-              .price__discount Хочу еще скидку
+              a(href="#").price__discount Хочу еще скидку
+          
+          .p-scope__compare
+            a(href="#").btn.btn-compare.btn-compare--arr-left
+              +svgMono("compare")
+          
+        // text
+        .p-scope__text
+          .p-scope__description
+            p Напольные часы <strong>Hermle 01210-031171</strong> станут украшением любого интерьера: в&nbsp;квартире, офисе или загородном доме. Эта статусная модель обладает надежным механизмом с&nbsp;тросовой тягой, который обеспечивает 8&nbsp;дней хода. 
+            p Корпус выполнен в&nbsp;классическом стиле, с&nbsp;добавлением декоративных элементов, многие из&nbsp;которых выполнены вручную.
+          .p-scope__schema
+            img(src="img/productSchema.png" srcset='img/productSchema@2x.png 2x')
+            
+            
