@@ -1,0 +1,91 @@
+// PRODUCT SCOPE
+.p-scope
+  .container
+    .p-scope__wrapper
+      // left
+      .p-scope__left
+        .p-gallery
+          // vertical swiper
+          .p-gallery__thumbs.swiper-container(js-swiper-gallery-thumbs)
+            .swiper-wrapper
+              .swiper-slide.p-gallery__thumb.is-selected
+                img(src='img/productThumb_1.jpg' srcset='img/productThumb_1@2x.jpg 2x')
+              .swiper-slide.p-gallery__thumb
+                img(src='img/productThumb_2.jpg' srcset='img/productThumb_2@2x.jpg 2x')
+              .swiper-slide.p-gallery__thumb
+                img(src='img/productThumb_3.jpg' srcset='img/productThumb_3@2x.jpg 2x')
+              .swiper-slide.p-gallery__thumb
+                img(src='img/productThumb_4.jpg' srcset='img/productThumb_4@2x.jpg 2x')
+              .swiper-slide.p-gallery__video-thumb(js-popup-video data-mfp-src="https://www.youtube.com/watch?v=lNSaAKqFGZo")
+                +svgMono("play-icon")
+                span Видео
+                  
+          // main swiper
+          .p-gallery__main.swiper-container(js-swiper-gallery-main)
+            .swiper-wrapper
+              .swiper-slide.p-gallery__picture
+                img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                .p-gallery__tag
+                  .tag.tag--sale
+                    span 1
+              .swiper-slide.p-gallery__picture
+                img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                .p-gallery__tag
+                  .tag.tag--sale
+                    span 2
+              .swiper-slide.p-gallery__picture
+                img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                .p-gallery__tag
+                  .tag.tag--sale
+                    span 3
+              .swiper-slide.p-gallery__picture
+                img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                .p-gallery__tag
+                  .tag.tag--sale
+                    span 4
+        // document
+        .p-scope__document
+          a(href="#" target="_blank").btn.btn-outline.btn-outline--small.btn-outline--muted
+            .btn-document-icon
+              +svgMono('pdf')
+            span Инструкция
+                          
+      // right
+      .p-scope__right
+        .p-scope__category Напольные часы
+        h1.h1-title.p-scope__name Часы Hermle 01210
+        .p-scope__row
+          .p-scope__article Арт: 5655351
+          .p-scope__availability.is-available
+            +svgMono("checkmark")
+            span В наличии
+          .p-scope__showroom <span>Шоурум в Москве:</span> ул. Шаболовка д.23 к.5
+        
+        // CHARACTERISTICS
+        .p-chars.p-chars--compact
+          //col
+          .p-chars__col
+            .p-char
+              .p-char__image.p-char__image--color
+                img(src='img/productColor_q3.png' srcset='img/productColor_q3@2x.png 2x')
+              .p-char__content
+                .p-char__title Орех тёмный Q3
+                .p-char__description Цвет корпуса
+          //col
+          .p-chars__col
+            .p-char
+              .p-char__content
+                .p-char__title 
+                  +svgMono("gear")
+                  span Механика с боем
+                .p-char__description 1171&nbsp;&mdash; Механический механизм с&nbsp;тросовым подвесом гирь. <br/>Запас хода&nbsp;&mdash; 8&nbsp;дней.
+          //col
+          .p-chars__col
+            .p-char
+              .p-char__content
+                .p-char__title Органный гонг
+                .p-char__description Бой каждые 15&nbsp;минут с&nbsp;нарастанием длительности мелодии
+        
+        // more
+        .p-scope__more(js-scroll-to data-scroll-target=".p-info")
+          span Смотреть все харастеристики

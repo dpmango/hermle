@@ -251,8 +251,9 @@ $(document).ready(function(){
       }
     })
     // scroll to section
-    .on('click', 'a[href^="#section"]', function() { // section scroll
-      var el = $(this).attr('href');
+    .on('click', '[js-scroll-to]', function() { // section scroll
+      var target = $(this).data('scroll-target');
+      var el = $(target)
       var topTarget = $(el).offset().top
 
       // $('body, html').animate({scrollTop: topTarget}, 1000);

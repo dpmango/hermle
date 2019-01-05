@@ -1,20 +1,27 @@
 // product scope
-.product-scope
+.p-scope
   margin: 50px 0 35px
   &__wrapper
     display: flex
     margin-left: -12px
     margin-right: -12px
   &__left, &__right
+    position: relative
     width: 100%
     flex: 0 0 50%
     max-width: 50%
     min-width: 1px
     padding: 0 12px
 
-  // &__left
-  //
-  // &__right
+  &__left
+    padding-bottom: 10px
+  &__right
+
+  &__document
+    position: absolute
+    z-index: 2
+    left: 15px
+    bottom: 0
 
   &__category
     font-size: 14px
@@ -44,21 +51,61 @@
         fill: $colorGreen
 
   &__showroom
+    position: relative
     font-size: 14px
-    margin-left: 10px
-    // TODO - change to bg
-    padding: 5px
-    border-radius: 4px
+    margin-left: 22px
+    padding: 5px 5px 5px 0px
+    border-radius: 0px 4px 4px 0
     background: #F6F2F2
+    &::before
+      display: inline-block
+      content: ' '
+      position: absolute
+      width: 11px
+      left: -11px
+      bottom: 0
+      top: 0
+      background: svg-load('../icons/svg-inline/product-scope__showroom-bg.svg') no-repeat left center
+      background-size: cover
     span
       font-weight: 700
 
+  &__more
+    display: block
+    position: relative
+    font-size: 14px
+    color: $fontColorGray
+    padding: 3px 0
+    cursor: pointer
+    transition: color .25s $ease
+    &::after
+      display: inline-block
+      content: ''
+      position: absolute
+      left: 0
+      right: 0
+      top: 55%
+      height: 1px
+      background: $borderColor
+    span
+      position: relative
+      z-index: 2
+      display: inline-block
+      background: white
+      padding-right: 12px
+      line-height: 1
+    &:hover
+      color: $colorRed
+
+
+
 
 // product gallery
-.product-gallery
+.p-gallery
   display: flex
   &__thumbs
     flex: 0 0 auto
+    padding-bottom: 50px
 
   &__thumb
     flex: 0 0 auto
@@ -130,8 +177,80 @@
     right: 40px
 
 
+// top level block with characteritics
+.p-chars-wrapper
 
-.product-text
+// characteristics
+.p-chars
+  position: relative
+  z-index: 1
+  display: flex
+  flex-wrap: wrap
+  margin: 20px -12px
+  padding: 8px 0
+  // emulate border with grid
+  &::before
+    display: inline-block
+    content: ' '
+    position: absolute
+    top: 0
+    left: 12px
+    right: 12px
+    height: 1px
+    background: $borderColor
+  &__col
+    padding: 12px
+    width: 100%
+    min-width: 1px
+    flex: 0 0 auto
+    flex-basis: $col2
+    max-width: $col2
+  &--compact
+    margin-bottom: 0
+    padding-bottom: 0
+    .p-chars__col
+      flex-basis: $col4
+      max-width: $col4
+
+// single characteristic
+.p-char
+  display: flex
+  &__image
+    flex: 0 0 auto
+    margin-right: 10px
+    // compoensate title line-height
+    margin-top: 4px
+    &--color
+      position: relative
+      z-index: 1
+      border-radius: 4px
+      overflow: hidden
+      max-width: 30px
+    img
+      width: 100%
+  &__content
+    width: 100%
+    flex: 1 1 auto
+  &__title
+    display: flex
+    align-items: center
+    font-size: 15px
+    .ico
+      fill: $colorRed
+      margin-right: 6px
+      &-gear
+        font-size: 18px
+  &__description
+    margin-top: .5em
+    font-size: 12px
+    line-height: 1.25
+    color: #8F8F8F
+
+
+.p-info
+  margin: 30px 0
+
+.p-text
   margin: 40px 0
   &__wrapper
     display: flex

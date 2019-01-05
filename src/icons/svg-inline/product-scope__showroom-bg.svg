@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="22px" viewBox="0 0 11 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>product-scope__showroom-bg</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Товар-1200" transform="translate(-1173.000000, -357.000000)" fill="#F6F2F2" fill-rule="nonzero">
+            <g id="Контент" transform="translate(360.000000, 271.000000)">
+                <g id="Блок-справа" transform="translate(612.000000, 0.000000)">
+                    <g id="Есть-в-шоуруме" transform="translate(103.000000, 86.000000)">
+                        <path d="M109,-1.77635684e-15 L109,22 L107.254082,22 C105.995444,22 104.810212,21.4075897 104.054749,20.4008891 L98.8017095,13.4008891 C97.7341535,11.9783048 97.7341535,10.0216952 98.8017095,8.59911087 L104.054749,1.59911087 C104.810212,0.592410312 105.995444,-3.32150562e-15 107.254082,-3.55271368e-15 L109,-2.08282342e-15 Z" id="product-scope__showroom-bg"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
