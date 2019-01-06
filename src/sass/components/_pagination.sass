@@ -1,0 +1,30 @@
+/* pagination
+.pagination
+  margin-left: auto
+  margin-right: auto
+  margin-top: 30px
+  &__list
+    list-style: none
+    margin: 0
+    padding: 0
+    font-size: 18px
+  li
+    display: inline-block
+    transition: color .25s $ease
+    &.is-disabled
+      pointer-events: none
+      color: $colorGray
+    &.is-current, &:hover
+      color: $colorRed
+    a
+      display: inline-block
+      padding: 3px
+
+  &__prev
+    margin-right: 20px
+  &__next
+    margin-left: 20px
+  &__break
+    margin: 0 3px
+    &:hover
+      color: $fontColor

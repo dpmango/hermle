@@ -178,7 +178,34 @@ block content
                 +svgMono("checkmark")
                 span В наличии 
                   span (в шоуруме)
-  
+      
+      // pagination
+      .catalog__pagination
+        a(href="#" js-load-more).catalog__pagination-more
+          +svgMono("refresh")
+          span Показать еще
+          
+        .pagination
+          ul.pagination__list
+            li.pagination__prev.is-disabled
+              a(href="#") Предыдущая
+            li.is-current
+              a(href="#") 1
+            li
+              a(href="#") 2
+            li
+              a(href="#") 3
+            li
+              a(href="#") 4
+            li
+              a(href="#") 5
+            li.pagination__break ...
+            li
+              a(href="#") 21
+            li.pagination__next 
+              a(href="#") Следующая
+                
+        
   // TEXT 
   .c-text
     .container

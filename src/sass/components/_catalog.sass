@@ -83,8 +83,45 @@
     min-width: 1px
     display: flex
     flex-direction: column
+    margin-bottom: 50px
   // contains product card next
 
+  &__pagination
+    display: flex
+    flex-direction: column
+    align-items: center
+    text-align: center
+    // compensate 50px margin of cols
+    margin-top: -10px
+
+  &__pagination-more
+    display: flex
+    align-items: center
+    font-size: 0
+    transition: color .25s $ease
+    .ico
+      font-size: 18px
+      will-change: transform
+      transform-style: preserve-3d
+      backface-visibility: hidden
+      transform-origin: center center
+      transform: rotate(0)
+    span
+      font-size: 18px
+      display: inline-block
+      margin-left: 8px
+    &:hover
+      color: $colorRed
+    &.is-updating
+      .ico
+        animation: loadingRotation 1s
+        animation-iteration-count: infinite
+
+@keyframes loadingRotation
+  from
+    transform: rotate(0)
+  to
+    transform: rotate(360deg)
 +r($xl)
   .catalog
     &__col

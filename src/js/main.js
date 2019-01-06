@@ -717,6 +717,26 @@ $(document).ready(function(){
 
     })
 
+    // show more click
+    .on('click', '[js-load-more]', function(){
+      var $btn = $(this);
+      var $catalog = $btn.closest('.catalog').find('.catalog__grid');
+
+      if ( $catalog.length === 0 ) return
+      // TODO - dumy contents - change to ajax responce
+      // $.ajax("/load-more")....
+
+      $btn.addClass('is-updating');
+      setTimeout(function(){
+        var $catalogChilds = $catalog.children()
+        var $newChilds = $catalogChilds.clone()
+        $catalog.append($newChilds)
+        $newChilds.hide().fadeIn()
+        $btn.removeClass('is-updating');
+      }, 1000)
+
+    })
+
 
   /**********
   * PLUGINS *
