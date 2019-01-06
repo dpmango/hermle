@@ -47,7 +47,8 @@ label.ui-input__validation
   margin-bottom: 0
 
 /* Checkbox
-.ui-checkbox
+// checkbox defaults
+.ui-checkbox, .ui-checkbox-select, .ui-color
   input
     display: none
     width: 0.1px
@@ -56,6 +57,9 @@ label.ui-input__validation
     position: absolute
     top: 0
     left: 0
+
+.ui-checkbox
+  input
     &:checked
       + label
         &::before
@@ -103,3 +107,76 @@ label.ui-input__validation
       line-height: 1.3
       font-size: 14px
       cursor: pointer
+
+/* checkbox group
+.ui-checkbox-selects
+  display: flex
+
+
+.ui-checkbox-select
+  border: 1px solid #DBD8D8
+  &:first-child
+    border-top-left-radius: 4px
+    border-bottom-left-radius: 4px
+
+  &:last-child
+    border-top-right-radius: 4px
+    border-bottom-right-radius: 4px
+
+
+/* colors
+.ui-colors
+  display: flex
+  align-items: center
+  .ui-color
+    margin-right: 12px
+    &:last-child
+      margin-right: 0
+
+.ui-color
+  input
+    &:checked
+      + label
+        border-color: $colorRed
+        img
+          transform: scale(0.85)
+
+  label
+    display: block
+    width: 100%
+    min-size: 30px
+    position: relative
+    cursor: pointer
+    border-radius: 4px
+    border: 1px solid transparent
+    overflow: hidden
+    font-size: 0
+    transition: border .25s $ease
+    img
+      max-width: 100%
+      transition: transform .25s $ease
+  &:hover
+    label
+      border-color: $colorRed
+
+/* slider group ui
+.ui-range
+  position: relative
+  z-index: 1
+  min-height: 40px
+  border: 1px solid #DBD8D8
+  border-radius: 4px
+  &__mark
+    position: absolute
+    font-size: 20px
+    top: 5px
+    &--from
+      left: 15px
+    &--to
+      right: 15px
+
+  .noUi-target
+    position: absolute
+    bottom: -6px
+    left: 5px
+    right: 5px

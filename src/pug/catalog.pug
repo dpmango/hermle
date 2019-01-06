@@ -5,4 +5,201 @@ extends shared/_layout
 block content
   
   // CATALOG
+  // HEAD
+  .c-head
+    .container
+      .c-head__titles
+        h1.h1-title.c-head__title Напольные часы
+        .c-head__sorting
+          select.muted(js-select js-catalog-sortby placeholder="Сортировать по")
+            //- option(disabled selected) Сортировать по
+            option По популярности
+            option Наименованию А-Я
+            option Наименованию Я-А
+            option По убываю цены
+            option По возрастанию цены
+      
+      // FILTERS
+      form(action="" js-catalog-filter).c-head__filters.c-filters
+        // col
+        .c-filters__col.c-filters__col--price
+          .c-filters__group
+            .c-filters__group-name Цена, руб
+            .ui-range
+              .ui-range__mark.ui-range__mark--from(js-range-from) 0
+              div(
+                js-rangeslider 
+                data-range-min="0" 
+                data-range-max="660000"
+                data-step="1000"
+                data-start-from="0"
+                data-start-to="500000")
+              .ui-range__mark.ui-range__mark--to(js-range-to) 0
+          
+          //group
+          .c-filters__group
+            .ui-toggle
+              input(type="checkbox" name="night")
+              label
+                span Ночное отключение
+                
+        // col
+        .c-filters__col.c-filters__col--shape
+          .c-filters__group
+            .c-filters__group-name Форма
+            .ui-checkbox-selects
+              .ui-checkbox-select
+                input(type="checkbox" name="shape" id="shape_1")
+                label(for="shape_1")
+                  span Напольные
+              .ui-checkbox-select
+                input(type="checkbox" name="shape" id="shape_2")
+                label(for="shape_2")
+                  span Настенные
+              .ui-checkbox-select
+                input(type="checkbox" name="shape" id="shape_3")
+                label(for="shape_3")
+                  span Настольные     
+          
+          .c-filters__group
+            .ui-checkbox-row
+              .ui-checkbox
+                input(type="checkbox" name="quartz" id="quartz")
+                label(for="quartz")
+                  span Кварц
+              .ui-checkbox
+                input(type="checkbox" name="mechanics" id="mechanics")
+                label(for="mechanics")
+                  span Механика
+                   
+        // col
+        .c-filters__col.c-filters__col--style
+          .c-filters__row
+            // inner col
+            .c-filters__col
+              .c-filters__group
+                .c-filters__group-name Стиль
+                .ui-checkbox-selects
+                  .ui-checkbox-select
+                    input(type="checkbox" name="style" id="style_1")
+                    label(for="style_1")
+                      span Классика
+                  .ui-checkbox-select
+                    input(type="checkbox" name="style" id="style_2")
+                    label(for="style_2")
+                      span Модерн
+                  .ui-checkbox-select
+                    input(type="checkbox" name="style" id="style_3")
+                    label(for="style_3")
+                      span Эксклюзив   
+            // inner col
+            .c-filters__col
+              .c-filters__group
+                .c-filters__group-name Мелодия
+                select(js-select placeholder="Выбрать")
+                  //- option(disabled selected) Сортировать по
+                  option Бом-бом
+                  option Дзинь
+                  option Трам-пам-пам
+                  option Тыц-тыц
+          
+          .c-filters__group
+            // colors
+            .ui-colors
+              mixin ui_color(id)
+                .ui-color(title="Название цвета")
+                  input(type="checkbox" name="color" id="color_"+id+"")
+                  label(for="color_"+id+"")
+                    img(src='img/catalog-colors/color_'+id+'.png' srcset='img/catalog-colors/color_'+id+'@2x.png 2x')
+              
+              +ui_color(1)
+              +ui_color(2)
+              +ui_color(3)
+              +ui_color(4)
+              +ui_color(5)
+              +ui_color(6)
+              +ui_color(7)
+              +ui_color(8)
+              +ui_color(9)
+              +ui_color(10)
+              +ui_color(11)
+              +ui_color(12)
+      
+      .c-quick-filter
+        a(href="#") часы с боем и мелодией
+        a(href="#") часы с боем
+        a(href="#") классические напольные часы
+        a(href="#") механические эксклюзивные часы
+        a(href="#") напольные часы с ночным отключением      
   
+  // GRID
+  .catalog
+    .container
+      .catalog__grid
+        .catalog__col
+          // prodcut card
+          .product-card.product-card--extended
+            .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
+              .swiper-wrapper
+                .swiper-slide
+                  .product-card__image
+                    img(src="img/sale_1.png" srcset="img/sale_1@2x.png 2x")
+                .swiper-slide
+                  .product-card__image
+                    img(src="img/sale_2.png" srcset="img/sale_2@2x.png 2x")
+              .swiper-pagination
+                  
+              .product-card__tag
+                .tag.tag--sale 
+                  span -50%
+            .product-card__content
+              .product-card__name.product-card__name--smaller Настенные часы <br/>Hermle 70509
+              .product-card__article Арт: 5655351
+              .product-card__actions
+                .product-card__price.price
+                  .price__newprice 26 600 <span class="r-mark">₽</span>
+                  .price__oldprice 46 000 ₽
+                .product-card__cta.product-card__cta--no-compare
+                  a(href="#").btn.btn-primary.btn--buy
+                    .btn-cart-icon
+                      +svgMono("cart")
+                    span Купить
+              .product-card__chars.pc-chars
+                .pc-chars__row
+                  span.pc-chars__label Цвет
+                  span.pc-chars__content
+                    .pc-chars__color
+                      img(src='img/catalog-colors/color_1.png' srcset='img/catalog-colors/color_1@2x.png 2x')
+                      span Орех
+                .pc-chars__row
+                  span.pc-chars__label Бой
+                  span.pc-chars__content 3 мелодии (Вестминстер <br/>- Виттингтон - Св. Михаил)
+              .product-card__availability.is-available
+                +svgMono("checkmark")
+                span В наличии 
+                  span (в шоуруме)
+  
+  // TEXT 
+  .c-text
+    .container
+      .c-text__box
+        h2.h2-title Напольные часы из Германии - покупка на тысячелетия
+        p.p-main Напольные часы <strong>Hermle</strong>&nbsp;&mdash; это эталон хорошего вкуса. Начиная с&nbsp;1922-го года, продукция германского бренда украшает дома, офисы и&nbsp;квартиры состоятельных владельцев по&nbsp;всему земному шару.
+        p.p-main Часовой механизм <strong>Hermle</strong> настолько точен и&nbsp;надежен, что другие производители механических интерьерных часов используют его уже десятки лет, доверяя компетентности немецких мастеров.
+        h3.h3-title Механические напольные часы Hermle, это:
+        .ul-list-row
+          .ul-checkmarks
+            li Статусный, стильный и оригинальный дизайн;
+            li Широкое разнообразие цветов;
+            li Корпус из натурального древесного массива;
+            li Декоративные элементы ручной работы;
+            li Автоматическое и ручное отключение боя и мелодии;
+          .ul-checkmarks
+            li До 8 дней хода на одном заводе;
+            li Классические мелодии боя: Вестминстер (Westminster), Уиттингтон (Whittington) и Св. Михаил (St. Michael);
+            li Модели с лунным календарем, а также многое другое;
+          
+          p.p-main Мы&nbsp;являемся партнером бренда <strong>Hermle</strong>, поэтому можем гарантировать не&nbsp;только заводское качество, но&nbsp;и&nbsp;действительно справедливые цены.
+          p.p-main Доставляем часы в&nbsp;оригинальной заводской упаковке, с&nbsp;полным перечнем необходимой документации и&nbsp;гарантийным талоном. До&nbsp;того, как попасть в&nbsp;Ваш дом или офис, напольные часы <strong>Hermle</strong> дополнительно проходят 3&nbsp;стадии проверки: перед отгрузкой с&nbsp;фабрики в&nbsp;Германии, при получении на&nbsp;склад в&nbsp;Москве, а&nbsp;также при финальной отгрузке товара. Мы&nbsp;гарантируем целостность товара, отсутствие любых дефектов и&nbsp;рекламаций.
+            
+            

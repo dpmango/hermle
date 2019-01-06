@@ -29,6 +29,7 @@
     "perfect-scrollbar": "^0.8.1",
     "jquery-selectric": "^1.13.0",
     "picturefill": "^3.0.3",
-    "aos": "^2.3.4"
+    "aos": "^2.3.4",
+    "nouislider": "^12.1.0"
   }
 }

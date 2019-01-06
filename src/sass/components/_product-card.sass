@@ -2,7 +2,11 @@
   flex: 1 0 auto
   display: flex
   flex-direction: column
-  cursor: pointer
+  &[js-link]
+    cursor: pointer
+  &__slider
+    width: 100%
+    padding-bottom: 25px
   &__image
     flex: 1 1 auto
     position: relative
@@ -34,6 +38,11 @@
     transition: color .4s $ease
     &--smaller
       font-size: 16px
+  &__article
+    font-size: 12px
+    color: #8F8F8F
+    text-align: center
+    margin: 15px 0
   &__actions
     margin-top: 15px
     position: relative
@@ -65,6 +74,32 @@
       .btn-primary
         margin-right: 0
 
+  // charactersitics
+  &__chars
+    margin: 15px 0
+
+  &__availability
+    font-size: 14px
+    text-align: center
+    margin: 15px auto
+    .ico
+
+    span
+      display: inline-block
+      margin-left: 7px
+      span
+        margin-left: 0
+        color: $colorGray
+        font-size: 12px
+    &.is-available
+      .ico
+        font-size: 12px
+        fill: $colorGreen
+    &.is-not-available
+      .ico
+        font-size: 12px
+        fill: $colorRed
+
   &:hover
     .product-card
       &__image
@@ -73,6 +108,9 @@
       &__cta
         transform: translate3d(0, 0, 0)
 
+  &--extended
+    // for the catalog page
+
 
 +r($sm)
   .product-card
@@ -80,3 +118,45 @@
       font-size: 16px
       &--smaller
         font-size: 14px
+
+
+// product characteristic
+.pc-chars
+  &__row
+    display: flex
+    margin-bottom: 5px
+    &:last-child
+      margin-bottom: 0
+  &__label
+    display: flex
+    align-items: center
+    flex: 1 1 auto
+    font-size: 14px
+    color: $colorGray
+    &::after
+      flex: 1 1 auto
+      display: block
+      content: ' '
+      margin-top: .2em
+      // border-bottom: 1px dotted #D6D6D6
+      height: 1px
+      background-image: linear-gradient(to right, #D6D6D6 33%, rgba(255,255,255,0) 0%)
+      background-position: bottom
+      background-size: 3px 1px
+      background-repeat: repeat-x
+      margin-left: 7px
+      margin-right: 7px
+  &__content
+    display: inline-block
+    margin-left: auto
+    font-size: 14px
+    line-height: 1.7
+    text-align: right
+  &__color
+    display: flex
+    align-items: center
+    img
+      max-size: 18px
+      border-radius: 4px
+    span
+      margin-left: 5px

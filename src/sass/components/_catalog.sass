@@ -1,0 +1,112 @@
+/* catalog head
+.c-head
+  &__titles
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+  &__title
+    // h1 extend
+
+  &__sorting
+    margin-left: auto
+
+  &__filters
+    // margin: 20px 0
+
+
+/* catalog filters
+.c-filters
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  margin-left: -12px
+  margin-right: -12px
+  &::after
+    display: inline-block
+    content: ' '
+    position: absolute
+    left: 12px
+    right: 12px
+    bottom: 0
+    height: 1px
+    background: $borderColor
+
+  // inner row
+  &__row
+    display: flex
+    flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
+  &__col
+    // width: 100%
+    flex: 0 0 auto
+    min-width: 1px
+    padding: 12px
+    &--price
+      flex-basis: $col3
+      max-width: $col3
+    &--shape
+
+    &--style
+
+  &__group
+    margin-bottom: 20px
+
+  &__group-name
+    font-size: 14px
+    color: $fontColorGray
+
+
+/* quick filter
+.c-quick-filter
+  display: flex
+  flex-wrap: wrap
+  margin: 15px -10px
+  a
+    display: inline-block
+    padding: 10px
+    transition: color .25s $ease
+    &:hover
+      color: $colorRed
+
+
+/* grid
+.catalog
+  margin: 40px 0 60px
+  &__grid
+    display: flex
+    flex-wrap: wrap
+  &__col
+    width: 100%
+    flex: 0 0 $col3
+    max-width: $col3
+    min-width: 1px
+    display: flex
+    flex-direction: column
+  // contains product card next
+
++r($xl)
+  .catalog
+    &__col
+      flex-basis: $col4
+      max-width: $col4
+
++r($lg)
+  .catalog
+    &__col
+      flex-basis: $col6
+      max-width: $col6
+
++r($sm)
+  .catalog
+    &__col
+      flex-basis: $col12
+      max-width: $col12
+
+
+/* catalog txt section
+.c-text
+  margin-top: 60px
+  &__box
+    background: #FAF8F4
+    padding: 60px 70px

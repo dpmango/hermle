@@ -22,12 +22,41 @@
     &:hover
       background-color: $colorRed
 
+/* line controls
+.swiper-control-lines
+  &.swiper-container-horizontal >
+    .swiper-pagination-bullets
+      bottom: 0
+      left: 0
+      right: 0
+      display: flex
+      .swiper-pagination-bullet
+        margin: 0
+
+  .swiper-pagination-bullet
+    flex: 1 1 auto
+    font-size: 0
+    border-radius: 0
+    size: auto 2px
+    opacity: 1
+    background: $borderColor
+    transition: background .25s $ease
+    &:hover
+      background: rgba($colorRed, .5)
+
+  .swiper-pagination-bullet-active
+    background-color: $colorRed
+    &:hover
+      background-color: $colorRed
+
 +r($lg)
   .swiper-control-dots
     &.swiper-container-horizontal >
       .swiper-pagination-bullets
         right: auto
         left: 9.8%
+
+
 /* arrows modifiers
 .swiper-control-arrows
   .swiper-button-next, .swiper-button-prev

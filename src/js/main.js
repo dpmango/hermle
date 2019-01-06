@@ -81,6 +81,7 @@ $(document).ready(function(){
     initPopups();
     initMasks();
     initSelectric();
+    initRangeSlider();
     initScrollMonitor(fromPjax);
     initValidations();
   }
@@ -694,6 +695,29 @@ $(document).ready(function(){
   }
 
 
+  /////////////
+  // PRODUCT
+  /////////////
+
+
+
+  ////////////
+  // CATALOG
+  ///////////
+
+  // filters
+  _document
+    // filter primary form
+    .on('change', '[js-catalog-filter]', function(){
+
+    })
+
+    // sortby select
+    .on('selectric-select', '[js-catalog-sortby]', function(){
+
+    })
+
+
   /**********
   * PLUGINS *
   **********/
@@ -900,6 +924,34 @@ $(document).ready(function(){
       var $thumb = $( $('[js-swiper-gallery-thumbs] .swiper-slide')[index] )
       $thumb.siblings().removeClass('is-selected')
       $thumb.addClass('is-selected')
+    }
+
+
+    ////////////
+    // catalog page
+    ///////////
+
+    var $productImages = $('[js-swiper-product-images]');
+
+    if ( $productImages.length > 0 ){
+      $productImages.each(function(i, slider){
+        new Swiper(slider, {
+          wrapperClass: "swiper-wrapper",
+          slideClass: "swiper-slide",
+          direction: 'horizontal',
+          loop: true,
+          watchOverflow: true,
+          setWrapperSize: false,
+          spaceBetween: 0,
+          slidesPerView: 1,
+          normalizeSlideIndex: true,
+          freeMode: false,
+          pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+          },
+        })
+      })
     }
 
 
@@ -1150,7 +1202,7 @@ $(document).ready(function(){
 
     $select.selectric({
       maxHeight: 300,
-      arrowButtonMarkup: '<b class="button"><svg class="ico ico-select-down"><use xlink:href="img/sprite.svg#ico-select-down"></use></svg></b>',
+      arrowButtonMarkup: '<b class="button"><svg class="ico ico-mono-arrow-select"><use xlink:href="img/sprite-mono.svg#ico-mono-arrow-select"></use></svg></b>',
 
       onInit: function(element, data){
         var $elm = $(element),
@@ -1171,6 +1223,80 @@ $(document).ready(function(){
         $wrapper.find('.label').html($wrapper.find('.label').data('value'));
       }
     });
+  }
+
+  // range slider
+  ////////////
+  // RANGESLIDER
+  ////////////
+  function initRangeSlider(){
+    var sliders = $('[js-rangeslider]');
+
+    if ( sliders.length > 0 ){
+      sliders.each(function(i, slider){
+        if ( !$(slider).is('.noUi-target')  ){
+          var $slider = $(slider);
+          var startFrom = $slider.data('start-from');
+          var startTo = $slider.data('start-to');
+          var step = $slider.data('step');
+          var rangeMin = $slider.data('range-min');
+          var rangeMax = $slider.data('range-max');
+
+          noUiSlider.create(slider, {
+            start: [startFrom, startTo],
+            connect: true,
+            step: step,
+            behaviour: "tap",
+            range: {
+              'min': rangeMin,
+              'max': rangeMax
+            }
+          });
+
+          var priceValues = [
+            $slider.parent().find('[js-range-from]').get(0),
+            $slider.parent().find('[js-range-to]').get(0),
+          ];
+
+          slider.noUiSlider.on('update', function( values, handle ) {
+            // var isMaxed = parseInt(values[1]).toFixed(0) >= rangeMax ? " +" : ""
+            var isMaxed = ""
+            priceValues[0].innerHTML = parseInt(values[0]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+            priceValues[1].innerHTML = parseInt(values[1]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
+            // priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
+
+          });
+
+          slider.noUiSlider.on('change', function( values, handle ) {
+            if ( $slider.closest('form').length > 0 ){
+              $slider.closest('form').trigger('change')
+            }
+          });
+
+          slider.noUiSlider.on('end', function( values, handle ) {
+            $slider.parent().parent().click();
+            $slider.parent().parent().trigger('tap');
+            $slider.focusout();
+            // triggerBody(false);
+
+            // query builder
+            // var $queryContainer = $slider.closest('[js-query-builder]');
+            // if ( $queryContainer.length > 0 ){
+            //   var queryName = $queryContainer.data("query-name");
+            //   var isRangeQuery = $queryContainer.data("query-min-max");
+            //
+            //   if ( queryName && isRangeQuery == true){
+            //     addURLQuery(queryName + "-min", Math.floor(values[0])); // min
+            //     addURLQuery(queryName + "-max", Math.floor(values[1])); // max
+            //     // loadCards();
+            //   }
+            // }
+
+          });
+
+        }
+      })
+    }
   }
 
   ////////////
