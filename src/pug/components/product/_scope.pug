@@ -115,5 +115,30 @@
             p Корпус выполнен в&nbsp;классическом стиле, с&nbsp;добавлением декоративных элементов, многие из&nbsp;которых выполнены вручную.
           .p-scope__schema
             img(src="img/productSchema.png" srcset='img/productSchema@2x.png 2x')
-            
-            
+        
+        // music
+        .p-scope__music
+          p.p-small Мелодии
+          .p-scope__music-row
+            .play-btn(js-play-audio)
+              .play-btn__progress
+                .play-btn__progress-radial(js-radial-progressbar)
+                +svgMono('play-icon')
+                +svgMono('stop-icon')
+              .play-btn__content
+                span.play-btn__name Вестминстер органный гонг
+                span.play-btn__timer 50 секунд
+              .play-btn__media
+                audio
+                  source(src="audio/80289__hyderpotter__hourlychimebeg.mp3" type="audio/mpeg")
+            .play-btn(js-play-audio)
+              .play-btn__progress
+                .play-btn__progress-radial(js-radial-progressbar)
+                +svgMono('play-icon')
+                +svgMono('stop-icon')
+              .play-btn__content
+                span.play-btn__name Уиттингтон органный гонг
+                span.play-btn__timer 50 секунд
+              .play-btn__media
+                audio
+                  source(src="audio/80289__hyderpotter__hourlychimebeg.mp3" type="audio/mpeg")

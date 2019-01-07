@@ -56,6 +56,8 @@ $(document).ready(function(){
     }
   } // collection of all sliders
 
+  var progressBars = []; // collection of all progressbars
+
   ////////////
   // LIST OF FUNCTIONS
   ////////////
@@ -91,6 +93,8 @@ $(document).ready(function(){
     getHeaderParams();
     setPageOffset();
     ieFixImages(fromPjax);
+    initRadialProgressbar();
+    initHowler();
     if ( fromPjax ){
       AOS.refreshHard();
       window.onLoadTrigger()
@@ -632,28 +636,6 @@ $(document).ready(function(){
     })
   }
 
-  _document
-    .on('click', '[js-play-audio]', function(){
-      var $this = $(this)
-      var $audio = $this.find("audio");
-      var audioPlayer = $audio.get(0);
-      var isPlaying = $this.is(".is-playing");
-
-      // play/stop toggle
-      if ( !isPlaying ){
-        $this.addClass("is-playing");
-        audioPlayer.play();
-      } else {
-        $this.removeClass("is-playing");
-        audioPlayer.pause();
-        audioPlayer.currentTime = 0;
-      }
-
-      $audio.bind("ended", function(){
-        $this.removeClass("is-playing");
-      });
-    })
-
 
   // align buttons
   function setBannerPaddings(){
@@ -1194,6 +1176,32 @@ $(document).ready(function(){
   }
 
 
+  // radial progressbars
+  function initRadialProgressbar(){
+    var $bars = $('[js-radial-progressbar]');
+
+    if ( $bars.length === 0 ) return
+    progressBars = [] //null global array
+
+    $bars.each(function(i,bar){
+      var $bar = $(bar);
+      var strokeWidth = browser.isRetinaDisplay ? 4 : 2
+
+      $bar.attr("data-id", i)
+      progressBars.push({
+        id: i,
+        instance: new ProgressBar.Circle(bar, {
+          strokeWidth: strokeWidth,
+          color: '#AA2935',
+          trailColor: '#F6F2F2',
+          duration: 100,
+          easing: 'linear'
+        })
+      })
+
+    })
+  }
+
   ////////////
   // UI
   ////////////
@@ -1250,7 +1258,6 @@ $(document).ready(function(){
     });
   }
 
-  // range slider
   ////////////
   // RANGESLIDER
   ////////////
@@ -1363,12 +1370,106 @@ $(document).ready(function(){
             return validation
             // if (charCode == 46 || charCode > 31 && (charCode < 48 || charCode > 57)){
           }
-
-
         }
       })
     }
   }
+
+  // SOUND CONTROLS
+  function initHowler(){
+    var $soundsBtns = $('[js-play-audio]');
+    if ( $soundsBtns.length === 0 ) return
+
+    Howler.unload() // reload all on page refresh
+
+    // build new array from audio > source > src
+    $soundsBtns.each(function(i, btn){
+      var $btn = $(btn)
+      var $audio = $btn.find("audio");
+      var source = $audio.find("source").attr("src")
+
+      new Howl({
+        src: source,
+        volume: 1.0
+      });
+    })
+  }
+
+  var soundTimer
+
+  _document
+    .on('click', '[js-play-audio]', function(){
+      var playingClass = "is-playing"
+      var $btn = $(this);
+      var $audio = $btn.find("audio");
+      var source = $audio.find("source").attr("src");
+      var $bar = $btn.find("[js-radial-progressbar]");
+      var isPlaying = $btn.is(".is-playing");
+
+      // finding corresponding sound in Howler cache
+      var sound
+      $.each(Howler._howls, function(i, howl){
+        if ( howl._src === source ){
+          sound = howl
+        }
+      })
+
+      // find corresponding progressbar
+      var radialProgressBar
+      $.each(progressBars, function(i, pb){
+        if ( pb.id == $bar.attr('data-id') ){
+          radialProgressBar = pb.instance
+        }
+      })
+
+      if ( !sound ) {
+        console.log('erorr - no coresponding audio files found')
+        return
+      }
+
+      // play/stop toggle
+      resetAllHowls();
+
+      if ( !isPlaying ){
+        $btn.addClass(playingClass);
+        sound.play();
+
+        if ( $bar.length === 0 && !radialProgressBar ) return
+
+        // animation with timeout
+        soundTimer = setInterval(function(){
+          radialProgressBar.animate(sound.seek() / sound.duration())
+        }, 100)
+      }
+
+      // events
+      // sound.on('stop', function(){
+      //   // console.log('stop triggered')
+      // })
+
+      sound.on('end', function(){
+        resetAllHowls()
+      });
+
+
+      function resetAllHowls(){
+        // reset classes
+        $('[js-play-audio]').removeClass(playingClass)
+
+        // stop all howler instances
+        $.each(Howler._howls, function(i, howl){
+          howl.stop();
+        })
+
+        // reset all progressbars
+        $.each(progressBars, function(i, pb){
+          pb.instance.animate(0)
+        })
+
+        // clear timer just in case
+        clearInterval(soundTimer)
+      }
+    })
 
   ////////////
   // SCROLLMONITOR

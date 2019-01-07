@@ -21,6 +21,8 @@ gulp.task('javascript:vendor', function() {
       path.resolve('bower_components', 'jquery-mask-plugin/dist/jquery.mask.min.js'),
       path.resolve('bower_components', 'jquery-selectric/public/jquery.selectric.min.js'),
       path.resolve('bower_components', 'nouislider/distribute/nouislider.min.js'),
+      path.resolve('bower_components', 'howler.js/dist/howler.min.js'),
+      path.resolve('bower_components', 'progressbar.js/dist/progressbar.min.js'),
       path.resolve('bower_components', 'barba.js/dist/barba.min.js'),
       path.resolve('bower_components', 'jquery-lazy/jquery.lazy.min.js'),
       path.resolve('bower_components', 'jquery-lazy/plugins/jquery.lazy.picture.min.js'),

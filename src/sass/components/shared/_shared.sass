@@ -94,19 +94,55 @@
 .play-btn
   position: relative
   display: flex
-  align-items: center
+  // align-items: center
   cursor: pointer
+  font-size: 0
   &__icon
     transition: color .25s $ease
     color: $colorRed
     .ico
       font-size: 30px
+  &__progress
+    position: relative
+    size: 30px
+    border-radius: 50%
+    overflow: hidden
+    // border: 1px solid $borderColor
+    color: $colorRed
+    font-size: 0
+    .ico
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)
+      pointer-events: none
+      font-size: 12px
+      backface-visibility: hidden
+      will-change: opacity
+      transform-style: preserve-3d
+      transition: opacity .25s $ease
+      &-mono-play-icon
+        opacity: 1
+        margin-left: 1px
+      &-mono-stop-icon
+        opacity: 0
+  &__progress-radial
+    position: absolute 0
+
   &__name
+    display: block
+    max-width: 100px
     font-size: 14px
     line-height: 1.25
-    margin-top: -.35em
+    margin-top: -.15em
     margin-left: 10px
     transition: color .25s $ease
+  &__timer
+    display: block
+    font-size: 12px
+    margin-left: 10px
+    margin-top: .5em
+    color: #8F8F8F
   &__media
     audio
       position: absolute
@@ -118,6 +154,12 @@
     .play-btn
       &__icon
         color: $colorRedHover
+      &__progress
+        .ico-mono-play-icon
+          opacity: 0
+        .ico-mono-stop-icon
+          opacity: 1
+
     &:hover
       .play-btn
         &__name
