@@ -1039,6 +1039,9 @@ $(document).ready(function(){
           startWindowScroll = _window.scrollTop();
           // $('html').addClass('mfp-helper');
         },
+        open: function(){
+          initSliders()
+        },
         close: function() {
           // $('html').removeClass('mfp-helper');
           _window.scrollTop(startWindowScroll);

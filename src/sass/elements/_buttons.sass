@@ -38,6 +38,25 @@ button
     &:hover
       background-color: $colorRedHover
 
+  &-secondary
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 12px 20px 14px
+    font-size: 12px
+    background: transparent
+    border: 1px solid $colorYellow
+    color: $fontColor
+    line-height: normal
+    font-weight: 700
+    text-transform: uppercase
+    border-radius: 4px
+    letter-spacing: em(2.25, 12)
+    span
+      flex: 0 1 auto
+    &:hover
+      background-color: $colorYellow
+
   &-outline
     display: flex
     align-items: center
@@ -108,11 +127,26 @@ button
       // color: white
       color: $colorRed
 
+  /* icon only buton
+  &-buy-icon-only
+    background: $colorRed
+    border-radius: 4px
+    color: white
+    padding: 11px 14px
+    font-size: 0
+    .ico
+      font-size: 25px
+    &:hover
+      background-color: $colorRedHover
+
   /* btn modifiers
-  &-primary, &-outline
+  &-primary, &-outline, &-secondary
     &--small
       padding: 9px 22px 11px
       font-size: 12px
+    &--big
+      font-size: 16px
+      padding: 12px 25px 14px
 
   &--buy
     padding: 11px 17px 12px 44px

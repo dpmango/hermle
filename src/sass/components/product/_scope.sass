@@ -1,6 +1,8 @@
 // product scope
 .p-scope
   margin: 50px 0 35px
+  &--modal
+    margin: 0
   &__wrapper
     display: flex
     margin-left: -12px
@@ -102,6 +104,11 @@
     display: flex
     align-items: center
     margin: 25px -12px
+    &--modal
+      display: block
+      .p-scope__price
+        margin-left: 0
+        margin-right: 0
   &__buy
     flex: 0 0 auto
     padding-left: 12px
@@ -116,6 +123,14 @@
     max-width: $col2
     padding-right: 12px
     padding-left: 12px
+  // goes to modal
+  &__cta-line
+    display: flex
+    align-items: center
+    margin-top: 20px
+
+  &__more-btn
+
 
   /* text section
   &__text

@@ -1,6 +1,6 @@
 mixin productCard_1
   // prodcut card
-  .product-card.product-card--catalog(data-aos="fade")
+  .product-card.product-card--catalog(js-popup href="#product_1" data-aos="fade")
     .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
       .swiper-wrapper
         .swiper-slide
@@ -50,7 +50,7 @@ mixin productCard_1
 
 mixin productCard_2
   // prodcut card
-  .product-card.product-card--catalog(data-aos="fade")
+  .product-card.product-card--catalog(js-popup href="#product_1" data-aos="fade")
     .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
       .swiper-wrapper
         .swiper-slide
@@ -95,10 +95,13 @@ mixin productCard_2
         +svgMono("checkmark")
         span В наличии 
           span (на складе)
+      .product-card__extra-buttons
+        a(href="#similar_products" js-popup).btn.btn-secondary
+          span Другие модификации
 
 mixin productCard_3
   // prodcut card
-  .product-card.product-card--catalog(data-aos="fade")
+  .product-card.product-card--catalog(js-popup href="#product_1" data-aos="fade")
     .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
       .swiper-wrapper
         .swiper-slide
@@ -154,7 +157,7 @@ mixin productCard_3
   
 mixin productCard_4
   // prodcut card
-  .product-card.product-card--catalog.product-card--exclusive(data-aos="fade")
+  .product-card.product-card--catalog.product-card--exclusive(js-popup href="#product_1" data-aos="fade")
     .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
       .swiper-wrapper
         .swiper-slide
@@ -200,7 +203,7 @@ mixin productCard_4
         
 mixin productCard_5
   // prodcut card
-  .product-card.product-card--catalog.product-card--exclusive(data-aos="fade")
+  .product-card.product-card--catalog.product-card--exclusive(js-popup href="#product_1" data-aos="fade")
     .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
       .swiper-wrapper
         .swiper-slide
@@ -310,3 +313,103 @@ mixin productCard_5
             a(href="#") 21
           li.pagination__next 
             a(href="#") Следующая
+
+            
+// product popup
+.popup-dialog.popup-product.mfp-hide#product_1
+  // PRODUCT SCOPE
+  .p-scope.p-scope--modal
+    .p-scope__wrapper
+      // left
+      .p-scope__left
+        .p-gallery.p-gallery--modal
+          // vertical swiper
+          .p-gallery__thumbs.swiper-container(js-swiper-gallery-thumbs)
+            .swiper-wrapper
+              .swiper-slide.p-gallery__thumb.is-selected
+                img(src='img/productThumb_1.jpg' srcset='img/productThumb_1@2x.jpg 2x')
+              .swiper-slide.p-gallery__thumb
+                img(src='img/productThumb_2.jpg' srcset='img/productThumb_2@2x.jpg 2x')
+              .swiper-slide.p-gallery__thumb
+                img(src='img/productThumb_3.jpg' srcset='img/productThumb_3@2x.jpg 2x')
+              .swiper-slide.p-gallery__thumb
+                img(src='img/productThumb_4.jpg' srcset='img/productThumb_4@2x.jpg 2x')
+              .swiper-slide.p-gallery__video-thumb(js-popup-video data-mfp-src="https://www.youtube.com/watch?v=lNSaAKqFGZo")
+                +svgMono("play-icon")
+                span Видео
+                  
+          // main swiper
+          .p-gallery__main.swiper-container(js-swiper-gallery-main)
+            .swiper-wrapper
+              .swiper-slide.p-gallery__picture
+                img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                .p-gallery__tag
+                  .tag.tag--sale
+                    span -30%
+              .swiper-slide.p-gallery__picture
+                img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                .p-gallery__tag
+                  .tag.tag--sale
+                    span -30%
+              .swiper-slide.p-gallery__picture
+                img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                .p-gallery__tag
+                  .tag.tag--sale
+                    span -30%
+              .swiper-slide.p-gallery__picture
+                img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
+                .p-gallery__tag
+                  .tag.tag--sale
+                    span -30%
+
+                          
+      // right
+      .p-scope__right
+        h2.h2-title.p-scope__name Часы Hermle 01210
+        .p-scope__row
+          .p-scope__article Арт: 5655351
+          .p-scope__availability.is-available
+            +svgMono("checkmark")
+            span В наличии
+
+        // CHARACTERISTICS
+        .p-chars.p-chars--modal
+          //col
+          .p-chars__col
+            .p-char
+              .p-char__image.p-char__image--color
+                img(src='img/productColor_q3.png' srcset='img/productColor_q3@2x.png 2x')
+              .p-char__content
+                .p-char__title Орех тёмный Q3
+                .p-char__description Цвет корпуса
+          //col
+          .p-chars__col
+            .p-char
+              .p-char__content
+                .p-char__title 
+                  +svgMono("gear")
+                  span Механика с боем
+                .p-char__description 1171&nbsp;&mdash; Механический механизм с&nbsp;тросовым подвесом гирь. <br/>Запас хода&nbsp;&mdash; 8&nbsp;дней.
+
+        // cta
+        .p-scope__cta.p-scope__cta--modal
+          .p-scope__price.price.price--product
+            .price__newprice 469 400 <span class="r-mark">₽</span>
+            .price__wrapper
+              .price__oldprice 772 000 ₽
+          .p-scope__cta-line
+            .p-scope__more-btn
+              a(href="#").btn.btn-secondary.btn-secondary--big
+                span Подробнее
+            
+            .p-scope__buy
+              a(href="#").btn.btn-buy-icon-only
+                +svgMono("cart")
+
+            .p-scope__compare
+              a(href="#").btn.btn-compare.btn-compare--arr-left
+                +svgMono("compare")
+
+
+// similar products modal
+.popup-dialog.popup-product.mfp-hide#similar_products
