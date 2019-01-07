@@ -1,0 +1,312 @@
+mixin productCard_1
+  // prodcut card
+  .product-card.product-card--catalog(data-aos="fade")
+    .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
+      .swiper-wrapper
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_1.png" srcset="img/catalogProduct_1@2x.png 2x")
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_2.png" srcset="img/catalogProduct_2@2x.png 2x")
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_3.png" srcset="img/catalogProduct_3@2x.png 2x")
+      .swiper-pagination
+          
+    .product-card__tags
+      .tag.tag--new
+        span Новинка
+      .tag.tag--movement
+        +svgMono("quartz")
+          
+    .product-card__content
+      .product-card__name.product-card__name--smaller Настольные часы <br/> Hermle 22716
+      .product-card__article Арт: 5655351
+      .product-card__actions
+        .product-card__price.price
+          .price__newprice 29 800 <span class="r-mark">₽</span>
+          .price__oldprice 38 000 ₽
+        .product-card__cta.product-card__cta--no-compare
+          a(href="#").btn.btn-primary.btn--buy
+            .btn-cart-icon
+              +svgMono("cart")
+            span Купить
+      .product-card__chars.pc-chars
+        .pc-chars__row
+          span.pc-chars__label Цвет
+          span.pc-chars__content
+            .pc-chars__color
+              img(src='img/catalog-colors/color_6.png' srcset='img/catalog-colors/color_6@2x.png 2x')
+              span Орех
+        .pc-chars__row
+          span.pc-chars__label Бой
+          span.pc-chars__content 3 мелодии (Вестминстер <br/>- Виттингтон - Св. Михаил)
+      .product-card__availability.is-available
+        +svgMono("checkmark")
+        span В наличии 
+          span (в шоуруме)
+        
+
+mixin productCard_2
+  // prodcut card
+  .product-card.product-card--catalog(data-aos="fade")
+    .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
+      .swiper-wrapper
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_2.png" srcset="img/catalogProduct_2@2x.png 2x")
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_1.png" srcset="img/catalogProduct_1@2x.png 2x")
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_3.png" srcset="img/catalogProduct_3@2x.png 2x")
+      .swiper-pagination
+          
+    .product-card__tags
+      .tag.tag--popular
+        span Популярный
+      .tag.tag--movement
+        +svgMono("gear")
+    .product-card__content
+      .product-card__name.product-card__name--smaller Настольные часы <br/> Hermle 70310
+      .product-card__article Арт: 5655351
+      .product-card__actions
+        .product-card__price.price
+          .price__newprice 469 400 <span class="r-mark">₽</span>
+          .price__oldprice 772 000 ₽ ₽
+        .product-card__cta.product-card__cta--no-compare
+          a(href="#").btn.btn-primary.btn--buy
+            .btn-cart-icon
+              +svgMono("cart")
+            span Купить
+      .product-card__chars.pc-chars
+        .pc-chars__row
+          span.pc-chars__label Цвет
+          span.pc-chars__content
+            .pc-chars__color
+              img(src='img/catalog-colors/color_6.png' srcset='img/catalog-colors/color_6@2x.png 2x')
+              span Орех
+        .pc-chars__row
+          span.pc-chars__label Бой
+          span.pc-chars__content 3 мелодии (Вестминстер <br/>- Виттингтон - Св. Михаил)
+      .product-card__availability.is-available
+        +svgMono("checkmark")
+        span В наличии 
+          span (на складе)
+
+mixin productCard_3
+  // prodcut card
+  .product-card.product-card--catalog(data-aos="fade")
+    .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
+      .swiper-wrapper
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_3.png" srcset="img/catalogProduct_3@2x.png 2x")
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_1.png" srcset="img/catalogProduct_1@2x.png 2x")
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_3.png" srcset="img/catalogProduct_3@2x.png 2x")
+      .swiper-pagination
+          
+    .product-card__tags
+      .tag.tag--sale 
+        span -30%
+      .tag.tag--movement
+        +svgMono("gear")
+      .tag.tag--video
+        +svgMono("play-icon")
+    .product-card__content
+      .product-card__name.product-card__name--smaller Настольные часы <br/> Hermle 01093
+      .product-card__article Арт: 5655351
+      .product-card__actions
+        .product-card__price.price
+          .price__newprice 359 400 <span class="r-mark">₽</span>
+          .price__oldprice 652 500 ₽ ₽
+        .product-card__cta.product-card__cta--no-compare
+          a(href="#").btn.btn-primary.btn--buy
+            .btn-cart-icon
+              +svgMono("cart")
+            span Купить
+      .product-card__chars.pc-chars
+        .pc-chars__row
+          span.pc-chars__label Цвет
+          span.pc-chars__content
+            .pc-chars__color
+              img(src='img/catalog-colors/color_1.png' srcset='img/catalog-colors/color_1@2x.png 2x')
+              span Орех тёмный Q3 2
+        .pc-chars__row
+          span.pc-chars__label Бой
+          span.pc-chars__content 1 мелодия (Бим-Бам)
+        .pc-chars__row
+          span.pc-chars__label Ночное отключение боя
+          span.pc-chars__content есть
+        .pc-chars__row
+          span.pc-chars__label Лунный календарь
+          span.pc-chars__content есть
+
+      .product-card__availability.is-not-available
+        +svgMono("close")
+        span Нет в наличии
+  
+mixin productCard_4
+  // prodcut card
+  .product-card.product-card--catalog.product-card--exclusive(data-aos="fade")
+    .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
+      .swiper-wrapper
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_4.png" srcset="img/catalogProduct_4@2x.png 2x")
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_1.png" srcset="img/catalogProduct_1@2x.png 2x")
+      .swiper-pagination
+          
+    .product-card__tags
+      .tag.tag--exclusive
+        span Эксклюзив
+      .tag.tag--movement
+        +svgMono("quartz")
+    .product-card__content
+      .product-card__name.product-card__name--smaller Настольные часы <br/> Hermle 70310
+      .product-card__article Арт: 5655351
+      .product-card__actions
+        .product-card__price.price
+          .price__newprice 290 400 <span class="r-mark">₽</span>
+          .price__oldprice 480 000 ₽ ₽
+        .product-card__cta.product-card__cta--no-compare
+          a(href="#").btn.btn-primary.btn--buy
+            .btn-cart-icon
+              +svgMono("cart")
+            span Купить
+      .product-card__chars.pc-chars
+        .pc-chars__row
+          span.pc-chars__label Цвет
+          span.pc-chars__content
+            .pc-chars__color
+              img(src='img/catalog-colors/color_6.png' srcset='img/catalog-colors/color_6@2x.png 2x')
+              span Орех
+        .pc-chars__row
+          span.pc-chars__label Бой
+          span.pc-chars__content 3 мелодии (Вестминстер <br/>- Виттингтон - Св. Михаил)
+      .product-card__availability.is-available
+        +svgMono("checkmark")
+        span В наличии 
+          span (на складе)                                    
+  
+        
+mixin productCard_5
+  // prodcut card
+  .product-card.product-card--catalog.product-card--exclusive(data-aos="fade")
+    .product-card__slider.swiper-container.swiper-control-lines(js-swiper-product-images)
+      .swiper-wrapper
+        .swiper-slide
+          .product-card__image
+            img(src="img/catalogProduct_5.png" srcset="img/catalogProduct_5@2x.png 2x")
+
+      .swiper-pagination
+          
+    .product-card__tags
+      .tag.tag--exclusive
+        span Эксклюзив
+      .tag.tag--movement
+        +svgMono("quartz")
+    .product-card__content
+      .product-card__name.product-card__name--smaller Настольные часы <br/> Hermle 70310
+      .product-card__article Арт: 5655351
+      .product-card__actions
+        .product-card__price.price
+          .price__newprice 290 400 <span class="r-mark">₽</span>
+          .price__oldprice 483 000 ₽ ₽
+        .product-card__cta.product-card__cta--no-compare
+          a(href="#").btn.btn-primary.btn--buy
+            .btn-cart-icon
+              +svgMono("cart")
+            span Купить
+      .product-card__chars.pc-chars
+        .pc-chars__row
+          span.pc-chars__label Цвет
+          span.pc-chars__content
+            .pc-chars__color
+              img(src='img/catalog-colors/color_6.png' srcset='img/catalog-colors/color_6@2x.png 2x')
+              span Орех
+        .pc-chars__row
+          span.pc-chars__label Бой
+          span.pc-chars__content 3 мелодии (Вестминстер <br/>- Виттингтон - Св. Михаил)
+      .product-card__availability.is-available
+        +svgMono("checkmark")
+        span В наличии 
+          span (на складе)
+      
+      
+      
+                    
+// GRID
+.catalog
+  .container
+    .catalog__grid
+      .catalog__col
+        +productCard_1
+      .catalog__col
+        +productCard_2
+      .catalog__col
+        +productCard_3
+      .catalog__col
+        +productCard_4
+      
+      .catalog__col
+        +productCard_3
+      .catalog__col
+        +productCard_1
+      .catalog__col
+        +productCard_5
+      .catalog__col
+        +productCard_3
+        
+      .catalog__col
+        +productCard_1
+      .catalog__col
+        +productCard_2
+      .catalog__col
+        +productCard_3
+      .catalog__col
+        +productCard_4
+      
+      .catalog__col
+        +productCard_3
+      .catalog__col
+        +productCard_1
+      .catalog__col
+        +productCard_5
+      .catalog__col
+        +productCard_3
+          
+            
+    // pagination
+    .catalog__pagination(data-aos="fade")
+      a(href="#" js-load-more).catalog__pagination-more
+        +svgMono("refresh")
+        span Показать еще
+        
+      .pagination
+        ul.pagination__list
+          li.pagination__prev.is-disabled
+            a(href="#") Предыдущая
+          li.is-current
+            a(href="#") 1
+          li
+            a(href="#") 2
+          li
+            a(href="#") 3
+          li
+            a(href="#") 4
+          li
+            a(href="#") 5
+          li.pagination__break ...
+          li
+            a(href="#") 21
+          li.pagination__next 
+            a(href="#") Следующая

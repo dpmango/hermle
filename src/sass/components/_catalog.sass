@@ -21,6 +21,7 @@
   flex-wrap: wrap
   margin-left: -12px
   margin-right: -12px
+  padding-bottom: 25px
   &::after
     display: inline-block
     content: ' '
@@ -45,6 +46,8 @@
     flex: 0 0 auto
     min-width: 1px
     padding: 12px
+    display: flex
+    flex-direction: column
     &--price
       flex-basis: $col3
       max-width: $col3
@@ -56,7 +59,10 @@
       flex-grow: 1
 
   &__group
-    margin-bottom: 20px
+    margin-bottom: 15px
+    &:last-child
+      margin-top: auto
+      margin-bottom: 0
 
   &__group-name
     font-size: 14px
@@ -79,18 +85,22 @@
 
 /* grid
 .catalog
-  margin: 40px 0 60px
+  margin: 25px 0 60px
   &__grid
     display: flex
     flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
   &__col
     width: 100%
     flex: 0 0 $col3
     max-width: $col3
+    padding-left: 12px
+    padding-right: 12px
     min-width: 1px
     display: flex
     flex-direction: column
-    margin-bottom: 50px
+    margin-bottom: 20px
   // contains product card next
 
   &__pagination
@@ -99,7 +109,7 @@
     align-items: center
     text-align: center
     // compensate 50px margin of cols
-    margin-top: -10px
+    margin-top: 20px
 
   &__pagination-more
     display: flex

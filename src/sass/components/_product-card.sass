@@ -1,12 +1,27 @@
 .product-card
+  position: relative
   flex: 1 0 auto
   display: flex
   flex-direction: column
+  // backface-visibility: hidden
+  // will-change: transform
+  // transform-style: preserve-3d
   &[js-link]
     cursor: pointer
   &__slider
+    flex: 0 1 auto
+    // margin-top: auto
+    min-height: 375px
     width: 100%
     padding-bottom: 25px
+    padding-top: 10px
+    .swiper-slide
+      // align items by bottom
+      margin-top: auto
+      user-select: none
+    img
+      user-select: none
+
   &__image
     flex: 1 1 auto
     position: relative
@@ -17,14 +32,25 @@
     text-align: center
     font-size: 0
     img
+      user-select: none
       margin-top: auto
       max-width: 100%
       transition: transform .25s $ease
-  &__tag
+  &__tags
     position: absolute
+    z-index: 2
+    backface-visibility: hidden
+    will-change: transform
+    transform-style: preserve-3d
+    display: flex
+    flex-direction: column
+    align-items: flex-end
     top: 15px
     right: 0
-    z-index: 2
+    .tag
+      margin-bottom: 10px
+      &:last-child
+        margin-bottom: 0
 
   &__content
     padding-left: 15px
@@ -80,6 +106,9 @@
 
   &__availability
     font-size: 14px
+    display: flex
+    align-items: center
+    justify-content: center
     text-align: center
     margin: 15px auto
     .ico
@@ -97,7 +126,7 @@
         fill: $colorGreen
     &.is-not-available
       .ico
-        font-size: 12px
+        font-size: 16px
         fill: $colorRed
 
   &:hover
@@ -108,8 +137,16 @@
       &__cta
         transform: translate3d(0, 0, 0)
 
-  &--extended
+  &--catalog
     // for the catalog page
+    padding: 10px 0
+    .product-card
+      &__tags
+        top: 40px
+        right: 10px
+
+  &--exclusive
+    background: #FAF8F4
 
 
 +r($sm)
@@ -124,6 +161,7 @@
 .pc-chars
   &__row
     display: flex
+    align-items: flex-start
     margin-bottom: 5px
     &:last-child
       margin-bottom: 0
@@ -131,6 +169,7 @@
     display: flex
     align-items: center
     flex: 1 1 auto
+    padding-top: .2em
     font-size: 14px
     color: $colorGray
     &::after

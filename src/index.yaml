@@ -6,8 +6,8 @@ PageList:
 - file: product.html
   ready: 50
 - file: catalog.html
-  ready: 50
-- file: item-excusive.html
+  ready: 60
+- file: product-excusive.html
   ready: 5
 - file: about.html
   ready: 5

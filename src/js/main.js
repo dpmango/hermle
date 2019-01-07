@@ -497,7 +497,7 @@ $(document).ready(function(){
     $('.header-menu__name').removeClass('is-active');
     $('.header__bottom').removeClass('is-menu-active');
     $('.page__content').removeClass('is-muted');
-    enableScroll();
+    enableScroll(true);
   }
 
   // set height because all menus are positioned absolute
@@ -733,6 +733,7 @@ $(document).ready(function(){
         $catalog.append($newChilds)
         $newChilds.hide().fadeIn()
         $btn.removeClass('is-updating');
+        initSliders();
       }, 1000)
 
     })
@@ -1294,9 +1295,9 @@ $(document).ready(function(){
           });
 
           slider.noUiSlider.on('end', function( values, handle ) {
-            $slider.parent().parent().click();
-            $slider.parent().parent().trigger('tap');
-            $slider.focusout();
+            // $slider.parent().parent().click();
+            // $slider.parent().parent().trigger('tap');
+            // $slider.focusout();
             // triggerBody(false);
 
             // query builder
@@ -1350,7 +1351,7 @@ $(document).ready(function(){
           }
           function allowedInputKeys(e){
             var charCode = (e.which) ? e.which : e.keyCode;
-            // console.log('charcode', charCode)
+            console.log('charcode', charCode)
             var numbersRange = (charCode >= 48 && charCode <= 57)
             var backNextRange = charCode === 39 || charCode === 37
             var isBack = charCode === 8

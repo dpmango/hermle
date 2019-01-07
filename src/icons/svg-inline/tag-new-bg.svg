@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="27px" viewBox="0 0 90 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>tag-new-bg</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Бейджи/Новинка" fill="#FFC5C5">
+            <g id="Новинка">
+                <path d="M10.2792162,8.63491216e-16 L86,0 C88.209139,-4.05812251e-16 90,1.790861 90,4 L90,23 C90,25.209139 88.209139,27 86,27 L10.2792162,27 C8.86637045,27 7.55832227,26.2546688 6.83805011,25.0392096 L1.81263072,16.5588143 C0.69496299,14.67275 0.69496299,12.32725 1.81263072,10.4411857 L6.83805011,1.96079044 C7.55832227,0.745331164 8.86637045,2.0358924e-15 10.2792162,1.77635684e-15 Z" id="tag-new-bg"></path>
+            </g>
+        </g>
+    </g>
+</svg>

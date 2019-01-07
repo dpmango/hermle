@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="27px" viewBox="0 0 105 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>tag-exclusive-bg</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Бейджи/Эксклюзив" fill="#AA2935">
+            <g id="Процент">
+                <path d="M10.2792162,0 L101,0 C103.209139,7.44262609e-15 105,1.790861 105,4 L105,23 C105,25.209139 103.209139,27 101,27 L10.2792162,27 C8.86637045,27 7.55832227,26.2546688 6.83805011,25.0392096 L1.81263072,16.5588143 C0.69496299,14.67275 0.69496299,12.32725 1.81263072,10.4411857 L6.83805011,1.96079044 C7.55832227,0.745331164 8.86637045,-6.28642858e-16 10.2792162,-8.8817842e-16 Z" id="tag-exclusive-bg"></path>
+            </g>
+        </g>
+    </g>
+</svg>

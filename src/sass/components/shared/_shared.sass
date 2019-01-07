@@ -135,18 +135,58 @@
 
 /* tags
 .tag
-  size: 55px 27px
-  background: svg-load('../icons/svg-mono/btn-tag-bg.svg') no-repeat center
-  background-size: cover
-  font-size: 18px
   color: $fontColor
   display: flex
   align-items: center
   justify-content: center
   text-align: center
-  padding-left: 3px
+  font-size: 18px
+  &--sale
+    size: 55px 27px
+    background: svg-load('../icons/svg-inline/tag-sale-bg.svg') no-repeat left center
+    background-size: cover
+    padding-left: 3px
+  &--new
+    size: 89px 27px
+    background: svg-load('../icons/svg-inline/tag-new-bg.svg') no-repeat left center
+    background-size: cover
+    padding-left: 5px
+  &--popular
+    size: 121px 27px
+    background: svg-load('../icons/svg-inline/tag-popular-bg.svg') no-repeat left center
+    background-size: cover
+    padding-left: 5px
+  &--exclusive
+    size: 104px 27px
+    color: white
+    background: svg-load('../icons/svg-inline/tag-exclusive-bg.svg') no-repeat left center
+    background-size: cover
+    padding-left: 5px
+  &--movement
+    size: 28px 34px
+    background: #F6F2F2
+    font-size: 0
+    border-radius: 4px
+    .ico-mono-quartz
+      font-size: 20px
+    .ico-mono-gear
+      font-size: 18px
+  &--video
+    size: 28px 22px
+    border-radius: 4px
+    background: $colorRed
+    color: white
+    .ico
+      font-size: 10px
+      margin-left: 1px
+
 
 .is-ie
   .tag
-    background: #F8CFA2
     border-radius: 4px
+    &--sale
+      background: #F8CFA2
+    &--new
+      background: #FFC5C5
+    &--popular
+      background: #91F3CA
