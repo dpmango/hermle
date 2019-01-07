@@ -1222,6 +1222,7 @@ $(document).ready(function(){
 
     $select.selectric({
       maxHeight: 300,
+      responsive: true,
       arrowButtonMarkup: '<b class="button"><svg class="ico ico-mono-arrow-select"><use xlink:href="img/sprite-mono.svg#ico-mono-arrow-select"></use></svg></b>',
 
       onInit: function(element, data){
@@ -1262,6 +1263,11 @@ $(document).ready(function(){
           var rangeMin = $slider.data('range-min');
           var rangeMax = $slider.data('range-max');
 
+          var priceValues = [
+            $slider.parent().find('[js-range-from]'),
+            $slider.parent().find('[js-range-to]'),
+          ];
+
           noUiSlider.create(slider, {
             start: [startFrom, startTo],
             connect: true,
@@ -1273,18 +1279,12 @@ $(document).ready(function(){
             }
           });
 
-          var priceValues = [
-            $slider.parent().find('[js-range-from]').get(0),
-            $slider.parent().find('[js-range-to]').get(0),
-          ];
-
           slider.noUiSlider.on('update', function( values, handle ) {
             // var isMaxed = parseInt(values[1]).toFixed(0) >= rangeMax ? " +" : ""
             var isMaxed = ""
-            priceValues[0].innerHTML = parseInt(values[0]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
-            priceValues[1].innerHTML = parseInt(values[1]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
+            priceValues[0].val(parseInt(values[0]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "));
+            priceValues[1].val(parseInt(values[1]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed);
             // priceValues[handle].innerHTML = parseInt(values[handle]).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + isMaxed
-
           });
 
           slider.noUiSlider.on('change', function( values, handle ) {
@@ -1313,6 +1313,53 @@ $(document).ready(function(){
             // }
 
           });
+
+          var debounceInputTimeOut = 500
+          // connect inputs to slider
+          priceValues[0]
+            .on('keypress', function(e){
+              if ( !allowedInputKeys(e) ) {
+                e.preventDefault();
+                return
+              }
+            })
+            .on('keyup', debounce(function(e){
+              if ( !allowedInputKeys(e) ) return
+              var newValue = convertInputTonumber(this)
+              slider.noUiSlider.set([newValue, null]);
+            }, debounceInputTimeOut))
+
+          priceValues[1]
+            .on('keypress', function(e){
+              if ( !allowedInputKeys(e) ) {
+                e.preventDefault();
+                return
+              }
+            })
+            .on('keyup', debounce(function(e){
+              if ( !allowedInputKeys(e) ) return
+              var newValue = convertInputTonumber(this)
+              slider.noUiSlider.set([null, newValue]);
+            }, debounceInputTimeOut))
+
+          function convertInputTonumber(el){
+            // TODO - steps * 1000 ?
+            var returnable = parseInt($(el).val().toString().replace(/\s/g, ''))
+            // console.log(returnable)
+            return returnable
+          }
+          function allowedInputKeys(e){
+            var charCode = (e.which) ? e.which : e.keyCode;
+            // console.log('charcode', charCode)
+            var numbersRange = (charCode >= 48 && charCode <= 57)
+            var backNextRange = charCode === 39 || charCode === 37
+            var isBack = charCode === 8
+            var validation = backNextRange || numbersRange || isBack
+            // console.log(validation)
+            return validation
+            // if (charCode == 46 || charCode > 31 && (charCode < 48 || charCode > 57)){
+          }
+
 
         }
       })

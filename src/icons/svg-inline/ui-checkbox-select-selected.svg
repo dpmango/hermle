@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>ui-checkbox-select-selected</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Каталог-1200-" transform="translate(-761.000000, -349.000000)">
+            <g id="Контент" transform="translate(360.000000, 258.000000)">
+                <g id="Фильтр" transform="translate(0.000000, 71.000000)">
+                    <g id="Форма" transform="translate(306.000000, 0.000000)">
+                        <g id="1" transform="translate(0.000000, 20.000000)">
+                            <g id="ui-checkbox-select-selected" transform="translate(95.000000, 0.000000)">
+                                <circle id="Oval-2" fill="#F6F2F2" cx="8" cy="8" r="8"></circle>
+                                <path d="M10.4927907,5.50123691 L8,7.99402766 L5.50720925,5.50123691 C5.50556003,5.4995877 5.50288613,5.4995877 5.50123691,5.50123691 C5.4995877,5.50288613 5.4995877,5.50556003 5.50123691,5.50720925 L7.99402766,8 L5.50123691,10.4927907 C5.4995877,10.49444 5.4995877,10.4971139 5.50123691,10.4987631 C5.50288613,10.5004123 5.50556003,10.5004123 5.50720925,10.4987631 L8,8.00597234 L10.4927907,10.4987631 C10.49444,10.5004123 10.4971139,10.5004123 10.4987631,10.4987631 C10.5004123,10.4971139 10.5004123,10.49444 10.4987631,10.4927907 L8.00597234,8 L10.4987631,5.50720925 C10.5004123,5.50556003 10.5004123,5.50288613 10.4987631,5.50123691 C10.4971139,5.4995877 10.49444,5.4995877 10.4927907,5.50123691 Z" id="Combined-Shape" stroke="#979797" fill="#D8D8D8"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

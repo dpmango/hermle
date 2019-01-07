@@ -26,21 +26,21 @@ block content
           .c-filters__group
             .c-filters__group-name Цена, руб
             .ui-range
-              .ui-range__mark.ui-range__mark--from(js-range-from) 0
+              input.ui-range__mark.ui-range__mark--from(js-range-from value="0")
               div(
                 js-rangeslider 
                 data-range-min="0" 
                 data-range-max="660000"
-                data-step="1000"
+                data-step="1"
                 data-start-from="0"
                 data-start-to="500000")
-              .ui-range__mark.ui-range__mark--to(js-range-to) 0
+              input.ui-range__mark.ui-range__mark--to(js-range-to value="0")
           
           //group
           .c-filters__group
             .ui-toggle
-              input(type="checkbox" name="night")
-              label
+              input(type="checkbox" name="night" id="night")
+              label(for="night")
                 span Ночное отключение
                 
         // col
@@ -49,7 +49,7 @@ block content
             .c-filters__group-name Форма
             .ui-checkbox-selects
               .ui-checkbox-select
-                input(type="checkbox" name="shape" id="shape_1")
+                input(type="checkbox" name="shape" id="shape_1" checked)
                 label(for="shape_1")
                   span Напольные
               .ui-checkbox-select
@@ -93,7 +93,7 @@ block content
                     label(for="style_3")
                       span Эксклюзив   
             // inner col
-            .c-filters__col
+            .c-filters__col.c-filters__col--melody
               .c-filters__group
                 .c-filters__group-name Мелодия
                 select(js-select placeholder="Выбрать")

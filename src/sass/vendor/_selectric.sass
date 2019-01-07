@@ -10,68 +10,71 @@
   width: 100%
 
 .selectric
-  border: 1px solid #DDD
-  border-radius: 0px
-  background: #F8F8F8
+  border: 1px solid #DBD8D8
+  border-radius: 4px
+  background: white
   position: relative
   overflow: hidden
+  transition: background .25s $ease
   .label
     display: block
     white-space: nowrap
     overflow: hidden
     text-overflow: ellipsis
-    margin: 0 38px 0 10px
-    font-size: 12px
-    line-height: 38px
-    color: #444
-    height: 38px
-    -webkit-user-select: none
-    -moz-user-select: none
-    -ms-user-select: none
+    margin: 0 38px 0 15px
+    font-size: 16px
+    line-height: 40px
+    color: $colorGray
+    height: 40px
     user-select: none
+    transition: color .25s $ease
   .button
     display: block
     position: absolute
     right: 0
     top: 0
-    width: 38px
-    height: 38px
-    line-height: 38px
-    background-color: #F8f8f8
-    color: #BBB
+    size: 40px
+    line-height: 40px
+    background-color: transparent
+    color: $colorGray
     text-align: center
-    font: 0/0 a
-    *font: 20px/38px Lucida Sans Unicode, Arial Unicode MS, Arial
-    &:after
-      content: " "
-      position: absolute
-      top: 0
-      right: 0
-      bottom: 0
-      left: 0
-      margin: auto
-      width: 0
-      height: 0
-      border: 4px solid transparent
-      border-top-color: #BBB
-      border-bottom: none
+    font-size: 5px
+    padding-top: 2px
+    transition: color .25s $ease
+    .ico
+      transition: transform .25s $ease
 
 .selectric-focus .selectric
-  border-color: #aaaaaa
+  // border-color: #aaaaaa
+  .label
+    color: $fontColor
+  .button
+    color: $fontColor
 
 .selectric-hover .selectric
-  border-color: #c4c4c4
+  // border-color: #c4c4c4
+  .label
+    color: $fontColor
   .button
-    color: #a2a2a2
-    &:after
-      border-top-color: #a2a2a2
+    color: $fontColor
 
 .selectric-open
   z-index: 9999
+  .label
+    color: $fontColor
+  .button
+    color: $fontColor
+    .ico
+      transform: rotate(180deg)
   .selectric
-    border-color: #c4c4c4
+    background: #FAF8F4
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
   .selectric-items
     display: block
+    pointer-events: all
+    transform: translate(0,0)
+    opacity: 1
 
 .selectric-disabled
   filter: alpha(opacity = 50)
@@ -131,10 +134,12 @@
   position: absolute
   top: 100%
   left: 0
-  background: #F8F8F8
-  border: 1px solid #c4c4c4
+  margin-top: -1px
+  background: white
+  border: 1px solid #DBD8D8
+  border-radius: 0 0 4px 4px
   z-index: -1
-  box-shadow: 0 0 10px -6px
+  box-shadow: 0 10px 20px 0 rgba(13,13,13,0.06)
   .selectric-scroll
     height: 100%
     overflow: auto
@@ -148,29 +153,25 @@
     list-style: none
     padding: 0
     margin: 0
-    font-size: 12px
-    line-height: 20px
-    min-height: 20px
+    // min-height: 20px
   li
     list-style: none
     padding: 0
     margin: 0
-    font-size: 12px
-    line-height: 20px
-    min-height: 20px
+    font-size: 16px
+    line-height: 1.5
     display: block
-    padding: 10px
-    color: #666
+    padding: 10px 15px
+    color: $colorGray
     cursor: pointer
+    transition: .25s $ease
     &.selected
-      background: #E0E0E0
-      color: #444
+      background: #FAF8F4
+      color: $fontColor
     &.highlighted
-      background: #D0D0D0
-      color: #444
+      color: $fontColor
     &:hover
-      background: #D5D5D5
-      color: #444
+      color: $fontColor
   .disabled
     filter: alpha(opacity = 50)
     opacity: 0.5
@@ -191,3 +192,17 @@
       opacity: 1
     li
       padding-left: 25px
+
+
+/* modifiers
+.selectric-muted
+  .selectric
+    border: 0 !important
+    background: transparent !important
+  .selectric-items
+    margin-top: 0
+    min-width: 200px
+    right: 0
+    left: auto
+    li
+      // font-size: 14px

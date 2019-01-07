@@ -6,7 +6,7 @@ PageList:
 - file: product.html
   ready: 50
 - file: catalog.html
-  ready: 35
+  ready: 50
 - file: item-excusive.html
   ready: 5
 - file: about.html
