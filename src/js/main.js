@@ -1452,12 +1452,21 @@ $(document).ready(function(){
       });
 
 
-      function resetAllHowls(){
+      function resetAllHowls(transitionHowl){
         // reset classes
         $('[js-play-audio]').removeClass(playingClass)
 
         // stop all howler instances
-        $.each(Howler._howls, function(i, howl){
+        var howls = Howler._howls
+        // if ( transitionHowl ){
+        //   console.log(howls)
+        //   transitionHowl.fade(1, 0, 500);
+        //   setTimeout(function(){
+        //     transitionHowl.stop()
+        //   }, 500)
+        // }
+
+        $.each(howls, function(i, howl){
           howl.stop();
         })
 

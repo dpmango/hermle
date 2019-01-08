@@ -1,0 +1,42 @@
+// Product modifications
+.p-mods(data-aos="fade")
+  .container
+    .p-mods__wrapper
+      .p-mods__heading
+        .h4-title Другие модификации этой модели:
+      
+      // content
+      .p-mods__content
+        mixin card
+          // card
+          a(href="product.html").mod-card
+            .mod-card__image
+              img(src='img/productModification_1.png' srcset='img/productModification_1@2x.png 2x')
+            .mod-card__content
+              .mod-card__name Часы Hermle 01211
+              .mod-card__article Арт: 5655334
+              .mod-card__price 429 600 <span class="r-mark">₽</span>
+            .mod-card__chars
+              .pc-chars
+                .pc-chars__row
+                  span.pc-chars__label Механизим
+                  span.pc-chars__content Кварц
+                .pc-chars__row
+                  span.pc-chars__label Цвет
+                  span.pc-chars__content
+                    .pc-chars__color
+                      img(src='img/catalog-colors/color_6.png' srcset='img/catalog-colors/color_6@2x.png 2x')
+                      span Орех
+                .pc-chars__row
+                  span.pc-chars__label Запас ход
+                  span.pc-chars__content 30 дней
+                .pc-chars__row
+                  span.pc-chars__label Корпус
+                  span.pc-chars__content Дерево
+              
+        // modifications
+        .modifications
+          .modifications__col
+            +card
+          .modifications__col
+            +card

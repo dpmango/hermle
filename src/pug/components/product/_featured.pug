@@ -1,0 +1,198 @@
+// FEATURED
+.featured.featured--no-box
+  .container
+    .featured__box
+      .featured__title.h2-title.tac Похожие модели
+      
+      .featured__slider.swiper-container.swiper-control-arrows(js-swiper-featured)
+        .swiper-wrapper
+          mixin featuredSlide_1
+            .featured__slide.swiper-slide
+              // prodcut card
+              .product-card(js-link data-href="#")
+                .product-card__image
+                  img(src="img/featured_1.png" srcset="img/featured_1@2x.png 2x")
+                .product-card__content
+                  .product-card__name Напольные часы <br/>Hermle 22716
+                  .product-card__actions
+                    .product-card__price.price
+                      .price__newprice 29 800 <span class="r-mark">₽</span>
+                      .price__oldprice 48 000 ₽
+                    .product-card__cta
+                      a(href="#").btn.btn-compare
+                        +svgMono("compare")
+                      a(href="#").btn.btn-primary.btn--buy
+                        .btn-cart-icon
+                          +svgMono("cart")
+                        span Купить
+          mixin featuredSlide_2
+            .featured__slide.swiper-slide
+              // prodcut card
+              .product-card(js-link data-href="#")
+                .product-card__image
+                  img(src="img/featured_2.png" srcset="img/featured_2@2x.png 2x")
+                .product-card__content
+                  .product-card__name Напольные часы <br/>Hermle 70310
+                  .product-card__actions
+                    .product-card__price.price
+                      .price__newprice 120 900 <span class="r-mark">₽</span>
+                      .price__oldprice 180 000 ₽
+                    .product-card__cta
+                      a(href="#").btn.btn-compare
+                        +svgMono("compare")
+                      a(href="#").btn.btn-primary.btn--buy
+                        .btn-cart-icon
+                          +svgMono("cart")
+                        span Купить
+          mixin featuredSlide_3
+            .featured__slide.swiper-slide
+              // prodcut card
+              .product-card(js-link data-href="#")
+                .product-card__image
+                  img(src="img/featured_3.png" srcset="img/featured_3@2x.png 2x")
+                .product-card__content
+                  .product-card__name Напольные часы <br/>Hermle 01093
+                  .product-card__actions
+                    .product-card__price.price
+                      .price__newprice 469 400 <span class="r-mark">₽</span>
+                      .price__oldprice 772 000 ₽
+                    .product-card__cta
+                      a(href="#").btn.btn-compare
+                        +svgMono("compare")
+                      a(href="#").btn.btn-primary.btn--buy
+                        .btn-cart-icon
+                          +svgMono("cart")
+                        span Купить
+          mixin featuredSlide_4
+            .featured__slide.swiper-slide
+              // prodcut card
+              .product-card(js-link data-href="#")
+                .product-card__image
+                  img(src="img/featured_4.png" srcset="img/featured_4@2x.png 2x")
+                .product-card__content
+                  .product-card__name Напольные часы <br/>Hermle 70875
+                  .product-card__actions
+                    .product-card__price.price
+                      .price__newprice 290 000 <span class="r-mark">₽</span>
+                      .price__oldprice 483 000 ₽
+                    .product-card__cta
+                      a(href="#").btn.btn-compare
+                        +svgMono("compare")
+                      a(href="#").btn.btn-primary.btn--buy
+                        .btn-cart-icon
+                          +svgMono("cart")
+                        span Купить    
+          
+          +featuredSlide_1
+          +featuredSlide_2
+          +featuredSlide_3
+          +featuredSlide_4
+          +featuredSlide_2
+          +featuredSlide_3
+          +featuredSlide_2
+          +featuredSlide_1
+        
+        .swiper-button-prev
+          +svgMono("btn-arrow-left")
+        .swiper-button-next
+          +svgMono("btn-arrow")
+           
+// FEATURED
+.featured
+  .container
+    .featured__box
+      .featured__title.h2-title.tac Близкие по цене модели
+      
+      .featured__slider.swiper-container.swiper-control-arrows(js-swiper-featured data-slides-per-view="5")
+        .swiper-wrapper
+          mixin featuredSlide_1
+            .featured__slide.swiper-slide
+              // prodcut card
+              .product-card(js-link data-href="#")
+                .product-card__image
+                  img(src="img/featured_1.png" srcset="img/featured_1@2x.png 2x")
+                .product-card__content
+                  .product-card__name Напольные часы <br/>Hermle 22716
+                  .product-card__actions
+                    .product-card__price.price
+                      .price__newprice 29 800 <span class="r-mark">₽</span>
+                      .price__oldprice 48 000 ₽
+                    .product-card__cta
+                      a(href="#").btn.btn-compare
+                        +svgMono("compare")
+                      a(href="#").btn.btn-primary.btn--buy
+                        .btn-cart-icon
+                          +svgMono("cart")
+                        span Купить
+          mixin featuredSlide_2
+            .featured__slide.swiper-slide
+              // prodcut card
+              .product-card(js-link data-href="#")
+                .product-card__image
+                  img(src="img/featured_2.png" srcset="img/featured_2@2x.png 2x")
+                .product-card__content
+                  .product-card__name Напольные часы <br/>Hermle 70310
+                  .product-card__actions
+                    .product-card__price.price
+                      .price__newprice 120 900 <span class="r-mark">₽</span>
+                      .price__oldprice 180 000 ₽
+                    .product-card__cta
+                      a(href="#").btn.btn-compare
+                        +svgMono("compare")
+                      a(href="#").btn.btn-primary.btn--buy
+                        .btn-cart-icon
+                          +svgMono("cart")
+                        span Купить
+          mixin featuredSlide_3
+            .featured__slide.swiper-slide
+              // prodcut card
+              .product-card(js-link data-href="#")
+                .product-card__image
+                  img(src="img/featured_3.png" srcset="img/featured_3@2x.png 2x")
+                .product-card__content
+                  .product-card__name Напольные часы <br/>Hermle 01093
+                  .product-card__actions
+                    .product-card__price.price
+                      .price__newprice 469 400 <span class="r-mark">₽</span>
+                      .price__oldprice 772 000 ₽
+                    .product-card__cta
+                      a(href="#").btn.btn-compare
+                        +svgMono("compare")
+                      a(href="#").btn.btn-primary.btn--buy
+                        .btn-cart-icon
+                          +svgMono("cart")
+                        span Купить
+          mixin featuredSlide_4
+            .featured__slide.swiper-slide
+              // prodcut card
+              .product-card(js-link data-href="#")
+                .product-card__image
+                  img(src="img/featured_4.png" srcset="img/featured_4@2x.png 2x")
+                .product-card__content
+                  .product-card__name Напольные часы <br/>Hermle 70875
+                  .product-card__actions
+                    .product-card__price.price
+                      .price__newprice 290 000 <span class="r-mark">₽</span>
+                      .price__oldprice 483 000 ₽
+                    .product-card__cta
+                      a(href="#").btn.btn-compare
+                        +svgMono("compare")
+                      a(href="#").btn.btn-primary.btn--buy
+                        .btn-cart-icon
+                          +svgMono("cart")
+                        span Купить    
+          
+          +featuredSlide_1
+          +featuredSlide_2
+          +featuredSlide_3
+          +featuredSlide_4
+          +featuredSlide_2
+          +featuredSlide_3
+          +featuredSlide_2
+          +featuredSlide_1
+        
+        .swiper-button-prev
+          +svgMono("btn-arrow-left")
+        .swiper-button-next
+          +svgMono("btn-arrow")
+                     
