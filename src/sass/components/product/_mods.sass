@@ -35,6 +35,8 @@
 
 .mod-card
   display: flex
+  & + .mod-card
+    margin-top: 30px
   &__image
     flex: 2 1 auto
     font-size: 0
@@ -63,7 +65,9 @@
     color: $colorRed
 
   &__chars
-    flex: 3 1 auto
+    // width: 230px
+    width: 100%
+    flex: 0 0 230px
 
   &:hover
     .mod-card

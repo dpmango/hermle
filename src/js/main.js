@@ -71,6 +71,7 @@ $(document).ready(function(){
   // The new container has been loaded and injected in the wrapper.
   function pageReady(fromPjax){
     closeMobileNavi(fromPjax);
+    closeMfp();
     closeHeaderMenu();
     updateHeaderActiveClass();
     updateHeaderCart();
@@ -1004,7 +1005,7 @@ $(document).ready(function(){
     // Magnific Popup
     var closeMarkup = '<button title="%title%" class="mfp-close"><svg class="ico ico-mono-close"><use xlink:href="img/sprite-mono.svg#ico-mono-close"></use></svg></button>'
 
-    var startWindowScroll = 0;
+    // var startWindowScroll = 0;
     $('[js-popup]').magnificPopup({
       type: 'inline',
       fixedContentPos: true,
@@ -1018,7 +1019,7 @@ $(document).ready(function(){
       closeMarkup: closeMarkup,
       callbacks: {
         beforeOpen: function() {
-          startWindowScroll = _window.scrollTop();
+          // startWindowScroll = _window.scrollTop();
           // $('html').addClass('mfp-helper');
         },
         open: function(){
@@ -1026,10 +1027,17 @@ $(document).ready(function(){
         },
         close: function() {
           // $('html').removeClass('mfp-helper');
-          _window.scrollTop(startWindowScroll);
+          // _window.scrollTop(startWindowScroll);
         }
       }
     });
+
+    // some modals are nested triggers
+    $('.product-card [js-popup]')
+      .on('click', function(e){
+        e.stopPropagation();
+      })
+
 
     // video modal
     $('[js-popup-video]').magnificPopup({

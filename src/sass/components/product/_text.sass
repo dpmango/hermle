@@ -1,10 +1,21 @@
 
 .p-text
-  margin: 40px 0
+  margin: 20px 0 40px 0
   &__wrapper
+    position: relative
     display: flex
     margin-left: -12px
     margin-right: -12px
+    padding-bottom: 20px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      left: 12px
+      right: 12px
+      bottom: 0
+      height: 1px
+      background: $borderColor
   &__col
     width: 100%
     min-width: 1px

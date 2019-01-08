@@ -1,0 +1,36 @@
+//BANNERS (product)
+.p-banners(data-aos="fade")
+  .container
+    .p-banners__wrapper
+      .p-banners__col
+        // banner
+        .banner.banner--bg-cover.banner--product
+          .banner__content
+            .banner__blockquote Специальное <br/>предложение!
+            .p-small.p-small--black При покупке данной модели вы получите услугу одной бесплатной профилактики в подарок
+
+          .banner__image
+            picture(js-lazy data-src="img/banner_1.png")
+              data-src(
+                media="(min-width: 0px)" 
+                srcset="img/banner_4.png 1x, img/banner_4@2x.png 2x")
+      
+      .p-banners__col
+        // banner
+        .banner.banner--bg-cover.banner--product
+          .banner__content
+            .banner__blockquote Мы являемся <span>официальным <br/>партнёром</span> компании Hermle
+
+          .banner__image
+            picture(js-lazy data-src="img/banner_3.png")
+              data-src(
+              media="(min-width: 992px)" 
+              srcset="img/banner_5.png 1x, img/banner_5@2x.png 2x")
+              data-src(
+              media="(min-width: 576px)" 
+              srcset="img/banner_3_lg.png 1x, img/banner_3_lg@2x.png 2x")
+              data-src(
+              media="(min-width: 0px)" 
+              srcset="img/banner_5.png 1x, img/banner_5@2x.png 2x")
+              // fallback
+              //- img(src='img/banner_3.png')

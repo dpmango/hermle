@@ -11,6 +11,23 @@
     display: flex
     flex-direction: column
 
+.p-banners
+  margin: 40px 0 20px
+  &__wrapper
+    display: flex
+    flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
+  &__col
+    width: 100%
+    min-width: 1px
+    flex: 0 0 $col6
+    max-width: $col6
+    padding-left: 12px
+    padding-right: 12px
+    display: flex
+    flex-direction: column
+
 /* banner
 .banner
   position: relative
@@ -43,6 +60,24 @@
     font-size: 0
     img, picture
       max-width: 100%
+  &__blockquote
+    position: relative
+    font-size: 18px
+    font-weight: 600
+    padding-left: 15px
+    margin-right: 30px
+    &::after
+      display: block
+      content: ' '
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      width: 2px
+      background: $colorRed
+    span
+      color: $colorRed
+
   // cover by image size
   // &:not(.banner--bg-cover)
   //   padding-top: 30px
@@ -70,6 +105,21 @@
           object-fit: cover
           height: 100%
           width: 100%
+
+  &--product
+    min-height: 100px
+    padding: 0
+    .banner
+      &__content
+        flex-direction: row
+        align-items: center
+        padding-left: 35px
+        padding-right: 35px
+        .p-small
+          max-width: 220px
+      &__image
+        img, picture
+          object-position: right bottom
 
 // when banners are grouped - buttons should be aligned
 .h-banners

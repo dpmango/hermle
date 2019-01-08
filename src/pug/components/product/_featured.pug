@@ -25,6 +25,18 @@
                         .btn-cart-icon
                           +svgMono("cart")
                         span Купить
+                  .product-card__chars.pc-chars
+                    .product-card__subtitle Отличия модели
+                    .pc-chars__row
+                      span.pc-chars__label Цвет
+                      span.pc-chars__content
+                        .pc-chars__color
+                          img(src='img/catalog-colors/color_4.png' srcset='img/catalog-colors/color_4@2x.png 2x')
+                          span Красное дерево
+                    .pc-chars__row
+                      span.pc-chars__label Механизм
+                      span.pc-chars__content кварц
+                      
           mixin featuredSlide_2
             .featured__slide.swiper-slide
               // prodcut card
@@ -44,6 +56,15 @@
                         .btn-cart-icon
                           +svgMono("cart")
                         span Купить
+                  .product-card__chars.pc-chars
+                    .product-card__subtitle Отличия модели
+                    .pc-chars__row
+                      span.pc-chars__label Бой
+                      span.pc-chars__content отсутствует
+                    .pc-chars__row
+                      span.pc-chars__label Механизм
+                      span.pc-chars__content механика с мелодией
+                            
           mixin featuredSlide_3
             .featured__slide.swiper-slide
               // prodcut card
@@ -63,6 +84,18 @@
                         .btn-cart-icon
                           +svgMono("cart")
                         span Купить
+                  .product-card__chars.pc-chars
+                    .product-card__subtitle Отличия модели
+                    .pc-chars__row
+                      span.pc-chars__label Цвет
+                      span.pc-chars__content
+                        .pc-chars__color
+                          img(src='img/catalog-colors/color_4.png' srcset='img/catalog-colors/color_4@2x.png 2x')
+                          span Красное дерево
+                    .pc-chars__row
+                      span.pc-chars__label Механизм
+                      span.pc-chars__content кварц
+                            
           mixin featuredSlide_4
             .featured__slide.swiper-slide
               // prodcut card
@@ -81,7 +114,15 @@
                       a(href="#").btn.btn-primary.btn--buy
                         .btn-cart-icon
                           +svgMono("cart")
-                        span Купить    
+                        span Купить   
+                  .product-card__chars.pc-chars
+                    .product-card__subtitle Отличия модели
+                    .pc-chars__row
+                      span.pc-chars__label Бой
+                      span.pc-chars__content отсутствует
+                    .pc-chars__row
+                      span.pc-chars__label Механизм
+                      span.pc-chars__content механика с мелодией
           
           +featuredSlide_1
           +featuredSlide_2
@@ -97,6 +138,8 @@
         .swiper-button-next
           +svgMono("btn-arrow")
            
+           
+           
 // FEATURED
 .featured
   .container
@@ -110,14 +153,14 @@
               // prodcut card
               .product-card(js-link data-href="#")
                 .product-card__image
-                  img(src="img/featured_1.png" srcset="img/featured_1@2x.png 2x")
+                  img(src="img/sale_1.png" srcset="img/sale_1@2x.png 2x")
                 .product-card__content
                   .product-card__name Напольные часы <br/>Hermle 22716
                   .product-card__actions
                     .product-card__price.price
                       .price__newprice 29 800 <span class="r-mark">₽</span>
                       .price__oldprice 48 000 ₽
-                    .product-card__cta
+                    .product-card__cta.product-card__cta--no-compare
                       a(href="#").btn.btn-compare
                         +svgMono("compare")
                       a(href="#").btn.btn-primary.btn--buy
@@ -129,16 +172,14 @@
               // prodcut card
               .product-card(js-link data-href="#")
                 .product-card__image
-                  img(src="img/featured_2.png" srcset="img/featured_2@2x.png 2x")
+                  img(src="img/sale_2.png" srcset="img/sale_2@2x.png 2x")
                 .product-card__content
                   .product-card__name Напольные часы <br/>Hermle 70310
                   .product-card__actions
                     .product-card__price.price
                       .price__newprice 120 900 <span class="r-mark">₽</span>
                       .price__oldprice 180 000 ₽
-                    .product-card__cta
-                      a(href="#").btn.btn-compare
-                        +svgMono("compare")
+                    .product-card__cta.product-card__cta--no-compare
                       a(href="#").btn.btn-primary.btn--buy
                         .btn-cart-icon
                           +svgMono("cart")
@@ -148,16 +189,14 @@
               // prodcut card
               .product-card(js-link data-href="#")
                 .product-card__image
-                  img(src="img/featured_3.png" srcset="img/featured_3@2x.png 2x")
+                  img(src="img/sale_3.png" srcset="img/sale_3@2x.png 2x")
                 .product-card__content
                   .product-card__name Напольные часы <br/>Hermle 01093
                   .product-card__actions
                     .product-card__price.price
                       .price__newprice 469 400 <span class="r-mark">₽</span>
                       .price__oldprice 772 000 ₽
-                    .product-card__cta
-                      a(href="#").btn.btn-compare
-                        +svgMono("compare")
+                    .product-card__cta.product-card__cta--no-compare
                       a(href="#").btn.btn-primary.btn--buy
                         .btn-cart-icon
                           +svgMono("cart")
@@ -167,16 +206,14 @@
               // prodcut card
               .product-card(js-link data-href="#")
                 .product-card__image
-                  img(src="img/featured_4.png" srcset="img/featured_4@2x.png 2x")
+                  img(src="img/sale_4.png" srcset="img/sale_4@2x.png 2x")
                 .product-card__content
                   .product-card__name Напольные часы <br/>Hermle 70875
                   .product-card__actions
                     .product-card__price.price
                       .price__newprice 290 000 <span class="r-mark">₽</span>
                       .price__oldprice 483 000 ₽
-                    .product-card__cta
-                      a(href="#").btn.btn-compare
-                        +svgMono("compare")
+                    .product-card__cta.product-card__cta--no-compare
                       a(href="#").btn.btn-primary.btn--buy
                         .btn-cart-icon
                           +svgMono("cart")
