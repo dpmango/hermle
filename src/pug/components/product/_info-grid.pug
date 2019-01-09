@@ -1,0 +1,89 @@
+// ALL INFO
+.p-info__grid
+  //col
+  .p-info__col
+    .p-info__box
+      .h3-title Доставка по России
+      .p-info__list
+        .p-info__list-icon
+          +svgMono("delivery-truck")
+        .p-info__list-content
+          span Доставка по&nbsp;Москве и&nbsp;области <span class="c-red">БЕСПЛАТНОM</span>!
+          .p-small в&nbsp;тот&nbsp;же или на&nbsp;следующий день!
+      .p-info__list
+        .p-info__list-icon
+          +svgMono("delivery-address")
+        .p-info__list-content
+          span Самовывоз из&nbsp;шоурума
+          .p-small в&nbsp;тот&nbsp;же день!
+      .p-info__list
+        .p-info__list-icon
+          //- +svgMono("delivery-rus")
+          i.icon.icon-delivery-rus
+        .p-info__list-content
+          span По России
+          .p-small груз доставляется курьерскими службами. <br/>Все грузы страхуются.
+            
+  //col
+  .p-info__col
+    .p-info__box
+      .h3-title Способы оплаты
+      .p-info__list
+        .p-info__list-icon
+          +svgMono("payment-wallet")
+        .p-info__list-content
+          span Наличными
+          .p-small при покупке в&nbsp;шоуруме или доставке курьером
+      .p-info__list
+        .p-info__list-icon
+          +svgMono("payment-credit-card")
+        .p-info__list-content
+          span Кредитной картой
+          .p-small при покупке с&nbsp;сайта, в&nbsp;шоуруме или доставке курьером
+      .p-info__list
+        .p-info__list-icon
+          +svgMono("payment-bank")
+        .p-info__list-content
+          span Через банк
+          .p-small для физического и&nbsp;юридического лица
+            
+  //col
+  .p-info__col
+    .h4-title Комплектация 
+    ul.ul-checkmarks
+      li Напольны часы
+      li Маятник
+      li Инструкция по эксплуатации
+      li Гарантийный талон
+      li Перчатки
+    .h4-title Гарантия до 5 лет 
+    p.p-small.p-small--black На&nbsp;все покупки в&nbsp;нашем интернет-магазине даётся официальная <strong>гарантия сроком до&nbsp;5&nbsp;лет</strong>, действующая на&nbsp;территории всей России.
+  
+  //col
+  .p-info__col
+    .h4-title Вспомогательная информация
+    .ui-links-group
+      a(href="#").ui-arr-link 
+        span Как выбрать часы
+        +svgMono("btn-arrow")
+      a(href="#").ui-arr-link 
+        span О фабрике
+        +svgMono("btn-arrow")
+    
+    .h4-title.mt1 Вопросы и ответы
+    .ui-links-group
+      a(href="#").ui-arr-link 
+        span Какие бывают гонги
+        +svgMono("btn-arrow")
+      a(href="#").ui-arr-link 
+        span Мелодии и виды отделки
+        +svgMono("btn-arrow")
+      a(href="#").ui-arr-link 
+        span Чем они отличаются
+        +svgMono("btn-arrow")
+      a(href="#").ui-arr-link 
+        span Как сделать выбор
+        +svgMono("btn-arrow")
+    
+    a(href="#").btn.btn-outline.btn-outline--small
+      span Задать свой вопрос

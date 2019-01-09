@@ -1,0 +1,81 @@
+// PRODUCT INFO
+.p-info(data-aos="fade")
+  .container
+    .p-info__row
+      // CHARACTERISTICS
+      .p-chars
+        //col
+        .p-chars__col
+          .p-char
+            .p-char__image.p-char__image--color
+              img(src='img/productColor_q3.png' srcset='img/productColor_q3@2x.png 2x')
+            .p-char__content
+              .p-char__title Орех тёмный Q3
+              .p-char__description Цвет корпуса
+        //col
+        .p-chars__col
+          .p-char
+            .p-char__content
+              .p-char__title 
+                +svgMono("gear")
+                span Механика с боем
+              .p-char__description 1171&nbsp;&mdash; Механический механизм с&nbsp;тросовым подвесом гирь. <br/>Запас хода&nbsp;&mdash; 8&nbsp;дней.
+        //col
+        .p-chars__col
+          .p-char
+            .p-char__content
+              .p-char__title Органный гонг
+              .p-char__description Бой каждые 15&nbsp;минут с&nbsp;нарастанием длительности мелодии
+        //col
+        .p-chars__col
+          .p-char
+            .p-char__content
+              .p-char__title Циферблат
+              .p-char__description Латунный с&nbsp;чеканными римскими цифрами, по&nbsp;центру и&nbsp;углам установлены узорные накладки с&nbsp;чернением. Отдельный циферблат с&nbsp;секундной стрелкой.
+        //col
+        .p-chars__col
+          .p-char
+            .p-char__content
+              .p-char__title Маятник
+              .p-char__description Лирообразный маятник изготовлен из&nbsp;полированной латуни с&nbsp;узором по&nbsp;центру и&nbsp;чернением.
+        //col
+        .p-chars__col
+          .p-char
+            .p-char__content
+              .p-char__title Ночной режим
+              .p-char__description Автоматическое и&nbsp;ручное отключение боя в&nbsp;ночное время
+              
+      // music
+      .p-scope__music
+        p.p-small Мелодии
+        .p-scope__music-row
+          .play-btn(js-play-audio)
+            .play-btn__progress
+              .play-btn__progress-radial(js-radial-progressbar)
+              +svgMono('play-icon')
+              +svgMono('stop-icon')
+            .play-btn__content
+              span.play-btn__name Вестминстер органный гонг
+              span.play-btn__timer 50 секунд
+            .play-btn__media
+              audio
+                source(src="audio/80289__hyderpotter__hourlychimebeg.mp3" type="audio/mpeg")
+          .play-btn(js-play-audio)
+            .play-btn__progress
+              .play-btn__progress-radial(js-radial-progressbar)
+              +svgMono('play-icon')
+              +svgMono('stop-icon')
+            .play-btn__content
+              span.play-btn__name Уиттингтон органный гонг
+              span.play-btn__timer 50 секунд
+            .play-btn__media
+              audio
+                source(src="audio/366121__dcsfx__gongbellsfxAu.mp3" type="audio/mpeg")
+      
+      // schema
+      .p-scope__schema
+        img(src="img/productSchema.png" srcset='img/productSchema@2x.png 2x')
+
+
+
+    include _info-grid
