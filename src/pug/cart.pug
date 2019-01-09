@@ -29,8 +29,8 @@ block content
               
             .cart-table__cell.cart-table__price
               .price.price--black
-                .price__newprice 29 800 <span class="r-mark">₽</span>
-                .price__oldprice 38 000 ₽
+                .price__newprice 32 300 <span class="r-mark">₽</span>
+                .price__oldprice 45 000 ₽
               
             .cart-table__cell.cart-table__quantity
               .ui-plus-minus
@@ -42,9 +42,9 @@ block content
                   
             .cart-table__cell.cart-table__summ
               .price.price--big
-                .price__newprice 29 800 <span class="r-mark">₽</span>
+                .price__newprice 32 300 <span class="r-mark">₽</span>
             .cart-table__cell.cart-table__actions
-              a(href="#" js-cart-remove).cart-table__remove
+              a(href="#" js-cart-remove title="Удалить товар").cart-table__remove
                 +svgMono("remove")
         
           // product row
@@ -57,21 +57,147 @@ block content
               
             .cart-table__cell.cart-table__price
               .price.price--black
-                .price__newprice 29 800 <span class="r-mark">₽</span>
-                .price__oldprice 38 000 ₽
+                .price__newprice 56 400 <span class="r-mark">₽</span>
+                .price__oldprice 76 000 ₽
               
             .cart-table__cell.cart-table__quantity
               .ui-plus-minus
                 .ui-plus-minus__minus(js-ui-input-minus)
                   +svgMono("minus")
-                input(type="text" disabled value="1" min="1" max="99")
+                input(type="text" disabled value="2" min="1" max="99")
                 .ui-plus-minus__plus(js-ui-input-plus)
                   +svgMono("plus")
                   
             .cart-table__cell.cart-table__summ
               .price.price--big
-                .price__newprice 29 800 <span class="r-mark">₽</span>
+                .price__newprice 112 800 <span class="r-mark">₽</span>
             .cart-table__cell.cart-table__actions
-              a(href="#" js-cart-remove).cart-table__remove
+              a(href="#" js-cart-remove title="Удалить товар").cart-table__remove
                 +svgMono("remove")
+      
+      // cart form
+      form(action="#" js-cart-form data-aos="fade").cart__form.cart-form      
+        .cart-form__holder
+          .cart-form__box
+            // section
+            .cart-form__section
+              h2.h2-title Информация о покупателе
+              .cart-form__row
+                .cart-form__col
+                  .ui-group.ui-group--labeled
+                    label Имя <span class="ui-required">*</span>
+                    input.ui-input.is-valid(type="text" name="name" placeholder="Например, Игорь Петров")  
+                .cart-form__col
+                  .ui-group.ui-group--labeled
+                    label Телефон
+                    input.ui-input(js-phone-mask type="tel" name="phone" placeholder="+7 (___) ___ __ __")
+                .cart-form__col
+                  .ui-group.ui-group--labeled
+                    label Электронная почта <span class="ui-required">*</span>
+                    input.ui-input(type="email" name="email" placeholder="Например, igor86@mail.ru")  
+                .cart-form__col
+                  .ui-group.ui-group--labeled
+                    label Город
+                    select.-bigger(js-select placeholder="Выбрать")
+                      //- option(disabled selected) Выбрать
+                      option Москва
+                      option Санкт-Питербург
+                      option Новосибирск
+                      option Екатеринбург
+                      option Нижний Новгород
+                      option Казань
+                      option Челябинск
+                      option Омск
+                      option Самара
+                      option Ростов-на-Дону
+                      option Уфа
+                      option Красноярск
+                      option Пермь
+                      option Воронеж
+                      option Волгоград
+                .cart-form__col.cart-form__col--full-width
+                  .ui-group.ui-group--labeled(js-card-address)
+                    label Адрес <span class="ui-required">*</span>
+                    input.ui-input(type="text" name="adress" placeholder="Например, ул. Наумова, дом 2")  
               
+            // section
+            .cart-form__section
+              h2.h2-title Оплата
+              .cart-form__options
+                .cart-form__option.cf-option
+                  input(type="radio" name="payment" id="payment-wallet" checked)
+                  label.cf-option__label(for="payment-wallet")
+                    .cf-option__icon
+                      +svgMono("payment-wallet")
+                    .cf-option__content
+                      .cf-option__name Наличными
+                      .cf-option__description при покупке в&nbsp;шоуруме или доставке курьером
+                .cart-form__option.cf-option
+                  input(type="radio" name="payment" id="payment-credit-card" disabled)
+                  label.cf-option__label(for="payment-credit-card")
+                    .cf-option__icon
+                      +svgMono("payment-credit-card")
+                    .cf-option__content
+                      .cf-option__name Кредитной картой
+                      .cf-option__description при покупке с&nbsp;сайта, в&nbsp;шоуруме или доставке курьером
+                .cart-form__option.cf-option
+                  input(type="radio" name="payment" id="payment-bank" disabled)
+                  label.cf-option__label(for="payment-bank")
+                    .cf-option__icon
+                      +svgMono("payment-bank")
+                    .cf-option__content
+                      .cf-option__name Через банк
+                      .cf-option__description для физического и&nbsp;юридического лица
+            
+              
+            // section
+            .cart-form__section
+              h2.h2-title Доставка
+              .cart-form__options
+                .cart-form__option.cf-option
+                  input(type="radio" name="delivery" id="delivery-truck")
+                  label.cf-option__label(for="delivery-truck")
+                    .cf-option__icon
+                      +svgMono("delivery-truck")
+                    .cf-option__content
+                      .cf-option__name Доставка по&nbsp;Москве и&nbsp;области <span class="c-red">БЕСПЛАТНО</span>!
+                      .cf-option__description в&nbsp;тот&nbsp;же или на&nbsp;следующий день!
+                .cart-form__option.cf-option
+                  input(type="radio" name="delivery" id="delivery-address")
+                  label.cf-option__label(for="delivery-address")
+                    .cf-option__icon
+                      +svgMono("delivery-address")
+                    .cf-option__content
+                      .cf-option__name Самовывоз из&nbsp;шоурума
+                      .cf-option__description в&nbsp;тот&nbsp;же день!
+                .cart-form__option.cf-option
+                  input(type="radio" name="delivery" id="delivery-bank")
+                  label.cf-option__label(for="delivery-bank")
+                    .cf-option__icon
+                      i.icon.icon-delivery-rus
+                    .cf-option__content
+                      .cf-option__name По России
+                      .cf-option__description груз доставляется курьерскими службами. Все грузы страхуются.
+            
+            // section
+            .cart-form__section
+              .ui-group.ui-group--labeled
+                label Комментарий к заказу
+                textarea.ui-input(name="comment" placeholder="" rows="3" data-min-rows="3")  
+            
+            // summary
+            .cart-form__summary
+              .cart-form__promo
+                .ui-group
+                  input.ui-input(type="text" name="promocode" placeholder="Промокод")  
+              
+              .cart-form__prices
+                .cart-form__price-total
+                  div(js-cart-total)
+                .cart-form__price-discount
+                  div(js-cart-discount)
+              
+              .cart-form__cta
+                button(type="sumbit").btn.btn-primary
+                  +svgMono("checkmark")
+                  span Оформить заказ

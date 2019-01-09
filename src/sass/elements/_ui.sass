@@ -8,6 +8,18 @@
   label
     display: block
     margin-bottom: 10px
+    font-size: 16px
+  &--labeled
+    display: flex
+    align-items: center
+    margin-bottom: 35px
+    label
+      width: 100%
+      max-width: 120px
+      padding-right: 12px
+    .ui-input
+      padding: 13px 25px 15px
+
 
 // for input or textarea element
 .ui-input
@@ -22,12 +34,27 @@
   border: 1px solid #DBD8D8
   border-radius: 4px
   padding: 10px 17px 12px
-  transition: color .25s $ease, border-color .1s ease
+  transition: color .25s $ease, border-color .1s ease, background .2s $ease
   &.has-error
     border-color: $colorRed
     &:focus
       border-color: $colorRedHover
 
+  &.is-valid
+    position: relative
+    background: #FAF8F4
+    // checmark
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      z-index: 1
+      top: 50%
+      right: 20px
+      background: svg-load("../icons/svg-mono/checkmark.svg", fill=$colorGreen) no-repeat center
+      size: 16px 12px
+      background-size: contain
+      
   &:focus
     color: $fontColor
     border-color: $fontColor
@@ -45,6 +72,9 @@
 
 label.ui-input__validation
   margin-bottom: 0
+
+.ui-required
+  color: $colorRed
 
 /* Checkbox
 // checkbox defaults

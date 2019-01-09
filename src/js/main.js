@@ -725,8 +725,9 @@ $(document).ready(function(){
   ////////////
   // CART
   ///////////
+
+  // single product form change
   _document
-    // single product form change
     .on('change', '[js-cart-product]', debounce(function(){
       var $product = $(this);
       var $price = $product.find('.cart-table__price .price__newprice')
@@ -754,14 +755,12 @@ $(document).ready(function(){
         }
       );
 
-      var startScore = {score: sumValue},
-      scoreDisplay = $("#score"),
-      wellness = $("div.wellness-score");
+      calcCartValues();
 
     }, 300, {leading: true}))
 
+  // product removal
   _document
-    // product removal
     .on('click', '[js-cart-remove]', function(){
       var $btn = $(this);
       var $product = $btn.closest('.cart-table__row');
@@ -769,9 +768,48 @@ $(document).ready(function(){
       $product.fadeOut(function(){
         $(this).remove()
       })
+
+      calcCartValues();
+    })
+
+  // cta cart form change
+  _document
+    .on('change', '[js-cart-form]', function(){
+      var $form = $(this);
+      var $delivery = $form.find('input[name="delivery"]:checked');
+      var $payment = $form.find('input[name="payment"]:checked');
+      var $cartAddress = $('[js-card-address]');
+
+      console.log($delivery)
+
+      if ( $delivery.val() === "delivery-rus" || $delivery.val() === "delivery-bank" ){
+        $cardAddress.slideDown();
+      } else {
+        $cartAddress.slideUp();
+      }
     })
 
   function calcCartValues(){
+    var $cartTotal = $('[js-cart-total]');
+    var $cartDiscount = $('[js-cart-discount]')
+    var $cartProducts = $('[js-cart-product]')
+
+    if ( $cartTotal.length === 0 ) return
+
+    var totalPrice = 0, originalPrice = 0 // collect
+    $cartProducts.each(function(i, product){
+      var $product = $(product);
+      var priceDiscount = parseInt($product.find('.cart-table__price .price__newprice').html().replace(/ /g, ''))
+      var priceOriginal = parseInt($product.find('.cart-table__price .price__oldprice').html().replace(/ /g, ''))
+      var quantity = $product.find('.cart-table__quantity input').val();
+
+      totalPrice += priceDiscount * quantity
+      originalPrice += priceOriginal * quantity
+    })
+
+    $cartTotal.html( formatNumberWithSpaces(totalPrice) + ' <span class="r-mark">₽</span>' )
+    $cartDiscount.html( formatNumberWithSpaces(originalPrice - totalPrice) + ' <span class="r-mark">₽</span>' )
+
 
   }
 

@@ -12,7 +12,7 @@ PageList:
 - file: about.html
   ready: 5
 - file: cart.html
-  ready: 30
+  ready: 50
 - file: contacts.html
   ready: 5
 - file: article.html

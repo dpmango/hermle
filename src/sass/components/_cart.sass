@@ -2,7 +2,9 @@
   margin: 20px 0
 
   &__products
+    margin: 0 0 20px 0
 
+  &__form
 
 /* cart table
 .cart-table
@@ -23,6 +25,10 @@
       bottom: 0
       height: 1px
       background: $borderColor
+    &:last-child
+      padding-bottom: 0
+      &::after
+        display: none
     &--head
       padding-top: 0
       padding-bottom: 10px
@@ -74,3 +80,148 @@
       font-size: 22px
     &:hover
       color: $colorRed
+
+
+/* cart form
+.cart-form
+  position: relative
+  display: flex
+  justify-content: center
+  &::after
+    display: inline-block
+    content: ' '
+    pointer-events: none
+    position: absolute 0
+    border: 20px solid #FAF8F4
+  &__holder
+    width: 100%
+    flex: 0 0 $col10
+    max-width: $col10
+    min-width: 1px
+
+  &__box
+    padding: 50px 0
+
+  &__section
+    margin: 30px 0
+    .h2-title
+      margin: 1em 0
+  &__row
+    display: flex
+    flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
+    margin-top: 45px
+  &__col
+    flex: 0 0 $col6
+    max-width: $col6
+    padding-left: 12px
+    padding-right: calc(12px + 30px)
+    min-width: 1px
+    &--full-width
+      flex-basis: $col12
+      max-width: $col12
+    &:last-child
+      .ui-group
+        margin-bottom: 0
+
+  &__options
+    display: flex
+    flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
+    padding-right: $col1
+  &__option
+    flex: 0 0 $col4
+    max-width: $col4
+    padding-left: 12px
+    padding-right: 12px
+    min-width: 1px
+
+  &__summary
+    padding-top: 30px
+    display: flex
+    justify-content: space-between
+    border-top: 10px solid #FAF8F4
+
+  &__promo
+
+  &__prices
+
+  &__price-total
+
+  &__price-discount
+
+
+/* cart form option
+.cf-option
+  position: relative
+  input
+    display: inline-block
+    position: absolute
+    top: 0
+    left: 0
+    width: 0.1px
+    height: 0.1px
+    visibility: hidden
+    &:checked
+      + .cf-option__label
+        &::before
+        &::after
+          transform: scale(1)
+    &[disabled]
+      + .cf-option__label
+        opacity: .4
+  &__label
+    position: relative
+    display: flex
+    padding-left: 42px
+    opacity: 1
+    transition: opacity .25s $ease
+    &::before, &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      border-radius: 50%
+      transition: .25s $ease
+    &::before
+      left: 0
+      top: 0
+      size: 24px
+      border: 1px solid #DBD8D8
+    &::after
+      left: 8px
+      top: 8px
+      size: 10px
+      background: $colorRed
+      transform: scale(0)
+  &__icon
+    flex: 0 0 42px
+    margin-top: -5px
+    .ico
+      fill: $colorRed
+      &-mono-delivery
+        &-truck
+          font-size: 20px
+        &-address
+          font-size: 29px
+        &-rus
+          font-size: 18px
+      &-mono-payment
+        &-wallet
+          font-size: 30px
+        &-credit-card
+          font-size: 31px
+        &-bank
+          font-size: 30px
+
+  &__content
+
+  &__name
+    font-size: 16px
+
+  &__description
+    font-size: 14px
+    color: #8F8F8F
+    margin-top: 3px
+    line-height: 1.3
