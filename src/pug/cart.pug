@@ -5,4 +5,73 @@ extends shared/_layout
 block content
   
   // CART
-  
+  .cart
+    .container
+      .cart__heading(data-aos="fade")
+        h1.h1-title Оформление заказа
+      .cart__products(data-aos="fade")
+        .cart-table
+          // row heading
+          .cart-table__row.cart-table__row--head
+            .cart-table__cell.cart-table__image
+            .cart-table__cell.cart-table__primary Товар
+            .cart-table__cell.cart-table__price Цена
+            .cart-table__cell.cart-table__quantity Количество
+            .cart-table__cell.cart-table__summ Сумма
+            .cart-table__cell.cart-table__actions
+          // product row
+          form(action="" js-cart-product).cart-table__row
+            .cart-table__cell.cart-table__image
+              img(src='img/cartProduct_1.png' srcset='img/cartProduct_1@2x.png 2x')
+            .cart-table__cell.cart-table__primary
+              .cart-table__name Настольные часы Hermle 70310
+              .cart-table__article Арт: 5655351
+              
+            .cart-table__cell.cart-table__price
+              .price.price--black
+                .price__newprice 29 800 <span class="r-mark">₽</span>
+                .price__oldprice 38 000 ₽
+              
+            .cart-table__cell.cart-table__quantity
+              .ui-plus-minus
+                .ui-plus-minus__minus(js-ui-input-minus)
+                  +svgMono("minus")
+                input(type="text" disabled value="1" min="1" max="99")
+                .ui-plus-minus__plus(js-ui-input-plus)
+                  +svgMono("plus")
+                  
+            .cart-table__cell.cart-table__summ
+              .price.price--big
+                .price__newprice 29 800 <span class="r-mark">₽</span>
+            .cart-table__cell.cart-table__actions
+              a(href="#" js-cart-remove).cart-table__remove
+                +svgMono("remove")
+        
+          // product row
+          form(action="" js-cart-product).cart-table__row
+            .cart-table__cell.cart-table__image
+              img(src='img/cartProduct_2.png' srcset='img/cartProduct_2@2x.png 2x')
+            .cart-table__cell.cart-table__primary
+              .cart-table__name Настольные часы Hermle 70310 - на случай если будет очень длинное наименование товара
+              .cart-table__article Арт: 5655351
+              
+            .cart-table__cell.cart-table__price
+              .price.price--black
+                .price__newprice 29 800 <span class="r-mark">₽</span>
+                .price__oldprice 38 000 ₽
+              
+            .cart-table__cell.cart-table__quantity
+              .ui-plus-minus
+                .ui-plus-minus__minus(js-ui-input-minus)
+                  +svgMono("minus")
+                input(type="text" disabled value="1" min="1" max="99")
+                .ui-plus-minus__plus(js-ui-input-plus)
+                  +svgMono("plus")
+                  
+            .cart-table__cell.cart-table__summ
+              .price.price--big
+                .price__newprice 29 800 <span class="r-mark">₽</span>
+            .cart-table__cell.cart-table__actions
+              a(href="#" js-cart-remove).cart-table__remove
+                +svgMono("remove")
+              

@@ -78,6 +78,7 @@ $(document).ready(function(){
     menuHider();
     setFooterMargin();
     setBannerPaddings();
+    calcCartValues();
 
     initSliders();
     initResponsiveSliders();
@@ -721,6 +722,61 @@ $(document).ready(function(){
 
     })
 
+  ////////////
+  // CART
+  ///////////
+  _document
+    // single product form change
+    .on('change', '[js-cart-product]', debounce(function(){
+      var $product = $(this);
+      var $price = $product.find('.cart-table__price .price__newprice')
+      var $sum = $product.find('.cart-table__summ .price__newprice')
+      var quantity = $product.find('.cart-table__quantity input').val();
+      var priceValue = parseInt($price.html().replace(/ /g, ''));
+      var sumStartValue = parseInt($sum.html().replace(/ /g, ''));
+
+      // multiply
+      var newSummCalc = priceValue * quantity
+
+      // console.log(sumStartValue, newSummCalc)
+      // var newSummHtml = formatNumberWithSpaces(newSummCalc) + ' <span class="r-mark">₽</span>'
+      // $sum.html(newSummHtml)
+
+      var counter = {counter: sumStartValue}
+      TweenLite.to(counter, .3,
+        {
+          counter: newSummCalc,
+          roundProps: "counter",
+          onUpdate: function(){
+            var newSummHtml = formatNumberWithSpaces(counter.counter) + ' <span class="r-mark">₽</span>'
+            $sum.html(newSummHtml)
+          }
+        }
+      );
+
+      var startScore = {score: sumValue},
+      scoreDisplay = $("#score"),
+      wellness = $("div.wellness-score");
+
+    }, 300, {leading: true}))
+
+  _document
+    // product removal
+    .on('click', '[js-cart-remove]', function(){
+      var $btn = $(this);
+      var $product = $btn.closest('.cart-table__row');
+
+      $product.fadeOut(function(){
+        $(this).remove()
+      })
+    })
+
+  function calcCartValues(){
+
+  }
+
+
+
 
   /**********
   * PLUGINS *
@@ -1228,6 +1284,43 @@ $(document).ready(function(){
         rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
         this.rows = minRows + rows;
     });
+
+  // plus/minus
+  _document
+    .on("click", '[js-ui-input-plus]', function(){
+      changePlusMinusInput($(this), "plus")
+    })
+    .on("click", '[js-ui-input-minus]', function(){
+      changePlusMinusInput($(this), "minus")
+    })
+
+  function changePlusMinusInput(el, type){
+    var $input = $(el).parent().find("input");
+    var $form = $input.closest('form');
+    var minValue = $input.attr("min");
+    var maxValue = $input.attr("max");
+    var inputVal = parseInt($input.val())
+
+    // get new value
+    var newValue
+    if ( type === "plus" ){
+      newValue = inputVal + 1
+    } else if ( type === "minus" ){
+      newValue = inputVal - 1
+    }
+
+    // limit values
+    if ( newValue <= minValue ){ newValue = minValue }
+    if ( newValue >= maxValue ){ newValue = maxValue }
+
+    // assign value
+    $input.val(newValue)
+
+    // trigger form change if present
+    if ( $form.length > 0 ){
+      $form.trigger("change")
+    }
+  }
 
   // Masked input
   function initMasks(){
@@ -1825,4 +1918,8 @@ function hasCrossedBreakpoint(targetBp){
     return true
   }
   return false
+}
+
+function formatNumberWithSpaces(num){
+  return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
 }

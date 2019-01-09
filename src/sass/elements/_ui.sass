@@ -281,3 +281,56 @@ label.ui-input__validation
     bottom: -6px
     left: 5px
     right: 5px
+
+
+/* plus - minus
+.ui-plus-minus
+  width: 100%
+  max-width: 110px
+  position: relative
+  z-index: 1
+  border: 1px solid #DBD8D8
+  border-radius: 4px
+  user-select: none
+  &__plus, &__minus
+    position: absolute
+    font-size: 0
+    top: 0
+    bottom: 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    color: #D4D4D4
+    cursor: pointer
+    padding: 5px 14px
+    width: 50%
+    transition: color .25s $ease
+    &:hover
+      color: $colorRed
+  &__minus
+    font-size: 0
+    left: 0
+    .ico
+      font-size: 2px
+  &__plus
+    font-size: 0
+    right: 0px
+    align-items: flex-end
+    .ico
+      font-size: 14px
+
+  input
+    -webkit-appearance: none
+    display: block
+    width: 100%
+    font-size: 20px
+    font-family: $baseFont
+    padding: 10px 40px
+    border-radius: 0
+    border: 0
+    text-align: center
+    background: transparent
+    margin: 0
+    box-shadow: none
+    &:focus
+      outline: none

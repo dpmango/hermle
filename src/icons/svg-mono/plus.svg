@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>plus</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Оформление-заказа-1200" transform="translate(-1154.000000, -399.000000)" fill="#AA2935">
+            <g id="Контент" transform="translate(360.000000, 258.000000)">
+                <g id="Товары" transform="translate(0.000000, 67.000000)">
+                    <g id="1" transform="translate(25.000000, 45.000000)">
+                        <g id="Количество" transform="translate(689.000000, 17.000000)">
+                            <path d="M87,19 L87,13 C87,12.4477153 87.4477153,12 88,12 C88.5522847,12 89,12.4477153 89,13 L89,19 L95,19 C95.5522847,19 96,19.4477153 96,20 C96,20.5522847 95.5522847,21 95,21 L89,21 L89,27 C89,27.5522847 88.5522847,28 88,28 C87.4477153,28 87,27.5522847 87,27 L87,21 L81,21 C80.4477153,21 80,20.5522847 80,20 C80,19.4477153 80.4477153,19 81,19 L87,19 Z" id="plus"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
