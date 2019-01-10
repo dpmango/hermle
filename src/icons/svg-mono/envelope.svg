@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="10px" viewBox="0 0 13 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>envelope</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Контакты-1200" transform="translate(-399.000000, -533.000000)" fill="#AA2935" fill-rule="nonzero">
+            <g id="Контент" transform="translate(358.000000, 258.000000)">
+                <g id="Почта" transform="translate(2.000000, 221.000000)">
+                    <g id="1" transform="translate(39.000000, 44.000000)">
+                        <g id="Иконка" transform="translate(0.000000, 10.000000)">
+                            <g id="envelope">
+                                <path d="M6.5,7 L4.89171429,5.484 L0.293428571,9.729 C0.460571429,9.896 0.686214286,10 0.935071429,10 L12.0649286,10 C12.3128571,10 12.5375714,9.896 12.7037857,9.729 L8.10828571,5.484 L6.5,7 Z" id="Shape"></path>
+                                <path d="M12.7065714,0.271 C12.5394286,0.103 12.3147143,0 12.0649286,0 L0.935071429,0 C0.687142857,0 0.462428571,0.104 0.295285714,0.273 L6.5,6 L12.7065714,0.271 Z" id="Shape"></path>
+                                <polygon id="Shape" points="0 0.878 0 9.186 4.48778571 5.079"></polygon>
+                                <polygon id="Shape" points="8.51221429 5.079 13 9.186 13 0.875"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

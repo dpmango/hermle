@@ -5,4 +5,106 @@ extends shared/_layout
 block content
   
   // CONTACTS
-  
+  .contact
+    .container
+      h1.h1-title Контакты
+      .contact__wrapper
+        .contact__left(data-aos="fade-left")
+          // section
+          .contact__section
+            .contact__section-heading 
+              span Телефоны
+            .contact__row
+              a(href="tel:88003020958").contact-phone
+                .contact-phone__icon
+                  +svgMono('phone')
+                .contact-phone__content
+                  .contact-phone__tel 8 800 302-09-58
+                  .contact-phone__description Бесплатный колл-центр для всех регионов России
+              a(href="tel:+74954091058").contact-phone
+                .contact-phone__icon
+                  +svgMono('phone')
+                .contact-phone__content
+                  .contact-phone__tel +7 495 409-10-58
+                  .contact-phone__description Телефон в Москве
+              .contact__messengers
+                .contacts-header__whatsapp
+                  a(href="#" target="_blank") whatsapp
+                .contacts-header__viber
+                  a(href="#" target="_blank") viber
+                .contacts-header__telegram
+                  a(href="#" target="_blank") telegram
+          
+          // section
+          .contact__section
+            .contact__section-heading 
+              span Электронная почта
+            .contact__row
+              a(href="mailto:info@hermle-store.ru").contact-email
+                .contact-email__icon
+                  +svgMono("envelope")
+                .contact-email__content
+                  .contact-email__mail info@hermle-store.ru
+                  .contact-email__description Для частных клиентов по&nbsp;любым вопросам
+              a(href="mailto:corp@hermle-store.ru").contact-email
+                .contact-email__icon
+                  +svgMono("envelope")
+                .contact-email__content
+                  .contact-email__mail corp@hermle-store.ru
+                  .contact-email__description Для корпоративных и&nbsp;оптовых клиентов
+                
+              
+          // section
+          .contact__section
+            .contact__section-heading 
+              span Адрес демонстрационного зала
+            .contact__row.contact__row--address
+              .contact-address
+                .contact-address__icon
+                  +svgMono("location")
+                .contact-address__content
+                  .contact-address__name <span>г. Москва</span>, улица Шаболовка д.23 к.5
+                  .contact-address__description 1-й этаж красная вывеска &laquo;Hermle Часы из&nbsp;Германии&raquo;
+              a(href="#").btn.btn-outline.btn-outline--small
+                span На карте
+            
+            .contact__showroom
+              a(href="#").btn.btn-primary
+                span Подробнее о шоуруме
+              ul.contact__showroom-list
+                li В выходные мы&nbsp;открыты по&nbsp;предварительному звонку
+                li Для посетителей на&nbsp;машине доступна бесплатная парковка, позвоните для оформления пропуска
+          
+          // section
+          .contact__section
+            .contact__section-heading 
+              span Адрес склада
+            .contact__row.contact__row--address
+              .contact-address
+                .contact-address__icon
+                  +svgMono("location")
+                .contact-address__content
+                  .contact-address__name <span>г. Москва</span>, Щёлковское шоссе д.100 к.1
+                  .contact-address__description При необходимости, можно посмотреть и&nbsp;купить часы как в&nbsp;шоуруме, так и&nbsp;на&nbsp;складе
+              a(href="#").btn.btn-outline.btn-outline--small
+                span На карте
+                
+          // section
+          .contact__section
+            .contact__section-heading 
+              span Реквизиты
+            .contact__row
+              .contact__credentials
+                | ООО "Интерьерные часы Хермле" <br/>
+                | ИНН/КПП 7720342346/772001001 <br/>
+                | ОГРН 1167746524835
+              a(href="#" target="_blank").btn.btn-outline.btn-outline--small.btn-outline--muted
+                .btn-download-icon
+                  +svgMono('download')
+                span Скачать реквизиты
+                      
+        // Right (map)
+        .contact__right(data-aos="fade-right")
+          .contact__map
+            div(js-contact-map)
+            

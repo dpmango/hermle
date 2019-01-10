@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="16px" viewBox="0 0 11 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>location</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Страницы" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Контакты-1200" transform="translate(-400.000000, -667.000000)" fill="#AA2935" fill-rule="nonzero">
+            <g id="Контент" transform="translate(358.000000, 258.000000)">
+                <g id="Адрес" transform="translate(2.000000, 362.000000)">
+                    <g id="maps-and-flags" transform="translate(40.000000, 47.000000)">
+                        <path d="M5.5,0 C2.47662634,0 0.0169435484,2.4596828 0.0169435484,5.48302688 C0.0169435484,9.2350914 4.92374194,14.7433414 5.13265323,14.9759973 C5.32887903,15.1945484 5.67147581,15.194164 5.86734677,14.9759973 C6.07625806,14.7433414 10.9830565,9.2350914 10.9830565,5.48302688 C10.9829973,2.4596828 8.52334409,0 5.5,0 Z M5.5,8.24169086 C3.97886559,8.24169086 2.74136559,7.00416129 2.74136559,5.48302688 C2.74136559,3.96189247 3.97889516,2.72439247 5.5,2.72439247 C7.02110484,2.72439247 8.25860484,3.96192204 8.25860484,5.48305645 C8.25860484,7.00419086 7.02110484,8.24169086 5.5,8.24169086 Z" id="location"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

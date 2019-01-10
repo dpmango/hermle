@@ -14,7 +14,7 @@ PageList:
 - file: cart.html
   ready: 60
 - file: contacts.html
-  ready: 5
+  ready: 50
 - file: article.html
   ready: 5
 - file: showroom.html
