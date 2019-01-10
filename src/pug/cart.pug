@@ -193,11 +193,14 @@ block content
               
               .cart-form__prices
                 .cart-form__price-total
+                  span Итого к оплате:
                   div(js-cart-total)
                 .cart-form__price-discount
+                  span Скидка:
                   div(js-cart-discount)
               
               .cart-form__cta
                 button(type="sumbit").btn.btn-primary
-                  +svgMono("checkmark")
+                  .btn-checkmark-icon
+                    +svgMono("checkmark")
                   span Оформить заказ
