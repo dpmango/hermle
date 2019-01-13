@@ -10,7 +10,7 @@ PageList:
 - file: product-exclusive.html
   ready: 50
 - file: about.html
-  ready: 5
+  ready: 60
 - file: cart.html
   ready: 60
 - file: contacts.html

@@ -5,4 +5,112 @@ extends shared/_layout
 block content
   
   // ABOUT
-  
+  .about
+    .container
+      // text caption
+      .text-caption(data-aos="fade")
+        .text-caption__wrapper
+          .text-caption__left(data-aos="fade")
+            .text-caption__content
+              h1.text-caption__heading <span>История</span> компании Hermle
+              p История часового бренда Hermle началась в&nbsp;1922&nbsp;году. Основал марку <strong>Франц Хермле (Franz Hermle).</strong>
+              p За свою многолетнюю историю компания на&nbsp;только успешно развивалась, но&nbsp;и&nbsp;демонстрировала высокий уровень стабильности. С&nbsp;момента своего основания и&nbsp;до&nbsp;настоящего времени предприятие находится в&nbsp;руках одной семьи.
+          .text-caption__right
+            .text-caption__slider.swiper-container.swiper-control-arrows-simple(js-swiper-about)
+              .swiper-wrapper
+                .swiper-slide
+                  .text-caption__image
+                    img(src='img/aboutSlide.jpg' srcset='img/aboutSlide@2x.jpg 2x')
+                .swiper-slide
+                  .text-caption__image
+                    img(src='img/aboutSlide.jpg' srcset='img/aboutSlide@2x.jpg 2x')
+              .swiper-button-prev
+                +svgMono("btn-arrow-left")
+              .swiper-button-next
+                +svgMono("btn-arrow")
+
+      
+      // text section 01
+      .text-section(data-aos="fade-up")
+        .text-section__wrapper
+          .text-section__left(data-aos="fade")
+            .text-section__content
+              .text-section__counter 01
+              h2.h2-title Как всё начиналось
+              p.p-main <strong>Hermle</strong>&nbsp;&mdash; это бренд со&nbsp;столетней историей. В&nbsp;1922-м году, <strong>Франц Хермле (Franz Hermle)</strong> запустил семейный бизнес, в&nbsp;основе которого было изготовление часовых деталей. Но&nbsp;уже вскоре, инженерам компании удалось создать свой собственный часовой механизм, который выделялся среди всех существующих своей точностью и&nbsp;надежностью. 
+              p.p-main В&nbsp;начале 30-х годов, об&nbsp;эксклюзивных часах <strong>Hermle</strong> уже знали по&nbsp;всему миру.
+          .text-section__right(data-aos="fade-up")
+            .text-section__image
+              img(src='img/aboutImage_1.jpg' srcset='img/aboutImage_1@2x.jpg 2x')
+      
+      // text section 02
+      .text-section
+        .text-section__wrapper.text-section__wrapper--reverse
+          .text-section__left(data-aos="fade")
+            .text-section__content
+              .text-section__counter 02
+              h2.h2-title Второе возрождение бренда
+              p.p-main После второй мировой войны, для компании <strong>Hermle</strong> настали действительно тяжелые времена. Всё оборудование и&nbsp;технологии бренда были вывезены из&nbsp;страны, оставив германского производителя на&nbsp;грани исчезновения. Но&nbsp;опыт мастеров, десятки сохраненных чертежей и&nbsp;неумолимое стремление вернуть себе заслуженное уважением помогли компании <strong>Hermle</strong> восстановить свои разработки. 
+              p.p-main Уже в&nbsp;1950-х годах, бренд вернулся к&nbsp;жизни, и&nbsp;стал снова отстаивать звание лучших изготовителей часов во&nbsp;всем мире.
+          .text-section__right(data-aos="fade-up")
+            .text-section__image
+              img(src='img/aboutImage_2.jpg' srcset='img/aboutImage_2@2x.jpg 2x')
+      
+      // text section 03
+      .text-section
+        .text-section__wrapper
+          .text-section__left(data-aos="fade")
+            .text-section__content
+              .text-section__counter 03
+              h2.h2-title Мировая популяризация бренда
+              p.p-main Слава и&nbsp;популярность часов марки <strong>Hermle</strong> росла с&nbsp;каждым годом, как и&nbsp;увеличивался спрос среди иностранных покупателей. Чтобы стать к&nbsp;ним ближе, в&nbsp;1977 году компания решила запустить производство своих часов в&nbsp;США. 
+              p.p-main Теперь, в&nbsp;географии поставок этого завода лежат многие страны западного полушария.
+          .text-section__right(data-aos="fade-up")
+            .text-section__image
+              img(src='img/aboutImage_3.jpg' srcset='img/aboutImage_3@2x.jpg 2x')
+
+      // text section 04
+      .text-section
+        .text-section__wrapper.text-section__wrapper--reverse
+          .text-section__left(data-aos="fade")
+            .text-section__content
+              .text-section__counter 04
+              h2.h2-title Компания Hermle в наши дни
+              p.p-main Сегодня, продукция германской компании поставляется более чем в&nbsp;80&nbsp;стран мира. Эталонное качество механических часовых механизмов для интерьерных часов позволило бренду <strong>Hermle</strong> взять под контроль почти&nbsp;80% мирового рынка, оставив своих конкурентов глубоко позади.
+          .text-section__right(data-aos="fade-up")
+            .text-section__image
+              img(src='img/aboutImage_4.jpg' srcset='img/aboutImage_4@2x.jpg 2x')
+
+      // text section 05
+      .text-section
+        .text-section__wrapper
+          .text-section__left(data-aos="fade")
+            .text-section__content
+              .text-section__counter 05
+              h2.h2-title Бренд Hermle на передовой технологий
+              p.p-main С&nbsp;появлением новых технологий, появилась возможность создания и&nbsp;более высокоточных механизмов. Поэтому в&nbsp;начале 21&nbsp;века германская компания начала переоснащение своих фабрик новым, дорогостоящим и&nbsp;более совершенным оборудованием. К&nbsp;2003 году производственные мощности <strong>Hermle</strong> опережали своих конкурентов на&nbsp;несколько лет. Завод немецкого бренда изготавливает также сложные детали и&nbsp;для других отраслей машиностроения, в&nbsp;том числе для авиационной и&nbsp;автомобильной промышленности.
+              p.p-main Такой прорыв технологий не&nbsp;остался незамеченным, и&nbsp;фабрика получила сертификат соответствия стандартам качества </strong>DIN EN&nbsp;ISO 9001:2000</strong>, со&nbsp;временем сертифицировав все свои фабрики.
+          .text-section__right(data-aos="fade-up")
+            .text-section__image
+              img(src='img/aboutImage_5.jpg' srcset='img/aboutImage_5@2x.jpg 2x')
+      
+      
+      // brand box
+      .text-box(data-aos="fade")
+        .text-box__wrapper
+          .text-box__left
+            .text-box__content
+              h2.h2-title Политика бренда
+              p.p-main Компания Hermle не&nbsp;просто является одним из&nbsp;лидеров в&nbsp;часовой индустрии, она идет в&nbsp;ногу со&nbsp;временем. Попутно с&nbsp;производством, бренд занимается разработкой и&nbsp;внедрением инновационных технологий, чтобы с&nbsp;каждым разом изготавливать более совершенные часы.
+              p.p-main Несмотря на&nbsp;тотальную автоматизацию производства, компания Hermle приветствует ручной труд своих мастеров, работа которых является по-настоящему ювелирной. Именно это делает германские часы такими уникальными и&nbsp;неповторимыми.
+              p.p-main Также компания постоянно расширяет свои границы. Ассортимент выпускаемой продукции начинается с&nbsp;деталей для традиционных механизмов, заканчивая изготовлением современных часов с&nbsp;радиоконтролем времени.
+          .text-box__right
+            .text-box__brand
+              .brand-box
+                .brand-box__heading
+                  .h3-title Hermle в России
+                  img(src='img/template/russia-pentagram.svg')
+                  
+                .brand-box__content
+                  p 6-ть из&nbsp;10-ти статусных интерьерных часов приобретенных покупателями в&nbsp;России изготовлены под маркой <strong>Hermle</strong>. Продукция германского бренда с&nbsp;каждым годом обретает всё большую популярность. Сегодня в&nbsp;элитарных домах можно встретить напольные часы, которые передаются от&nbsp;поколения к&nbsp;поколению.
+                  p Сейчас в&nbsp;ассортименте компании находится более 300 моделей часов собственного производства, а&nbsp;также свыше 15000 модернизаций механизмов, поставляемых для других часовых фабрик.

@@ -58,7 +58,8 @@
 
 
 /* arrows modifiers
-.swiper-control-arrows
+// common arrow style
+.swiper-control-arrows, .swiper-control-arrows-simple
   .swiper-button-next, .swiper-button-prev
     background: transparent
     color: $colorRed
@@ -77,6 +78,9 @@
       backface-visibility: hidden
       will-change: transform
       transform-style: preserve-3d
+
+.swiper-control-arrows
+  .swiper-button-next, .swiper-button-prev
     &::after
       display: inline-block
       content: ' '
@@ -119,6 +123,27 @@
     right: 20px
   .swiper-button-prev
     left: 20px
+
+// simple modifier
+.swiper-control-arrows-simple
+  .swiper-button-next, .swiper-button-prev
+    top: auto
+    bottom: 10px
+    color: white
+    &:hover
+      color: $colorRed
+  .swiper-button-next
+    left: 100px
+    &:hover
+      .ico
+        transform: translateX(5px)
+
+  .swiper-button-prev
+    left: 25px
+    &:hover
+      .ico
+        transform: translateX(-5px)
+
 
 +r($sm)
   .swiper-control-arrows

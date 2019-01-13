@@ -1,0 +1,170 @@
+.about
+
+
+// section with hero like styles
+.text-caption
+  background: #FAF8F4
+  &__wrapper
+    display: flex
+    margin-left: -12px
+    margin-right: -12px
+  &__left, &__right
+    width: 100%
+    flex: 0 0 auto
+    min-width: 1px
+    padding-left: 12px
+    padding-right: 12px
+    display: flex
+    flex-direction: column
+
+  &__left
+    flex-basis: 55%
+    max-width: 55%
+
+  &__right
+    flex-basis: 45%
+    max-width: 45%
+
+  &__content
+    margin-top: auto
+    margin-bottom: auto
+    padding-left: 12.5%
+    padding-right: 5%
+    p
+      font-size: 20px
+      line-height: 1.5
+      margin: 1em 0
+
+  &__heading
+    font-size: 46px
+    margin: 0
+    span
+      position: relative
+      line-height: 1
+      color: $colorRed
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        bottom: 0
+        left: .05em
+        right: .05em
+        height: 4px
+        background: currentColor
+
+  &__slider
+    width: 100%
+  &__image
+    font-size: 0
+    img
+      width: 100%
+
+
+// text section
+.text-section
+  margin: 80px 0
+  &__wrapper
+    display: flex
+    align-items: center
+    margin-left: -12px
+    margin-right: -12px
+    &--reverse
+      flex-direction: row-reverse
+      .text-section
+        &__left
+          margin-left: 0
+          margin-right: $col1
+        &__right
+          margin-right: 0
+          margin-left: $col1
+        &__content
+          margin-right: 0
+          margin-left: 7.5%
+        &__counter
+          text-align: right
+
+  &__left, &__right
+    width: 100%
+    flex: 0 0 auto
+    min-width: 1px
+    padding-left: 12px
+    padding-right: 12px
+
+  &__left
+    flex-basis: $col6
+    max-width: $col6
+    margin-left: $col1
+  &__right
+    flex-basis: $col4
+    max-width: $col4
+    margin-right: $col1
+
+  &__content
+    margin-right: 45px
+
+  &__counter
+    color: $colorRed
+    font-size: 30px
+
+  &__image
+    font-size: 0
+    img
+      width: 100%
+
+
+/* text box
+.text-box
+  position: relative
+  padding: 50px 0
+  margin-top: 80px
+  &::after
+    display: block
+    content: ' '
+    position: absolute 0
+    border: 20px solid #FAF8F4
+    pointer-events: none
+    z-index: 1
+  &__wrapper
+    position: relative
+    z-index: 2
+    display: flex
+    margin-left: -12px
+    margin-right: -12px
+
+  &__left, &__right
+    width: 100%
+    flex: 0 0 auto
+    min-width: 1px
+    padding-left: 12px
+    padding-right: 12px
+
+  &__left
+    flex-basis: $col7
+    max-width: $col7
+  &__right
+    flex-basis: $col5
+    max-width: $col5
+
+  &__content
+    padding-left: 12%
+    .h2-title
+      margin-top: .3em
+
+  &__brand
+    padding-right: 10.5%
+    padding-left: 5.5%
+
+
+/* brandbox
+.brand-box
+  padding: 35px 11.5%
+  background: url('../img/template/brandBoxBg.jpg') no-repeat right bottom
+  background-size: cover
+  &__heading
+    display: flex
+    align-items: center
+    justify-content: space-between
+  &__content
+    p
+      font-size: 14px
+      line-height: 1.5

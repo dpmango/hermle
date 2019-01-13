@@ -1025,7 +1025,6 @@ $(document).ready(function(){
       $thumb.addClass('is-selected')
     }
 
-
     ////////////
     // catalog page
     ///////////
@@ -1052,6 +1051,25 @@ $(document).ready(function(){
         })
       })
     }
+
+    ////////////
+    // about page
+    ///////////
+    sliders.heroChooser = new Swiper('[js-swiper-about]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      watchOverflow: false,
+      setWrapperSize: false,
+      slidesPerView: 1,
+      loop: true,
+      normalizeSlideIndex: true,
+      freeMode: false,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    })
 
 
   }

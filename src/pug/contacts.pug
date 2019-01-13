@@ -9,11 +9,12 @@ block content
     .container
       h1.h1-title Контакты
       .contact__wrapper
-        .contact__left(data-aos="fade-left")
+        .contact__left(data-aos="fade-right")
           // section
           .contact__section
             .contact__section-heading 
               span Телефоны
+            // phones
             .contact__row
               a(href="tel:88003020958").contact-phone
                 .contact-phone__icon
@@ -39,6 +40,7 @@ block content
           .contact__section
             .contact__section-heading 
               span Электронная почта
+            // emails
             .contact__row
               a(href="mailto:info@hermle-store.ru").contact-email
                 .contact-email__icon
@@ -104,7 +106,7 @@ block content
                 span Скачать реквизиты
                       
         // Right (map)
-        .contact__right(data-aos="fade-right")
+        .contact__right(data-aos="fade-left")
           .contact__map
             div(js-contact-map)
             
