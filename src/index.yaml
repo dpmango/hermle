@@ -16,7 +16,7 @@ PageList:
 - file: contacts.html
   ready: 50
 - file: article.html
-  ready: 5
+  ready: 50
 - file: showroom.html
   ready: 5
 - file: ui.html

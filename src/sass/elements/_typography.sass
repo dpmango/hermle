@@ -19,7 +19,7 @@
 
 .mt1
   margin-top: 1em
-  
+
 +r($sm)
   .h1-title
     font-size: 25px
@@ -172,6 +172,39 @@ blockquote.blockquote
       background: svg-load("../icons/svg-mono/checkmark.svg", fill=$colorGreen) no-repeat center
       background-size: contain
 
+/* numbs
+.ul-nums
+  display: flex
+  flex-wrap: wrap
+  list-style: none
+  margin: 1em 0
+  padding: 0
+  font-size: 16px
+  line-height: 1.5
+  counter-reset: list
+  li
+    position: relative
+    display: block
+    flex: 0 0 50%
+    max-width: 50%
+    padding-left: 25px
+    padding-right: 25px
+    padding-left: 40px
+    margin-bottom: 35px
+    counter-increment: list
+    &::before
+      position: absolute
+      left: 0
+      top: 5px
+      display: inline-block
+      content: counter(list)
+      size: 20px
+      color: white
+      border-radius: 50%
+      text-align: center
+      line-height: 18px
+      background: $colorRed
+
 
 /* links
 .ui-links-group
@@ -199,3 +232,21 @@ blockquote.blockquote
     color: $colorRed
     .ico
       transform: translate3d(5px, .2em, 0)
+
+
+/* table style
+.table
+  width: 100%
+  border-collapse: collapse
+  thead
+    td
+      padding: 12px
+      font-size: 14px
+      color: $fontColorGray
+
+  tbody
+    td
+      padding: 25px 12px
+
+  td
+    border-bottom: 1px solid $borderColor

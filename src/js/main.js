@@ -79,10 +79,12 @@ $(document).ready(function(){
     setFooterMargin();
     setBannerPaddings();
     calcCartValues();
+    buildArticleNavigation();
 
     initSliders();
     initResponsiveSliders();
     initPopups();
+    initSticky();
     initMasks();
     initSelectric();
     initRangeSlider();
@@ -781,8 +783,6 @@ $(document).ready(function(){
       var $payment = $form.find('input[name="payment"]:checked');
       var $cartAddress = $('[js-card-address]');
 
-      console.log($delivery)
-
       if ( $delivery.val() === "delivery-rus" || $delivery.val() === "delivery-bank" ){
         $cardAddress.slideDown();
       } else {
@@ -810,11 +810,55 @@ $(document).ready(function(){
 
     $cartTotal.html( formatNumberWithSpaces(totalPrice) + ' <span class="r-mark">₽</span>' )
     $cartDiscount.html( formatNumberWithSpaces(originalPrice - totalPrice) + ' <span class="r-mark">₽</span>' )
-
-
   }
 
 
+  ////////////
+  // ARTICLE
+  ///////////
+
+  // navigation
+  function buildArticleNavigation(){
+    var $nav = $('[js-article-navigation]');
+    if ( $nav.length === 0 ) return
+
+    var $content = $('.article-content')
+    var $headings = $content.find("h1, h2, h3, h4")
+    var headingsHtml = ""
+
+    $headings.each(function(i, heading){
+      var index = i + 1
+      var $heading = $(heading);
+      $heading.attr('data-heading-id', 'section_' + index);
+      headingsHtml += '<a href="#" js-scroll-to data-scroll-target="[data-heading-id=section_'+index+']">'+$heading.text()+'</a>'
+    })
+
+    $nav.html(headingsHtml)
+  }
+
+  _document
+    .on('click', '[js-article-navigation] a', function(){
+
+    })
+
+
+  // comments
+  _document
+    // insert reference on comment click
+    .on('click', '[js-comment-reply]', function(){
+      var $this = $(this);
+      var $card = $this.closest('.comment-card');
+      var cardId = $card.data("id");
+      var userName = $card.find('.comment-card__name').first().text();
+
+      if ( cardId && userName ){
+        var $form = $('[js-comment-form]')
+        var $formTextarea = $form.find('textarea')
+
+        $form.find('input[name="parent"]').val(cardId)
+        $formTextarea.val( '@' + userName + " " + $formTextarea.val() )
+      }
+    })
 
 
   /**********
@@ -1320,6 +1364,19 @@ $(document).ready(function(){
         })
       })
 
+    })
+  }
+
+  // sticky
+  function initSticky(){
+    var $sticky = $('[js-sticky]');
+    if ( $sticky.length === 0 ) return
+    $sticky.each(function(i, sticky){
+      var $el = $(sticky);
+      // var headerHeight = 100
+      $el.stick_in_parent({
+        offset_top: 30
+      });
     })
   }
 

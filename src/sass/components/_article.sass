@@ -1,0 +1,124 @@
+
+/* artcile head
+.article-head
+  &__wrapper
+    position: relative
+    z-index: 1
+  &__image
+    font-size: 0
+    img
+      width: 100%
+  &__content
+    position: absolute 0
+    color: white
+    padding: 40px 6% 60px
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+  &__category
+    text-transform: uppercase
+    font-size: 14px
+    opacity: .6
+    letter-spacing: em(2.4, 14)
+
+
+/* article page
+.article-page
+  position: relative
+  z-index: 2
+  &__wrapper
+    display: flex
+    margin-left: -12px
+    margin-right: -12px
+
+  &__left, &__right
+    width: 100%
+    flex: 0 0 auto
+    min-width: 1px
+    padding-left: 12px
+    padding-right: 12px
+
+  &__left
+    flex-shrink: 1
+    flex-basis: $col9
+    max-width: $col9
+
+  &__right
+    position: relative
+    margin-top: -30px
+    flex-shrink: 0
+    flex-basis: $col3
+    max-width: $col3
+
+  &__sidebar
+    // sticky element
+
+  &__navigation
+    background: #FAF8F4
+    padding: 30px 40px
+
+  &__navigation-list
+    margin-top: 20px
+    a
+      display: inline-block
+      font-size: 16px
+      padding: 5px 0
+      transition: .25s $ease
+      &:hover
+        color: $colorRed
+
+  &__featured-product
+    background: #FAF8F4
+    margin-top: 30px
+    padding: 30px 40px
+
+/* content
+.article-content
+  padding: 40px 40px 0
+  hr
+    border: 0
+    border-top: 1px solid $borderColor
+    margin: 40px 0
+  .ul-list
+    margin-left: 35px
+    li
+      margin-bottom: 30px
+  .blockquote
+    max-width: 100%
+    padding-left: 65px
+    &::before
+      left: 35px
+  .table
+    margin: 1em 35px
+
+  &__row
+    // text + image
+    display: flex
+    margin: 1em -20px
+    // flex-wrap: wrap
+  &__row-text, &__row-image
+    // width: 100%
+    padding-left: 20px
+    padding-right: 20px
+    min-width: 1px
+  &__row-text
+    flex: 1 1 auto
+    p
+      &:first-child
+        margin-top: 0
+      &:last-child
+        margin-bottom: 0
+
+  &__row-image
+    flex: 0 0 auto
+    img
+      max-width: 100%
+
+/* share
+.article-share
+  margin: 30px 0
+  background: #FAF8F4
+  border-radius: 4px
+  padding: 12px 30px
+  &__title
+    font-size: 16px

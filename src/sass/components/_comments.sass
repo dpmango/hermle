@@ -1,0 +1,105 @@
+.comments
+  margin-top: 40px
+
+  &__list
+    margin: 5px 0 30px 0
+
+  &__form
+    position: relative
+    padding: 60px
+    margin-top: 40px
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute 0
+      pointer-events: none
+      border: 20px solid #FAF8F4
+
+.comment-card
+  display: flex
+  flex-wrap: wrap
+  border-bottom: 1px solid #F6F2F2
+  padding: 25px 0
+  // outline: 1px solid rgba(red, .1)
+  &--with-replies
+    border-bottom: 0
+    padding-bottom: 0
+  &__avatar
+    flex: 0 0 auto
+    position: relative
+    z-index: 1
+    overflow: hidden
+    font-size: 0
+    size: 60px
+    border-radius: 50%
+    background: #FAF8F4
+    .ico-mono-user
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)
+      fill: $colorRed
+      font-size: 24px
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)
+      width: 100%
+  &--reply
+    flex: 1 1 auto
+  &__content
+    flex: 1 1 calc(100% - 60px - 16px)
+    margin-left: 16px
+
+  &__timestamp
+    font-size: 12px
+    color: #8F8F8F
+    margin: .2em 0 .8em
+
+  &__name
+    font-size: 16px
+    font-weight: 600
+    margin-bottom: .8em
+
+  &__text
+    margin: .5em 0
+    font-size: 14px
+    color: #797979
+    line-height: 1.5
+
+  &__actions
+    display: flex
+    align-items: center
+    font-size: 12px
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: em(2.25, 12)
+  &__reply
+    cursor: pointer
+    transition: color .25s $ease
+    &:hover
+      color: $colorRed
+
+  &__replies
+    flex: 1 1 100%
+    border-top: 1px solid $borderColor
+    margin-top: 25px
+    .comment-card
+      margin-left: $col1
+
+
+/* form
+.comment-form
+  &__row
+    display: flex
+    flex-wrap: wrap
+    margin-left: -15px
+    margin-right: -15px
+    .ui-group
+      width: 100%
+      flex: 0 0 $col6
+      max-width: $col6
+      min-width: 1px
+      padding-left: 15px
+      padding-right: 15px
