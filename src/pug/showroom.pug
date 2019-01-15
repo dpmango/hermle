@@ -5,4 +5,116 @@ extends shared/_layout
 block content
   
   // SHOWROOM
+  .showroom-head(data-aos="fade")
+    .container
+      // heading
+      .showroom-head__heading
+        .showroom-head__grid
+          h1.showroom-head__title <span>Шоурум</span> компании в Москве
+          .showroom-head__phones
+            a(href="tel:88003020958").contact-phone
+              .contact-phone__icon
+                +svgMono('phone')
+              .contact-phone__content
+                .contact-phone__tel 8 800 302-09-58
+                .contact-phone__description Бесплатный колл-центр для <br/>всех регионов России
+      // gallery
+      .showroom-head__gallery.swiper-container.swiper-control-arrows-simple(js-showroom-swiper)
+        .swiper-wrapper
+          .swiper-slide.showroom-head__gallery-slide
+            img(src='img/showroomGal_1.jpg' srcset='img/showroomGal_1@2x.jpg 2x')
+          .swiper-slide.showroom-head__gallery-slide
+            img(src='img/showroomGal_2.jpg' srcset='img/showroomGal_2@2x.jpg 2x')
+          .swiper-slide.showroom-head__gallery-slide
+            img(src='img/showroomGal3.jpg' srcset='img/showroomGal_3@2x.jpg 2x')
+            img(src='img/showroomGal4.jpg' srcset='img/showroomGal_4@2x.jpg 2x')
+          .swiper-slide.showroom-head__gallery-slide
+            img(src='img/showroomGal_2.jpg' srcset='img/showroomGal_2@2x.jpg 2x')
+          .swiper-slide.showroom-head__gallery-slide
+            img(src='img/showroomGal_1.jpg' srcset='img/showroomGal_1@2x.jpg 2x')
+          .swiper-slide.showroom-head__gallery-slide
+            img(src='img/showroomGal3.jpg' srcset='img/showroomGal_3@2x.jpg 2x')
+            img(src='img/showroomGal4.jpg' srcset='img/showroomGal_4@2x.jpg 2x')
+        .swiper-button-prev
+          +svgMono("btn-arrow-left")
+        .swiper-button-next
+          +svgMono("btn-arrow")
   
+  // CONTENT SECTION
+  .showroom
+    .container
+      // section
+      .showroom__section(data-aos="fade")
+        .showroom__left
+          .showroom__head
+            .showroom__head-icon
+              +svgMono("location")
+            .showroom__head-content
+              h2.h2-title Мы&nbsp;находимся по&nbsp;адресу
+              p.p-big <strong>г. Москва</strong>, улица Шаболовка д.23 к.5
+              p.p-small 1-й этаж красная вывеска <br/>&laquo;Hermle Часы из&nbsp;Германии&raquo;
+              .metro
+                .metro__icon.metro__icon--orange
+                  +svgMono("moscow-metro-logo")
+                .metro__content
+                  .metro__name Октябрьская
+                  .metro__directions 5 минут пешком
+              .metro
+                .metro__icon.metro__icon--brown
+                  +svgMono("moscow-metro-logo")
+                .metro__content
+                  .metro__name Шаболовская
+                  .metro__directions 7 минут пешком
+              
+        .showroom__right
+          .showroom__content
+            .contact__map
+              div(js-contact-map data-center="[55.722563, 37.612668]" data-zoom="12")
+  
+
+      // section
+      .showroom__section(data-aos="fade")
+        .showroom__left
+          .showroom__head
+            .showroom__head-icon
+              +svgMono("antique-clock")
+            .showroom__head-content
+              h2.h2-title В наличии
+              .showroom__hours
+                .p-big 09:00-18:00
+                .p-small Граффик работы
+              
+              ul.ul-list
+                li.p-small В выходные мы открыты по предварительному звонку
+                li.p-small Для посетителей на машине доступна бесплатная парковка, позвоните для оформления пропуска
+        
+        .showroom__right
+          .showroom__content
+            table.table
+              thead
+                tr
+                  td Артикул
+                  td Товар
+                  td Цена
+              tbody
+                mixin tableRow
+                  tr
+                    td 347689
+                    td 
+                      | Hermle 01231
+                    td
+                      span.c-red 469 400 ₽
+                
+                +tableRow
+                +tableRow
+                +tableRow
+                +tableRow
+                +tableRow
+                +tableRow
+                +tableRow
+                +tableRow
+                
+            .catalog__pagination
+              a(href="#" js-load-more).catalog__pagination-more
+                +svgMono("refresh")
+                span Показать еще

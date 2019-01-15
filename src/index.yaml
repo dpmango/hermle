@@ -18,6 +18,6 @@ PageList:
 - file: article.html
   ready: 50
 - file: showroom.html
-  ready: 5
+  ready: 50
 - file: ui.html
   ready: 10

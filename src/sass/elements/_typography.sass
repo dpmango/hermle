@@ -162,6 +162,10 @@ blockquote.blockquote
       content: ' '
       size: 4px
       background: $colorRed
+    &.p-small
+      // because line height gets smaller
+      &::before
+        top: 7px
 
 /* checkmarks
 .ul-checkmarks

@@ -1,0 +1,136 @@
+/* showroom
+.showroom-head
+  &__heading
+    padding: 60px 0 50px
+    background: #FAF8F4
+  &__grid
+    display: flex
+    margin-left: -12px
+    margin-right: -12px
+  &__title
+    flex: 0 0 $col8
+    font-size: 46px
+    font-weight: 700
+    line-height: 1
+    margin: 0
+    padding-left: 12px
+    padding-right: 12px
+    margin-left: 6.5%
+    span
+      position: relative
+      line-height: 1
+      color: $colorRed
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute
+        bottom: 0
+        left: .05em
+        right: .05em
+        height: 4px
+        background: currentColor
+
+  &__phones
+    flex: 0 0 $col4
+    .contact-phone
+      max-width: 220px
+
+  &__gallery
+
+  &__gallery-slide
+    flex: 0 0 auto
+    display: flex
+    flex-direction: column
+    width: auto
+    height: auto
+    font-size: 0
+    img
+      max-width: 100%
+
+
+/* content section
+.showroom
+  margin: 20px 0
+  &__section
+    display: flex
+    flex-wrap: wrap
+    margin-left: -12px
+    margin-right: -12px
+    & + .showroom__section
+      // margin-top: -50px
+
+  &__left, &__right
+    width: 100%
+    flex: 0 0 auto
+    padding: 0px 12px
+    min-width: 1px
+    display: flex
+    flex-direction: column
+  &__left
+    flex-basis: $col3
+    max-width: $col3
+    margin-left: $col1
+  &__right
+    flex-basis: $col7
+    max-width: $col7
+    margin-right: $col1
+
+  &__head
+    flex: 1 1 auto
+    position: relative
+    display: flex
+    padding: 80px 0
+    &::before
+      display: inline-block
+      content: ' '
+      position: absolute
+      left: 10px
+      top: 0
+      bottom: 0
+      width: 1px
+      background: $borderColor
+  &__head-icon
+    position: relative
+    z-index: 2
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    text-align: center
+    size: 20px 60px
+    background: white
+    flex: 0 0 auto
+    color: $colorRed
+    .ico-mono
+      &-location
+        font-size: 22px
+      &-antique-clock
+        font-size: 24px
+  &__head-content
+    margin-left: 25px
+    // rewrite some basic styles
+    .h2-title
+      margin: 13px 0 0
+    .ul-list
+      li
+        margin-bottom: 2em
+        &:last-child
+          margin-bottom: 0
+
+  &__hours
+    margin: 30px 0
+    .p-big
+      font-size: 20px
+      font-weight: 600
+
+  &__content
+    flex: 1 1 auto
+    padding: 30px 0
+    .table
+      td
+        &:first-child
+          padding-left: 0
+
+      tbody
+        td
+          padding-bottom: 50px
