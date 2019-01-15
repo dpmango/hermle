@@ -694,6 +694,25 @@ $(document).ready(function(){
 
   // filters
   _document
+    // mobile toggle
+    .on('click', '[js-catalog-filter-toggler]', function(){
+      if ( _window.width >= 767 ) return
+      var $btn = $(this)
+      var $btnText = $btn.find('.btn span');
+      var textShow = $btn.data("show-text");
+      var textHide = $btn.data("hide-text")
+      var $filters = $('[js-catalog-filter-showhide]');
+      if ( $filters.length === 0 ) return
+
+      $btn.toggleClass('is-active');
+      $filters.slideToggle();
+      // text toggler
+      if ( $btn.is('.is-active') ){
+        $btnText.text(textHide)
+      } else {
+        $btnText.text(textShow)
+      }
+    })
     // filter primary form
     .on('change', '[js-catalog-filter]', function(){
 
@@ -724,6 +743,7 @@ $(document).ready(function(){
       }, 1000)
 
     })
+
 
   ////////////
   // CART

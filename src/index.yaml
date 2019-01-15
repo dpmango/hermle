@@ -4,9 +4,9 @@ PageList:
 - file: homepage.html
   ready: 90
 - file: product.html
-  ready: 70
+  ready: 80
 - file: catalog.html
-  ready: 70
+  ready: 80
 - file: product-exclusive.html
   ready: 50
 - file: about.html

@@ -45,6 +45,8 @@
     margin: 0
 
   &__socials
+    flex: 0 0 auto
+    padding-left: 20px
     margin-left: auto
 
 +r(1200)
@@ -69,6 +71,8 @@
 
 +r(600)
   .footer
+    &__top
+      padding: 35px 0 20px
     &__col
       &--main
         display: none
@@ -78,7 +82,10 @@
       &--links
         margin-left: 0
     &__bottom
-      display: none
+      padding: 20px 0
+      // display: none
+    &__copyright
+      font-size: 14px
 
 /* footer menu
 .footer-menu

@@ -199,6 +199,8 @@
   .selectric
     border: 0 !important
     background: transparent !important
+    .label
+      margin-left: 0
   .selectric-items
     margin-top: 0
     min-width: 200px
@@ -206,3 +208,11 @@
     left: auto
     li
       // font-size: 14px
+
++r($md)
+  .selectric-muted
+    .selectric
+
+    .selectric-items
+      right: auto
+      left: 0

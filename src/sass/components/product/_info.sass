@@ -4,6 +4,7 @@
   &__grid
     position: relative
     display: flex
+    flex-wrap: wrap
     margin: 20px -12px
     padding-bottom: 45px
     &::after
@@ -33,6 +34,8 @@
     border: 1px solid $borderColor
     border-radius: 4px
     padding: 30px
+    .h3-title
+      margin-bottom: .8em
 
   &__list
     margin: 1em 0
@@ -58,3 +61,12 @@
     &-content
       .p-small
         margin-top: .3em
+
++r($xl)
+  .p-info
+    &__col
+      flex-basis: $col6
+      max-width: $col6
+    &__box
+      flex-grow: 0
+      margin-bottom: 35px

@@ -19,10 +19,19 @@
     flex-basis: $col10
     max-width: $col10
 
++r($xl)
+  .p-mods
+    &__heading
+      flex-basis: $col4
+      max-width: $col4
+    &__content
+      flex-basis: $col8
+      max-width: $col8
 
-
+/* modifications
 .modifications
   display: flex
+  flex-wrap: wrap
   margin-left: -12px
   margin-right: -12px
   &__col
@@ -33,6 +42,16 @@
     padding-left: 12px
     padding-right: 12px
 
++r($xl)
+  .modifications
+    &__col
+      flex-basis: $col12
+      max-width: $col12
+      margin-bottom: 40px
+      &:last-child
+        margin-bottom: 0
+
+/* mod card
 .mod-card
   display: flex
   & + .mod-card

@@ -5,6 +5,7 @@
     margin: 0
   &__wrapper
     display: flex
+    flex-wrap: wrap
     margin-left: -12px
     margin-right: -12px
   &__left, &__right
@@ -32,16 +33,20 @@
     color: rgba($fontColor, .6)
   &__name
     // h1-title extend
-    margin: .2em 0
+    margin: .2em 0 0
   &__row
     display: flex
+    flex-wrap: wrap
     align-items: center
   &__article
+    flex-shrink: 0
     font-size: 14px
     color: $fontColorGray
+    margin: 5px 0
   &__availability
+    flex-shrink: 0
     font-size: 14px
-    margin-left: 25px
+    margin: 5px 11px 5px 25px
     .ico
 
     span
@@ -53,9 +58,10 @@
         fill: $colorGreen
 
   &__showroom
+    flex-shrink: 0
     position: relative
     font-size: 14px
-    margin-left: 22px
+    margin: 5px 0 5px 11px
     padding: 5px 5px 5px 0px
     border-radius: 0px 4px 4px 0
     background: #F6F2F2
@@ -112,6 +118,10 @@
   &__buy
     flex: 0 0 auto
     padding-left: 12px
+    .btn
+      padding-top: 13px
+      padding-bottom: 14px
+      font-size: 16px
   &__price
     flex: 1 1 auto
     margin-left: 30px
@@ -125,7 +135,7 @@
     padding-left: 12px
 
   &__music
-    margin: 20px 0
+    margin: 20px 0 8px
   &__music-row
     display: flex
     margin-left: -12px
@@ -133,8 +143,7 @@
     .play-btn
       flex: 0 0 $col4
       max-width: $col4
-      padding-left: 12px
-      padding-right: 12px
+      padding: 12px
 
 
   // goes to modal
@@ -150,7 +159,7 @@
   &__text
     position: relative
     display: flex
-    margin: 32px -12px
+    margin: 32px -12px 20px
     padding-bottom: 35px
     // border emulator
     &::after
@@ -187,3 +196,31 @@
     text-align: center
     img
       max-width: 100%
+
+
+@media only screen and (max-width: 1279px) and (min-width: 993px)
+  .p-scope
+    &__cta
+      flex-wrap: wrap
+    &__buy
+      order: 2
+    &__price
+      order: 1
+      flex-basis: 100%
+      padding-left: 12px
+      padding-right: 12px
+      margin: 0px 0 20px
+    &__compare
+      order: 3
+
++r($lg)
+  .p-scope
+    &__left, &__right
+      flex-basis: $col12
+      max-width: $col12
+    &__right
+      margin-top: 50px
+
+    &__description
+      p
+        max-width: 450px

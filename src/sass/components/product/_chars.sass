@@ -30,14 +30,23 @@
     .p-chars__col
       flex-basis: $col4
       max-width: $col4
+    .p-char
+      max-width: 180px
   &--modal
     .p-chars__col
       flex-basis: $col6
       max-width: $col6
 
++r($xl)
+  .p-chars
+    &__col
+      flex-basis: $col4
+      max-width: $col4
+
 // single characteristic
 .p-char
   display: flex
+  max-width: 200px
   &__image
     flex: 0 0 auto
     margin-right: 10px

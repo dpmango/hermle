@@ -1,18 +1,61 @@
 /* catalog head
 .c-head
+  margin-top: 15px
   &__titles
     display: flex
     align-items: center
     flex-wrap: wrap
   &__title
     // h1 extend
-
+    flex-grow: 1
+    margin: .5em .5em .5em 0
   &__sorting
-    margin-left: auto
-
+    // margin-left: auto
   &__filters
     // margin: 20px 0
+  &__filter-toggler
+    // mobile toggler - hidden desktop
+    display: none
+    .btn
+      text-transform: none
+      font-weight: 400
+      letter-spacing: 0
+      font-size: 16px
+    &.is-active
+      .btn
+        background: $colorRed
+        color: white
+        .ico
+          fill: white
+        &:hover
+          background: $colorRedHover
 
++r($md)
+  .c-head
+    &__filter-toggler
+      display: block
+    &__filters
+      display: none
+      // background: $borderColor
+      // margin-left: -30px
+      // margin-right: -30px
+      // padding-left: 30px
+      // padding-right: 30px
+
++rmin(768)
+  .c-head
+    &__filters
+      display: block !important
+
++r($sm)
+  .c-head
+    &__titles
+      margin-bottom: 15px
+    &__title
+      // overwrite default h1 style
+      font-size: 30px
+      flex-basis: 100%
+      margin-bottom: 0
 
 /* catalog filters
 .c-filters
@@ -41,6 +84,8 @@
     .c-filters__col
       padding-top: 0
       padding-bottom: 0
+      .c-filters__group
+        margin-top: 0
   &__col
     // width: 100%
     flex: 0 0 auto
@@ -70,6 +115,46 @@
     color: $fontColorGray
 
 
++r($xl)
+  .c-filters
+    &__col
+      &--price
+        flex-basis: $col6
+        max-width: $col6
+      &--shape
+        flex-basis: $col6
+        max-width: $col6
+      &--style
+        flex-basis: $col12
+        max-width: $col12
+    &__row
+      .c-filters__col
+        flex-basis: $col6
+        max-width: $col6
+    .ui-range
+      max-width: 340px
+    .selectric-wrapper
+      max-width: 350px
+
+
++r($md)
+  .c-filters
+    padding-top: 20px
+    &__col
+      &--price
+        flex-basis: $col12
+        max-width: $col12
+      &--shape
+        flex-basis: $col12
+        max-width: $col12
+    &__row
+      .c-filters__col
+        flex-basis: $col12
+        max-width: $col12
+    .ui-range
+      max-width: 350px
+
+
 /* quick filter
 .c-quick-filter
   display: flex
@@ -78,10 +163,15 @@
   a
     display: inline-block
     padding: 10px
+    font-size: 16px
     transition: color .25s $ease
     &:hover
       color: $colorRed
 
++r($md)
+  .c-quick-filter
+    a
+      padding: 7px 10px
 
 /* grid
 .catalog
@@ -139,6 +229,7 @@
     transform: rotate(0)
   to
     transform: rotate(360deg)
+
 +r($xl)
   .catalog
     &__col
@@ -153,9 +244,13 @@
 
 +r($sm)
   .catalog
+    margin: 15px 0 40px
     &__col
       flex-basis: $col12
       max-width: $col12
+      margin-bottom: 10px
+    &__pagination
+      margin-top: 0
 
 
 /* catalog txt section
@@ -163,4 +258,10 @@
   margin-top: 60px
   &__box
     background: #FAF8F4
-    padding: 60px 70px
+    padding: 35px 5.8%
+
++r($sm)
+  .c-text
+    margin-top: 40px
+    &__box
+      padding: 15px 30px
