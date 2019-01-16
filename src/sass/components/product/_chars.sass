@@ -26,6 +26,7 @@
     max-width: $col2
   &--compact
     margin-bottom: 0
+    margin-top: 15px
     padding-bottom: 0
     .p-chars__col
       flex-basis: $col4
@@ -42,6 +43,26 @@
     &__col
       flex-basis: $col4
       max-width: $col4
+
++r($md)
+  .p-chars
+    
+
++r($sm)
+  .p-chars
+    &__col
+      flex-basis: $col12
+      max-width: $col12
+    &--compact
+      padding-bottom: 10px
+      .p-chars
+        &__col
+          flex-basis: $col12
+          max-width: $col12
+      .p-char
+        max-width: 280px
+        br
+          display: none
 
 // single characteristic
 .p-char

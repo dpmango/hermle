@@ -1,9 +1,10 @@
-
+/* product text
 .p-text
   margin: 20px 0 40px 0
   &__wrapper
     position: relative
     display: flex
+    flex-wrap: wrap
     margin-left: -12px
     margin-right: -12px
     padding-bottom: 20px
@@ -23,3 +24,10 @@
     padding-right: 12px
     flex: 0 0 $col6
     max-width: $col6
+
++r($md)
+  .p-text
+    margin: 0 0 20px
+    &__col
+      max-width: $col12
+      flex-basis: $col12

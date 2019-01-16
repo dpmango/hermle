@@ -6,7 +6,7 @@
       .p-scope__left
         .p-gallery
           // vertical swiper
-          .p-gallery__thumbs.swiper-container(js-swiper-gallery-thumbs)
+          .p-gallery__thumbs.swiper-container.swiper-control-arrows(js-swiper-gallery-thumbs)
             .swiper-wrapper
               .swiper-slide.p-gallery__thumb.is-selected
                 img(src='img/productThumb_1.jpg' srcset='img/productThumb_1@2x.jpg 2x')
@@ -19,6 +19,10 @@
               .swiper-slide.p-gallery__video-thumb(js-popup-video data-mfp-src="https://www.youtube.com/watch?v=lNSaAKqFGZo")
                 +svgMono("play-icon")
                 span Видео
+            .swiper-button-prev
+              +svgMono("btn-arrow-left")
+            .swiper-button-next
+              +svgMono("btn-arrow")
                   
           // main swiper
           .p-gallery__main.swiper-container(js-swiper-gallery-main)

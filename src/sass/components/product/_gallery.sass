@@ -5,6 +5,8 @@
   &__thumbs
     flex: 0 0 auto
     padding-bottom: 50px
+    .swiper-button-prev, .swiper-button-next
+      display: none
 
   &__thumb
     flex: 0 0 auto
@@ -87,3 +89,52 @@
       &__picture
         img
           max-width: 50%
+
++r($sm)
+  .p-gallery
+    flex-wrap: wrap
+    &__thumbs
+      position: relative
+      flex: 0 0 100%
+      margin-top: 30px
+      order: 2
+      // space for arrow nav
+      padding-left: 40px
+      padding-right: 40px
+      .swiper-wrapper
+        align-items: flex-start
+      .swiper-button-prev, .swiper-button-next
+        display: block
+        // 60 / 2 + 10
+        top: 10px
+        &::after
+          display: none
+      .swiper-button-next
+        right: -10px
+      .swiper-button-prev
+        left: -10px
+    &__thumb
+      flex: 0 0 60px
+      height: auto
+      min-size: 60px
+    &__video-thumb
+      flex: 0 0 60px
+      width: 60px
+      height: auto
+      min-size: 60px
+      padding: 6px
+      .ico
+        font-size: 18px
+        margin: auto
+      span
+        display: none
+        // padding: 5px 0 2px
+        // font-size: 12px
+    &__main
+      flex: 0 0 100%
+      padding-left: 0
+      padding-right: 0
+    &__picture
+      img
+        max-width: 200px
+        max-height: 350px

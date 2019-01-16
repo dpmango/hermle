@@ -167,6 +167,7 @@ blockquote.blockquote
       &::before
         top: 7px
 
+
 /* checkmarks
 .ul-checkmarks
   list-style: none
@@ -223,12 +224,20 @@ blockquote.blockquote
       background: $colorRed
 
 +r($sm)
+  .ul-list
+    font-size: 14px
+    li
+      &::before
+        top: 10px
+      &.p-small
+        &::before
+          top: 7px
+
   .ul-checkmarks
     li
       font-size: 14px
   .ul-nums
-    li
-      font-size: 14px
+    font-size: 14px
 
 
 /* links

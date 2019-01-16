@@ -3,6 +3,7 @@
   margin: 40px 0 60px
   &__wrapper
     display: flex
+    flex-wrap: wrap
     margin-left: -12px
     margin-right: -12px
   &__heading, &__content
@@ -27,6 +28,16 @@
     &__content
       flex-basis: $col8
       max-width: $col8
+
++r($sm)
+  .p-mods
+    &__heading
+      flex-basis: $col12
+      max-width: $col12
+      margin-bottom: 30px
+    &__content
+      flex-basis: $col12
+      max-width: $col12
 
 /* modifications
 .modifications
@@ -95,3 +106,22 @@
           transform: translateY(-5px)
       &__name
         color: $colorRed
+
++r($md)
+  .mod-card
+    position: relative
+    z-index: 1
+    flex-wrap: wrap
+    padding-left: 60px
+    max-width: 350px
+    &__image
+      position: absolute
+      top: 0
+      left: 0
+    &__content
+      margin-left: 0
+      margin-right: 0
+      flex: 0 0 100%
+    &__chars
+      margin-top: 20px
+      flex: 0 0 100%

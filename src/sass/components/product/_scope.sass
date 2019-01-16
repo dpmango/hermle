@@ -159,6 +159,7 @@
   &__text
     position: relative
     display: flex
+    flex-wrap: wrap
     margin: 32px -12px 20px
     padding-bottom: 35px
     // border emulator
@@ -224,3 +225,53 @@
     &__description
       p
         max-width: 450px
+
++r($md)
+  // copypaste from max/min rule
+  .p-scope
+    &__cta
+      flex-wrap: wrap
+    &__buy
+      order: 2
+    &__price
+      order: 1
+      flex-basis: 100%
+      padding-left: 12px
+      padding-right: 12px
+      margin: 0px 0 20px
+    &__compare
+      order: 3
+      flex-basis: 72px
+      max-width: 72px
+
++r($sm)
+  .p-scope
+    margin-top: 35px
+    margin-bottom: 0px
+    &__right
+      margin-top: 35px
+    &__row
+      margin-top: 10px
+    &__article
+      order: 2
+      margin-right: 40px
+    &__availability
+      order: 1
+      margin-left: 0
+      margin-right: 40px
+    &__showroom
+      order: 3
+
+    &__text
+      padding-bottom: 25px
+    &__description
+      flex-basis: $col12
+      max-width: $col12
+    &__schema
+      flex-basis: $col12
+      max-width: $col12
+      margin-top: 20px
+    &__music-row
+      .play-btn
+        flex-basis: $col6
+        max-width: $col6

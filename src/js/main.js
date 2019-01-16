@@ -53,6 +53,10 @@ $(document).ready(function(){
     benefits: {
       instance: undefined,
       disableOn: 768
+    },
+    productThumbs: {
+      instance: undefined,
+      rebuildOn: 576
     }
   } // collection of all sliders
 
@@ -1037,18 +1041,8 @@ $(document).ready(function(){
     ////////////
     // product page
     ///////////
-    sliders.productThumbs = new Swiper('[js-swiper-gallery-thumbs]', {
-      wrapperClass: "swiper-wrapper",
-      slideClass: "swiper-slide",
-      direction: 'vertical',
-      loop: false,
-      watchOverflow: true,
-      setWrapperSize: false,
-      spaceBetween: 20,
-      slidesPerView: 'auto',
-      normalizeSlideIndex: true,
-      freeMode: false
-    });
+    // sliders.productThumbs.instance
+    // moved to responsive swipers
 
     sliders.productMain = new Swiper('[js-swiper-gallery-main]', {
       wrapperClass: "swiper-wrapper",
@@ -1070,7 +1064,7 @@ $(document).ready(function(){
     sliders.productMain.on('slideChange', function(){
       var index = sliders.productMain.realIndex
       changeThumbClass(index)
-      sliders.productThumbs.slideTo(index)
+      sliders.productThumbs.instance.slideTo(index)
     })
 
     _document
@@ -1190,7 +1184,46 @@ $(document).ready(function(){
         }
       }
     }
+
+    // rebuild productThumbs on resize
+    var $productThumbsSelector = '[js-swiper-gallery-thumbs]'
+    if ( $productThumbsSelector.length > 0 ){
+      var wWidth = getWindowWidth();
+
+      // rebuild on initial load(instance false) or crossed breakpoint
+      if ( hasCrossedBreakpoint(sliders.productThumbs.rebuildOn) || sliders.productThumbs.instance === undefined ){
+        if ( sliders.productThumbs.instance !== undefined ) {
+          sliders.productThumbs.instance.destroy( true, true );
+          sliders.productThumbs.instance = undefined
+        }
+
+        var isDesktop = wWidth >= sliders.productThumbs.rebuildOn // 'desktop' || 'mobile'
+        var direction = isDesktop ? 'vertical' : 'horizontal'
+        var navigation = isDesktop ? {} : {nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev'}
+        console.log(navigation)
+        sliders.productThumbs.instance = new Swiper('[js-swiper-gallery-thumbs]', {
+          wrapperClass: "swiper-wrapper",
+          slideClass: "swiper-slide",
+          direction: direction,
+          loop: false,
+          watchOverflow: true,
+          setWrapperSize: false,
+          spaceBetween: 20,
+          slidesPerView: 'auto',
+          normalizeSlideIndex: true,
+          freeMode: false,
+          navigation: navigation,
+          breakpoints: {
+            576: {
+              spaceBetween: 10
+            },
+          }
+        });
+      }
+
+    }
   }
+
 
   //////////
   // MODALS
