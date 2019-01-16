@@ -85,8 +85,9 @@ $(document).ready(function(){
     calcCartValues();
     buildArticleNavigation();
 
-    initSliders();
     initResponsiveSliders();
+    initSliders();
+
     initPopups();
     initSticky();
     initMasks();
@@ -1200,7 +1201,7 @@ $(document).ready(function(){
         var isDesktop = wWidth >= sliders.productThumbs.rebuildOn // 'desktop' || 'mobile'
         var direction = isDesktop ? 'vertical' : 'horizontal'
         var navigation = isDesktop ? {} : {nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev'}
-        console.log(navigation)
+
         sliders.productThumbs.instance = new Swiper('[js-swiper-gallery-thumbs]', {
           wrapperClass: "swiper-wrapper",
           slideClass: "swiper-slide",

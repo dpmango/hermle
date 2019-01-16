@@ -190,6 +190,14 @@ blockquote.blockquote
       background: svg-load("../icons/svg-mono/checkmark.svg", fill=$colorGreen) no-repeat center
       background-size: contain
 
+// TODO - still not displaying
+.is-ie
+  .ul-checkmarks
+    li
+      &::before
+        z-index: 2
+        +sprite("checkmark")
+
 /* numbs
 .ul-nums
   display: flex

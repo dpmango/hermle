@@ -1,10 +1,19 @@
 $sprite: (
+	checkmark: (
+		offset-x: -42px,
+		offset-y: 0px,
+		width: 16px,
+		height: 12px,
+		total-width: 58px,
+		total-height: 20px,
+		image: '../img/sprite.png'
+	),
 	delivery-rus: (
 		offset-x: 0px,
 		offset-y: 0px,
 		width: 32px,
 		height: 20px,
-		total-width: 32px,
+		total-width: 58px,
 		total-height: 20px,
 		image: '../img/sprite.png'
 	),
@@ -64,6 +73,9 @@ $sprite: (
 
 
 
+	.icon-checkmark {
+		@include sprite(checkmark)
+	}
 	.icon-delivery-rus {
 		@include sprite(delivery-rus)
 	}
