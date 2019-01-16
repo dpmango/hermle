@@ -37,6 +37,14 @@
     .p-chars__col
       flex-basis: $col6
       max-width: $col6
+  &--exclusive
+    margin-top: 0
+    padding-top: 0
+    &::before
+      display: none
+    .p-chars__col
+      flex-basis: $col4
+      max-width: $col4
 
 +r($xl)
   .p-chars
@@ -46,7 +54,7 @@
 
 +r($md)
   .p-chars
-    
+
 
 +r($sm)
   .p-chars
