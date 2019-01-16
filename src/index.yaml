@@ -8,7 +8,7 @@ PageList:
 - file: catalog.html
   ready: 90
 - file: product-exclusive.html
-  ready: 50
+  ready: 60
 - file: about.html
   ready: 60
 - file: cart.html

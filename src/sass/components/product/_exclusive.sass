@@ -6,11 +6,44 @@
   &__left, &__right
     position: relative
     width: 100%
-    flex: 0 0 50%
-    max-width: 50%
+    flex: 0 0 auto
     min-width: 1px
     padding: 0 12px
+    display: flex
+    flex-direction: column
   &__left
-
+    padding-top: 35px
+    flex-basis: $col5
+    max-width: $col5
   &__right
     padding-top: 70px
+    flex-basis: $col7
+    max-width: $col7
+  &__cover-image
+    text-align: center
+    margin-top: auto
+    font-size: 0
+    padding-left: 20px
+    img
+      max-width: 100%
+  &__heading
+    display: flex
+    flex-wrap: wrap
+    // align-items: baseline
+    .h1-title
+      margin-right: 20px
+    .tag
+      margin-top: 20px
+  &__gallery
+    margin-top: auto
+    width: 100%
+    .swiper-button-next, .swiper-button-prev
+      color: white
+      &:hover
+        color: $colorRed
+  &__gallery-slide
+    font-size: 0
+    img
+      width: 100%
+    &[js-popup-video]
+      cursor: pointer

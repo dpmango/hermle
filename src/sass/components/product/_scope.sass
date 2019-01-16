@@ -73,10 +73,15 @@
       left: -11px
       bottom: 0
       top: 0
-      background: svg-load('../icons/svg-inline/product-scope__showroom-bg.svg') no-repeat left center
+      background: svg-load('../icons/svg-inline/product-scope__showroom-bg.svg', fill=#F6F2F2) no-repeat left center
       background-size: cover
     span
       font-weight: 700
+    &--white-bg
+      background: white
+      &::before
+        background-image: svg-load('../icons/svg-inline/product-scope__showroom-bg.svg', fill=white)
+
 
   &__more
     display: block
@@ -115,6 +120,16 @@
       .p-scope__price
         margin-left: 0
         margin-right: 0
+    &--exclusive
+      margin-top: 35px
+      .p-scope__price
+        flex-grow: 0
+        margin-left: 0
+        padding-left: 12px
+        .price__newprice
+          font-size: 40px
+      .p-scope__compare
+        margin-left: 10px
   &__buy
     flex: 0 0 auto
     padding-left: 12px

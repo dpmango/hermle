@@ -49,15 +49,21 @@ $(document).ready(function(){
   var sliders = {
     heroPromo: undefined,
     heroChooser: undefined,
+    // ++ featured forEach
+    // ++ $productImages forEach
     sale: undefined,
+    productMain: undefined,
+    productThumbs: {
+      instance: undefined,
+      rebuildOn: 576
+    },
+    productExclusive: undefined,
+    about: undefined,
+    showroom: undefined,
     benefits: {
       instance: undefined,
       disableOn: 768
     },
-    productThumbs: {
-      instance: undefined,
-      rebuildOn: 576
-    }
   } // collection of all sliders
 
   var progressBars = []; // collection of all progressbars
@@ -896,6 +902,11 @@ $(document).ready(function(){
   //////////
   function initSliders(){
 
+    var navigationDefault = {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
+
     // HOMEPAGE SLIDERS
     sliders.heroPromo = new Swiper('[js-swiper-hero-promo]', {
       wrapperClass: "swiper-wrapper",
@@ -990,10 +1001,7 @@ $(document).ready(function(){
           slidesPerView: slidesPerView,
           normalizeSlideIndex: true,
           freeMode: false,
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
+          navigation: navigationDefault,
           breakpoints: {
             // when window width is <= 480px
             576: {
@@ -1084,6 +1092,32 @@ $(document).ready(function(){
       $thumb.addClass('is-selected')
     }
 
+    // exclusive product
+    sliders.productExclusive = new Swiper('[js-swiper-exclusive]', {
+      wrapperClass: "swiper-wrapper",
+      slideClass: "swiper-slide",
+      direction: 'horizontal',
+      loop: true,
+      watchOverflow: false,
+      setWrapperSize: false,
+      spaceBetween: 0,
+      slidesPerView: 3,
+      normalizeSlideIndex: true,
+      freeMode: false,
+      navigation: navigationDefault,
+      autoplay: {
+        delay: 3000
+      },
+      breakpoints: {
+        576: {
+          slidesPerView: 1,
+        },
+        992: {
+          slidesPerView: 2
+        }
+      }
+    });
+
     ////////////
     // catalog page
     ///////////
@@ -1124,10 +1158,7 @@ $(document).ready(function(){
       loop: true,
       normalizeSlideIndex: true,
       freeMode: false,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+      navigation: navigationDefault
     })
 
     ////////////
@@ -1143,10 +1174,7 @@ $(document).ready(function(){
       loop: true,
       normalizeSlideIndex: true,
       freeMode: false,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+      navigation: navigationDefault
     })
 
   }
