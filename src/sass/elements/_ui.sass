@@ -19,7 +19,30 @@
       padding-right: 12px
     .ui-input
       padding: 13px 25px 15px
+    .ui-input__validation
+      left: 120px
+      right: 0
+      bottom: -17px
+      font-size: 11px
+      max-width: 100%
 
+.ui-group
+  &.is-valid
+    .ui-input
+      position: relative
+      background: #FAF8F4
+      // checmark
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      z-index: 1
+      top: 50%
+      transform: translateY(-50%)
+      right: 20px
+      background: svg-load("../icons/svg-mono/checkmark.svg", fill=$colorGreen) no-repeat center
+      size: 16px 12px
+      background-size: contain
 
 // for input or textarea element
 .ui-input
@@ -40,21 +63,6 @@
     &:focus
       border-color: $colorRedHover
 
-  &.is-valid
-    position: relative
-    background: #FAF8F4
-    // checmark
-    &::after
-      display: inline-block
-      content: ' '
-      position: absolute
-      z-index: 1
-      top: 50%
-      right: 20px
-      background: svg-load("../icons/svg-mono/checkmark.svg", fill=$colorGreen) no-repeat center
-      size: 16px 12px
-      background-size: contain
-      
   &:focus
     color: $fontColor
     border-color: $fontColor
@@ -62,6 +70,25 @@
 .ui-input textarea
   resize: vertical
 
+.ui-input-icon
+  position: absolute
+  z-index: 2
+  top: 50%
+  transform: translateY(-50%)
+  right: 6px
+  background: #FAF8F4
+  border-radius: 4px
+  padding: 9px 8px
+  font-size: 0
+  cursor: pointer
+  color: $colorRed
+  transition: background .25s $ease, color .25s $ease
+  .ico-mono-btn-arrow
+    font-size: 10px
+
+  &:hover
+    background-color: $colorRed
+    color: white
 
 .ui-input__validation
   position: absolute
@@ -355,7 +382,7 @@ label.ui-input__validation
     width: 100%
     font-size: 20px
     font-family: $baseFont
-    padding: 10px 40px
+    padding: 7px 40px
     border-radius: 0
     border: 0
     text-align: center

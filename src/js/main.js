@@ -813,12 +813,28 @@ $(document).ready(function(){
       var $delivery = $form.find('input[name="delivery"]:checked');
       var $payment = $form.find('input[name="payment"]:checked');
       var $cartAddress = $('[js-card-address]');
+      var $cartCity = $('[js-cart-city]');
 
-      if ( $delivery.val() === "delivery-rus" || $delivery.val() === "delivery-bank" ){
-        $cardAddress.slideDown();
-      } else {
-        $cartAddress.slideUp();
+      if ( $delivery.length > 0 ){
+        if ( $delivery.val() === "delivery-rus" || $delivery.val() === "delivery-truck" ){
+          $cartAddress.slideDown();
+          $cartCity.slideDown();
+        } else {
+          $cartAddress.slideUp();
+          $cartCity.slideUp();
+        }
       }
+    })
+
+  // cart promocode
+  _document
+    .on('click', '[js-cart-promocode] .ui-input-icon', function(){
+      // submit promocode ajax
+
+      var $input = $(this).closest('.ui-group').find('.ui-input');
+      var promocode = $input.val();
+
+      $input.addClass('has-error')
     })
 
   function calcCartValues(){
@@ -1873,6 +1889,7 @@ $(document).ready(function(){
       error.appendTo(element.parent("div"));
     }
     var validateHighlight = function(element) {
+      $(element).closest('.ui-group').removeClass('is-valid')
       $(element).addClass("has-error");
     }
     var validateUnhighlight = function(element) {
@@ -1965,6 +1982,40 @@ $(document).ready(function(){
         }
       }
     });
+
+    $('[js-cart-form]').validate({
+      errorPlacement: validateErrorPlacement,
+      success: function(label, element) {
+        // validate for the group
+        $(element).closest('.ui-group').addClass("is-valid")
+      },
+      highlight: validateHighlight,
+      unhighlight: validateUnhighlight,
+      submitHandler: validateSubmitHandler,
+      rules: {
+        name: "required",
+        phone: validatePhone,
+        email: {
+          required: true,
+          email: true
+        },
+        city: "required",
+        adress: "required"
+      },
+      messages: {
+        name: "Заполните это поле",
+        phone: {
+          required: "Заполните это поле",
+          minlength: "Введите корректный телефон"
+        },
+        email: {
+          required: "Заполните это поле",
+          email: "Email содержит неправильный формат"
+        },
+        city: "Выберите город",
+        adress: "Заполните это поле"
+      }
+    })
   }
 
   //////////

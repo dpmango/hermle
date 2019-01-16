@@ -26,7 +26,11 @@ block content
             .cart-table__cell.cart-table__primary
               .cart-table__name Настольные часы Hermle 70310
               .cart-table__article Арт: 5655351
-              
+              .cart-table__price.cart-table__price--mobile
+                .price.price--black
+                  .price__newprice 32 300 <span class="r-mark">₽</span>
+                  .price__oldprice 45 000 ₽
+                
             .cart-table__cell.cart-table__price
               .price.price--black
                 .price__newprice 32 300 <span class="r-mark">₽</span>
@@ -54,7 +58,11 @@ block content
             .cart-table__cell.cart-table__primary
               .cart-table__name Настольные часы Hermle 70310 - на случай если будет очень длинное наименование товара
               .cart-table__article Арт: 5655351
-              
+              .cart-table__price.cart-table__price--mobile
+                .price.price--black
+                  .price__newprice 56 400 <span class="r-mark">₽</span>
+                  .price__oldprice 76 000 ₽
+                  
             .cart-table__cell.cart-table__price
               .price.price--black
                 .price__newprice 56 400 <span class="r-mark">₽</span>
@@ -86,19 +94,19 @@ block content
                 .cart-form__col
                   .ui-group.ui-group--labeled
                     label Имя <span class="ui-required">*</span>
-                    input.ui-input.is-valid(type="text" name="name" placeholder="Например, Игорь Петров")  
+                    input.ui-input(type="text" name="name" placeholder="Например, Игорь Петров")  
                 .cart-form__col
                   .ui-group.ui-group--labeled
-                    label Телефон
+                    label Телефон <span class="ui-required">*</span>
                     input.ui-input(js-phone-mask type="tel" name="phone" placeholder="+7 (___) ___ __ __")
                 .cart-form__col
                   .ui-group.ui-group--labeled
                     label Электронная почта <span class="ui-required">*</span>
                     input.ui-input(type="email" name="email" placeholder="Например, igor86@mail.ru")  
                 .cart-form__col
-                  .ui-group.ui-group--labeled
-                    label Город
-                    select.-bigger(js-select placeholder="Выбрать")
+                  .ui-group.ui-group--labeled(js-cart-city)
+                    label Город <span class="ui-required">*</span>
+                    select.bigger(js-select name="city" id="city" placeholder="Выбрать")
                       //- option(disabled selected) Выбрать
                       option Москва
                       option Санкт-Питербург
@@ -125,7 +133,7 @@ block content
               h2.h2-title Оплата
               .cart-form__options
                 .cart-form__option.cf-option
-                  input(type="radio" name="payment" id="payment-wallet" checked)
+                  input(type="radio" name="payment" id="payment-wallet" checked value="payment-wallet")
                   label.cf-option__label(for="payment-wallet")
                     .cf-option__icon
                       +svgMono("payment-wallet")
@@ -133,7 +141,7 @@ block content
                       .cf-option__name Наличными
                       .cf-option__description при покупке в&nbsp;шоуруме или доставке курьером
                 .cart-form__option.cf-option
-                  input(type="radio" name="payment" id="payment-credit-card" disabled)
+                  input(type="radio" name="payment" id="payment-credit-card" value="payment-credit-card")
                   label.cf-option__label(for="payment-credit-card")
                     .cf-option__icon
                       +svgMono("payment-credit-card")
@@ -141,7 +149,7 @@ block content
                       .cf-option__name Кредитной картой
                       .cf-option__description при покупке с&nbsp;сайта, в&nbsp;шоуруме или доставке курьером
                 .cart-form__option.cf-option
-                  input(type="radio" name="payment" id="payment-bank" disabled)
+                  input(type="radio" name="payment" id="payment-bank" value="payment-bank" disabled)
                   label.cf-option__label(for="payment-bank")
                     .cf-option__icon
                       +svgMono("payment-bank")
@@ -155,7 +163,7 @@ block content
               h2.h2-title Доставка
               .cart-form__options
                 .cart-form__option.cf-option
-                  input(type="radio" name="delivery" id="delivery-truck")
+                  input(type="radio" name="delivery" id="delivery-truck" value="delivery-truck")
                   label.cf-option__label(for="delivery-truck")
                     .cf-option__icon
                       +svgMono("delivery-truck")
@@ -163,7 +171,7 @@ block content
                       .cf-option__name Доставка по&nbsp;Москве и&nbsp;области <span class="c-red">БЕСПЛАТНО</span>!
                       .cf-option__description в&nbsp;тот&nbsp;же или на&nbsp;следующий день!
                 .cart-form__option.cf-option
-                  input(type="radio" name="delivery" id="delivery-address")
+                  input(type="radio" name="delivery" id="delivery-address" value="delivery-address")
                   label.cf-option__label(for="delivery-address")
                     .cf-option__icon
                       +svgMono("delivery-address")
@@ -171,8 +179,8 @@ block content
                       .cf-option__name Самовывоз из&nbsp;шоурума
                       .cf-option__description в&nbsp;тот&nbsp;же день!
                 .cart-form__option.cf-option
-                  input(type="radio" name="delivery" id="delivery-bank")
-                  label.cf-option__label(for="delivery-bank")
+                  input(type="radio" name="delivery" id="delivery-rus" value="delivery-rus")
+                  label.cf-option__label(for="delivery-rus")
                     .cf-option__icon
                       i.icon.icon-delivery-rus
                     .cf-option__content
@@ -187,17 +195,19 @@ block content
             
             // summary
             .cart-form__summary
-              .cart-form__promo
+              .cart-form__promo(js-cart-promocode)
                 .ui-group
-                  input.ui-input(type="text" name="promocode" placeholder="Промокод")  
+                  input.ui-input(type="text" name="promocode" placeholder="Промокод")
+                  .ui-input-icon
+                    +svgMono("btn-arrow")
               
               .cart-form__prices
                 .cart-form__price-total
                   span Итого к оплате:
-                  div(js-cart-total)
+                  .cart-form__price-value(js-cart-total)
                 .cart-form__price-discount
                   span Скидка:
-                  div(js-cart-discount)
+                  .cart-form__price-value(js-cart-discount)
               
               .cart-form__cta
                 button(type="sumbit").btn.btn-primary
