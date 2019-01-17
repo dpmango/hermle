@@ -97,6 +97,7 @@ $(document).ready(function(){
     setFooterMargin();
     setBannerPaddings();
     calcCartValues();
+    // window.getCartProducts - external cart summary builder
     buildArticleNavigation();
 
     initResponsiveSliders();
@@ -870,6 +871,27 @@ $(document).ready(function(){
 
     $cartTotal.html( formatNumberWithSpaces(totalPrice) + ' <span class="r-mark">₽</span>' )
     $cartDiscount.html( formatNumberWithSpaces(originalPrice - totalPrice) + ' <span class="r-mark">₽</span>' )
+  }
+
+  // get summary of products (also available externally)
+  window.getCartProducts = function getCartProducts(){
+    var $products = $('[js-cart-product]');
+    var products = []
+    if ( $products.length > 0 ){
+      $products.each(function(i, product){
+        var $product = $(product)
+        var productObj = {
+          id: $product.find('input[name="productId"]').val(),
+          art: $product.find('.cart-table__article').text(),
+          name: $product.find('.cart-table__name').text(),
+          price: parseInt($product.find('.cart-table__price .price__newprice').html().replace(/ /g, '')),
+          quantity: $product.find('.cart-table__quantity input').val(),
+          summ: parseInt($product.find('.cart-table__summ .price__newprice').html().replace(/ /g, ''))
+        }
+        products.push(productObj)
+      })
+    }
+    return products
   }
 
 

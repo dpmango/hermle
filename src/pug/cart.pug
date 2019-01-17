@@ -21,17 +21,15 @@ block content
             .cart-table__cell.cart-table__actions
           // product row
           form(action="" js-cart-product).cart-table__row
+            input(type="hidden" name="productId" value="1")
             .cart-table__cell.cart-table__image
               img(src='img/cartProduct_1.png' srcset='img/cartProduct_1@2x.png 2x')
             .cart-table__cell.cart-table__primary
               .cart-table__name Настольные часы Hermle 70310
               .cart-table__article Арт: 5655351
-              .cart-table__price.cart-table__price--mobile
-                .price.price--black
-                  .price__newprice 32 300 <span class="r-mark">₽</span>
-                  .price__oldprice 45 000 ₽
+              .cart-table__price.cart-table__price--mobile(data-teleport-target="cart-product-1")
                 
-            .cart-table__cell.cart-table__price
+            .cart-table__cell.cart-table__price(js-teleport data-teleport-condition="<993" data-teleport-to="cart-product-1")
               .price.price--black
                 .price__newprice 32 300 <span class="r-mark">₽</span>
                 .price__oldprice 45 000 ₽
@@ -53,17 +51,15 @@ block content
         
           // product row
           form(action="" js-cart-product).cart-table__row
+            input(type="hidden" name="productId" value="2")
             .cart-table__cell.cart-table__image
               img(src='img/cartProduct_2.png' srcset='img/cartProduct_2@2x.png 2x')
             .cart-table__cell.cart-table__primary
               .cart-table__name Настольные часы Hermle 70310 - на случай если будет очень длинное наименование товара
               .cart-table__article Арт: 5655351
-              .cart-table__price.cart-table__price--mobile
-                .price.price--black
-                  .price__newprice 56 400 <span class="r-mark">₽</span>
-                  .price__oldprice 76 000 ₽
+              .cart-table__price.cart-table__price--mobile(data-teleport-target="cart-product-2")
                   
-            .cart-table__cell.cart-table__price
+            .cart-table__cell.cart-table__price(js-teleport data-teleport-condition="<993" data-teleport-to="cart-product-2")
               .price.price--black
                 .price__newprice 56 400 <span class="r-mark">₽</span>
                 .price__oldprice 76 000 ₽
