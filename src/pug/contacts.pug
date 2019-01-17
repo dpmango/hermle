@@ -71,7 +71,7 @@ block content
                 span На карте
             
             .contact__showroom
-              a(href="#").btn.btn-primary
+              a(href="showroom.html").btn.btn-primary
                 span Подробнее о шоуруме
               ul.contact__showroom-list
                 li В выходные мы&nbsp;открыты по&nbsp;предварительному звонку
@@ -92,7 +92,7 @@ block content
                 span На карте
                 
           // section
-          .contact__section
+          .contact__section(js-teleport data-teleport-condition="<993" data-teleport-to="credentials-mobile")
             .contact__section-heading 
               span Реквизиты
             .contact__row
@@ -109,4 +109,8 @@ block content
         .contact__right(data-aos="fade-left")
           .contact__map
             div(js-contact-map)
+        
+        .contact__mobile-credentials(data-teleport-target="credentials-mobile")
+          
+          
             

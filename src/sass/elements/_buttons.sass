@@ -78,19 +78,20 @@ button
       color: white
 
     &--pointer
-      border-color: transparent
-      min-height: 40px
-      padding-left: 20px
-      padding-right: 20px
-      &::after
-        display: inline-block
-        content: ' '
-        position: absolute 0
-        background: svg-load('../icons/svg-inline/btn-pointer-bg.svg') no-repeat right center
-        background-size: contain
-      &:hover
-        background: transparent
-        color: $colorRed
+      +rmin(641)
+        border-color: transparent
+        min-height: 40px
+        padding-left: 20px
+        padding-right: 20px
+        &::after
+          display: inline-block
+          content: ' '
+          position: absolute 0
+          background: svg-load('../icons/svg-inline/btn-pointer-bg.svg') no-repeat right center
+          background-size: contain
+        &:hover
+          background: transparent
+          color: $colorRed
 
     // btn specific
     &--small
@@ -272,3 +273,13 @@ button
         border-bottom-left-radius: 4px
         width: 8px
         left: -8px
+  .btn-outline
+    &--pointer
+      +rmin(641)
+        border-color: $colorRed
+        min-height: auto
+        &::after
+          display: none
+        &:hover
+          background: $colorRed
+          color: white
