@@ -9,6 +9,12 @@ $(window).on("load", function(){
   });
 })
 
+google.maps.event.addDomListener(window, 'load', function(){
+  $.ready.then(function(){
+    window.onMapsLoaded()
+  })
+});
+
 var resize = {
   prevResize: getWindowWidth()
 }
@@ -68,6 +74,8 @@ $(document).ready(function(){
 
   var progressBars = []; // collection of all progressbars
 
+  var contactMap // google map instance
+
   ////////////
   // LIST OF FUNCTIONS
   ////////////
@@ -101,7 +109,6 @@ $(document).ready(function(){
     initRangeSlider();
     initScrollMonitor(fromPjax);
     initValidations();
-    initMaps();
   }
 
   // The transition has just finished and the old Container has been removed from the DOM.
@@ -114,6 +121,7 @@ $(document).ready(function(){
     if ( fromPjax ){
       AOS.refreshHard();
       window.onLoadTrigger()
+      window.onMapsLoaded()
     }
   }
 
@@ -121,6 +129,11 @@ $(document).ready(function(){
   window.onLoadTrigger = function onLoad(){
     // preloaderDone();
     initLazyLoad();
+  }
+
+  // when gmaps is ready and document is ready
+  window.onMapsLoaded = function(){
+    initMaps();
   }
 
   // this is a master function which should have all functionality
@@ -2143,7 +2156,7 @@ $(document).ready(function(){
     var $map = $('[js-contact-map]');
     if ( $map.length === 0 ) return
     // When the window has finished loading create our google map below
-    google.maps.event.addDomListener(window, 'load', init);
+    // google.maps.event.addDomListener(window, 'load', init);
 
     var mapCenter = $map.data("center") || [55.753215, 37.622504]
     var mapZoom = $map.data("zoom") || 10
@@ -2158,27 +2171,37 @@ $(document).ready(function(){
 
       var mapElement = $map.get(0)
       // Create the Google Map using our element and options defined above
-      var map = new google.maps.Map(mapElement, mapOptions);
+      contactMap = new google.maps.Map(mapElement, mapOptions);
       var icon = {
         scaledSize: new google.maps.Size(105, 48),
         url: 'img/template/map-marker@2x.png'
       }
       new google.maps.Marker({
         position: new google.maps.LatLng(55.722563, 37.612668),
-        map: map,
+        map: contactMap,
         title: 'Демонстрационный зал',
         icon: icon
       });
 
       new google.maps.Marker({
         position: new google.maps.LatLng(55.812024, 37.833994),
-        map: map,
+        map: contactMap,
         title: 'Склад',
         icon: icon
       });
-
     }
+
+    init();
   }
+
+  _document
+    .on('click', '[js-move-to-map]', function(){
+      var position = $(this).data("position");
+      if ( !position ) return
+      var posLatLng = new google.maps.LatLng(position[0], position[1])
+      contactMap.setZoom(15);
+      contactMap.panTo(posLatLng);
+    })
 
 });
 

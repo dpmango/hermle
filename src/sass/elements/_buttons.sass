@@ -77,6 +77,21 @@ button
       background-color: $colorRed
       color: white
 
+    &--pointer
+      border-color: transparent
+      min-height: 40px
+      padding-left: 20px
+      padding-right: 20px
+      &::after
+        display: inline-block
+        content: ' '
+        position: absolute 0
+        background: svg-load('../icons/svg-inline/btn-pointer-bg.svg') no-repeat right center
+        background-size: contain
+      &:hover
+        background: transparent
+        color: $colorRed
+
     // btn specific
     &--small
       padding: 8px 22px 10px
@@ -139,6 +154,7 @@ button
     &:hover
       background-color: $colorRedHover
 
+
   /* btn modifiers
   &-primary, &-outline, &-secondary
     &--small
@@ -166,6 +182,7 @@ button
       padding-right: 14px
       padding-left: 40px
 
+/* button icons
 .btn-cart-icon
   position: absolute
   top: 50%
@@ -220,7 +237,6 @@ button
     font-size: 23px
     overflow: visible
 
-
 .btn-filter-icon
   flex: 0 0 auto
   font-size: 0
@@ -232,7 +248,6 @@ button
     font-size: 18px
     overflow: visible
 
-
 .btn
   &:hover
     .btn-document-icon
@@ -242,6 +257,7 @@ button
     .btn-filter-icon
       color: white
 
+/* ie fixes
 .is-ie
   .btn-compare
     &::after
