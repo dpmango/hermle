@@ -840,6 +840,12 @@ $(document).ready(function(){
       }
     })
 
+  // trigger validaiton on selects
+  _document
+    .on('selectric-change', '[js-cart-form] [js-select]', function(){
+      $(this).valid()
+    })
+
   // cart promocode
   _document
     .on('click', '[js-cart-promocode] .ui-input-icon', function(){
@@ -1603,24 +1609,24 @@ $(document).ready(function(){
       responsive: true,
       arrowButtonMarkup: '<b class="button"><svg class="ico ico-mono-arrow-select"><use xlink:href="img/sprite-mono.svg#ico-mono-arrow-select"></use></svg></b>',
 
-      onInit: function(element, data){
-        var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
-
-        $wrapper.find('.label').html($elm.attr('placeholder'));
-      },
-      onBeforeOpen: function(element, data){
-        var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
-
-        $wrapper.find('.label').data('value', $wrapper.find('.label').html()).html($elm.attr('placeholder'));
-      },
-      onBeforeClose: function(element, data){
-        var $elm = $(element),
-            $wrapper = $elm.closest('.' + data.classes.wrapper);
-
-        $wrapper.find('.label').html($wrapper.find('.label').data('value'));
-      }
+      // onInit: function(element, data){
+      //   var $elm = $(element),
+      //       $wrapper = $elm.closest('.' + data.classes.wrapper);
+      //
+      //   $wrapper.find('.label').html($elm.attr('placeholder'));
+      // },
+      // onBeforeOpen: function(element, data){
+      //   var $elm = $(element),
+      //       $wrapper = $elm.closest('.' + data.classes.wrapper);
+      //
+      //   $wrapper.find('.label').data('value', $wrapper.find('.label').html()).html($elm.attr('placeholder'));
+      // },
+      // onBeforeClose: function(element, data){
+      //   var $elm = $(element),
+      //       $wrapper = $elm.closest('.' + data.classes.wrapper);
+      //
+      //   $wrapper.find('.label').html($wrapper.find('.label').data('value'));
+      // }
     });
   }
 
@@ -1920,16 +1926,35 @@ $(document).ready(function(){
   function initValidations(){
     // GENERIC FUNCTIONS
     var validateErrorPlacement = function(error, element) {
+      var $el = $(element)
       error.addClass('ui-input__validation');
-      error.appendTo(element.parent("div"));
+      var appendEl
+      if ( $el.is('[js-select]') ){
+        appendEl = $el.closest('.selectric-wrapper')
+      } else {
+        appendEl = $el.parent("div")
+      }
+      error.appendTo(appendEl);
     }
     var validateHighlight = function(element) {
-      $(element).closest('.ui-group').removeClass('is-valid')
-      $(element).addClass("has-error");
+      var $el = $(element)
+      $el.closest('.ui-group').removeClass('is-valid')
+
+      if ( $el.is('[js-select]') ){
+        $el.closest('.selectric-wrapper').addClass("has-error")
+      } else {
+        $el.addClass("has-error");
+      }
     }
     var validateUnhighlight = function(element) {
-      $(element).removeClass("has-error");
+      var $el = $(element)
+      if ( $el.is('[js-select]') ){
+        $el.closest('.selectric-wrapper').removeClass("has-error")
+      } else {
+        $el.removeClass("has-error");
+      }
     }
+
     var validateSubmitHandler = function(form) {
       $(form).addClass('loading');
       $.ajax({

@@ -177,7 +177,7 @@
     opacity: 0.5
     cursor: default !important
     background: none !important
-    color: #666 !important
+    color: $colorGray !important
     user-select: none
   .selectric-group
     .selectric-group-label
@@ -226,3 +226,12 @@
     .selectric-items
       right: auto
       left: 0
+
+// error handler
+.selectric-wrapper
+  &.has-error
+    .selectric
+      border-color: $colorRed
+
+  .ui-input__validation
+    left: 0 !important

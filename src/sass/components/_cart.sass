@@ -319,6 +319,10 @@
     &__price-total, &__price-discount
       display: block
       width: auto
+    &__price-discount
+      margin-top: 8px
+      > span
+        margin-bottom: .5em
     &__cta
       margin-top: 30px
       flex-basis: $col12
@@ -415,9 +419,11 @@
       &-mono-delivery
         &-truck
           font-size: 20px
+          margin-top: 5px
         &-address
           font-size: 29px
         &-rus
+          margin-top: 5px
           font-size: 18px
       &-mono-payment
         &-wallet
@@ -426,6 +432,8 @@
           font-size: 31px
         &-bank
           font-size: 30px
+    .icon-delivery-rus
+      margin-top: 5px
 
   &__content
 
