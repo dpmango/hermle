@@ -5,12 +5,20 @@
       // left
       .p-exclusive__left
         .p-exclusive__cover-image
-          img(src='img/productExclusive.png' srcset='img/productExclusive@2x.png 2x')
+          picture(js-lazy data-src="img/productExclusive.png")
+            data-src(
+              media="(min-width: 992px)" 
+              srcset="img/productExclusive.png 1x, img/productExclusive@2x.png 2x")
+            data-src(
+              media="(min-width: 0px)" 
+              srcset="img/productExclusive_lg.png 1x, img/productExclusive_lg@2x.png 2x")
+
       // right
       .p-exclusive__right
         .p-scope__category Напольные часы
         .p-exclusive__heading
-          h1.h1-title.p-scope__name Часы Hermle 01210
+          h1.h1-title.p-scope__name Часы Hermle <br/>01210
+            .tag.tag--exclusive.tag--mobile Эксклюзив
           .tag.tag--exclusive Эксклюзив
         .p-scope__row
           .p-scope__article Арт: 5655351
@@ -34,6 +42,15 @@
             a(href="#").btn.btn-compare.btn-compare--arr-left
               +svgMono("compare")
         
+        div.p-exclusive__cover-image.p-exclusive__cover-image--mobile
+          picture(js-lazy data-src="img/productExclusive.png")
+            data-src(
+              media="(min-width: 992px)" 
+              srcset="img/productExclusive.png 1x, img/productExclusive@2x.png 2x")
+            data-src(
+              media="(min-width: 0px)" 
+              srcset="img/productExclusive_lg.png 1x, img/productExclusive_lg@2x.png 2x")
+
         // mini gallery
         .p-exclusive__gallery.swiper-container.swiper-control-arrows.swiper-control-arrows--container-fit(js-swiper-exclusive)
           .swiper-wrapper

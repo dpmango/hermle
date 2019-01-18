@@ -34,6 +34,7 @@
   &__name
     // h1-title extend
     margin: .2em 0 0
+    font-weight: 600
   &__row
     display: flex
     flex-wrap: wrap
@@ -223,7 +224,7 @@
 
 
 @media only screen and (max-width: 1279px) and (min-width: 993px)
-  .p-scope
+  .p-scope:not(.p-scope__cta--exclusive)
     &__cta
       flex-wrap: wrap
     &__buy
@@ -248,6 +249,16 @@
     &__description
       p
         max-width: 450px
+
+    &__cta
+      flex-wrap: wrap
+      &--exclusive
+        margin-top: 20px
+        margin-bottom: 50px
+        .p-scope
+          &__price
+            flex-basis: $col12
+            margin-bottom: 12px
 
 +r($md)
   // copypaste from max/min rule
@@ -285,6 +296,21 @@
     &__showroom
       order: 3
 
+    &__cta
+      &--exclusive
+        margin-top: 10px
+        margin-bottom: 25px
+        .p-scope
+          &__price
+            flex-basis: calc(100% - 72px - 12px)
+            max-width: calc(100% - 72px - 12px)
+            .price__newprice
+              font-size: 34px
+          &__compare
+            order: 2
+          &__buy
+            order: 3
+
     &__text
       padding-bottom: 25px
     &__description
@@ -294,6 +320,8 @@
       flex-basis: $col12
       max-width: $col12
       margin-top: 20px
+      &--full
+        margin-top: 0
     &__music-row
       .play-btn
         flex-basis: $col6

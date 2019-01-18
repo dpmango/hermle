@@ -1227,9 +1227,6 @@ $(document).ready(function(){
         delay: 3000
       },
       breakpoints: {
-        576: {
-          slidesPerView: 1,
-        },
         992: {
           slidesPerView: 2
         }

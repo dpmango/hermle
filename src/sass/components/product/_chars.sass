@@ -52,6 +52,11 @@
       flex-basis: $col4
       max-width: $col4
 
++r($lg)
+  .p-chars
+    &--exclusive
+      margin-bottom: 0
+
 +r($md)
   .p-chars
 
@@ -71,6 +76,11 @@
         max-width: 280px
         br
           display: none
+    &--exclusive
+      .p-chars
+        &__col
+          flex-basis: $col12
+          max-width: $col12
 
 // single characteristic
 .p-char

@@ -1,5 +1,5 @@
+// exclusive
 .p-exclusive
-
   &__wrapper
     display: flex
     background: #FAF8F4
@@ -24,20 +24,27 @@
     margin-top: auto
     font-size: 0
     padding-left: 20px
-    img
+    img, picture
       max-width: 100%
+    &--mobile
+      display: none
   &__heading
     display: flex
     flex-wrap: wrap
     // align-items: baseline
     .h1-title
       margin-right: 20px
+      br
+        display: none
     .tag
       margin-top: 20px
+      &--mobile
+        display: none
+        font-weight: 400
   &__gallery
     margin-top: auto
     margin-right: -12px
-    width: 100%
+    width: calc(100% + 12px)
     .swiper-button-next, .swiper-button-prev
       color: white
       &:hover
@@ -69,3 +76,107 @@
     &--schema
       flex-basis: $col2
       max-width: $col2
+
++r($lg)
+  .p-exclusive
+    &__left
+      flex-basis: $col6
+      max-width: $col6
+    &__right
+      flex-basis: $col6
+      max-width: $col6
+    &__heading
+      display: block
+      margin-bottom: 10px
+      .h1-title
+        br
+          display: block
+      .tag
+        display: none
+        line-height: 1.35
+        transform: translateY(-8px)
+        &--mobile
+          display: inline-block
+
+    &__info-col
+      &--chars
+        position: relative
+        padding-bottom: 5px
+        margin-bottom: 5px
+        flex-basis: $col12
+        max-width: $col12
+        &::after
+          display: block
+          content: ' '
+          position: absolute
+          bottom: 0
+          height: 1px
+          background: $borderColor
+          left: 12px
+          right: 12px
+      &--music
+        flex-basis: $col6
+        max-width: $col6
+      &--schema
+        flex-basis: $col6
+        max-width: $col6
+      // TODO - add border
+
++r(680)
+  .p-exclusive
+    &__wrapper
+      flex-wrap: wrap
+    &__left
+      display: none
+      flex-basis: $col12
+      max-width: $col12
+    &__right
+      flex-basis: $col12
+      max-width: $col12
+      padding-top: 35px
+      padding-left: 40px
+      padding-right: 40px
+    &__cover-image
+      display: none
+      &--mobile
+        display: block
+    &__gallery
+      margin-top: auto
+      margin-right: -40px
+      margin-left: -40px
+      width: calc(100% + 80px)
+
++r($sm)
+  .p-exclusive
+    &__info-col
+      &--chars
+        padding-top: 20px
+        &::after
+          display: none
+      &--music
+        order: 3
+        flex-basis: $col12
+        max-width: $col12
+      &--schema
+        position: relative
+        order: 2
+        flex-basis: $col12
+        max-width: $col12
+        padding-bottom: 25px
+        &::after
+          display: block
+          content: ' '
+          position: absolute
+          bottom: 0
+          height: 1px
+          background: $borderColor
+          left: 12px
+          right: 12px
+
+
++r(414)
+  .p-exclusive
+    .p-scope__showroom--white-bg
+      span
+        display: block
+        margin-bottom: .2em
