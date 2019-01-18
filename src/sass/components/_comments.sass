@@ -72,6 +72,7 @@
     display: flex
     align-items: center
     font-size: 12px
+    margin-top: .8em
     font-weight: 700
     text-transform: uppercase
     letter-spacing: em(2.25, 12)
@@ -96,10 +97,34 @@
     flex-wrap: wrap
     margin-left: -15px
     margin-right: -15px
-    .ui-group
-      width: 100%
-      flex: 0 0 $col6
-      max-width: $col6
-      min-width: 1px
-      padding-left: 15px
-      padding-right: 15px
+  &__col
+    width: 100%
+    flex: 0 0 $col6
+    max-width: $col6
+    min-width: 1px
+    padding-left: 15px
+    padding-right: 15px
+
+
++r($sm)
+  .comments
+    &__form
+      padding: 40px 20px 55px
+      margin-left: -20px
+      margin-right: -20px
+      &::after
+        border-left: 0
+        border-right: 0
+
+  .comment-card
+    &__avatar
+      size: 40px
+      .ico-mono-user
+        font-size: 16px
+    &__content
+      flex: 1 1 calc(100% - 40px - 16px)
+
+  .comment-form
+    &__col
+      flex-basis: $col12
+      max-width: $col12

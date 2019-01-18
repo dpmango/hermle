@@ -1,6 +1,7 @@
 // FOOTER
 .footer
   &__top
+    position: relative
     padding: 40px 0
     margin: 0 -12px
     display: flex
@@ -48,6 +49,19 @@
     flex: 0 0 auto
     padding-left: 20px
     margin-left: auto
+
+  &--with-border
+    .footer
+      &__top
+        &::after
+          display: inline-block
+          content: ' '
+          position: absolute
+          top: 0
+          left: 12px
+          right: 12px
+          height: 1px
+          background: $borderColor
 
 +r(1200)
   .footer

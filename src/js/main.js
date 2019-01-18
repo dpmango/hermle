@@ -107,6 +107,7 @@ $(document).ready(function(){
     initMasks();
     initSelectric();
     initRangeSlider();
+    initStacktable();
     initScrollMonitor(fromPjax);
     initValidations();
     initTeleport();
@@ -114,6 +115,7 @@ $(document).ready(function(){
 
   // The transition has just finished and the old Container has been removed from the DOM.
   function pageCompleated(fromPjax){
+    updateOutsideWrapper();
     getHeaderParams();
     setPageOffset();
     ieFixImages(fromPjax);
@@ -290,10 +292,14 @@ $(document).ready(function(){
       var target = $(this).data('scroll-target');
       var el = $(target)
       var topTarget = $(el).offset().top
+      var offset = $(this).data("offset")
+      if ( offset ){
+        topTarget -= offset
+      }
 
       // $('body, html').animate({scrollTop: topTarget}, 1000);
       TweenLite.to(window, 1, {
-        scrollTo: {y: $(el).offset().top, autoKill:false},
+        scrollTo: {y: topTarget, autoKill:false},
         ease: easingSwing
       });
 
@@ -316,7 +322,38 @@ $(document).ready(function(){
     scroll.lastForScrollDir = wScroll <= 0 ? 0 : wScroll;
   }
 
+  // UPDATE HEADER CLASS
+  function updateOutsideWrapper(){
+    var $headerEl = $('[js-header-class]');
+    var $footerEl = $('[js-footer-class]');
+    var $header = $('.header');
+    var $footer = $('.footer');
 
+    // header logic
+    if ( $header.data("added-class") ){
+      var prevClass = $header.data("added-class");
+      $header.removeClass(prevClass)
+    }
+
+    if ( $headerEl.length > 0 ){
+      var newClass = $headerEl.data('class');
+      $header.attr('data-added-class');
+      $header.addClass(newClass)
+    }
+
+    // footer logic
+    if ( $footer.data("added-class") ){
+      var prevClassFooter = $header.data("added-class");
+      $footer.removeClass(prevClassFooter)
+    }
+
+    if ( $footerEl.length > 0 ){
+      var newClassFooter = $footerEl.data('class');
+      $footer.attr('data-added-class');
+      $footer.addClass(newClassFooter)
+    }
+
+  }
   // HEADER SCROLL
   function getHeaderParams(){
     var $header = $('.header');
@@ -918,7 +955,7 @@ $(document).ready(function(){
       var index = i + 1
       var $heading = $(heading);
       $heading.attr('data-heading-id', 'section_' + index);
-      headingsHtml += '<a href="#" js-scroll-to data-scroll-target="[data-heading-id=section_'+index+']">'+$heading.text()+'</a>'
+      headingsHtml += '<a href="#" js-scroll-to data-offset="50" data-scroll-target="[data-heading-id=section_'+index+']">'+$heading.text()+'</a>'
     })
 
     $nav.html(headingsHtml)
@@ -1747,6 +1784,13 @@ $(document).ready(function(){
     }
   }
 
+  // STACK TABLE
+  function initStacktable(){
+    var $stack = $('[js-stacktable]');
+    if ( $stack.length === 0 ) return
+    $stack.stacktable();  
+  }
+
   // SOUND CONTROLS
   function initHowler(){
     var $soundsBtns = $('[js-play-audio]');
@@ -1954,6 +1998,10 @@ $(document).ready(function(){
         $el.removeClass("has-error");
       }
     }
+    var validateSucess = function(label, element) {
+      // validate for the group
+      $(element).closest('.ui-group').addClass("is-valid")
+    }
 
     var validateSubmitHandler = function(form) {
       $(form).addClass('loading');
@@ -1987,43 +2035,6 @@ $(document).ready(function(){
       digits: true
     }
 
-    // REGISTRATION FORM
-    // $("[js-validate-registration]").validate({
-    //   errorPlacement: validateErrorPlacement,
-    //   highlight: validateHighlight,
-    //   unhighlight: validateUnhighlight,
-    //   submitHandler: validateSubmitHandler,
-    //   rules: {
-    //     last_name: "required",
-    //     first_name: "required",
-    //     email: {
-    //       required: true,
-    //       email: true
-    //     },
-    //     password: {
-    //       required: true,
-    //       minlength: 6,
-    //     }
-    //     // phone: validatePhone
-    //   },
-    //   messages: {
-    //     last_name: "Заполните это поле",
-    //     first_name: "Заполните это поле",
-    //     email: {
-    //       required: "Заполните это поле",
-    //       email: "Email содержит неправильный формат"
-    //     },
-    //     password: {
-    //       required: "Заполните это поле",
-    //       email: "Пароль мимимум 6 символов"
-    //     },
-    //     // phone: {
-    //     //     required: "Заполните это поле",
-    //     //     minlength: "Введите корректный телефон"
-    //     // }
-    //   }
-    // });
-
     // callback form
     $("[js-validate-callback]").validate({
       errorPlacement: validateErrorPlacement,
@@ -2043,12 +2054,10 @@ $(document).ready(function(){
       }
     });
 
+    // CART FORM
     $('[js-cart-form]').validate({
       errorPlacement: validateErrorPlacement,
-      success: function(label, element) {
-        // validate for the group
-        $(element).closest('.ui-group').addClass("is-valid")
-      },
+      success: validateSucess,
       highlight: validateHighlight,
       unhighlight: validateUnhighlight,
       submitHandler: validateSubmitHandler,
@@ -2076,6 +2085,30 @@ $(document).ready(function(){
         adress: "Заполните это поле"
       }
     })
+
+    // COMMENT FORM
+    $('[js-comment-form]').validate({
+      errorPlacement: validateErrorPlacement,
+      success: validateSucess,
+      highlight: validateHighlight,
+      unhighlight: validateUnhighlight,
+      submitHandler: validateSubmitHandler,
+      rules: {
+        name: "required",
+        email: {
+          required: true,
+          email: true
+        },
+      },
+      messages: {
+        name: "Заполните это поле",
+        email: {
+          required: "Заполните это поле",
+          email: "Email содержит неправильный формат"
+        },
+      }
+    });
+
   }
 
   //////////

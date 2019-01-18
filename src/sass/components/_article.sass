@@ -4,29 +4,53 @@
   &__wrapper
     position: relative
     z-index: 1
+    // fixed height
+    height: 370px
   &__image
+    position: absolute 0
+    z-index: 0
     font-size: 0
+    display: flex
+    flex-direction: column
     img
       width: 100%
+      height: 100%
+      object-fit: cover
   &__content
     position: absolute 0
     color: white
-    padding: 40px 6% 60px
+    padding: 40px 70px 60px
     display: flex
     flex-direction: column
     justify-content: flex-end
+    .h1-title
+      line-height: 1.1
   &__category
     text-transform: uppercase
     font-size: 14px
     opacity: .6
     letter-spacing: em(2.4, 14)
 
++r($lg)
+  // do nothing ?
++r($md)
+  .article-head
+    &__content
+      padding: 30px 40px
++r($sm)
+  .article-header
+    &__content
+      .h1-title
+        line-height: 1.28
 
 /* article page
 .article-page
   position: relative
   z-index: 2
+  margin-bottom: 40px
   &__wrapper
+    position: relative
+    z-index: 1
     display: flex
     margin-left: -12px
     margin-right: -12px
@@ -40,15 +64,15 @@
 
   &__left
     flex-shrink: 1
-    flex-basis: $col9
-    max-width: $col9
+    flex-basis: calc(100% - 305px)
+    max-width: calc(100% - 305px)
 
   &__right
     position: relative
     margin-top: -30px
     flex-shrink: 0
-    flex-basis: $col3
-    max-width: $col3
+    flex-basis: 305px
+    max-width: 305px
 
   &__sidebar
     // sticky element
@@ -59,6 +83,8 @@
 
   &__navigation-list
     margin-top: 20px
+    display: flex
+    flex-direction: column
     a
       display: inline-block
       font-size: 16px
@@ -72,22 +98,53 @@
     margin-top: 30px
     padding: 30px 40px
 
++r($lg)
+  .article-page
+    &__left
+      flex-basis: $col12
+      max-width: $col12
+    &__right
+      position: absolute !important
+      top: 0
+      right: 0px
+    &__featured-product
+      display: none
+
++r($md)
+  .article-page
+    &__wrapper
+      flex-wrap: wrap
+    &__left
+      order: 2
+    &__right
+      position: static !important
+      margin-top: 0
+      order: 1
+      flex-basis: $col12
+      max-width: $col12
+
 /* content
 .article-content
   padding: 40px 40px 0
+  .p-big
+    font-size: 20px
+    line-height: 1.5
+  .h2-title, .h3-title, .h4-title
+    margin-top: 1.5em
   hr
     border: 0
     border-top: 1px solid $borderColor
     margin: 40px 0
-  .ul-list
+  .ul-list, .ul-nums, .ul-checkmarks
     margin-left: 35px
+  .ul-list
     li
       margin-bottom: 30px
   .blockquote
     max-width: 100%
-    padding-left: 65px
-    &::before
-      left: 35px
+    margin-left: 20px
+    &--quotemark
+      margin-left: 52px
   .table
     margin: 1em 35px
 
@@ -114,6 +171,47 @@
     img
       max-width: 100%
 
++r($lg)
+  .article-content
+    &__section
+      &:first-child
+        margin-right: 280px
+
++r($md)
+  .article-content
+    padding: 0
+    &__section
+      &:first-child
+        margin-right: 0px
+
++r($sm)
+  .article-content
+    .p-big
+      font-size: 18px
+    hr
+      margin: 30px 0
+    .ul-list, .ul-nums, .ul-checkmarks
+      margin-left: 0
+    .ul-list
+      li
+        margin-bottom: 20px
+    .blockquote
+      margin-left: 0px
+      &--quotemark
+        margin-left: 0
+    .table
+      margin: 1em 0px
+
+    &__row
+      display: block
+      margin-left: 0
+      margin-right: 0
+    &__row-text, &__row-image
+      padding-left: 0
+      padding-right: 0
+    &__row-image
+      margin: 1em 0
+
 /* share
 .article-share
   margin: 30px 0
@@ -122,3 +220,10 @@
   padding: 12px 30px
   &__title
     font-size: 16px
+
++r($sm)
+  .article-share
+    margin: 20px 0
+    &__title
+      font-size: 14px
+      

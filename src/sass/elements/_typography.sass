@@ -68,6 +68,14 @@ p.p-main, p.p-big, p.p-small
     width: 2px
     background: $colorRed
     border-radius: 2px
+  &--quotemark
+    &::before
+      left: 0
+      top: 0
+      +sprite("quote")
+      border-radius: 0
+      background: transparent
+
 
 blockquote.blockquote
   margin: 1.8em 0
@@ -85,6 +93,9 @@ blockquote.blockquote
     padding-left: 22px
     &::before
       left: 0
+      max-height: 75px
+    &--quotemark
+      padding-left: 44px
 
 
 .tac
@@ -221,7 +232,7 @@ blockquote.blockquote
     &::before
       position: absolute
       left: 0
-      top: 5px
+      top: 3px
       display: inline-block
       content: counter(list)
       size: 20px
@@ -246,6 +257,10 @@ blockquote.blockquote
       font-size: 14px
   .ul-nums
     font-size: 14px
+    li
+      flex-basis: 100%
+      max-width: 100%
+      margin-bottom: 20px
 
 
 /* links
@@ -289,6 +304,27 @@ blockquote.blockquote
   tbody
     td
       padding: 25px 12px
+      line-height: 1.5
 
   td
+    vertical-align: top
+    font-size: 16px
     border-bottom: 1px solid $borderColor
+    &:first-child
+      padding-left: 0
+    &:last-child
+      padding-right: 0
+
+  &--desktop
+  &--mobile
+    display: none
+
++r($sm)
+  .table
+    &--desktop
+      display: none
+    &--mobile
+      display: table
+
+    td
+      font-size: 14px

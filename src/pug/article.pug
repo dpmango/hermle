@@ -23,6 +23,8 @@ block content
           .article-content
             .article-content__section(data-aos="fade")
               p.p-big Двигателем в механических приборах является поднятая гиря или пружина – свернутая полоса стали, прикрепленная одним концом к барабану, а другим – к валу. При вращении вала пружина раскручивается и закручивается, приводя механизм в движение.
+            
+            .article-content__section(data-aos="fade")
               hr
               ul.ul-list
                 li <strong>Регулятор</strong> – круглый обод, в центре которого находится ось вращения. Используется для стабилизации часового хода, благодаря ему механизм вращается с определенной периодичностью.
@@ -58,7 +60,7 @@ block content
             .article-content__section(data-aos="fade")
               .article-content__row
                 .article-content__row-image
-                  img(style="float:left" src='img/articleImage_2.jpg' srcset='img/articleImage_2@2x.jpg 2x')
+                  img(src='img/articleImage_2.jpg' srcset='img/articleImage_2@2x.jpg 2x')
                 .article-content__row-text
                   p.p-main  Для производства берутся благородные древесные породы: дуб, вишня, красное дерево, орех, бук. Самыми экологичными считаются бук, вишня, ясень, дуб и красное дерево.
                   p.p-main Чтобы вписать старинные конструкции в современный дизайн, купите изделия с металлическими, стеклянными или нетрадиционными элементами.
@@ -71,10 +73,10 @@ block content
                 li В помещении, где устанавливается прибор, должен поддерживаться оптимальный микроклимат. Необходим тщательный уход за мебелью, следите за чистотой поверхностей. Регулируйте влажность воздуха и температуру в комнате.
                 li Напольные приборы должны стоять устойчиво и ровно. Купите прибор с регулируемыми ножками, это обезопасит механизм от падения и повреждения, сохранит корпус, внутренние механизмы и напольное покрытие.
                 li Следите за установленным интервалом и периодичностью боя. Механизм, который работает слишком часто или редко, быстро придет в непригодность. Оптимальный вариант – заводить устройство раз в сутки.
-              blockquote.blockquote.blockquote--quote Нельзя монтировать конструкции на мягких поверхностях (коврах), это приведет к усадке ткани и нарушениям в работе механизма.
+              blockquote.blockquote.blockquote--quotemark Нельзя монтировать конструкции на мягких поверхностях (коврах), это приведет к усадке ткани и нарушениям в работе механизма.
               p.p-main Делайте это в установленное время, тогда не будет проблем. Допустима минимальная погрешность в несколько минут. Для моделей с автоматической подзаводкой достаточно 25-30 оборотов.
             
-              table.table
+              table.table.table--desktop
                 thead
                   tr
                     td Вариант
@@ -99,7 +101,29 @@ block content
                     td
                       | Включен бой каждый ровный час<br/><br/>
                       | Отключен бой каждый ровный час
-            
+              table.table.table--mobile
+                thead
+                  tr
+                    td №
+                    td Надпись / Описание
+                tbody
+                  tr
+                    td 1
+                    td 
+                      | STRIKE<br/>
+                      | Включен бой каждый ровный час<br/><br/>
+                      | NIGHT OFF<br/>
+                      | Активен ночной режим<br/><br/>
+                      | SILENT<br/>
+                      | Отключен бой каждый ровный час
+                  tr
+                    td 1
+                    td 
+                      | STRIKE<br/>
+                      | Включен бой каждый ровный час<br/><br/>
+                      | SILENT<br/>
+                      | Отключен бой каждый ровный час
+                              
             // share
             .article-share(data-aos="fade")
               .article-share__title Поделиться в соцсетях
@@ -144,18 +168,20 @@ block content
                       span.comment-card__reply(js-comment-reply) Ответить
                           
               
-              // form
+              // comment form
               .comments__form(data-aos="fade")
                 form.comment-form(js-comment-form)
                   input(type="hidden" name="token")
                   input(type="hidden" name="parent")
                   .comment-form__row
-                    .ui-group
-                      label Имя <span class="ui-required">*</span>
-                      input.ui-input.is-valid(type="text" name="name" placeholder="Например, Игорь Петров") 
-                    .ui-group
-                      label Электронная почта <span class="ui-required">*</span>
-                      input.ui-input(type="email" name="email" placeholder="Например, igor86@mail.ru")  
+                    .comment-form__col
+                      .ui-group
+                        label Имя <span class="ui-required">*</span>
+                        input.ui-input.is-valid(type="text" name="name" placeholder="Например, Игорь Петров") 
+                    .comment-form__col
+                      .ui-group
+                        label Электронная почта <span class="ui-required">*</span>
+                        input.ui-input(type="email" name="email" placeholder="Например, igor86@mail.ru")  
                   .ui-group
                     label Комментарий к заказу
                     textarea.ui-input(name="comment" placeholder="" rows="3" data-min-rows="3")  
@@ -192,6 +218,112 @@ block content
                           +svgMono("cart")
                         span Купить
 
-              
-          
+
+  // SALE
+  .sale(data-aos="fade")
+    .container
+      .sale__title.h2-title.tac Вас может заинтересовать
+      .sale__grid.swiper-container(js-swiper-sale)
+        .swiper-wrapper
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="product.html")
+              .product-card__image
+                img(src="img/sale_1.png" srcset="img/sale_1@2x.png 2x")
+              .product-card__content
+                .product-card__name.product-card__name--smaller Настенные часы <br/>Hermle 70509
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 26 600 <span class="r-mark">₽</span>
+                    .price__oldprice 46 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="product.html")
+              .product-card__image
+                img(src="img/sale_2.png" srcset="img/sale_2@2x.png 2x")
+              .product-card__content
+                .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 70310
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 32 600 <span class="r-mark">₽</span>
+                    .price__oldprice 49 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="product.html")
+              .product-card__image
+                img(src="img/sale_3.png" srcset="img/sale_3@2x.png 2x")
+              .product-card__content
+                .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 01093
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 469 400 <span class="r-mark">₽</span>
+                    .price__oldprice 772 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить      
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="product.html")
+              .product-card__image
+                img(src="img/sale_4.png" srcset="img/sale_4@2x.png 2x")
+              .product-card__content
+                .product-card__name.product-card__name--smaller Настенные часы <br/>Hermle 70509
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 26 600 <span class="r-mark">₽</span>
+                    .price__oldprice 46 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="product.html")
+              .product-card__image
+                img(src="img/sale_5.png" srcset="img/sale_5@2x.png 2x")
+              .product-card__content
+                .product-card__name.product-card__name--smaller Напольные часы <br/>Hermle 70310
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 29 600 <span class="r-mark">₽</span>
+                    .price__oldprice 45 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить
+          .sale__col.swiper-slide
+            // prodcut card
+            .product-card(js-link data-href="product.html")
+              .product-card__image
+                img(src="img/sale_6.png" srcset="img/sale_6@2x.png 2x")
+              .product-card__content
+                .product-card__name.product-card__name--smaller Настольные часы <br/> Hermle 23004
+                .product-card__actions
+                  .product-card__price.price
+                    .price__newprice 10 900 <span class="r-mark">₽</span>
+                    .price__oldprice 17 000 ₽
+                  .product-card__cta.product-card__cta--no-compare
+                    a(href="#").btn.btn-primary.btn--buy
+                      .btn-cart-icon
+                        +svgMono("cart")
+                      span Купить     
+
       
+      
+  // header class modifier
+  div(js-header-class data-class="header--merge-borders")
+  div(js-footer-class data-class="footer--with-border")

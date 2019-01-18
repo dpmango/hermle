@@ -26,6 +26,9 @@
       bottom: -17px
       font-size: 11px
       max-width: 100%
+    &.is-valid
+      &::after
+        top: 50%
 
   &.is-valid
     .ui-input
@@ -41,7 +44,7 @@
       content: ' '
       position: absolute
       z-index: 1
-      top: 50%
+      top: calc(50% + 14px)
       transform: translateY(-50%)
       right: 20px
       background: svg-load("../icons/svg-mono/checkmark.svg", fill=$colorGreen) no-repeat center

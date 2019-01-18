@@ -1,20 +1,29 @@
 $sprite: (
 	checkmark: (
-		offset-x: -42px,
-		offset-y: 0px,
+		offset-x: 0px,
+		offset-y: -35px,
 		width: 16px,
 		height: 12px,
-		total-width: 58px,
-		total-height: 20px,
+		total-width: 73px,
+		total-height: 47px,
 		image: '../img/sprite.png'
 	),
 	delivery-rus: (
-		offset-x: 0px,
+		offset-x: -41px,
 		offset-y: 0px,
 		width: 32px,
 		height: 20px,
-		total-width: 58px,
-		total-height: 20px,
+		total-width: 73px,
+		total-height: 47px,
+		image: '../img/sprite.png'
+	),
+	quote: (
+		offset-x: 0px,
+		offset-y: 0px,
+		width: 31px,
+		height: 25px,
+		total-width: 73px,
+		total-height: 47px,
 		image: '../img/sprite.png'
 	),
 );
@@ -78,4 +87,7 @@ $sprite: (
 	}
 	.icon-delivery-rus {
 		@include sprite(delivery-rus)
+	}
+	.icon-quote {
+		@include sprite(quote)
 	}
