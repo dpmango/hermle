@@ -39,7 +39,8 @@ block content
           +svgMono("btn-arrow-left")
         .swiper-button-next
           +svgMono("btn-arrow")
-  
+
+
   // CONTENT SECTION
   .showroom
     .container
@@ -70,7 +71,7 @@ block content
           .showroom__content
             .contact__map
               div(js-contact-map data-center="[55.722563, 37.612668]" data-zoom="12")
-  
+
 
       // section
       .showroom__section(data-aos="fade")
@@ -83,7 +84,6 @@ block content
               .showroom__hours
                 .p-big 09:00-18:00
                 .p-small Граффик работы
-              
               ul.ul-list
                 li.p-small В выходные мы открыты по предварительному звонку
                 li.p-small Для посетителей на машине доступна бесплатная парковка, позвоните для оформления пропуска
@@ -104,7 +104,6 @@ block content
                       | Hermle 01231
                     td
                       span.c-red 469 400 ₽
-                
                 +tableRow
                 +tableRow
                 +tableRow
@@ -118,7 +117,29 @@ block content
               a(href="#" js-load-more).catalog__pagination-more
                 +svgMono("refresh")
                 span Показать еще
-                
+
+
+  // TAXI BANNER  
+  .taxi-banner(data-aos="fade")
+    .container
+      .taxi-banner__wrapper
+        .taxi-banner__content
+          .h2-title Далеко или тяжело к нам ехать?
+          p.p-main Нажмите на кнопку и закажите такси, а мы за него заплатим
+          a(href="#").btn.btn-primary.btn-primary--big
+            .btn-checkmark-icon
+              +svgMono("checkmark")
+            span Заказать такси
+        .taxi-banner__image
+          picture(js-lazy data-src="img/banner_taxi.png")
+            data-src(
+              media="(min-width: 992px)" 
+              srcset="img/banner_taxi.png 1x, img/banner_taxi@2x.png 2x")
+            data-src(
+              media="(min-width: 0px)" 
+              srcset="img/banner_taxi-md.png 1x, img/banner_taxi-md@2x.png 2x")
+
+
   //BANNERS
   .h-banners(data-aos="fade")
     .container
@@ -129,7 +150,6 @@ block content
             .banner__content
               .h3-title.banner__title-limit У нас самый большой выбор в Москве
               p.p-small Напольные, навесные и настольные часы на любой вкус и кошелек
-    
             .banner__image
               picture(js-lazy data-src="img/banner_6.jpg")
                 data-src(
@@ -157,7 +177,7 @@ block content
           // banner
           .banner.banner--bg-cover
             .banner__content
-              .h3-title Посетите <br/>наш шоурум<br/> в Москве
+              .h3-title.c-white Посетите <br/>наш шоурум<br/> в Москве
               p.p-small По предварительному заказу или звонку
             .banner__image
               picture(js-lazy data-src="img/banner_8.jpg")
@@ -167,3 +187,7 @@ block content
                 data-src(
                   media="(min-width: 0px)" 
                   srcset="img/banner_8_sm.jpg 1x, img/banner_8_sm@2x.jpg 2x")
+
+
+  // header class modifier
+  div(js-header-class data-class="header--merge-borders")

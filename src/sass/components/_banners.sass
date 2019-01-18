@@ -210,3 +210,69 @@
     &__image
       padding-right: 25px
     &--bg-cover
+
+
+
+
+
+// TAXI BANNER
+.taxi-banner
+  margin: 65px 0
+  &__wrapper
+    display: flex
+    height: 360px
+    background: #FAF8F4
+  &__content
+    flex: 0 0 455px
+    max-width: 455px
+    padding: 40px 10px 40px 80px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    .h2-title
+      max-width: 280px
+    p
+      max-width: 260px
+      line-height: 1.28
+    .btn
+      margin-top: 10px
+      max-width: 250px
+  &__image
+    flex: 1 1 auto
+    max-width: auto
+    font-size: 0
+    img
+      height: 100%
+      width: 100%
+      object-fit: cover
+      object-position: left center
+
++r($lg)
+  .taxi-banner
+    &__content
+      flex: 0 0 355px
+      max-width: 355px
+
++r($sm)
+  .taxi-banner
+    margin: 40px 0
+    &__wrapper
+      height: auto
+    &__content
+      flex-basis: $col12
+      max-width: $col12
+      padding: 35px 20px 45px 40px
+      .h2-title
+        max-width: 200px
+      p
+        max-width: 200px
+        margin: 1.35em 0
+      .btn
+        max-width: 200px
+        margin-top: 5px
+        padding-left: 15px
+        padding-right: 15px
+      .btn-checkmark-icon
+        display: none
+    &__image
+      display: none
