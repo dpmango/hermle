@@ -1,3 +1,4 @@
+// banner group and modifiers
 .h-banners
   margin-top: 70px
   &__wrapper
@@ -11,6 +12,7 @@
     display: flex
     flex-direction: column
 
+// product
 .p-banners
   margin: 40px 0 20px
   &__wrapper
@@ -28,6 +30,43 @@
     display: flex
     flex-direction: column
 
+// showroom
+.s-banners
+  margin-top: 70px
+  &__wrapper
+    display: flex
+    flex-wrap: wrap
+  &__col
+    width: 100%
+    min-width: 1px
+    flex: 0 0 $col4
+    max-width: $col4
+    display: flex
+    flex-direction: column
+  .banner
+    height: 240px
+    padding-top: 50px
+    .p-small
+      max-width: 170px
+      margin-bottom: 0
+    .h3-title
+      max-width: 200px
+
++r($lg)
+  .s-banners
+    &__wrapper
+      position: relative
+    &__col
+      flex-basis: $col12
+      max-width: $col6
+      margin-right: $col6
+      // align col 100 of
+      &:nth-child(2)
+        position: absolute
+        top: 0
+        bottom: 0
+        right: -50%
+        margin-left: $col6
 
 +r($md)
   .p-banners
@@ -39,6 +78,18 @@
       &:last-child
         margin-bottom: 0
 
++r($sm)
+  .s-banners
+    margin-top: 40px
+    &__col
+      flex-basis: $col12
+      max-width: $col12
+      margin-right: 0
+      // align col 100 of
+      &:nth-child(2)
+        position: relative
+        right: 0
+        margin-left: 0
 
 /* banner
 .banner

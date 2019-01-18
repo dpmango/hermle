@@ -141,14 +141,14 @@ block content
 
 
   //BANNERS
-  .h-banners(data-aos="fade")
+  .s-banners(data-aos="fade")
     .container
-      .h-banners__wrapper
-        .h-banners__col
+      .s-banners__wrapper
+        .s-banners__col
           // banner
-          .banner.banner--bg-cover
+          a(href="article-1.html").banner.banner--bg-cover
             .banner__content
-              .h3-title.banner__title-limit У нас самый большой выбор в Москве
+              .h3-title У нас самый большой <br/>выбор в Москве
               p.p-small Напольные, навесные и настольные часы на любой вкус и кошелек
             .banner__image
               picture(js-lazy data-src="img/banner_6.jpg")
@@ -159,25 +159,28 @@ block content
                   media="(min-width: 0px)" 
                   srcset="img/banner_6_sm.jpg 1x, img/banner_6_sm@2x.jpg 2x")
                 
-        .h-banners__col
-          .banner.banner--bg-cover
+        .s-banners__col
+          a(href="article-2.html").banner.banner--bg-cover
             .banner__content
-              .h3-title.banner__title-limit Путешествие на фабрику
+              .h3-title Мы являемся <br/>официальными<br/> партнёрами фабрики
               p.p-small Что сказывается на ценах, только прямые поставки
             .banner__image
               picture(js-lazy data-src="img/banner_7.jpg")
                 data-src(
-                  media="(min-width: 576px)" 
+                  media="(min-width: 992px)" 
                   srcset="img/banner_7.jpg 1x, img/banner_7@2x.jpg 2x")
+                data-src(
+                  media="(min-width: 576px)" 
+                  srcset="img/banner_7_lg.jpg 1x, img/banner_7_lg@2x.jpg 2x")
                 data-src(
                   media="(min-width: 0px)" 
                   srcset="img/banner_7_sm.jpg 1x, img/banner_7_sm@2x.jpg 2x")
                 
-        .h-banners__col
+        .s-banners__col
           // banner
-          .banner.banner--bg-cover
+          a(href="article-3.html").banner.banner--bg-cover
             .banner__content
-              .h3-title.c-white Посетите <br/>наш шоурум<br/> в Москве
+              .h3-title.c-white Работаем вечером <br/>и в выходные 
               p.p-small По предварительному заказу или звонку
             .banner__image
               picture(js-lazy data-src="img/banner_8.jpg")
