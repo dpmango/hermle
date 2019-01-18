@@ -9,13 +9,13 @@
     margin-right: -12px
   &__title
     flex: 0 0 $col8
+    max-width: $col8
     font-size: 46px
     font-weight: 700
     line-height: 1
     margin: 0
-    padding-left: 12px
+    padding-left: calc(6.5% + 12px)
     padding-right: 12px
-    margin-left: 6.5%
     span
       position: relative
       line-height: 1
@@ -32,11 +32,13 @@
 
   &__phones
     flex: 0 0 $col4
+    max-width: $col4
+    padding-right: 12px
     .contact-phone
       max-width: 220px
 
   &__gallery
-
+    height: 390px
   &__gallery-slide
     flex: 0 0 auto
     display: flex
@@ -45,7 +47,64 @@
     height: auto
     font-size: 0
     img
-      max-width: 100%
+      width: 100%
+      height: 100%
+      object-fit: cover
+    &--wide
+      flex-basis: 58%
+      img
+        object-position: right center
+    &--boxed
+      flex-basis: 25%
+    &--grouped
+      flex-basis: 17%
+      img
+        height: 50%
+
++r($lg)
+  .showroom-head
+    &__title
+      flex-basis: $col6
+      max-width: $col6
+      padding-left: 13%
+    &__phones
+      flex-basis: $col6
+      max-width: $col6
+    &__gallery-slide
+      &--wide
+        flex-basis: 65%
+      &--boxed
+        flex-basis: 35%
+      &--grouped
+        flex-basis: 30%
+
++r(640)
+  .showroom-head
+    &__heading
+      padding: 35px 0 20px
+    &__grid
+      flex-wrap: wrap
+    &__title
+      flex-basis: $col12
+      max-width: $col12
+      font-size: 30px
+      margin-bottom: 20px
+    &__phones
+      flex-basis: $col12
+      max-width: $col12
+      padding-left: calc(13% - 12px)
+
++r($sm)
+  .showroom-head
+    &__gallery
+      height: 280px
+    &__gallery-slide
+      &--wide
+        flex-basis: 100%
+      &--boxed
+        flex-basis: 80%
+      &--grouped
+        flex-basis: 50%
 
 
 /* content section
