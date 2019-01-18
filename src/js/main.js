@@ -337,7 +337,7 @@ $(document).ready(function(){
 
     if ( $headerEl.length > 0 ){
       var newClass = $headerEl.data('class');
-      $header.attr('data-added-class');
+      $header.attr('data-added-class', newClass);
       $header.addClass(newClass)
     }
 
@@ -349,7 +349,7 @@ $(document).ready(function(){
 
     if ( $footerEl.length > 0 ){
       var newClassFooter = $footerEl.data('class');
-      $footer.attr('data-added-class');
+      $footer.attr('data-added-class', newClassFooter);
       $footer.addClass(newClassFooter)
     }
 
