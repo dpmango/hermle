@@ -1030,6 +1030,7 @@ $(document).ready(function(){
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
+      autoHeight: true,
       watchOverflow: false,
       setWrapperSize: false,
       slidesPerView: 1,
@@ -1053,23 +1054,46 @@ $(document).ready(function(){
         // recommended to preload some images in initial markup
 
         // TODO - ajax load
-        sliders.heroChooser.appendSlide([
-          `<div class="chooser-slide swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 384px; opacity: 1; transform: translate3d(-768px, 0px, 0px); transition-duration: 0ms;">
-            <div class="chooser-slide__content">
-              <div class="chooser-slide__title">Настольные часы Hermle 01093</div>
-              <div class="chooser-slide__actions">
-                <div class="chooser-slide__price price">
-                  <div class="price__newprice">19 800 <span class="r-mark">₽</span></div>
-                  <div class="price__oldprice">28 000 ₽</div>
+        if ( $(this).closest('.article-page__featured-product').length > 0 ){
+          sliders.heroChooser.appendSlide([
+            `<div class="swiper-slide product-card" js-link="" data-href="product.html">
+              <div class="product-card__image"><img src="img/sale_1.png" srcset="img/sale_1@2x.png 2x"></div>
+              <div class="product-card__content">
+                <div class="product-card__name">Напольные часы <br>Hermle 70310</div>
+                <div class="product-card__actions">
+                  <div class="product-card__price price">
+                    <div class="price__newprice">29 800 <span class="r-mark">₽</span></div>
+                    <div class="price__oldprice">48 000 ₽</div>
+                  </div>
+                  <div class="product-card__cta product-card__cta--no-compare"><a class="btn btn-primary btn--buy" href="#">
+                      <div class="btn-cart-icon">
+                        <svg class="ico ico-mono-cart">
+                          <use xlink:href="img/sprite-mono.svg#ico-mono-cart"></use>
+                        </svg>
+                      </div><span>Купить</span></a></div>
                 </div>
               </div>
-            </div>
-            <div class="chooser-slide__image hero-image hero-image--smaller">
-              <div class="hero-image__main"><img src="img/sale_1.png" srcset="img/sale_1@2x.png 2x"></div>
-              <div class="hero-image__ghost"><img src="img/sale_1.png" srcset="img/sale_1@2x.png 2x"></div>
-            </div>
-          </div>`,
-        ]);
+            </div>`
+          ]);
+        } else {
+          sliders.heroChooser.appendSlide([
+            `<div class="chooser-slide swiper-slide">
+              <div class="chooser-slide__content">
+                <div class="chooser-slide__title">Настольные часы Hermle 01093</div>
+                <div class="chooser-slide__actions">
+                  <div class="chooser-slide__price price">
+                    <div class="price__newprice">19 800 <span class="r-mark">₽</span></div>
+                    <div class="price__oldprice">28 000 ₽</div>
+                  </div>
+                </div>
+              </div>
+              <div class="chooser-slide__image hero-image hero-image--smaller">
+                <div class="hero-image__main"><img src="img/sale_1.png" srcset="img/sale_1@2x.png 2x"></div>
+                <div class="hero-image__ghost"><img src="img/sale_1.png" srcset="img/sale_1@2x.png 2x"></div>
+              </div>
+            </div>`,
+          ]);
+        }
 
         // trigger slide next
         sliders.heroChooser.slideNext()
@@ -1788,7 +1812,7 @@ $(document).ready(function(){
   function initStacktable(){
     var $stack = $('[js-stacktable]');
     if ( $stack.length === 0 ) return
-    $stack.stacktable();  
+    $stack.stacktable();
   }
 
   // SOUND CONTROLS

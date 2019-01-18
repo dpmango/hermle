@@ -202,22 +202,32 @@ block content
             .article-page__featured-product
               .h3-title Рекомендуем
               
-              // prodcut card
-              .product-card(js-link data-href="#")
-                .product-card__image
-                  img(src="img/sale_1.png" srcset="img/sale_1@2x.png 2x")
-                .product-card__content
-                  .product-card__name Напольные часы <br/>Hermle 22716
-                  .product-card__actions
-                    .product-card__price.price
-                      .price__newprice 29 800 <span class="r-mark">₽</span>
-                      .price__oldprice 48 000 ₽
-                    .product-card__cta.product-card__cta--no-compare
-                      a(href="#").btn.btn-primary.btn--buy
-                        .btn-cart-icon
-                          +svgMono("cart")
-                        span Купить
+              .swiper-container(js-swiper-hero-chooser)
+                .swiper-wrapper
+                  mixin chooserSlide(title)
+                    // prodcut card
+                    .product-card.swiper-slide(js-link data-href="product.html")
+                      .product-card__image
+                        img(src="img/sale_7.png" srcset="img/sale_7@2x.png 2x")
+                      .product-card__content
+                        .product-card__name Напольные часы <br/>Hermle 70310
+                        .product-card__actions
+                          .product-card__price.price
+                            .price__newprice 29 800 <span class="r-mark">₽</span>
+                            .price__oldprice 48 000 ₽
+                          .product-card__cta.product-card__cta--no-compare
+                            a(href="#").btn.btn-primary.btn--buy
+                              .btn-cart-icon
+                                +svgMono("cart")
+                              span Купить
 
+                  +chooserSlide("Настольные часы Hermle 70310")
+                  +chooserSlide("Настольные часы Hermle 12321")
+                  
+              .hero-promo__chooser-refresh(js-refresh-slider)
+                +svgMono("refresh")
+                    
+              
 
   // SALE
   .sale(data-aos="fade")

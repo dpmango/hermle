@@ -94,9 +94,14 @@
         color: $colorRed
 
   &__featured-product
-    background: #FAF8F4
+    position: relative
+    background: #F6F2F2
     margin-top: 30px
-    padding: 30px 40px
+    padding: 40px
+    .swiper-wrapper
+      padding-top: 25px
+    .product-card
+      // width: 100%
 
 +r($lg)
   .article-page
@@ -226,4 +231,3 @@
     margin: 20px 0
     &__title
       font-size: 14px
-      
