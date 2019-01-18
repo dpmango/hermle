@@ -151,6 +151,7 @@
     &__name
       font-size: 16px
 
+
 /* cart form
 .cart-form
   position: relative
@@ -209,7 +210,7 @@
 
   &__summary
     position: relative
-    padding-top: 40px
+    padding-top: 50px
     display: flex
     flex-wrap: wrap
     margin-left: -12px
@@ -239,42 +240,36 @@
   &__prices
     flex: 0 0 calc(100% - 285px - 285px)
     max-width: calc(100% - 285px - 285px)
-    display: flex
-    flex-direction: column
-    align-items: flex-end
-
-  &__price-total
-    flex-shrink: 0
-    width: 70%
-    display: flex
-    align-items: center
-    color: $colorRed
-    font-size: 40px
-    font-weight: 700
-    min-width: 1px
-    > span
-      font-size: 16px
-
-  &__price-discount
-    width: 70%
-    display: flex
-    align-items: center
-    margin-top: 5px
-    font-size: 20px
-    font-weight: 700
-    min-width: 1px
-    > span
-      font-size: 14px
+    padding-left: 24px
 
   &__price-total, &__price-discount
+    display: flex
+    align-items: center
+    font-weight: 700
+    min-width: 1px
+    margin-left: auto
+    width: 320px
     > span
       width: 100%
       flex: 0 0 120px
       max-width: 120px
       display: inline-block
       min-width: 1px
+      font-size: 16px
       color: $fontColor
       font-weight: 400
+
+  &__price-total
+    color: $colorRed
+    font-size: 40px
+    > span
+      font-size: 16px
+
+  &__price-discount
+    margin-top: 5px
+    font-size: 20px
+    > span
+      font-size: 14px
 
   &__price-value
     flex: 0 0 auto
@@ -290,8 +285,22 @@
       letter-spacing: em(2.2, 15)
       padding: 16px 25px 18px
 
++r(1180)
+  .cart-form
+    &__summary
+    &__prices
+      flex: 0 0 calc(100% - 285px)
+      max-width: calc(100% - 285px)
+    &__cta
+      display: block
+
 +r($lg)
   .cart-form
+    &__holder
+      flex-basis: 75%
+      max-width: 75%
+    &__box
+      padding-bottom: 80px
     &__col
       flex-basis: $col12
       max-width: $col12
@@ -303,12 +312,57 @@
       margin-bottom: 25px
       &:last-child
         margin-bottom: 0
+    &__summary
+      // align-items: flex-start
+    &__prices
+      margin-top: -20px
+    &__price-total, &__price-discount
+      display: block
+      width: auto
+    &__cta
+      margin-top: 30px
+      flex-basis: $col12
+      max-width: $col12
+      .btn
+        width: 100%
 
 +r($md)
   .cart-form
+    &__box
+      padding-top: 20px
+      padding-bottom: 50px
     &__option
       flex-basis: $col12
       max-width: $col12
+    &__summary
+      padding-top: 25px
+    &__promo, &__prices, &__cta
+      flex-basis: $col12
+      max-width: $col12
+    &__prices
+      padding-left: 12px
+
++r($sm)
+  .cart-form
+    margin-left: -20px
+    margin-right: -20px
+    &::after
+      border-left: 0
+      border-right: 0
+    &__holder
+      flex-basis: $col12
+      max-width: $col12
+    &__box
+      padding-left: 20px
+      padding-right: 20px
+    &__row
+      margin-top: 20px
+    &__col
+      padding-right: 12px
+    &__section
+      margin: 20px 0
+
+
 
 /* cart form option
 .cf-option
