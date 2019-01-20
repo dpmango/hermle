@@ -1,0 +1,75 @@
+.compare
+  position: fixed
+  z-index: 7
+  bottom: 20px
+  right: 40px
+  min-width: 230px
+  background: #FAF8F4
+  border-radius: 4px
+  &__wrapper
+    position: relative
+    padding: 25px 50px 30px 30px
+  &__close
+    position: absolute
+    top: 4px
+    right: 4px
+    color: $colorRed
+    font-size: 0
+    padding: 10px
+    cursor: pointer
+    transition: color .25s $ease
+    .ico
+      font-size: 16px
+    &:hover
+      color: $fontColor
+  &__text
+    font-size: 16px
+    color: $colorGray
+    span
+      display: inline-block
+      color: $fontColor
+  &__cta
+    margin-top: 15px
+    display: inline-flex
+    align-items: center
+    padding: 9px 20px
+    font-size: 16px
+    border-radius: 4px
+    border: 1px solid $colorRed
+    background: white
+    color: $colorRed
+    transition: .25s $ease
+    span
+      display: inline-block
+      color: $fontColor
+      transition: color .25s $ease
+    .ico
+      font-size: 22px
+      margin-right: 10px
+    &:hover
+      background: $colorRed
+      color: white
+      span
+        color: white
+
+
+.compare-mobile
+  &__wrapper
+    position: relative
+    background: #FAF8F4
+    border-radius: 4px
+    padding: 13px 20px
+
+.compare, .compare-mobile
+  &.is-hidden
+
+
++rmin(768)
+  .compare-mobile
+    display: none !important
++r($md)
+  .compare
+    display: none !important
+
+  .compare-mobile
+    display: block

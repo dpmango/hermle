@@ -98,6 +98,7 @@ $(document).ready(function(){
     setBannerPaddings();
     calcCartValues();
     // window.getCartProducts - external cart summary builder
+    // window.changeCompareValues - update compare value (TODO - ajax)
     buildArticleNavigation();
 
     initResponsiveSliders();
@@ -806,6 +807,34 @@ $(document).ready(function(){
 
     })
 
+  // COMPARE
+  _document
+    .on('click', '[js-compare-hide]', function(){
+      var $compare = $('.compare, .compare-mobile')
+      $compare.slideUp()
+    })
+
+  window.changeCompareValues = function changeCompareValues(){
+    var $compare = $('.compare, .compare-mobile')
+    var $compareText = $compare.find('[js-compare-text] span') // find all
+
+    // ajax stuff to add new product TODO
+
+    // add newValue
+    var oldValue = parseInt($($compareText[0]).text().split(" ")[0]) // temp
+    var newValue = oldValue + 1 // returnable from ajax
+    var newValuePlural = Plurize(newValue, "товар", "товара", "товаров")
+    $compareText.text(newValue + " " +newValuePlural)
+
+    // show block if hidden
+    $compare.each(function(i, c){
+      if ( $(c).css('display') === "none"){
+        $(c).slideDown()
+      }
+    })
+  }
+
+
 
   ////////////
   // CART
@@ -1410,6 +1439,13 @@ $(document).ready(function(){
         e.stopPropagation();
       })
 
+    // some modals are nested triggers
+    $('.product-card [js-compare]')
+      .on('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        window.changeCompareValues()
+      })
 
     // video modal
     $('[js-popup-video]').magnificPopup({
@@ -2393,3 +2429,19 @@ function hasCrossedBreakpoint(targetBp){
 function formatNumberWithSpaces(num){
   return num.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
 }
+
+function Plurize(number, one, two, five) {
+  var n = Math.abs(number);
+  n %= 100;
+  if (n >= 5 && n <= 20) {
+    return five;
+  }
+  n %= 10;
+  if (n === 1) {
+    return one;
+  }
+  if (n >= 2 && n <= 4) {
+    return two;
+  }
+  return five;
+};
