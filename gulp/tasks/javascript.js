@@ -29,6 +29,7 @@ gulp.task('javascript:vendor', function() {
       // path.resolve('bower_components', 'animejs/anime.min.js'),
       path.resolve('node_modules', 'gsap/src/minified/TweenMax.min.js'),
       path.resolve('node_modules', 'gsap/src/minified/plugins/ScrollToPlugin.min.js'),
+      path.resolve('bower_components', 'sharer.js/sharer.min.js'),
       config.src.js + '/vendor/**/*.js'
      ])
     .pipe(plumber({ errorHandler: config.errorHandler }))

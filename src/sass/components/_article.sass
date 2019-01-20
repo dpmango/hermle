@@ -152,7 +152,7 @@
       margin-left: 52px
   .table
     margin: 1em 35px
-
+    width: calc(100% - 70px)
   &__row
     // text + image
     display: flex
@@ -206,6 +206,7 @@
         margin-left: 0
     .table
       margin: 1em 0px
+      width: 100%
 
     &__row
       display: block
@@ -220,14 +221,89 @@
 /* share
 .article-share
   margin: 30px 0
+  width: 100%
+  display: flex
+  align-items: center
   background: #FAF8F4
   border-radius: 4px
   padding: 12px 30px
   &__title
+    flex: 1 1 auto
     font-size: 16px
+    padding-right: 15px
+  &__list
+    flex: 1 0 auto
+    max-width: 540px
+    display: flex
+    flex-wrap: wrap
+    margin-left: -4px
+    margin-right: -4px
+  &__col
+    width: 100%
+    flex: 0 0 25%
+    max-width: 25%
+    min-width: 1px
+    padding-left: 4px
+    padding-right: 4px
+  &__button
+    display: flex
+    align-items: center
+    justify-content: center
+    min-height: 36px
+    padding: 5px 10px
+    color: white
+    font-size: 0px
+    font-weight: 600
+    transition: background .25s $ease
+    span
+      display: inline-block
+      font-size: 16px
+      letter-spacing: em(-.5,16)
+      margin-left: 4px
+    .ico
+      flex: 0 0 auto
+    &--facebook
+      background: $facebook
+      .ico
+        font-size: 13px
+      &:hover
+        background: lighten($facebook, 10%)
+    &--twitter
+      background: $twitter
+      .ico
+        font-size: 12px
+      &:hover
+        background: lighten($twitter, 10%)
+    &--vkontakte
+      background: $vk
+      .ico
+        font-size: 14px
+        transform: translateY(.5px)
+      &:hover
+        background: lighten($vk, 10%)
+    &--gplus
+      background: $googleplus
+      .ico
+        font-size: 16px
+        transform: translateY(.5px)
+      &:hover
+        background: lighten($googleplus, 10%)
+
+
 
 +r($sm)
   .article-share
     margin: 20px 0
+    padding: 14px 14px 14px 17px
+    flex-wrap: wrap
     &__title
+      flex-basis: 100%
+      max-width: 100%
       font-size: 14px
+    &__list
+      flex-basis: 100%
+      max-width: 100%
+    &__col
+      flex-basis: 50%
+      max-width: 50%
+      margin-top: 10px

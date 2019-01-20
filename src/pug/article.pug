@@ -128,7 +128,44 @@ block content
             .article-share(data-aos="fade")
               .article-share__title Поделиться в соцсетях
               .article-share__list
-            
+                // available settings https://ellisonleao.github.io/sharer.js
+                .article-share__col
+                  // facebook will ignore data-attr's and parse og schema instead
+                  a(href='#'
+                    data-sharer="facebook" 
+                    data-hashtag="hashtag"
+                    aria-label="Share on Facebook").article-share__button.article-share__button--facebook
+                    +svgMono("social-share-facebook")
+                    span Facebook
+                .article-share__col
+                  a(href="#"
+                    data-sharer="twitter" 
+                    data-title="Pass title" 
+                    data-hashtags="hash, tags" 
+                    aria-label="Share on Twitter").article-share__button.article-share__button--twitter
+                    +svgMono("social-share-twitter")
+                    span Twitter
+                .article-share__col
+                  a(href="#"
+                    data-sharer="vk" 
+                    data-title="Pass title"
+                    aria-label="Share on VK.com").article-share__button.article-share__button--vkontakte
+                    +svgMono("social-share-vkontakte")
+                    span Вконтакте
+                .article-share__col
+                  a(href="#"
+                    onclick="shareGoogle('https://hermle.surge.sh/article.html')"
+                    target="_blank" 
+                    aria-label="Share on Google Plus").article-share__button.article-share__button--gplus
+                    +svgMono("social-share-gplus")    
+                    span Google+
+                script.
+                  function shareGoogle(purl) {
+                    url = 'https://plus.google.com/share?url=' + purl;
+                    window.open(url,'','toolbar=0,status=0,width=626,height=436')
+                    return false;
+                  }
+        
             // COMMENTS
             .comments
               .h2-title(data-aos="fade") Комментарии
