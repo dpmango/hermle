@@ -10,11 +10,17 @@
             .p-small.p-small--black При покупке данной модели вы получите услугу одной бесплатной профилактики в подарок
 
           .banner__image
-            picture(js-lazy data-src="img/banner_1.png")
+            picture(js-lazy data-src="img/banner_4.png")
               data-src(
-                media="(min-width: 0px)" 
-                srcset="img/banner_4.png 1x, img/banner_4@2x.png 2x")
-      
+              media="(min-width: 992px)" 
+              srcset="img/banner_4.png 1x, img/banner_4@2x.png 2x")
+              data-src(
+              media="(min-width: 576px)" 
+              srcset="img/banner_4_md.jpg 1x, img/banner_4_md@2x.jpg 2x")
+              data-src(
+              media="(min-width: 0px)" 
+              srcset="img/banner_4_sm.jpg 1x, img/banner_4_sm@2x.jpg 2x")
+
       .p-banners__col
         // banner
         .banner.banner--bg-cover.banner--product
@@ -22,15 +28,13 @@
             .banner__blockquote Мы являемся <span>официальным <br/>партнёром</span> компании Hermle
 
           .banner__image
-            picture(js-lazy data-src="img/banner_3.png")
+            picture(js-lazy data-src="img/banner_5.png")
               data-src(
               media="(min-width: 992px)" 
               srcset="img/banner_5.png 1x, img/banner_5@2x.png 2x")
               data-src(
               media="(min-width: 576px)" 
-              srcset="img/banner_3_lg.png 1x, img/banner_3_lg@2x.png 2x")
+              srcset="img/banner_5_md.jpg 1x, img/banner_5_md@2x.jpg 2x")
               data-src(
               media="(min-width: 0px)" 
-              srcset="img/banner_5.png 1x, img/banner_5@2x.png 2x")
-              // fallback
-              //- img(src='img/banner_3.png')
+              srcset="img/banner_5_sm.jpg 1x, img/banner_5_sm@2x.jpg 2x")

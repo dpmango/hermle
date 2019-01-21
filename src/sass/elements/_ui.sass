@@ -26,9 +26,6 @@
       bottom: -17px
       font-size: 11px
       max-width: 100%
-    &.is-valid
-      &::after
-        top: 50%
 
   &.is-valid
     .ui-input
@@ -50,6 +47,10 @@
       background: svg-load("../icons/svg-mono/checkmark.svg", fill=$colorGreen) no-repeat center
       size: 16px 12px
       background-size: contain
+  &--labeled
+    &.is-valid
+      &::after
+        top: 50%
 
 +r($sm)
   .ui-group
