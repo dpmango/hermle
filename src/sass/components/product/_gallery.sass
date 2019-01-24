@@ -3,7 +3,7 @@
 .p-gallery
   display: flex
   &__thumbs
-    flex: 0 0 auto
+    flex: 0 0 80px
     padding-bottom: 50px
     .swiper-button-prev, .swiper-button-next
       display: none
@@ -87,6 +87,7 @@
   &--modal
     .p-gallery
       &__thumbs
+        flex-basis: 60px
         padding-top: 6px
         padding-bottom: 0
       &__thumb
@@ -99,6 +100,11 @@
 +r($sm)
   .p-gallery
     flex-wrap: wrap
+    &--modal
+      .p-gallery
+        &__thumbs
+          flex-basis: 100%
+
     &__thumbs
       position: relative
       flex: 0 0 100%

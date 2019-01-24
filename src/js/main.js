@@ -102,8 +102,8 @@ $(document).ready(function(){
     // window.changeCompareValues - update compare value (TODO - ajax)
     buildArticleNavigation();
 
-    initResponsiveSliders();
-    initSliders();
+    // initResponsiveSliders();
+    // initSliders();
     initPopups();
     initSticky();
     initMasks();
@@ -120,6 +120,8 @@ $(document).ready(function(){
     updateOutsideWrapper();
     getHeaderParams();
     setPageOffset();
+    initResponsiveSliders();
+    initSliders();
     ieFixImages(fromPjax);
     initRadialProgressbar();
     initHowler();
@@ -1201,38 +1203,42 @@ $(document).ready(function(){
     // sliders.productThumbs.instance
     // moved to responsive swipers
 
-    sliders.productMain = new Swiper('[js-swiper-gallery-main]', {
-      wrapperClass: "swiper-wrapper",
-      slideClass: "swiper-slide",
-      direction: 'horizontal',
-      loop: true,
-      watchOverflow: false,
-      setWrapperSize: false,
-      spaceBetween: 0,
-      slidesPerView: 1,
-      normalizeSlideIndex: true,
-      freeMode: false,
-      // thumbs: {
-      //   swiper: sliders.productThumbs
-      // }
-    });
+    if ( $('[js-swiper-gallery-main]').length > 0 ){
+      sliders.productMain = new Swiper('[js-swiper-gallery-main]', {
+        wrapperClass: "swiper-wrapper",
+        slideClass: "swiper-slide",
+        direction: 'horizontal',
+        loop: true,
+        watchOverflow: false,
+        setWrapperSize: false,
+        spaceBetween: 0,
+        slidesPerView: 1,
+        normalizeSlideIndex: true,
+        freeMode: false,
+        // thumbs: {
+        //   swiper: sliders.productThumbs
+        // }
+      });
 
-    // thumbs swiper manual
-    sliders.productMain.on('slideChange', function(){
-      var index = sliders.productMain.realIndex
-      changeThumbClass(index)
-      sliders.productThumbs.instance.slideTo(index)
-    })
-
-    _document
-      .on('click', '[js-swiper-gallery-thumbs] .swiper-slide', function(){
-        var $thumb = $(this)
-        var index = $thumb.index()
-        if ( $thumb.data('mfp-src') ) return // if modal is clicked - do nothing
-
+      // console.log(sliders.productMain)
+      // TODO - slidechange error on something undefnied
+      // thumbs swiper manual
+      sliders.productMain.on('slideChange', function(){
+        var index = sliders.productMain.realIndex
         changeThumbClass(index)
-        sliders.productMain.slideToLoop(index)
+        sliders.productThumbs.instance.slideTo(index)
       })
+
+      _document
+        .on('click', '[js-swiper-gallery-thumbs] .swiper-slide', function(){
+          var $thumb = $(this)
+          var index = $thumb.index()
+          if ( $thumb.data('mfp-src') ) return // if modal is clicked - do nothing
+
+          changeThumbClass(index)
+          sliders.productMain.slideToLoop(index)
+        })
+    }
 
     function changeThumbClass(index){
       var $thumb = $( $('[js-swiper-gallery-thumbs] .swiper-slide')[index] )
@@ -1460,37 +1466,74 @@ $(document).ready(function(){
     var arrowMarkup = '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"><svg class="ico ico-mono-btn-arrow-%dir%"><use xlink:href="img/sprite-mono.svg#ico-mono-btn-arrow-%dir%"></use></svg></button>'
 
     // var startWindowScroll = 0;
-    $('[js-popup]').magnificPopup({
-      type: 'inline',
-      fixedContentPos: false,
-      fixedBgPos: false,
-      overflowY: 'scroll',
-      closeBtnInside: true,
-      preloader: false,
-      midClick: true,
-      removalDelay: 300,
-      mainClass: 'popup-buble',
-      closeMarkup: closeMarkup,
-      callbacks: {
-        beforeOpen: function() {
-          // startWindowScroll = _window.scrollTop();
-          // $('html').addClass('mfp-helper');
-        },
-        open: function(){
-          initSliders()
-        },
-        close: function() {
-          // $('html').removeClass('mfp-helper');
-          // _window.scrollTop(startWindowScroll);
+
+    _document
+      .on('click', '[js-popup]', function(e){
+        e.stopPropagation(); // prevent nested modals opening same time
+        // NOTE + product cta section is disabled with hard .preventDefault and .stopPropagation
+
+        // default options
+        var popupOptions = {
+          type: 'inline',
+          fixedContentPos: true,
+          fixedBgPos: false,
+          overflowY: 'auto',
+          closeBtnInside: true,
+          preloader: false,
+          midClick: true,
+          removalDelay: 300,
+          mainClass: 'popup-buble',
+          closeMarkup: closeMarkup,
+          callbacks: {
+            beforeOpen: function() {
+              // startWindowScroll = _window.scrollTop();
+              // $('html').addClass('mfp-helper');
+            },
+            close: function() {
+              // $('html').removeClass('mfp-helper');
+              // _window.scrollTop(startWindowScroll);
+            }
+          }
         }
-      }
-    });
+
+        var $link = $(this)
+        // console.log('link popup', $link.data("mfp-src") || $link.attr('href'))
+        var isRouter = $link.is('[js-popup-router]')
+        if ( isRouter && (getWindowWidth() <= 992) ){
+          var dataHref = $link.data('mobile-href');
+
+          Barba.Dispatcher.trigger('linkClicked', $link);
+          Barba.Pjax.goTo(dataHref);
+        } else {
+
+          var mergedOptions = $.extend(popupOptions, {
+            items: {
+              src: $link.data("mfp-src") || $link.attr('href')
+            }
+          })
+
+          // product modals should refresh sliders
+          if ( $link.is('.product-card') ){
+            mergedOptions = $.extend(true, mergedOptions, {
+              callbacks: {
+                open: function(){
+                  initSliders();
+                }
+              }
+            }) // recursivelly add open options
+          }
+
+          // popup opened (manual initialization because it depends on options above)
+          $.magnificPopup.open(mergedOptions)
+        }
+      })
+
 
     // some modals are nested triggers
-    $('.product-card [js-popup]')
-      .on('click', function(e){
-        e.stopPropagation();
-      })
+    // $('.product-card [js-popup]')
+    //   .on('click', function(e){
+    //     e.stopPropagation();
+    //   })
 
     // some modals are nested triggers
     $('.product-card [js-compare]')
@@ -1504,9 +1547,9 @@ $(document).ready(function(){
     $('[js-popup-video]').magnificPopup({
       // disableOn: 700,
       type: 'iframe',
-      fixedContentPos: false,
-      fixedBgPos: true,
-      overflowY: 'scroll',
+      fixedContentPos: true,
+      fixedBgPos: false,
+      overflowY: 'auto',
       closeBtnInside: true,
       preloader: false,
       midClick: true,
@@ -1547,9 +1590,9 @@ $(document).ready(function(){
         $(gal).magnificPopup({
           delegate: delegatedElement,
           type: 'image',
-          fixedContentPos: false,
+          fixedContentPos: true,
           fixedBgPos: false,
-          overflowY: 'scroll',
+          overflowY: 'auto',
           closeBtnInside: false,
           tLoading: 'Загрузка #%curr%...',
           mainClass: 'mfp-with-zoom',
