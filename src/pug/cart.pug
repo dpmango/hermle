@@ -102,23 +102,24 @@ block content
                 .cart-form__col
                   .ui-group.ui-group--labeled(js-cart-city)
                     label Город <span class="ui-required">*</span>
-                    select.bigger(js-select name="city" id="city" placeholder="Выбрать")
-                      option(disabled selected) Выбрать
-                      option Москва
-                      option Санкт-Питербург
-                      option Новосибирск
-                      option Екатеринбург
-                      option Нижний Новгород
-                      option Казань
-                      option Челябинск
-                      option Омск
-                      option Самара
-                      option Ростов-на-Дону
-                      option Уфа
-                      option Красноярск
-                      option Пермь
-                      option Воронеж
-                      option Волгоград
+                    input.ui-input(type="text" name="city" placeholder="Выберите город" js-autocomplete data-autocomplete-endpoint="json/cities.json")
+                    //- select.bigger(js-select name="city" id="city" placeholder="Выбрать")
+                    //-   option(disabled selected) Выбрать
+                    //-   option Москва
+                    //-   option Санкт-Питербург
+                    //-   option Новосибирск
+                    //-   option Екатеринбург
+                    //-   option Нижний Новгород
+                    //-   option Казань
+                    //-   option Челябинск
+                    //-   option Омск
+                    //-   option Самара
+                    //-   option Ростов-на-Дону
+                    //-   option Уфа
+                    //-   option Красноярск
+                    //-   option Пермь
+                    //-   option Воронеж
+                    //-   option Волгоград
                 .cart-form__col.cart-form__col--full-width
                   .ui-group.ui-group--labeled(js-card-address)
                     label Адрес <span class="ui-required">*</span>

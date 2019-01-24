@@ -108,6 +108,7 @@ $(document).ready(function(){
     initSticky();
     initMasks();
     initSelectric();
+    initAutoComplete();
     initRangeSlider();
     initStacktable();
     initScrollMonitor(fromPjax);
@@ -1864,6 +1865,30 @@ $(document).ready(function(){
       //   $wrapper.find('.label').html($wrapper.find('.label').data('value'));
       // }
     });
+  }
+
+  ////////////
+  // AUTOCOMPLETE
+  ////////////
+  function initAutoComplete(){
+    var $autocompleates = $('[js-autocomplete]')
+    if ( $autocompleates.length === 0 ) return
+    $autocompleates.each(function(i, au){
+      var $autcompleate = $(au);
+      $autocompleates.easyAutocomplete({
+        url: $autcompleate.data('autocomplete-endpoint'),
+        // url: function(phrase) {
+    		// 	return "http://shinglas.ru/location/autocomplete?q=" + phrase;
+    		// },
+        listLocation: 'data',
+    		getValue: 'label',
+    		list: {
+  		    match: {
+  		      enabled: true
+  		    }
+    		},
+      });
+    })
   }
 
   ////////////
