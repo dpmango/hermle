@@ -70,6 +70,7 @@ $(document).ready(function(){
       instance: undefined,
       disableOn: 768
     },
+    productImages: []
   } // collection of all sliders
 
   var progressBars = []; // collection of all progressbars
@@ -1268,6 +1269,7 @@ $(document).ready(function(){
 
     var $productImages = $('[js-swiper-product-images]');
 
+    sliders.productImages = [] // null collection
     if ( $productImages.length > 0 ){
       $productImages.each(function(i, slider){
         new Swiper(slider, {
@@ -1281,12 +1283,63 @@ $(document).ready(function(){
           slidesPerView: 1,
           normalizeSlideIndex: true,
           freeMode: false,
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true
+          },
           pagination: {
             el: '.swiper-pagination',
             type: 'bullets',
           },
+          on: {
+            init: function () {
+              var $swiperContainer = $(this.$el)
+              sliders.productImages.push({
+                'id': i,
+                'instance': this
+              })
+              $swiperContainer.attr('data-id', i)
+              // generate hover controls
+              var numberOfSlides = this.slides.length - 2
+              var controls = ""
+              for( i = 0; i < numberOfSlides; i++ ){
+                controls += "<span class='swiper-hover-nav' js-swiper-hover-nav data-index="+i+"></span>"
+              }
+              controls = $(controls)
+              $swiperContainer.append(controls)
+              controls.wrapAll("<div class='swiper-hover-nav-container'></div>")
+            }
+          },
         })
       })
+    }
+
+    // hover navigation
+    _document
+      .on('mouseover', '[js-swiper-hover-nav]', function(){
+        var $control = $(this)
+        var index = $control.data('index')
+        var swiperInstance = getProductSwiperInstance(this)
+        if ( !swiperInstance ) return
+
+        swiperInstance.slideToLoop(index, 100)
+      })
+      .on('mouseleave', '[js-swiper-product-images]', function(){
+        var swiperInstance = getProductSwiperInstance(this)
+        if ( !swiperInstance ) return
+
+        swiperInstance.slideToLoop(0, 100)
+      })
+
+    function getProductSwiperInstance(that){
+      var swiperId = $(that).closest('.swiper-container').data("id")
+      var swiperInstance
+      $.each(sliders.productImages, function(i,s){
+        if ( s.id === swiperId ){
+          swiperInstance = s.instance
+        }
+      })
+      return swiperInstance
     }
 
     ////////////
