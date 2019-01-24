@@ -57,6 +57,43 @@ html.mfp-helper
   &.mfp-removing.mfp-bg
     opacity: 0
 
+// Animation for scaler
+.mfp-scaler
+  .mfp-content
+    opacity: 0
+    transition: all 0.2s ease-out
+    transform: translateY(-20px) perspective(600px) rotateX(10deg)
+  &.mfp-ready .mfp-content
+    opacity: 1
+    transform: translateY(0) perspective(600px) rotateX(0)
+  &.mfp-removing .mfp-content
+    opacity: 0
+    transform: translateY(-10px) perspective(600px) rotateX(10deg)
+  &.mfp-bg
+    opacity: 0
+    transition: opacity 0.3s ease-out
+  &.mfp-ready.mfp-bg
+    opacity: 0.8
+  &.mfp-removing.mfp-bg
+    opacity: 0
+
+
+.mfp-with-zoom
+  .mfp-container, &.mfp-bg
+    opacity: 0
+    backface-visibility: hidden
+    transition: all 0.3s ease-out
+  &.mfp-ready
+    .mfp-container
+      opacity: 1
+    &.mfp-bg
+      opacity: 0.9
+  &.mfp-removing
+    .mfp-container, &.mfp-bg
+      opacity: 0
+
+.mfp-figure:after
+  background: white
 
 .mfp-close
   display: inline-block
@@ -85,25 +122,70 @@ html.mfp-helper
   &:hover
     color: $fontColor
 
-// Animation for scaler
-.mfp-scaler
-  .mfp-content
-    opacity: 0
-    transition: all 0.2s ease-out
-    transform: translateY(-20px) perspective(600px) rotateX(10deg)
-  &.mfp-ready .mfp-content
-    opacity: 1
-    transform: translateY(0) perspective(600px) rotateX(0)
-  &.mfp-removing .mfp-content
-    opacity: 0
-    transform: translateY(-10px) perspective(600px) rotateX(10deg)
-  &.mfp-bg
-    opacity: 0
-    transition: opacity 0.3s ease-out
-  &.mfp-ready.mfp-bg
-    opacity: 0.8
-  &.mfp-removing.mfp-bg
-    opacity: 0
+
+.mfp-gallery
+  .mfp-close
+    color: white
+    right: 20px
+    .ico
+      font-size: 20px
+    &:hover
+      color: rgba(white, .5)
+
++r($sm)
+  .mfp-gallery
+    .mfp-close
+      right: 10px
+
+/* popup arrows
+.mfp-arrow
+  color: white
+  opacity: 1
+  font-size: 0
+  padding: 10px !important
+  width: auto
+  height: auto
+  margin-top: 0
+  transform-style: preserve-3d
+  transform: translateY(-50%)
+  .ico
+    // click bindings
+    pointer-events: none
+    font-size: 20px
+    will-change: transform
+    backface-visibility: hidden
+    transition: transform .25s $ease
+  &:before, &:after
+    // replaced with svg
+    display: none
+  &.mfp-arrow-left
+    &:hover
+      .ico
+        transform: translateX(-5px)
+  &.mfp-arrow-right
+    &:hover
+      .ico
+        transform: translateX(5px)
+  &:active
+    margin-top: 0
+
+.mfp-arrow-left
+  left: 20px
+.mfp-arrow-right
+  right: 20px
+
++r($lg)
+  .mfp-arrow
+    transform: none
+    top: auto
+    bottom: 15px
+
+
++r($sm)
+  .mfp-arrow-left
+    left: 10px
+  .mfp-arrow-right
+    right: 10px
 
 // iframe scaler modifier
 .mfp-iframe-holder

@@ -69,8 +69,14 @@
     overflow: hidden
     text-align: center
     font-size: 0
-    img
+    &[data-mfp-src], &[href]
+      cursor: zoom-in
+    img, picture
       max-width: 100%
+      // transition: transform .25s $ease
+    &:hover
+      img, picture
+        // transform: scale(1.02)
   &__tag
     position: absolute
     z-index: 3

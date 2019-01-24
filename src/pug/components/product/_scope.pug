@@ -25,15 +25,15 @@
               +svgMono("btn-arrow")
                   
           // main swiper
-          .p-gallery__main.swiper-container(js-swiper-gallery-main)
+          .p-gallery__main.swiper-container(js-swiper-gallery-main js-popup-gallery data-delegate=".swiper-slide:not(.swiper-slide-duplicate)")
             .swiper-wrapper
-              .swiper-slide.p-gallery__picture
+              .swiper-slide.p-gallery__picture(data-mfp-src="img/productImage_1.png")
                 img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
-              .swiper-slide.p-gallery__picture
+              .swiper-slide.p-gallery__picture(data-mfp-src="img/productImage_1.png")
                 img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
-              .swiper-slide.p-gallery__picture
+              .swiper-slide.p-gallery__picture(data-mfp-src="img/productImage_1.png")
                 img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
-              .swiper-slide.p-gallery__picture
+              .swiper-slide.p-gallery__picture(data-mfp-src="img/productImage_1.png")
                 img(src='img/productImage_1.png' srcset='img/productImage_1@2x.png 2x')
             .p-gallery__tag
               .tag.tag--sale

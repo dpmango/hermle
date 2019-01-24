@@ -49,8 +49,12 @@
       color: white
       &:hover
         color: $colorRed
+      &.swiper-button-disabled
+        color: rgba(white, .5)
   &__gallery-slide
     font-size: 0
+    &[href], &[data-mfp-src]
+      cursor: zoom-in
     img
       width: 100%
     &[js-popup-video]

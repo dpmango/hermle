@@ -1245,7 +1245,7 @@ $(document).ready(function(){
       wrapperClass: "swiper-wrapper",
       slideClass: "swiper-slide",
       direction: 'horizontal',
-      loop: true,
+      loop: false,
       watchOverflow: false,
       setWrapperSize: false,
       spaceBetween: 0,
@@ -1254,7 +1254,7 @@ $(document).ready(function(){
       freeMode: false,
       navigation: navigationDefault,
       autoplay: {
-        delay: 3000
+        delay: 4000
       },
       breakpoints: {
         992: {
@@ -1330,17 +1330,6 @@ $(document).ready(function(){
 
         swiperInstance.slideToLoop(0, 100)
       })
-
-    function getProductSwiperInstance(that){
-      var swiperId = $(that).closest('.swiper-container').data("id")
-      var swiperInstance
-      $.each(sliders.productImages, function(i,s){
-        if ( s.id === swiperId ){
-          swiperInstance = s.instance
-        }
-      })
-      return swiperInstance
-    }
 
     ////////////
     // about page
@@ -1450,6 +1439,16 @@ $(document).ready(function(){
     }
   }
 
+  function getProductSwiperInstance(that){
+    var swiperId = $(that).closest('.swiper-container').data("id")
+    var swiperInstance
+    $.each(sliders.productImages, function(i,s){
+      if ( s.id === swiperId ){
+        swiperInstance = s.instance
+      }
+    })
+    return swiperInstance
+  }
 
   //////////
   // MODALS
@@ -1458,13 +1457,14 @@ $(document).ready(function(){
   function initPopups(){
     // Magnific Popup
     var closeMarkup = '<button title="%title%" class="mfp-close"><svg class="ico ico-mono-close"><use xlink:href="img/sprite-mono.svg#ico-mono-close"></use></svg></button>'
+    var arrowMarkup = '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"><svg class="ico ico-mono-btn-arrow-%dir%"><use xlink:href="img/sprite-mono.svg#ico-mono-btn-arrow-%dir%"></use></svg></button>'
 
     // var startWindowScroll = 0;
     $('[js-popup]').magnificPopup({
       type: 'inline',
-      fixedContentPos: true,
-      fixedBgPos: true,
-      overflowY: 'auto',
+      fixedContentPos: false,
+      fixedBgPos: false,
+      overflowY: 'scroll',
       closeBtnInside: true,
       preloader: false,
       midClick: true,
@@ -1504,9 +1504,9 @@ $(document).ready(function(){
     $('[js-popup-video]').magnificPopup({
       // disableOn: 700,
       type: 'iframe',
-      fixedContentPos: true,
+      fixedContentPos: false,
       fixedBgPos: true,
-      overflowY: 'auto',
+      overflowY: 'scroll',
       closeBtnInside: true,
       preloader: false,
       midClick: true,
@@ -1533,28 +1533,74 @@ $(document).ready(function(){
 
 
     // gallery modal
-    $('[js-popup-gallery]').magnificPopup({
-  		delegate: 'a',
-  		type: 'image',
-  		tLoading: 'Загрузка #%curr%...',
-  		mainClass: 'popup-buble',
-      closeMarkup: closeMarkup,
-  		gallery: {
-  			enabled: true,
-  			navigateByImgClick: true,
-  			preload: [0,1]
-  		},
-      zoom: {
-        enabled: true,
-        duration: 300, // also to be changed in CSS
-        opener: function(element) {
-          return element.find('img');
+    var $galleries = $('[js-popup-gallery]')
+    if ( $galleries.length > 0 ){
+      $galleries.each(function(i, gal){
+
+        var delegatedElement
+        if ( $(gal).data("delegate") !== undefined ){
+          delegatedElement = $(gal).data("delegate")
+        } else {
+          delegatedElement = 'a'
         }
-      },
-  		image: {
-  			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-  		}
-  	});
+
+        $(gal).magnificPopup({
+          delegate: delegatedElement,
+          type: 'image',
+          fixedContentPos: false,
+          fixedBgPos: false,
+          overflowY: 'scroll',
+          closeBtnInside: false,
+          tLoading: 'Загрузка #%curr%...',
+          mainClass: 'mfp-with-zoom',
+          closeMarkup: closeMarkup,
+          gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0,1],
+            arrowMarkup: arrowMarkup, // markup of an arrow button
+            tCounter: '<span class="mfp-counter p-label">%curr% / %total%</span>'
+          },
+          image: {
+            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+            verticalFit: true
+          },
+          zoom: {
+            enabled: true,
+            duration: 300, // also to be changed in CSS
+            opener: function(element) {
+              return element.find('img')
+              // return element.find('img');
+            }
+          },
+          callbacks: {
+            beforeOpen: function() {
+              // startWindowScroll = _window.scrollTop();
+              // $('html').addClass('mfp-helper');
+              var _self = this
+              var $linkedSwiper = this.ev.closest('.swiper-container');
+
+              // store connected swiper
+              if ( $linkedSwiper ){
+                if ( $linkedSwiper.is('.p-gallery__main') ){
+                  _self.linkedSwiperIntance = sliders.productMain
+                } else if ( $linkedSwiper.is('.p-exclusive__gallery') ){
+                  _self.linkedSwiperIntance = sliders.productExclusive
+                }
+              }
+            },
+            change: function() {
+              // when slides are changing - change the swiper
+              if ( this.linkedSwiperIntance ){
+                this.linkedSwiperIntance.slideToLoop(this.currItem.index)
+              }
+            },
+          }
+        });
+      })
+    }
+
+
   }
 
   function closeMfp(){
@@ -2429,6 +2475,7 @@ $(document).ready(function(){
       contactMap.setZoom(15);
       contactMap.panTo(posLatLng);
     })
+
 
 });
 
